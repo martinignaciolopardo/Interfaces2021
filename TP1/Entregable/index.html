@@ -7,29 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="js/paint.js"></script>
-    <title>Practico Entregable</title>
+    <title>Practico Entregable 1</title>
 </head>
 
 <body>
     <header>
-        <h1> Welcome to my Paint</h1>
     </header>
     <main id="main">
+        <canvas id="canvas" width="600" height="500">
+        </canvas>
         <section id="sectionOptions">
             <label> Color de linea:</label>
-            <input type="color" name="colors" id="inputColors" onchange="color(this)">
+            <input type="color" name="colors" id="inputColors">
             <label> Ancho de linea:</label>
-            <input type="range" name="rangeLine" id="range-line" onchange="ancho(this)" max="100" min="1" value="1">
+            <input type="range" name="rangeLine" id="range-line" max="50" min="1" value="1">
             <span id="rangeValor"> 0 </span>
-            <input type="button" value="Borrar" onclick="borrar()">
-            <!-- <input type="button" value="Reset" onclick="limpiar()"> -->
+            <input type="button" id="borrar" value='Borrar'>
         </section>
-        <canvas id="canvas" width="700" height="700">
-
-        </canvas>
-
     </main>
-
 </body>
-
 </html>
