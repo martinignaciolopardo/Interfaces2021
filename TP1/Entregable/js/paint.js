@@ -6,6 +6,13 @@ document.addEventListener('DOMContentLoaded', () =>{
     let ruta = false;
     let x , y;
 
+    canvas.addEventListener('mousedown', function(){ // evento que se activa al dar click
+        ruta = true;
+        ctx.beginPath(); //arrancar a dibujar
+        ctx.moveTo(x,y); //cordenadas iniciales
+        canvas.addEventListener('mousemove', dibujarLapiz); 
+    });
+
     function dibujarLapiz(evento){
         x = evento.clientX;
         y = evento.clientY;
@@ -19,14 +26,9 @@ document.addEventListener('DOMContentLoaded', () =>{
         }
     }
 
-    canvas.addEventListener('mousemove', dibujarLapiz);
+    //let btnErase = document.querySelector('#btn-erase');
 
-    canvas.addEventListener('mousedown', function(){ // evento que se activa al dar click
-        ruta = true;
-        ctx.beginPath(); //arrancar a dibujar
-        ctx.moveTo(x,y); //cordenadas iniciales
-        canvas.addEventListener('mousemove', dibujarLapiz); 
-    });
+    canvas.addEventListener('mousemove', dibujarLapiz);
 
     canvas.addEventListener('mouseup', function(){
         ruta = false;

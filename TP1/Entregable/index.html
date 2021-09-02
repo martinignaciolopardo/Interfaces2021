@@ -14,16 +14,22 @@
     <header>
     </header>
     <main id="main">
-        <canvas id="canvas" width="600" height="500">
-        </canvas>
-        <section id="sectionOptions">
-            <label> Color de linea:</label>
-            <input type="color" name="colors" id="inputColors">
-            <label> Ancho de linea:</label>
-            <input type="range" name="rangeLine" id="range-line" max="50" min="1" value="1">
-            <span id="rangeValor"> 0 </span>
-            <input type="button" id="borrar" value='Borrar'>
-        </section>
+        <div class="a">
+        <div> 
+            <canvas id="canvas" width="600" height="500">
+            </canvas>
+        </div>
+            <section class="b" id="sectionOptions">
+                <label> Color de linea:</label>
+                <input type="color" name="colors" id="inputColors">
+                <label> Ancho de linea:</label>
+                <input type="range" name="rangeLine" id="range-line" max="50" min="1" value="1">
+                <img id="borrar" src="images/borrar.png" alt="">
+                <label>Ancho goma de borrar:</label>
+                <input type="range" name="rangeLine" id="range-erase" max="50" min="1" value="1">
+                <img src="images/goma-de-borrar.png" id="erase" alt="">
+          </section>
+    </div>
     </main>
 </body>
 </html>
