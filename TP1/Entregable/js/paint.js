@@ -1,58 +1,73 @@
 document.addEventListener('DOMContentLoaded', () =>{
     "use strict"
     
-    let canvas = document.querySelector('#canvas');
-    let ctx = canvas.getContext('2d');
-    let ruta = false;
-    let borrado = -1;
-    let x , y;
+    window.onload = function() {
+        let canvas = document.querySelector('#canvas');
+        let ctx = canvas.getContext('2d');
+        let ruta = false;
+        let borrado = -1;
+        let x , y;
+        let inputImage = document.querySelector("#selectImage");
+        inputImage.addEventListener("change", handleFiles, false);
+        
+        function loadAndDrawImage(url){
+            let image = new Image();
+            image.onload = function(){
+                ctx.drawImage(image, 100, 40);
+            }
+            image.src = 'images/' + url;
+        }
 
-    canvas.addEventListener('mousedown', function(){ // evento que se activa al dar click
-        ruta = true;
-        ctx.beginPath(); //arrancar a dibujar
-        ctx.moveTo(x,y); //cordenadas iniciales
-        canvas.addEventListener('mousemove', dibujarLapiz); 
-    });
+        function handleFiles() {
+            let fileList = this.files;
+            let url = fileList[0].name;
+            loadAndDrawImage(url);
+        }
 
-    function dibujarLapiz(evento){
-        x = evento.clientX;
-        y = evento.clientY;
-        if(ruta){ 
-            if(borrado==1){
-                let lineSize = document.querySelector('#range-erase').value;
-                let lineColour = document.querySelector('#inputColors').value;
-                ctx.lineTo(x,y); // genera linea
-                ctx.lineWidth = lineSize;
-                ctx.strokeStyle = 'white';
-                ctx.stroke();
-            }else{
-                let lineSize = document.querySelector('#range-line').value;
-                let lineColour = document.querySelector('#inputColors').value;
-                ctx.lineTo(x,y); // genera linea
-                ctx.lineWidth = lineSize;
-                ctx.strokeStyle = lineColour;
-                ctx.stroke(); //para que se dibuje la linea
+        canvas.addEventListener('mousedown', function(){ // evento que se activa al dar click
+            ruta = true;
+            ctx.beginPath(); //comienza a dibujar
+            ctx.moveTo(x,y); //cordenadas iniciales
+            canvas.addEventListener('mousemove', dibujarLapiz); 
+        });
+
+        function dibujarLapiz(evento){
+            x = evento.clientX;
+            y = evento.clientY;
+            if(ruta){ 
+                if(borrado==1){
+                    let lineSize = document.querySelector('#range-erase').value;
+                    let lineColour = document.querySelector('#inputColors').value;
+                    ctx.lineTo(x,y); // genera linea
+                    ctx.lineWidth = lineSize;
+                    ctx.strokeStyle = 'white';
+                    ctx.stroke();
+                }else{
+                    let lineSize = document.querySelector('#range-line').value;
+                    let lineColour = document.querySelector('#inputColors').value;
+                    ctx.lineTo(x,y); // genera linea
+                    ctx.lineWidth = lineSize;
+                    ctx.strokeStyle = lineColour;
+                    ctx.stroke(); //para que se dibuje la linea
+                }
             }
         }
-    }
 
-    //let btnErase = document.querySelector('#btn-erase');
+        canvas.addEventListener('mousemove', dibujarLapiz);
 
-    canvas.addEventListener('mousemove', dibujarLapiz);
+        canvas.addEventListener('mouseup', function(){
+            ruta = false;
+        });
 
-    canvas.addEventListener('mouseup', function(){
-        ruta = false;
-    });
+        let imgBorrar = document.querySelector('#erase');
+        imgBorrar.addEventListener('click', function(){
+            borrado = borrado * -1;
+        });
 
-    let imgBorrar = document.querySelector('#erase');
-    imgBorrar.addEventListener('click', function(){
-        borrado = borrado * -1;
-    });
+        let btnBorrar = document.querySelector('#borrar');
+        btnBorrar.addEventListener('click', function() {
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        });
 
-
-    let btnBorrar = document.querySelector('#borrar');
-    btnBorrar.addEventListener('click', function() {
-        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    });
-
+    };
 });
