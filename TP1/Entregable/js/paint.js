@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () =>{
     let canvas = document.querySelector('#canvas');
     let ctx = canvas.getContext('2d');
     let ruta = false;
+    let borrado = -1;
     let x , y;
 
     canvas.addEventListener('mousedown', function(){ // evento que se activa al dar click
@@ -17,12 +18,21 @@ document.addEventListener('DOMContentLoaded', () =>{
         x = evento.clientX;
         y = evento.clientY;
         if(ruta){ 
-            let lineSize = document.querySelector('#range-line').value;
-            let lineColour = document.querySelector('#inputColors').value;
-            ctx.lineTo(x,y); // genera linea
-            ctx.lineWidth = lineSize;
-            ctx.strokeStyle = lineColour;
-            ctx.stroke(); //para que se dibuje la linea
+            if(borrado==1){
+                let lineSize = document.querySelector('#range-erase').value;
+                let lineColour = document.querySelector('#inputColors').value;
+                ctx.lineTo(x,y); // genera linea
+                ctx.lineWidth = lineSize;
+                ctx.strokeStyle = 'white';
+                ctx.stroke();
+            }else{
+                let lineSize = document.querySelector('#range-line').value;
+                let lineColour = document.querySelector('#inputColors').value;
+                ctx.lineTo(x,y); // genera linea
+                ctx.lineWidth = lineSize;
+                ctx.strokeStyle = lineColour;
+                ctx.stroke(); //para que se dibuje la linea
+            }
         }
     }
 
@@ -33,6 +43,12 @@ document.addEventListener('DOMContentLoaded', () =>{
     canvas.addEventListener('mouseup', function(){
         ruta = false;
     });
+
+    let imgBorrar = document.querySelector('#erase');
+    imgBorrar.addEventListener('click', function(){
+        borrado = borrado * -1;
+    });
+
 
     let btnBorrar = document.querySelector('#borrar');
     btnBorrar.addEventListener('click', function() {
