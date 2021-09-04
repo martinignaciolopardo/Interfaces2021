@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prueba</title>
+</head>
+<body>
+    <input type="file" name="" id="subirImagenes" accept=".jpg,.png,.jpeg">
+    <canvas id="canvas" width="600" height="500" style="border: 2px solid black;"></canvas>
+
+    <script>
+
+        "use strict"
+        let file = document.querySelector('#subirImagenes');
+        let canvas = document.querySelector('#canvas');
+        let ctx = canvas.getContext('2d');
+        let width = canvas.width;
+        let height =canvas.height;
+        let imageData = ctx.getImageData(0,0,width,height);
+        let data = imageData.data;
+        console.log(data);
+
+        file.addEventListener('change', function(e){
+            let reader = new FileReader();
+            reader.onload = function(){
+                let image = new Image();
+                image.onload = function(){
+                    ctx.drawImage(image,0,0);
+                }
+                image.src = reader.result;
+            }
+            reader.readAsDataURL(file.files[0]);
+        }, false);
+    </script>
+
+</body>
+</html>

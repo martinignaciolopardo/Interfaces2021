@@ -7,22 +7,29 @@ document.addEventListener('DOMContentLoaded', () =>{
         let ruta = false;
         let borrado = -1;
         let x , y;
+ 
+        /********   SUBIR IMAGENES    *********/
+        
         let inputImage = document.querySelector("#selectImage");
         inputImage.addEventListener("change", handleFiles, false);
-        
-        function loadAndDrawImage(url){
-            let image = new Image();
-            image.onload = function(){
-                ctx.drawImage(image, 100, 40);
-            }
-            image.src = 'images/' + url;
-        }
 
         function handleFiles() {
-            let fileList = this.files;
-            let url = fileList[0].name;
-            loadAndDrawImage(url);
+            let reader = new FileReader();
+            reader.onload = function(){
+                let image = new Image();
+                image.onload = function(){
+                    image.size = canvas.width;
+                    console.log(image.size);
+                    image.height = canvas.height;
+                    ctx.drawImage(image,0,0);
+                }
+                image.src = reader.result;
+            }
+            reader.readAsDataURL(inputImage.files[0]);
         }
+
+
+        /*************   PAINT   ************/
 
         canvas.addEventListener('mousedown', function(){ // evento que se activa al dar click
             ruta = true;
@@ -32,8 +39,8 @@ document.addEventListener('DOMContentLoaded', () =>{
         });
 
         function dibujarLapiz(evento){
-            x = evento.clientX;
-            y = evento.clientY;
+            x = evento.layerX;
+            y = evento.layerY;
             if(ruta){ 
                 if(borrado==1){
                     let lineSize = document.querySelector('#range-erase').value;
