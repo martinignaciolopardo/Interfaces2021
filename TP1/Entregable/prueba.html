@@ -1,39 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>prueba</title>
 </head>
+
 <body>
     <input type="file" name="" id="subirImagenes" accept=".jpg,.png,.jpeg">
     <canvas id="canvas" width="600" height="500" style="border: 2px solid black;"></canvas>
+
+    <button id="filtroNegativo" value="">Negativo</button>
+    <button id="filtroBrillo">Brillo</button>
+    <button id="filtroSepia">Sepia</button>
+    <button id="filtroBlur">Blur</button>
+    <button id="filtros"></button>
+    <button id="filtros"></button>
+
+
 
     <script>
 
         "use strict"
         let file = document.querySelector('#subirImagenes');
         let canvas = document.querySelector('#canvas');
+        let filtroNegativo = document.querySelector('#filtroNegativo');
+        let filtroBrillo = document.querySelector('#filtroBrillo');
+        let filtroSepia = document.querySelector('#filtroSepia');
+        let filtroBlur = document.querySelector('#filtroBlur');
+
         let ctx = canvas.getContext('2d');
         let width = canvas.width;
-        let height =canvas.height;
-        let imageData = ctx.getImageData(0,0,width,height);
-        let data = imageData.data;
-        console.log(data);
+        let height = canvas.height;
+        let r = 0;
+        let g = 0;
+        let b = 0;
+        let a = 0;
 
-        file.addEventListener('change', function(e){
+        let imageData = ctx.createImageData(width, height);
+        let data = imageData.data;
+        for (let x = 0; x < width; x++) {
+            for (let y = 0; y < height; y++) {
+                setPixel(imageData, x, y, r, g, b, a);
+            }
+        }
+        ctx.putImageData(imageData,0,0);
+        function setPixel(imageData,x,y,r,g,b,a){
+            index = ( x + y * imageData.width) * 4;
+            imageData.data[index + 0 ] = r;
+            imageData.data[index + 0 ] = g;
+            imageData.data[index + 0 ] = b;
+            imageData.data[index + 0 ] = a;
+
+        }
+
+
+        file.addEventListener('change', function (e) {
             let reader = new FileReader();
-            reader.onload = function(){
+            reader.onload = function () {
                 let image = new Image();
-                image.onload = function(){
-                    ctx.drawImage(image,0,0);
+                image.onload = function () {
+                    ctx.drawImage(image, 0, 0);
                 }
                 image.src = reader.result;
             }
             reader.readAsDataURL(file.files[0]);
         }, false);
+
+        function getRed(imageData, x, y) {
+            index = (x + y + imageData.width) * 4;
+            return imageData.data[index + 0];
+        }
+        function getGreen(imageData, x, y) {
+            index = (x + y + imageData.width) * 4;
+            return imageData.data[index + 1];
+        }
+
+        function getBlue(imageData, x, y) {
+            index = (x + y + imageData.width) * 4;
+            return imageData.data[index + 2];
+        }
+
+
+        filtroNegativo.addEventListener('click', () => {
+
+        })
+
+
+
     </script>
 
 </body>
+
 </html>

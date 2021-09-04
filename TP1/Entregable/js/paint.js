@@ -17,10 +17,7 @@ document.addEventListener('DOMContentLoaded', () =>{
             let reader = new FileReader();
             reader.onload = function(){
                 let image = new Image();
-                image.onload = function(){
-                    image.size = canvas.width;
-                    console.log(image.size);
-                    image.height = canvas.height;
+                image.onload = function(){                  
                     ctx.drawImage(image,0,0);
                 }
                 image.src = reader.result;
@@ -35,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () =>{
             ruta = true;
             ctx.beginPath(); //comienza a dibujar
             ctx.moveTo(x,y); //cordenadas iniciales
-            canvas.addEventListener('mousemove', dibujarLapiz); 
+            canvas.addEventListener('mousemove', dibujarLapiz);
         });
 
         function dibujarLapiz(evento){
