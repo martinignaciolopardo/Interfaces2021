@@ -9,15 +9,15 @@
 </head>
 
 <body>
-    <input type="file" name="" id="subirImagenes" accept=".jpg,.png,.jpeg">
+    <input type="file" name="subirImagenes" id="subirImagenes" accept=".jpg,.png,.jpeg">
     <canvas id="canvas" width="600" height="500" style="border: 2px solid black;"></canvas>
 
-    <button id="filtroNegativo" value="">Negativo</button>
-    <button id="filtroBrillo">Brillo</button>
-    <button id="filtroSepia">Sepia</button>
-    <button id="filtroBlur">Blur</button>
-    <button id="filtros"></button>
-    <button id="filtros"></button>
+    <button id="btnFiltroGris" value="">Escala de Gris</button>
+    <button id="btnfiltroBrillo">Brillo</button>
+    <button id="btnfiltroSepia">Sepia</button>
+    <button id="btnfiltroBlur">Blur</button>
+    <button id="btnfiltrosBinarizacion">Binarizacion</button>
+    <button id="btnfiltrosSaturacion">Saturacion</button>
 
 
 
@@ -26,69 +26,105 @@
         "use strict"
         let file = document.querySelector('#subirImagenes');
         let canvas = document.querySelector('#canvas');
-        let filtroNegativo = document.querySelector('#filtroNegativo');
-        let filtroBrillo = document.querySelector('#filtroBrillo');
-        let filtroSepia = document.querySelector('#filtroSepia');
-        let filtroBlur = document.querySelector('#filtroBlur');
-
         let ctx = canvas.getContext('2d');
         let width = canvas.width;
         let height = canvas.height;
-        let r = 0;
-        let g = 0;
-        let b = 0;
-        let a = 0;
 
-        let imageData = ctx.createImageData(width, height);
-        let data = imageData.data;
-        for (let x = 0; x < width; x++) {
-            for (let y = 0; y < height; y++) {
-                setPixel(imageData, x, y, r, g, b, a);
-            }
-        }
-        ctx.putImageData(imageData,0,0);
-        function setPixel(imageData,x,y,r,g,b,a){
-            index = ( x + y * imageData.width) * 4;
-            imageData.data[index + 0 ] = r;
-            imageData.data[index + 0 ] = g;
-            imageData.data[index + 0 ] = b;
-            imageData.data[index + 0 ] = a;
 
-        }
-
+        let filtroGris = document.querySelector('#btnFiltroGris');
+        let filtroBrillo = document.querySelector('#filtroBrillo');
+        let filtroSepia = document.querySelector('#filtroSepia');
+        let filtroBlur = document.querySelector('#filtroBlur');
 
         file.addEventListener('change', function (e) {
             let reader = new FileReader();
             reader.onload = function () {
                 let image = new Image();
                 image.onload = function () {
-                    ctx.drawImage(image, 0, 0);
+                    ctx.drawImage(image, 0, 0, width, height);
+                    filtroGris.addEventListener('click', () => {
+                        filterImageGrey(image, width, height);
+                    })
                 }
                 image.src = reader.result;
             }
             reader.readAsDataURL(file.files[0]);
         }, false);
 
-        function getRed(imageData, x, y) {
-            index = (x + y + imageData.width) * 4;
-            return imageData.data[index + 0];
+        function filterImageGrey(image, width, height) {
+            var imageData = ctx.getImageData(0, 0, width, height);
+            let data = imageData.data;
+            for (let i = 0; i < data.length; i += 4) {
+                let grey = (data[i] + data[i + 1] + data[i + 2]) / 3;
+                data[i] = grey;
+                data[i + 1] = grey;
+                data[i + 2] = grey;
+                data[i + 3] = 255;
+            }
+
+            ctx.putImageData(imageData, 0, 0);
         }
-        function getGreen(imageData, x, y) {
-            index = (x + y + imageData.width) * 4;
-            return imageData.data[index + 1];
-        }
+        // function filterImageGrey(image,width, height) {
+        //     let imageData = ctx.getImageData(0, 0, width, height);
+        //     let data = imageData.data;
+        //     let valor;
 
-        function getBlue(imageData, x, y) {
-            index = (x + y + imageData.width) * 4;
-            return imageData.data[index + 2];
-        }
+        //     function redFunction(imageData,x,y){
+        //         let i = ( x+ y + imageData.width)*4;
+        //         return data[i];
+        //     }
+        //     function greenFunction(imageData,x,y){
+        //         let i = ( x+ y + imageData.width)*4;
+        //         return data[i + 1];
+        //     }
+        //     function blueFunction(imageData,x,y){
+        //         let i = ( x+ y + imageData.width)*4;
+        //         return data[i + 2];
+        //     }
 
 
-        filtroNegativo.addEventListener('click', () => {
+        //     for (let x = 0; x < width; x++) {
+        //         for (let y = 0; y < height; y++){
+        //             let grey = (redFunction(imageData,width,height),greenFunction(imageData,width,height),
+        //             blueFunction(imageData,width,height))/3;
+        //             let index = ( x + y * imageData.width) * 4;
+        //             imageData.data[index] = grey;
+        //             imageData.data[index + 1 ] = grey;
+        //             imageData.data[index + 2 ] = grey;
+        //             imageData.data[index + 3 ] = 255;
+        //         };
 
-        })
+        // }
 
 
+    
+         /****************** FILTROS *************************/
+
+
+
+        // let imageData = ctx.createImageData(width, height);
+        // let data = imageData.data;
+        // for (let x = 0; x < width; x++) {
+        //     for (let y = 0; y < height; y++) {
+        //         setPixel(imageData, x, y, r, g, b, a);
+        //     }
+        // }
+
+
+        // }
+        // function getRed(imageData, x, y) {
+        //     index = (x + y + imageData.width) * 4;
+        //     return imageData.data[index + 0];
+        // }
+        // function getGreen(imageData, x, y) {
+        //     index = (x + y + imageData.width) * 4;
+        //     return imageData.data[index + 1];
+        // }
+
+        // function getBlue(imageData, x, y) {
+        //     index = (x + y + imageData.width) * 4;
+        //     return imageData.data[index + 2];
+        // }
 
     </script>
 
