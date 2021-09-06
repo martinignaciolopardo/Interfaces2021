@@ -20,14 +20,24 @@ body{
         justify-content: space-evenly;
 }
 
-#erase{
+#btnErase{
+        border-radius: 35%;
         height: 40px;
 }
 
-#erase:hover{
+#Btn-erase:hover{
         box-shadow: 3px 3px 3px rgb(31, 84, 168);
 }
 
-#borrar{
+#descartar{
+        border-radius: 50%;
         height: 50px;
+}
+
+#descartar:hover{
+        background-color: red;
+}
+
+.toggle {
+        background-color: darkcyan;
 }
