@@ -114,6 +114,14 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        /* esta funcion nos ayuda a asegurarnos que el rango no salga de 0 - 255 */
+        function rangeColor(data) {
+            if (data < 0)
+                data = 0;
+            if (data > 255)
+                data = 255;
+            return data;
+        }
         /*filtro que recorre la imagen pasada por parametro e invierte los valores r,g,b
         (EJ: si, data[0] = 0
              data[0] = 255 - 0
@@ -122,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function filterImageNegativo(image) {
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
-            for (let i = 0; i < data.length; i +=4) {
+            for (let i = 0; i < data.length; i += 4) {
                 let r = data[i];
                 let g = data[i + 1];
                 let b = data[i + 2];
@@ -149,12 +157,16 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.putImageData(imageData, 0, 0);
         }
 
-        /* */
+        /* filtro que recorre la imagen pasada por parametro y le aplica un aumento a los tonalidades de color  */
         function filterImageBrillo(image) {
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
             for (let i = 0; i < data.length; i += 4) {
-               
+                let k = 80; // se agrega una variable que va sumar el valor de cada iteracion aumentando la luz en cada iteración
+                data[i] += k;
+                data[i + 1] += k;
+                data[i + 2] += k;
+                data[i + 3] = 255;//sin transparencia
             }
             ctx.putImageData(imageData, 0, 0);
         }
@@ -164,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
             for (let i = 0; i < data.length; i += 4) {
-               
+
             }
             ctx.putImageData(imageData, 0, 0);
         }
@@ -174,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
             for (let i = 0; i < data.length; i += 4) {
-                
+
             }
             ctx.putImageData(imageData, 0, 0);
         }
@@ -188,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             ctx.putImageData(imageData, 0, 0);
         }
-        
+
         function filterImageSaturacion(image) {
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
