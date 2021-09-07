@@ -185,7 +185,14 @@ document.addEventListener('DOMContentLoaded', () => {
         function filterImageBlur(image) {
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
-            for (let i = 0; i < data.length; i += 4) {
+            for (let x = 0; x < width; x++) {
+                for (let y = 0; y < height; y++) {
+                    let border = (x[0], y)
+                    data[i] = r;
+                    data[i + 1] = g;
+                    data[i + 2] = b;
+                    data[i + 3] = 255;
+                }
 
             }
             ctx.putImageData(imageData, 0, 0);
@@ -209,6 +216,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             ctx.putImageData(imageData, 0, 0);
         }
+
+        document.querySelector('#btnDownload').addEventListener('click', () => {
+            let img = canvas.toDataURL();
+            let link = document.createElement('a');
+            link.download = 'image.png';
+            link.href = img;
+
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        })
 
     }
 });
