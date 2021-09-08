@@ -202,8 +202,11 @@ document.addEventListener('DOMContentLoaded', () => {
         function filterImageBinarizacion(image) {
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
+            let gray = (data[i] + data[i + 1] + data[i + 2]) / 3;
             for (let i = 0; i < data.length; i += 4) {
-
+                if( gray < 120){
+                    data
+                }
             }
             ctx.putImageData(imageData, 0, 0);
         }
