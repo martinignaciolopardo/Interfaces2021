@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 filterImageSepia(image);
             });
             blur.addEventListener('click', () => {
-                filterImageBlur(image, width, height);
+                filterImageBlur(image);
             });
             binarizacion.addEventListener('click', () => {
                 filterImageBinarizacion(image);
@@ -162,21 +162,39 @@ document.addEventListener('DOMContentLoaded', () => {
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
             for (let i = 0; i < data.length; i += 4) {
-                let k = 80; // se agrega una variable que va sumar el valor de cada iteracion aumentando la luz en cada iteración
+                let k = 40; // se agrega una variable que va a ir aumentando el valor r, g, b, aumentando la luz en cada iteración
                 data[i] += k;
                 data[i + 1] += k;
                 data[i + 2] += k;
-                data[i + 3] = 255;//sin transparencia
+                data[i + 3] = 255; //sin transparencia
             }
             ctx.putImageData(imageData, 0, 0);
         }
 
-        /* */
+        /* recorre la imagen, toma los valores de cada pixel y se le aplica el algoritmo para calcular sus nuevos valores */
         function filterImageSepia(image) {
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
             for (let i = 0; i < data.length; i += 4) {
-
+                // se toma el valor de cada pixel
+                let r = data[i];
+                let g = data[i + 1];
+                let b = data[i + 2];
+                // se aplica la formula en base a los valores de los pixeles
+                let newDataR = Math.trunc(0.393 * r + 0.769 * g + 0.189 * b);
+                let newDataG = Math.trunc(0.349 * r + 0.686 * g + 0.168 * b);
+                let newDataB = Math.trunc(0.272 * r + 0.534 * g + 0.131 * b);
+                // se chequea que no pase de 255
+                if (newDataR > 255){
+                    data[i] = 255;
+                }else data[i] = newDataR;
+                if (newDataG > 255){
+                    data[i + 1] = 255;
+                }else data[i + 1] = newDataG;
+                if (newDataB > 255){
+                    data[i + 2] = 255;
+                }else data[i + 2] = newDataB;
+                data[i + 3] = 255; //sin transparencia
             }
             ctx.putImageData(imageData, 0, 0);
         }
@@ -185,15 +203,57 @@ document.addEventListener('DOMContentLoaded', () => {
         function filterImageBlur(image) {
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
-            for (let x = 0; x < width; x++) {
-                for (let y = 0; y < height; y++) {
-                    let border = (x[0], y)
-                    data[i] = r;
-                    data[i + 1] = g;
-                    data[i + 2] = b;
-                    data[i + 3] = 255;
+            //let data2 = imageData.data;
+            console.log(data);
+            for (let i = 0; i < data.length; i += 4) {
+                let divisor = 8;
+                //calculamos el valor de los adyacentes para cada valor R.
+                let valorSuperior = data[i-(image.width*4)];
+                let valorSuperiorDer = data[i-(image.width*4)+4];
+                let valorSuperiorIzq = data[i-(image.width*4)-4];
+                let valorAnterior = data[i-4];
+                let valorPosterior = data[i+4];
+                let valorinferior = data[i+(image.width*4)];
+                let valorInferiorDer = data[i+(image.width*4)+4];
+                let valorInferiorIzq = data[i+(image.width*4)-4];
+                console.log(data[i]);
+                // comprobamos que si no tienen valor adyacente, se divida por 1 cantidad menos y seteamos el valor a 0.
+                if (valorSuperior === undefined) {
+                    divisor--;
+                    valorSuperior=0;
                 }
-
+                if (valorSuperiorDer === undefined) {
+                    divisor--;
+                    valorSuperiorDer=0;
+                }
+                if (valorSuperiorIzq === undefined) {
+                    divisor--;
+                    valorSuperiorIzq=0;
+                }
+                if (valorAnterior === undefined) {
+                    divisor--;
+                    valorAnterior=0;
+                }
+                if (valorPosterior === undefined) {
+                    divisor--;
+                    valorPosterior = 0;
+                }
+                if (valorinferior === undefined) {
+                    divisor--;
+                    valorinferior = 0;
+                }
+                if (valorInferiorDer === undefined) {
+                    divisor--;
+                    valorInferiorDer = 0;
+                }
+                if (valorInferiorIzq === undefined) {
+                    divisor--;
+                    valorInferiorIzq = 0;
+                }
+                // nuevo valor para RED
+                let nuevoValorR = (valorSuperior+valorSuperiorDer+valorSuperiorIzq+valorAnterior+
+                                    valorPosterior+valorinferior+valorInferiorDer+valorInferiorIzq)/divisor;
+            
             }
             ctx.putImageData(imageData, 0, 0);
         }
