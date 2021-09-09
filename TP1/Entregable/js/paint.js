@@ -202,9 +202,10 @@ document.addEventListener('DOMContentLoaded', () => {
         /* */
         function filterImageBlur(image) {
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
+            let imageData2 = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
-            //let data2 = imageData.data;
-            console.log(data);
+            let data2 = imageData.data;
+            //console.log(data);
             for (let i = 0; i < data.length; i += 4) {
                 let divisor = 8;
                 //calculamos el valor de los adyacentes para cada valor R.
@@ -216,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let valorinferior = data[i+(image.width*4)];
                 let valorInferiorDer = data[i+(image.width*4)+4];
                 let valorInferiorIzq = data[i+(image.width*4)-4];
-                console.log(data[i]);
+              
                 // comprobamos que si no tienen valor adyacente, se divida por 1 cantidad menos y seteamos el valor a 0.
                 if (valorSuperior === undefined) {
                     divisor--;
@@ -253,9 +254,108 @@ document.addEventListener('DOMContentLoaded', () => {
                 // nuevo valor para RED
                 let nuevoValorR = (valorSuperior+valorSuperiorDer+valorSuperiorIzq+valorAnterior+
                                     valorPosterior+valorinferior+valorInferiorDer+valorInferiorIzq)/divisor;
-            
+               // console.log(data[i+1]);
+                let divisorG = 8;
+                let valorSuperiorG = data[i+1-(image.width*4)];
+                let valorSuperiorDerG = data[i+1-(image.width*4)+4];
+                let valorSuperiorIzqG = data[i+1-(image.width*4)-4];
+                let valorAnteriorG = data[i+1-4];
+                let valorPosteriorG = data[i+1+4];
+                let valorinferiorG = data[i+1+(image.width*4)];
+                let valorInferiorDerG = data[i+1+(image.width*4)+4];
+                let valorInferiorIzqG = data[i+1+(image.width*4)-4];
+
+                if (valorSuperiorG === undefined) {
+                    divisorG--;
+                    valorSuperiorG = 0;
+                }
+                if (valorSuperiorDerG === undefined) {
+                    divisorG--;
+                    valorSuperiorDerG = 0;
+                }
+                if (valorSuperiorIzqG === undefined) {
+                    divisorG--;
+                    valorSuperiorIzqG = 0;
+                }
+                if (valorAnteriorG === undefined) {
+                    divisorG--;
+                    valorAnteriorG=0;
+                }
+                if (valorPosteriorG === undefined) {
+                    divisorG--;
+                    valorPosteriorG = 0;
+                }
+                if (valorinferiorG === undefined) {
+                    divisorG--;
+                    valorinferiorG = 0;
+                }
+                if (valorInferiorDerG === undefined) {
+                    divisorG--;
+                    valorInferiorDerG = 0;
+                }
+                if (valorInferiorIzqG === undefined) {
+                    divisorG--;
+                    valorInferiorIzqG = 0;
+                }
+                let nuevoValorG = (valorSuperiorG+valorSuperiorDerG+valorSuperiorIzqG+valorAnteriorG+
+                    valorPosteriorG+valorinferiorG+valorInferiorDerG+valorInferiorIzqG)/divisorG;
+
+                let divisorB = 8;
+                let valorSuperiorB = data[i+2-(image.width*4)];
+                let valorSuperiorDerB = data[i+2-(image.width*4)+4];
+                let valorSuperiorIzqB = data[i+2-(image.width*4)-4];
+                let valorAnteriorB = data[i+2-4];
+                let valorPosteriorB = data[i+2+4];
+                let valorinferiorB = data[i+2+(image.width*4)];
+                let valorInferiorDerB = data[i+2+(image.width*4)+4];
+                let valorInferiorIzqB = data[i+2+(image.width*4)-4];
+
+                if (valorSuperiorB === undefined) {
+                    divisorB--;
+                    valorSuperiorB = 0;
+                }
+                if (valorSuperiorDerB === undefined) {
+                    divisorB--;
+                    valorSuperiorDerB = 0;
+                }
+                if (valorSuperiorIzqB === undefined) {
+                    divisorB--;
+                    valorSuperiorIzqB = 0;
+                }
+                if (valorAnteriorB === undefined) {
+                    divisorB--;
+                    valorAnteriorB=0;
+                }
+                if (valorPosteriorB === undefined) {
+                    divisorB--;
+                    valorPosteriorB = 0;
+                }
+                if (valorinferiorB === undefined) {
+                    divisorB--;
+                    valorinferiorB = 0;
+                }
+                if (valorInferiorDerB === undefined) {
+                    divisorB--;
+                    valorInferiorDerB = 0;
+                }
+                if (valorInferiorIzqB === undefined) {
+                    divisorB--;
+                    valorInferiorIzqB = 0;
+                }
+
+                let nuevoValorB = (valorSuperiorB+valorSuperiorDerB+valorSuperiorIzqB+valorAnteriorB+
+                    valorPosteriorB+valorinferiorB+valorInferiorDerB+valorInferiorIzqB)/divisorB;
+                console.log('antes r'+data2[i]);
+                console.log('antes g'+data2[i+1]);
+                console.log('antes b'+data2[i+2]);
+                data2[i] = nuevoValorR;
+                data2[i+1] = nuevoValorG;
+                data2[i+2] = nuevoValorB;
+                console.log('desp r'+data2[i]);
+                console.log('desp g'+data2[i+1]);
+                console.log('desp b'+data2[i+2]);
             }
-            ctx.putImageData(imageData, 0, 0);
+            ctx.putImageData(imageData2, 0, 0);
         }
 
         /**/
