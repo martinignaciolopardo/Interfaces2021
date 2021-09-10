@@ -11,10 +11,14 @@
 </head>
 
 <body>
-    <header>
+
+    <header class="navBar">
+        <h2> Entregable TP1</h2>
     </header>
+
     <main id="main">
         <div class="a">
+
             <div>
                 <canvas id="canvas" width="600" height="500">
                 </canvas>
@@ -28,22 +32,28 @@
                 <label>Ancho goma de borrar:</label>
                 <input type="range" name="rangeLine" id="range-erase" max="50" min="1" value="1">
                 <img src="images/goma-de-borrar.png" id="btnErase" alt="Borrar Imagen" name="Borrar Imagen">
-                <img src="images/restaurar.png" id="btnRestore" alt ="Restaurar Imagen">
+                <img src="images/restaurar.png" id="btnRestore" alt="Restaurar Imagen">
                 <input type="file" id="selectImage" accept=".jpg,.png,.jpeg">
-                <button id="btnDownload" >Download</button>
-
+                <button id="btnDownload">Download</button>
+                
+                <label>Filtros</label>
+                <div class="btn-filtros">
+                    <button id="btnFiltroNegativo">Negativo</button>
+                    <button id="btnFiltroGris">Grises</button>
+                    <button id="btnFiltroBrillo">Brillo</button>
+                    <button id="btnFiltroSepia">Sepia</button>
+                    <button id="btnFiltroBlur">Blur</button>
+                    <button id="btnFiltroBinarizacion">Binarizacion</button>
+                    <button id="btnFiltroSaturacion">Saturacion</button>
+                </div>
             </section>
         </div>
-        <div class="btn-filtros">
-            <button id="btnFiltroNegativo">Negativo</button>
-            <button id="btnFiltroGris">Escala de Gris</button>
-            <button id="btnFiltroBrillo">Brillo</button>
-            <button id="btnFiltroSepia">Sepia</button>
-            <button id="btnFiltroBlur">Blur</button>
-            <button id="btnFiltroBinarizacion">Binarizacion</button>
-            <button id="btnFiltroSaturacion">Saturacion</button>
-        </div>
     </main>
+    <footer>
+        <section class="sectionFooter">
+            <h2> Developed Ernesto Quintana & Martin Ignacio Lopardo</h2>
+        </section>
+    </footer>
 </body>
 
 </html>
