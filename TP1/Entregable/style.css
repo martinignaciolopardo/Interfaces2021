@@ -12,7 +12,7 @@ body{
 }
 
 .b{
-        height: 300px;
+        /* height: 300px; */
         margin-left: 15px;
         display: flex;
         flex-direction: column;
@@ -23,6 +23,8 @@ body{
 #btnErase{
         border-radius: 35%;
         height: 40px;
+        cursor: pointer;
+
 }
 
 #Btn-erase:hover{
@@ -32,12 +34,21 @@ body{
 #descartar{
         border-radius: 50%;
         height: 50px;
+        cursor: pointer;
+
 }
 
 #descartar:hover{
         background-color: red;
+        cursor: pointer;
+
 }
 
 .toggle {
         background-color: darkcyan;
+}
+#btnRestore{
+        width: 2em;
+        cursor: pointer;
+
 }

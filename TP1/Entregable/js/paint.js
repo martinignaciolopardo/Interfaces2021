@@ -66,16 +66,20 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         });
 
-
+        let btnRestore =  document.querySelector('#btnRestore');
+        btnRestore.addEventListener('click', function () {
+            createImage();
+        })
         /********   SUBIR IMAGENES Y FILTROS   *********/
 
         let inputImage = document.querySelector("#selectImage");
         //se aplica un evento change al input de la imagen, el cual se dispara al cambiar el valor del input (al seleccionar una foto)
-        inputImage.addEventListener("change", function () {
+        inputImage.addEventListener("change", createImage, false);
             //se crea la variable reader, que permite leer ficheros almacenados en el cliente de forma asincronica usando el objeto file
-            let reader = new FileReader();
-            reader.onload = function () {
-                var image = new Image();
+          function createImage(){
+              let reader = new FileReader();
+              reader.onload = function () {
+                  var image = new Image();
                 image.onload = function () {
                     //si la imagen es mayor a 600px de ancho, achica la imagen proporcionalmente.
                     if (image.width > 600) {
@@ -107,7 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 image.src = reader.result;
             }
             reader.readAsDataURL(inputImage.files[0]);
-        }, false);
+        }
+    
 
         //asigna el evento click a los botones de filtros
         function botonesFiltros(image) {
@@ -410,7 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('#btnDownload').addEventListener('click', () => {
             let img = canvas.toDataURL();
             let link = document.createElement('a');
-            link.download = 'image.png';
+            link.download = '';
             link.href = img;
 
             document.body.appendChild(link);
