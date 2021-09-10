@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let data2 = imageData.data;
             //console.log(data);
             for (let i = 0; i < data.length; i += 4) {
-                let divisor = 8;
+                let divisor = 8 ;
                 //calculamos el valor de los adyacentes para cada valor R.
                 let valorSuperior = data[i-(image.width*4)];
                 let valorSuperiorDer = data[i-(image.width*4)+4];
@@ -417,10 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let link = document.createElement('a');
             link.download = '';
             link.href = img;
-
-            document.body.appendChild(link);
             link.click();
-            document.body.removeChild(link);
         })
 
     }
