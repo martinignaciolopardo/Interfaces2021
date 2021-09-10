@@ -362,10 +362,17 @@ document.addEventListener('DOMContentLoaded', () => {
         function filterImageBinarizacion(image) {
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
-            let gray = (data[i] + data[i + 1] + data[i + 2]) / 3;
+            //calcula el tono de gris y si es mayor que 255/2 setea rgb a 255, si no, 0.
             for (let i = 0; i < data.length; i += 4) {
-                if( gray < 120){
-                    data
+                let gray = (data[i] + data[i + 1] + data[i + 2]) / 3;
+                if( gray > (255/2)){
+                    data[i] = 255;
+                    data[i + 1] = 255;
+                    data[i + 2] = 255;
+                }else {
+                    data[i] = 0;
+                    data[i + 1] = 0;
+                    data[i + 2] = 0;
                 }
             }
             ctx.putImageData(imageData, 0, 0);
