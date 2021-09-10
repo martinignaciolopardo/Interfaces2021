@@ -77,6 +77,26 @@ document.addEventListener('DOMContentLoaded', () => {
             reader.onload = function () {
                 var image = new Image();
                 image.onload = function () {
+                    //si la imagen es mayor a 600px de ancho, achica la imagen proporcionalmente.
+                    if (image.width > 600) {
+                        let newWidth = 600;
+                        let porcentaje =  Math.round((100*newWidth)/image.width);
+                        let newHeight = Math.round((image.height*porcentaje)/100);
+                        image.width = newWidth;
+                        image.height = newHeight;
+                        canvas.width = image.width;
+                        canvas.height = image.height;
+                    }
+                    //si la imagen es mayor a 600px de alto, achica la imagen proporcionalmente.
+                    if (image.height > 600) {
+                        let newHeight = 600;
+                        let porcentaje = Math.round((100*newHeight)/image.height);
+                        let newWidth = Math.round((image.width*porcentaje)/100);
+                        image.width = newWidth;
+                        image.height = newHeight;
+                        canvas.width = image.width;
+                        canvas.height = image.height;
+                    }
                     //setea el tamaño del canvas igual al tamaño de la imagen
                     canvas.width = image.width;
                     canvas.height = image.height;
