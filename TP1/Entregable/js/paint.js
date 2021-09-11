@@ -15,10 +15,30 @@ document.addEventListener('DOMContentLoaded', () => {
         let blur = document.querySelector('#btnFiltroBlur');
         let binarizacion = document.querySelector('#btnFiltroBinarizacion');
         let saturacion = document.querySelector('#btnFiltroSaturacion');
+        let borde = document.querySelector('#btnFiltroBorde');
+        //botón descartar (limpia el canvas)
+        let btnDescartar = document.querySelector('#descartar');
+        //botón borrar
+        let btnErase = document.querySelector('#btnErase');
+        //botón restore (restaura la imagen)
+        let btnRestore =  document.querySelector('#btnRestore');
+        //se le aplica un evento al boton erase (al clickearlo)
+        btnErase.addEventListener('click', function () {
+            btnErase.classList.toggle('toggle');
+            erase = erase * -1;
+        });
+        //se le aplica un evento al botón descartar (al clickearlo)
+        btnDescartar.addEventListener('click', function () {
+            //borra todo lo que hay en el canvas
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        });
+        //al clickear, llama a la función create image para volver a tener la imagen que se cargó (si se le aplicó algun filtro, se borra)
+        btnRestore.addEventListener('click', function () {
+            createImage();
+        })
 
-        /*************   PAINT   ************/
-
-        canvas.addEventListener('mousedown', function () { // evento que se activa al mantener clickeado (click izq)
+        // se le aplica al canvas un evento que se activa al mantener clickeado (click izq)
+        canvas.addEventListener('mousedown', function () { 
             ruta = true; //si se mantiene apretado el click en el canvas, ruta = true
             ctx.beginPath(); //comienza a dibujar
             ctx.moveTo(x, y); //cordenadas iniciales
@@ -26,50 +46,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         function dibujarLapiz(evento) {
-            x = evento.layerX;
-            y = evento.layerY;
+            x = evento.layerX; //posicion del mouse en el canvas
+            y = evento.layerY; //posicion del mouse en el canvas
+            //si esta el click apretado, entra al if
             if (ruta) {
+                //si esta la goma seleccionada, borra
                 if (erase == 1) {
                     let eraseLineSize = document.querySelector('#range-erase').value;
-                    ctx.lineTo(x, y); // genera linea
-                    ctx.lineWidth = eraseLineSize;
-                    ctx.strokeStyle = 'white';
-                    ctx.stroke();
-                } else {
+                    ctx.lineTo(x, y); //dibuja la linea hasta la posicion x e y
+                    ctx.lineWidth = eraseLineSize; //tamaño de goma de borrar
+                    ctx.strokeStyle = 'white'; //color de la goma
+                    ctx.stroke(); //para que dibuje
+                } 
+                //sino, dibuja
+                else {
                     let pencilLineSize = document.querySelector('#range-line').value;
                     let penciLineColour = document.querySelector('#inputColors').value;
-                    ctx.lineTo(x, y); // genera linea
-                    ctx.lineWidth = pencilLineSize;
-                    ctx.strokeStyle = penciLineColour;
+                    ctx.lineTo(x, y); //dibuja la linea hasta la posicion x e y
+                    ctx.lineWidth = pencilLineSize; //tamaño del trazo
+                    ctx.strokeStyle = penciLineColour; //color del trazo
                     ctx.stroke(); //para que se dibuje la linea
                 }
             }
         }
 
         canvas.addEventListener('mousemove', dibujarLapiz);
-
         canvas.addEventListener('mouseup', function () {
             ruta = false;
         });
 
-        let btnErase = document.querySelector('#btnErase');
-        //se le aplica un evento al boton erase (al clickearlo)
-        btnErase.addEventListener('click', function () {
-            btnErase.classList.toggle('toggle');
-            erase = erase * -1;
-        });
-
-        let btnDescartar = document.querySelector('#descartar');
-        //se le aplica un evento al boton descartar (al clickearlo)
-        btnDescartar.addEventListener('click', function () {
-            //borra todo lo que hay en el canvas
-            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-        });
-
-        let btnRestore =  document.querySelector('#btnRestore');
-        btnRestore.addEventListener('click', function () {
-            createImage();
-        })
+        
         /********   SUBIR IMAGENES Y FILTROS   *********/
 
         let inputImage = document.querySelector("#selectImage");
@@ -82,8 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
                   var image = new Image();
                 image.onload = function () {
                     //si la imagen es mayor a 600px de ancho, achica la imagen proporcionalmente.
-                    if (image.width > 600) {
-                        let newWidth = 600;
+                    if (image.width > 500) {
+                        let newWidth = 500;
                         let porcentaje =  Math.round((100*newWidth)/image.width);
                         let newHeight = Math.round((image.height*porcentaje)/100);
                         image.width = newWidth;
@@ -92,8 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         canvas.height = image.height;
                     }
                     //si la imagen es mayor a 600px de alto, achica la imagen proporcionalmente.
-                    if (image.height > 600) {
-                        let newHeight = 600;
+                    if (image.height > 490) {
+                        let newHeight = 490;
                         let porcentaje = Math.round((100*newHeight)/image.height);
                         let newWidth = Math.round((image.width*porcentaje)/100);
                         image.width = newWidth;
@@ -137,20 +143,15 @@ document.addEventListener('DOMContentLoaded', () => {
             saturacion.addEventListener('click', () => {
                 filterImageSaturacion(image);
             });
+            borde.addEventListener('click', () => {
+                filterImageDeteccionBorde(image);
+            });
         }
 
-        /* esta funcion nos ayuda a asegurarnos que el rango no salga de 0 - 255 */
-        function rangeColor(data) {
-            if (data < 0)
-                data = 0;
-            if (data > 255)
-                data = 255;
-            return data;
-        }
         /*filtro que recorre la imagen pasada por parametro e invierte los valores r,g,b
         (EJ: si, data[0] = 0
              data[0] = 255 - 0
-             data[0] = 255 (se invierte, pasa de blanco a negro))
+            Resultado: data[0] = 255 (se invierte, pasa de blanco a negro))
         */
         function filterImageNegativo(image) {
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
@@ -224,177 +225,97 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.putImageData(imageData, 0, 0);
         }
 
-        /* */
         function filterImageBlur(image) {
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
-            let imageData2 = ctx.getImageData(0, 0, image.width, image.height);
-            let data = imageData.data;
-            let data2 = imageData.data;
-            //console.log(data);
-            for (let i = 0; i < data.length; i += 4) {
-                let divisor = 8 ;
-                //calculamos el valor de los adyacentes para cada valor R.
-                let valorSuperior = data[i-(image.width*4)];
-                let valorSuperiorDer = data[i-(image.width*4)+4];
-                let valorSuperiorIzq = data[i-(image.width*4)-4];
-                let valorAnterior = data[i-4];
-                let valorPosterior = data[i+4];
-                let valorinferior = data[i+(image.width*4)];
-                let valorInferiorDer = data[i+(image.width*4)+4];
-                let valorInferiorIzq = data[i+(image.width*4)-4];
-              
-                // comprobamos que si no tienen valor adyacente, se divida por 1 cantidad menos y seteamos el valor a 0.
-                if (valorSuperior === undefined) {
-                    divisor--;
-                    valorSuperior=0;
+            let r = 0;
+            let g = 0;
+            let b = 0;
+            //recorre ancho
+            for (let x = 0; x < imageData.width -1; x++) {
+                //recorre alto
+                for (let y = 0; y < imageData.height - 1; y++) {
+                    promedioRGB(imageData, x, y, r, g, b);
                 }
-                if (valorSuperiorDer === undefined) {
-                    divisor--;
-                    valorSuperiorDer=0;
-                }
-                if (valorSuperiorIzq === undefined) {
-                    divisor--;
-                    valorSuperiorIzq=0;
-                }
-                if (valorAnterior === undefined) {
-                    divisor--;
-                    valorAnterior=0;
-                }
-                if (valorPosterior === undefined) {
-                    divisor--;
-                    valorPosterior = 0;
-                }
-                if (valorinferior === undefined) {
-                    divisor--;
-                    valorinferior = 0;
-                }
-                if (valorInferiorDer === undefined) {
-                    divisor--;
-                    valorInferiorDer = 0;
-                }
-                if (valorInferiorIzq === undefined) {
-                    divisor--;
-                    valorInferiorIzq = 0;
-                }
-                // nuevo valor para RED
-                let nuevoValorR = (valorSuperior+valorSuperiorDer+valorSuperiorIzq+valorAnterior+
-                                    valorPosterior+valorinferior+valorInferiorDer+valorInferiorIzq)/divisor;
-               // console.log(data[i+1]);
-                let divisorG = 8;
-                let valorSuperiorG = data[i+1-(image.width*4)];
-                let valorSuperiorDerG = data[i+1-(image.width*4)+4];
-                let valorSuperiorIzqG = data[i+1-(image.width*4)-4];
-                let valorAnteriorG = data[i+1-4];
-                let valorPosteriorG = data[i+1+4];
-                let valorinferiorG = data[i+1+(image.width*4)];
-                let valorInferiorDerG = data[i+1+(image.width*4)+4];
-                let valorInferiorIzqG = data[i+1+(image.width*4)-4];
-
-                if (valorSuperiorG === undefined) {
-                    divisorG--;
-                    valorSuperiorG = 0;
-                }
-                if (valorSuperiorDerG === undefined) {
-                    divisorG--;
-                    valorSuperiorDerG = 0;
-                }
-                if (valorSuperiorIzqG === undefined) {
-                    divisorG--;
-                    valorSuperiorIzqG = 0;
-                }
-                if (valorAnteriorG === undefined) {
-                    divisorG--;
-                    valorAnteriorG=0;
-                }
-                if (valorPosteriorG === undefined) {
-                    divisorG--;
-                    valorPosteriorG = 0;
-                }
-                if (valorinferiorG === undefined) {
-                    divisorG--;
-                    valorinferiorG = 0;
-                }
-                if (valorInferiorDerG === undefined) {
-                    divisorG--;
-                    valorInferiorDerG = 0;
-                }
-                if (valorInferiorIzqG === undefined) {
-                    divisorG--;
-                    valorInferiorIzqG = 0;
-                }
-                let nuevoValorG = (valorSuperiorG+valorSuperiorDerG+valorSuperiorIzqG+valorAnteriorG+
-                    valorPosteriorG+valorinferiorG+valorInferiorDerG+valorInferiorIzqG)/divisorG;
-
-                let divisorB = 8;
-                let valorSuperiorB = data[i+2-(image.width*4)];
-                let valorSuperiorDerB = data[i+2-(image.width*4)+4];
-                let valorSuperiorIzqB = data[i+2-(image.width*4)-4];
-                let valorAnteriorB = data[i+2-4];
-                let valorPosteriorB = data[i+2+4];
-                let valorinferiorB = data[i+2+(image.width*4)];
-                let valorInferiorDerB = data[i+2+(image.width*4)+4];
-                let valorInferiorIzqB = data[i+2+(image.width*4)-4];
-
-                if (valorSuperiorB === undefined) {
-                    divisorB--;
-                    valorSuperiorB = 0;
-                }
-                if (valorSuperiorDerB === undefined) {
-                    divisorB--;
-                    valorSuperiorDerB = 0;
-                }
-                if (valorSuperiorIzqB === undefined) {
-                    divisorB--;
-                    valorSuperiorIzqB = 0;
-                }
-                if (valorAnteriorB === undefined) {
-                    divisorB--;
-                    valorAnteriorB=0;
-                }
-                if (valorPosteriorB === undefined) {
-                    divisorB--;
-                    valorPosteriorB = 0;
-                }
-                if (valorinferiorB === undefined) {
-                    divisorB--;
-                    valorinferiorB = 0;
-                }
-                if (valorInferiorDerB === undefined) {
-                    divisorB--;
-                    valorInferiorDerB = 0;
-                }
-                if (valorInferiorIzqB === undefined) {
-                    divisorB--;
-                    valorInferiorIzqB = 0;
-                }
-
-                let nuevoValorB = (valorSuperiorB+valorSuperiorDerB+valorSuperiorIzqB+valorAnteriorB+
-                    valorPosteriorB+valorinferiorB+valorInferiorDerB+valorInferiorIzqB)/divisorB;
-                console.log('antes r'+data2[i]);
-                console.log('antes g'+data2[i+1]);
-                console.log('antes b'+data2[i+2]);
-                data2[i] = nuevoValorR;
-                data2[i+1] = nuevoValorG;
-                data2[i+2] = nuevoValorB;
-                console.log('desp r'+data2[i]);
-                console.log('desp g'+data2[i+1]);
-                console.log('desp b'+data2[i+2]);
             }
-            ctx.putImageData(imageData2, 0, 0);
+            ctx.putImageData(imageData, 0, 0);
+        }
+
+        //toma los valores rgb de los pixeles adyacentes (y los del mismo pixel) y hace un promedio
+        function promedioRGB(imageData, x, y, r, g, b) {
+            r = getRed(imageData, x - 1, y - 1) + 
+                getRed(imageData, x, y - 1) + 
+                getRed(imageData, x + 1, y - 1) + 
+                getRed(imageData, x - 1, y) + 
+                getRed(imageData, x, y) + 
+                getRed(imageData, x + 1, y) + 
+                getRed(imageData, x - 1, y + 1) + 
+                getRed(imageData, x, y + 1) + 
+                getRed(imageData, x + 1, y + 1);
+            g = getGreen(imageData, x - 1, y - 1) + 
+                getGreen(imageData, x, y - 1) + 
+                getGreen(imageData, x + 1, y - 1) + 
+                getGreen(imageData, x - 1, y) + 
+                getGreen(imageData, x, y) + 
+                getGreen(imageData, x + 1, y) + 
+                getGreen(imageData, x - 1, y + 1) + 
+                getGreen(imageData, x, y + 1) + 
+                getGreen(imageData, x + 1, y + 1);
+            b = getBlue(imageData, x - 1, y - 1) + 
+                getBlue(imageData, x, y - 1) + 
+                getBlue(imageData, x + 1, y - 1)+ 
+                getBlue(imageData, x - 1, y) + 
+                getBlue(imageData, x, y) + 
+                getBlue(imageData, x + 1, y + 1)+ 
+                getBlue(imageData, x - 1, y + 1) + 
+                getBlue(imageData, x, y + 1) + 
+                getBlue(imageData, x + 1, y + 1);
+            setPixel(imageData, x, y, (r/9), (g/9), (b/9), 255);
+        }
+
+        //setea los valores rgb del pixel con los promedios calculados anteriormente
+        function setPixel(imageData, x, y, r, g, b, a){
+            //convierte la imagen en un arreglo
+            let index = (x + y * imageData.width) * 4;
+            imageData.data[index+0] = r;
+            imageData.data[index+1] = g;
+            imageData.data[index+2] = b;
+            imageData.data[index+3] = a;
+        }
+
+        //obtiene componente R
+        function getRed(imageData, x, y) {
+            let index = (x + y * imageData.width) * 4;
+            return imageData.data[index + 0];
+        }
+                
+        //obtiene componente G
+        function getGreen(imageData, x, y) {
+            let index = (x + y * imageData.width) * 4;
+            return imageData.data[index + 1];
+        }
+        
+        //obtiene componente B
+        function getBlue(imageData, x, y) {
+            let index = (x + y * imageData.width) * 4;
+            return imageData.data[index + 2];
         }
 
         /**/
         function filterImageBinarizacion(image) {
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
-            //calcula el tono de gris y si es mayor que 255/2 setea rgb a 255, si no, 0.
+            //calcula el tono de gris para cada pixel y si es mayor que 255/2 setea rgb a 255, si no, 0.
             for (let i = 0; i < data.length; i += 4) {
+                //r+g+b/3 = tono de gris
                 let gray = (data[i] + data[i + 1] + data[i + 2]) / 3;
+                //si es mas blanco que negro, setea en blanco
                 if( gray > (255/2)){
                     data[i] = 255;
                     data[i + 1] = 255;
                     data[i + 2] = 255;
-                }else {
+                }
+                //si es mas negro que blanco, setea en negro
+                else {
                     data[i] = 0;
                     data[i + 1] = 0;
                     data[i + 2] = 0;
@@ -403,6 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.putImageData(imageData, 0, 0);
         }
 
+        /**/
         function filterImageSaturacion(image) {
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
@@ -410,6 +332,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             }
             ctx.putImageData(imageData, 0, 0);
+        }
+
+        function filterImageDeteccionBorde(image){
+            let imageData = ctx.getImageData(0, 0, image.width, image.height);
+            let data = imageData.data;
         }
 
         document.querySelector('#btnDownload').addEventListener('click', () => {
