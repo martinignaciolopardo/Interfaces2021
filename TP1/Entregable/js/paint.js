@@ -4,7 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.onload = function () {
         let canvas = document.querySelector('#canvas');
         let ctx = canvas.getContext('2d');
+        //setea dibujar en falso.
         let ruta = false;
+        //setea borrar en falso (-1)
         let erase = -1;
         let x, y;
         //botones de filtros
@@ -72,9 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         canvas.addEventListener('mousemove', dibujarLapiz);
         canvas.addEventListener('mouseup', function () {
+            //al dejar de mantener apretado el click, setea dibujar en false (deja de trazar).
             ruta = false;
         });
-
         
         /********   SUBIR IMAGENES Y FILTROS   *********/
 
@@ -82,12 +84,16 @@ document.addEventListener('DOMContentLoaded', () => {
         //se aplica un evento change al input de la imagen, el cual se dispara al cambiar el valor del input (al seleccionar una foto)
         inputImage.addEventListener("change", createImage, false);
             //se crea la variable reader, que permite leer ficheros almacenados en el cliente de forma asincronica usando el objeto file
-          function createImage(){
-              let reader = new FileReader();
-              reader.onload = function () {
-                  var image = new Image();
+        function createImage(){
+            //FileReader permite leer ficheros almacenados en el cliente de forma asincronica, usando el objeto File en este caso
+            let reader = new FileReader();
+            //el onload es un evento que se activa al ser leido el contenido
+            reader.onload = function () {
+                //constructor de imagen
+                var image = new Image();
+                //al ser leida la imagen, se ejecuta la funcion
                 image.onload = function () {
-                    //si la imagen es mayor a 600px de ancho, achica la imagen proporcionalmente.
+                    //si la imagen es mayor a 600px de ancho, achica la imagen proporcionalmente al ancho.
                     if (image.width > 500) {
                         let newWidth = 500;
                         let porcentaje =  Math.round((100*newWidth)/image.width);
@@ -97,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         canvas.width = image.width;
                         canvas.height = image.height;
                     }
-                    //si la imagen es mayor a 600px de alto, achica la imagen proporcionalmente.
+                    //si la imagen es mayor a 600px de alto, achica la imagen proporcionalmente al alto.
                     if (image.height > 490) {
                         let newHeight = 490;
                         let porcentaje = Math.round((100*newHeight)/image.height);
@@ -113,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     //dibuja la imagen en el canvas
                     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
                     botonesFiltros(image);
+                    
                 }
                 image.src = reader.result;
             }
@@ -154,6 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
             Resultado: data[0] = 255 (se invierte, pasa de blanco a negro))
         */
         function filterImageNegativo(image) {
+            //devuelve un objeto ImageData que representa los datos de los píxeles
+            //en el area que va desde 0 (x), 0 (y) (inicio del canvas) hasta el ancho de la imagen (image.width)y alto de la imagen (image.height)
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
             for (let i = 0; i < data.length; i += 4) {
@@ -171,6 +180,8 @@ document.addEventListener('DOMContentLoaded', () => {
         /* filtro que recorre la imagen pasada por parametro y le aplica distintas tonalidades 
            de grises a los pixeles.*/
         function filterImageGrises(image) {
+            //devuelve un objeto ImageData que representa los datos de los píxeles
+            //en el area que va desde 0 (x), 0 (y) (inicio del canvas) hasta el ancho de la imagen (image.width)y alto de la imagen (image.height)
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
             for (let i = 0; i < data.length; i += 4) {
@@ -185,10 +196,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         /* filtro que recorre la imagen pasada por parametro y le aplica un aumento a los tonalidades de color  */
         function filterImageBrillo(image) {
+            //devuelve un objeto ImageData que representa los datos de los píxeles
+            //en el area que va desde 0 (x), 0 (y) (inicio del canvas) hasta el ancho de la imagen (image.width)y alto de la imagen (image.height)
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
             for (let i = 0; i < data.length; i += 4) {
-                let k = 40; // se agrega una variable que va a ir aumentando el valor r, g, b, aumentando la luz en cada iteración
+                let k = 20; // se agrega una variable que va a ir aumentando el valor r, g, b, aumentando la luz en cada iteración
                 data[i] += k;
                 data[i + 1] += k;
                 data[i + 2] += k;
@@ -199,6 +212,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         /* recorre la imagen, toma los valores de cada pixel y se le aplica el algoritmo para calcular sus nuevos valores */
         function filterImageSepia(image) {
+            //devuelve un objeto ImageData que representa los datos de los píxeles
+            //en el area que va desde 0 (x), 0 (y) (inicio del canvas) hasta el ancho de la imagen (image.width)y alto de la imagen (image.height)
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
             for (let i = 0; i < data.length; i += 4) {
@@ -226,6 +241,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function filterImageBlur(image) {
+            //devuelve un objeto ImageData que representa los datos de los píxeles
+            //en el area que va desde 0 (x), 0 (y) (inicio del canvas) hasta el ancho de la imagen (image.width)y alto de la imagen (image.height)
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let r = 0;
             let g = 0;
@@ -241,6 +258,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         //toma los valores rgb de los pixeles adyacentes (y los del mismo pixel) y hace un promedio
+        //  x-1| x |x+1
+        //  y-1|y-1|y-1
+        //  ---|---|---
+        //  x-1| x |x+1
+        //   y | y | y 
+        //  ---|---|---
+        //  x-1| x |x+1
+        //  y+1|y+1|y+1
         function promedioRGB(imageData, x, y, r, g, b) {
             r = getRed(imageData, x - 1, y - 1) + 
                 getRed(imageData, x, y - 1) + 
@@ -302,19 +327,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         /**/
         function filterImageBinarizacion(image) {
+            //devuelve un objeto ImageData que representa los datos de los píxeles
+            //en el area que va desde 0 (x), 0 (y) (inicio del canvas) hasta el ancho de la imagen (image.width)y alto de la imagen (image.height)
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
             //calcula el tono de gris para cada pixel y si es mayor que 255/2 setea rgb a 255, si no, 0.
             for (let i = 0; i < data.length; i += 4) {
                 //r+g+b/3 = tono de gris
                 let gray = (data[i] + data[i + 1] + data[i + 2]) / 3;
-                //si es mas blanco que negro, setea en blanco
+                //si esta mas cerca del blanco que del negro, setea en blanco
                 if( gray > (255/2)){
                     data[i] = 255;
                     data[i + 1] = 255;
                     data[i + 2] = 255;
                 }
-                //si es mas negro que blanco, setea en negro
+                //sino, setea en negro
                 else {
                     data[i] = 0;
                     data[i + 1] = 0;
@@ -340,6 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         document.querySelector('#btnDownload').addEventListener('click', () => {
+            //devuelve un data URL que contiene una representacion de la imagen
             let img = canvas.toDataURL();
             let link = document.createElement('a');
             link.download = '';
