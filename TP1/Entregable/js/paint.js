@@ -201,10 +201,10 @@ document.addEventListener('DOMContentLoaded', () => {
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
             for (let i = 0; i < data.length; i += 4) {
-                let k = 20; // se agrega una variable que va a ir aumentando el valor r, g, b, aumentando la luz en cada iteración
-                data[i] += k;
-                data[i + 1] += k;
-                data[i + 2] += k;
+                let brillo = 20; // se agrega una variable que va a ir aumentando el valor r, g, b, aumentando la luz en cada iteración
+                data[i] += brillo;
+                data[i + 1] += brillo;
+                data[i + 2] += brillo;
                 data[i + 3] = 255; //sin transparencia
             }
             ctx.putImageData(imageData, 0, 0);
