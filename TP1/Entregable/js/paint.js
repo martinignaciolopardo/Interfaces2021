@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             //el onload es un evento que se activa al ser leido el contenido
             reader.onload = function () {
                 //constructor de imagen
-                var image = new Image();
+                let image = new Image();
                 //al ser leida la imagen, se ejecuta la funcion
                 image.onload = function () {
                     //si la imagen es mayor a 600px de ancho, achica la imagen proporcionalmente al ancho.
@@ -119,7 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     //dibuja la imagen en el canvas
                     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
                     botonesFiltros(image);
-                    
                 }
                 image.src = reader.result;
             }
@@ -130,28 +129,28 @@ document.addEventListener('DOMContentLoaded', () => {
         //asigna el evento click a los botones de filtros
         function botonesFiltros(image) {
             gris.addEventListener('click', () => {
-                filterImageGrises(image)
+                filtroGrises(image);
             });
             brillo.addEventListener('click', () => {
-                filterImageBrillo(image);
+                filtroBrillo(image);
             });
             negativo.addEventListener('click', () => {
-                filterImageNegativo(image);
+                filtroNegativo(image);
             });
             sepia.addEventListener('click', () => {
-                filterImageSepia(image);
+                filtroSepia(image);
             });
             blur.addEventListener('click', () => {
-                filterImageBlur(image);
+                filtroBlur(image);
             });
             binarizacion.addEventListener('click', () => {
-                filterImageBinarizacion(image);
+                filtroBinarizacion(image);
             });
             saturacion.addEventListener('click', () => {
-                filterImageSaturacion(image);
+                filtroSaturacion(image);
             });
             borde.addEventListener('click', () => {
-                filterImageDeteccionBorde(image);
+                filtroDeteccionBordes(image);
             });
         }
 
@@ -160,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
              data[0] = 255 - 0
             Resultado: data[0] = 255 (se invierte, pasa de blanco a negro))
         */
-        function filterImageNegativo(image) {
+        function filtroNegativo(image) {
             //devuelve un objeto ImageData que representa los datos de los píxeles
             //en el area que va desde 0 (x), 0 (y) (inicio del canvas) hasta el ancho de la imagen (image.width)y alto de la imagen (image.height)
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
@@ -179,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         /* filtro que recorre la imagen pasada por parametro y le aplica distintas tonalidades 
            de grises a los pixeles.*/
-        function filterImageGrises(image) {
+        function filtroGrises(image) {
             //devuelve un objeto ImageData que representa los datos de los píxeles
             //en el area que va desde 0 (x), 0 (y) (inicio del canvas) hasta el ancho de la imagen (image.width)y alto de la imagen (image.height)
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
@@ -195,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         /* filtro que recorre la imagen pasada por parametro y le aplica un aumento a los tonalidades de color  */
-        function filterImageBrillo(image) {
+        function filtroBrillo(image) {
             //devuelve un objeto ImageData que representa los datos de los píxeles
             //en el area que va desde 0 (x), 0 (y) (inicio del canvas) hasta el ancho de la imagen (image.width)y alto de la imagen (image.height)
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
@@ -211,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         /* recorre la imagen, toma los valores de cada pixel y se le aplica el algoritmo para calcular sus nuevos valores */
-        function filterImageSepia(image) {
+        function filtroSepia(image) {
             //devuelve un objeto ImageData que representa los datos de los píxeles
             //en el area que va desde 0 (x), 0 (y) (inicio del canvas) hasta el ancho de la imagen (image.width)y alto de la imagen (image.height)
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
@@ -240,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.putImageData(imageData, 0, 0);
         }
 
-        function filterImageBlur(image) {
+        function filtroBlur(image) {
             //devuelve un objeto ImageData que representa los datos de los píxeles
             //en el area que va desde 0 (x), 0 (y) (inicio del canvas) hasta el ancho de la imagen (image.width)y alto de la imagen (image.height)
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
@@ -325,8 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return imageData.data[index + 2];
         }
 
-        /**/
-        function filterImageBinarizacion(image) {
+        function filtroBinarizacion(image) {
             //devuelve un objeto ImageData que representa los datos de los píxeles
             //en el area que va desde 0 (x), 0 (y) (inicio del canvas) hasta el ancho de la imagen (image.width)y alto de la imagen (image.height)
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
@@ -351,17 +349,46 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.putImageData(imageData, 0, 0);
         }
 
-        /**/
-        function filterImageSaturacion(image) {
+        function filtroSaturacion(image) {
+            //devuelve un objeto ImageData que representa los datos de los píxeles
+            //en el area que va desde 0 (x), 0 (y) (inicio del canvas) hasta el ancho de la imagen (image.width)y alto de la imagen (image.height)
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
-            for (let i = 0; i < data.length; i += 4) {
+            let saturacion = 2; // valor de saturacion.
 
+            let luR = 0.3086; // constante que determina luminosidad de rojo
+            let luG = 0.6094; // constante que determina luminosidad de verde
+            let luB = 0.0820; // constante que determina luminosidad de azul
+
+            let rr = (1 - saturacion) * luR + saturacion;
+            let rg = (1 - saturacion) * luG;
+            let rb = (1 - saturacion) * luB;
+
+            let gr = (1 - saturacion) * luR;
+            let gg = (1 - saturacion) * luG + saturacion;
+            let gb = (1 - saturacion) * luB;
+
+            let br = (1 - saturacion) * luR;
+            let bg = (1 - saturacion) * luG;
+            let bb = (1 - saturacion) * luB + saturacion;
+
+            for (let i = 0; i < data.length; i += 4) {
+                let r = data[i]; // color original R
+                let g = data[i + 1]; // color original G
+                let b = data[i + 2]; // color original B
+
+                let rSaturado = (rr*r + rg*g + rb*b); // R saturado
+                let gSaturado = (gr*r + gg*g + gb*b); // G saturado
+                let bSaturado = (br*r + bg*g + bb*b); // B saturado
+
+                data[i] = rSaturado;
+                data[i + 1] = gSaturado;
+                data[i + 2] = bSaturado;
             }
             ctx.putImageData(imageData, 0, 0);
         }
 
-        function filterImageDeteccionBorde(image){
+        function filtroDeteccionBordes(image){
             let imageData = ctx.getImageData(0, 0, image.width, image.height);
             let data = imageData.data;
         }
