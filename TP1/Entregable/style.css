@@ -41,6 +41,9 @@ body {
   color: #00ffff;
   text-align: center;
 }
+.cursor{
+  cursor: pointer;
+}
 .titleFiltros{
   margin: 1em 0;
 }
