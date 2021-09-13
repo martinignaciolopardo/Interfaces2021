@@ -151,9 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
             saturacion.addEventListener('click', () => {
                 filtroSaturacion(image);
             });
-            borde.addEventListener('click', () => {
-                filtroDeteccionBordes(image);
-            });
         }
 
         /*filtro que recorre la imagen pasada por parametro e invierte los valores r,g,b
@@ -388,11 +385,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 data[i + 2] = bSaturado;
             }
             ctx.putImageData(imageData, 0, 0);
-        }
-
-        function filtroDeteccionBordes(image){
-            let imageData = ctx.getImageData(0, 0, image.width, image.height);
-            let data = imageData.data;
         }
 
         document.querySelector('#btnDownload').addEventListener('click', () => {
