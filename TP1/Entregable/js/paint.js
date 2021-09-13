@@ -34,9 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
             //borra todo lo que hay en el canvas
             ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         });
-        //al clickear, llama a la función create image para volver a tener la imagen que se cargó (si se le aplicó algun filtro, se borra)
+        let imagenSinFiltros;
+        //al clickear, vuelve a dibujar la imagen, pero con una instancia previa a la aplicacion de filtros.
         btnRestore.addEventListener('click', function () {
-            createImage();
+            ctx.drawImage(imagenSinFiltros, 0, 0, canvas.width, canvas.height);
         })
 
         // se le aplica al canvas un evento que se activa al mantener clickeado (click izq)
@@ -93,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let image = new Image();
                 //al ser leida la imagen, se ejecuta la funcion
                 image.onload = function () {
+                    imagenSinFiltros = image;
                     //si la imagen es mayor a 600px de ancho, achica la imagen proporcionalmente al ancho.
                     if (image.width > 500) {
                         let newWidth = 500;
