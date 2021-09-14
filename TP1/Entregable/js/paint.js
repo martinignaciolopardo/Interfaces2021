@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let blur = document.querySelector('#btnFiltroBlur');
         let binarizacion = document.querySelector('#btnFiltroBinarizacion');
         let saturacion = document.querySelector('#btnFiltroSaturacion');
-        let borde = document.querySelector('#btnFiltroBorde');
         //botón descartar (limpia el canvas)
         let btnDescartar = document.querySelector('#descartar');
         //botón borrar
@@ -150,9 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             saturacion.addEventListener('click', () => {
                 filtroSaturacion(image);
-            });
-            borde.addEventListener('click', () => {
-                filtroDeteccionBordes(image);
             });
         }
 
@@ -388,11 +384,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 data[i + 2] = bSaturado;
             }
             ctx.putImageData(imageData, 0, 0);
-        }
-
-        function filtroDeteccionBordes(image){
-            let imageData = ctx.getImageData(0, 0, image.width, image.height);
-            let data = imageData.data;
         }
 
         document.querySelector('#btnDownload').addEventListener('click', () => {
