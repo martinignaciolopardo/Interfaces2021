@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let posiciones = [];
     let mouseDown = false;
     let posicionFicha =[];
+    let posicionesI = [];
+    let ejecutarUnaVez = true;
+   
 
     /* dibuja tablero */
     function dibujarTablero(){
@@ -32,8 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 coordenada.draw();
                 posX += separacionCirculos;
             }
-        }
-        //console.log(posiciones);
+        } 
+        if (ejecutarUnaVez === true) {
+            posicionesI = posiciones.reverse();
+        }ejecutarUnaVez=null;
+        
+        console.log(posiciones);
     }
     dibujarTablero();
 
@@ -41,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         let radio = 30;
         let color = 'red';
-        let cantidadFichas = 2;
+        let cantidadFichas = 10;
         for (let i = 0; i < cantidadFichas; i++) {
             let posX = Math.floor(Math.random() * (150 - 40 + 1) + 40); //(Math.random() * (canvasWidth - radio * 2) + radio)/5;
             let posY = Math.random() * (canvasHeight - radio * 2) + radio;
@@ -78,27 +85,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function onMouseUp(e){
         mouseDown = false;
-        if (e.layerX > 200 && e.layerX < 285 ) {
-        let posicionValida = posVacia();
+        if (e.layerX > 215 && e.layerX < 285) {
+            let posicionValida = posVacia(6);
             if (posicionValida) {
                 fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
-                
                 dibujar();
-            }else{
-                console.log("pos no valida");
             }
-           
+        }else if(e.layerX > 286 && e.layerX < 360){
+            let posicionValida = posVacia(5);
+            if (posicionValida) {
+                fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
+                dibujar();
+            }
+        }else if(e.layerX > 361 && e.layerX < 425){
+            let posicionValida = posVacia(4);
+            if (posicionValida) {
+                fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
+                dibujar();
+            }
+        }else if(e.layerX > 426 && e.layerX < 500){
+            let posicionValida = posVacia(3);
+            if (posicionValida) {
+                fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
+                dibujar();
+            }
+        }else if(e.layerX > 501 && e.layerX < 585){
+            let posicionValida = posVacia(2);
+            if (posicionValida) {
+                fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
+                dibujar();
+            }
+        }else if(e.layerX > 586 && e.layerX < 650){
+            let posicionValida = posVacia(1);
+            if (posicionValida) {
+                fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
+                dibujar();
+            }
+        }else if(e.layerX > 651 && e.layerX < 750){
+            let posicionValida = posVacia(0);
+            if (posicionValida) {
+                fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
+                dibujar();
+            }
         }
     }
 
-    function posVacia(){
-        let posicionesI = posiciones.reverse();
+    //250   //325   //400   //475   //550   //625   //700
+
+    function posVacia(x){
+        
         //console.log(posicionesI);
-        for (let i = 6; i < posicionesI.length; i+=7) {
+        for (let i = x; i < posicionesI.length; i+=7) {
            // console.log(posicionesI);
            // console.log(posicionesI[i]);
             console.log(posicionesI[i][2]);
-            if (posicionesI[i][2] == false) {
+            if (posicionesI[i][2] === false) {
                 posicionesI[i][2] = true;
                 console.log(posicionesI[i][2]);
               //  console.log(posiciones);
