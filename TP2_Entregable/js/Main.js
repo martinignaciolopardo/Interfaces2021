@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     let canvas = document.querySelector('#canvas');
-    let ctx = canvas.getContext('2d');
-    let canvasWidth = window.innerWidth - 30;
-    let canvasHeight = window.innerHeight - 30;
+    let canvasWidth = window.innerWidth-30;
+    let canvasHeight = window.innerHeight-30;
     canvas.height = canvasHeight;
     canvas.width = canvasWidth;
+    let ctx = canvas.getContext('2d');
     //jugar minimo en 980px x 625px
     let fichaArray = [];
     let posiciones = [];
@@ -13,6 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let posicionesI = [];
     let ejecutarUnaVez = true;
    
+ 
+        
+   
+
 
     /* dibuja tablero */
     function dibujarTablero(){
@@ -44,6 +48,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     dibujarTablero();
 
+    function fichaImg(){
+       /*
+        prueba clip con rectangulo
+        ctx.save();      
+        ctx.beginPath();
+        ctx.rect(250,250,50,50);
+        ctx.clip();
+        ctx.fillRect(10,10,500,500);
+        ctx.restore();*/
+
+        let img = new Image();
+        img.addEventListener('load', function() {
+            ctx.save();
+            ctx.beginPath();
+            //ctx.arc(canvasWidth/2, canvasHeight/2, 30, 0, Math.PI * 2, true);
+            ctx.arc(250, 500, 30, 0, Math.PI * 2, true);
+            ctx.closePath();
+            ctx.clip();
+            ctx.fillRect(0,0,800, 800);
+           // ctx.drawImage(img, 260, 150, 50, 50, canvasWidth/2-30, canvasHeight/2-30, 80, 80);
+            ctx.drawImage(img, 260, 150, 80, 80, 200, 450, 80, 80);
+            ctx.restore();
+        }, true);
+        img.src = 'images/roja.jpg';
+    }
+    fichaImg();
+
     function agregarFicha(){
         
         let radio = 30;
@@ -64,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         console.log(fichaArray);
     }
-    agregarFicha();
+    //agregarFicha();
 
     function fichaClickeada(x,y){
         for (let i = 0; i < fichaArray.length; i++) {
@@ -178,4 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.addEventListener('mouseup', onMouseUp, false);
     canvas.addEventListener('mousemove', onMouseMove, false);
 
+
+  
 });
