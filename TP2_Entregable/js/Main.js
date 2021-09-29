@@ -12,34 +12,35 @@ document.addEventListener('DOMContentLoaded', () => {
     let posicionFicha =[];
     let posicionesI = [];
     let ejecutarUnaVez = true;
-   
- 
-        
-   
-
 
     /* dibuja tablero */
     function dibujarTablero(){
         let posX = 250;
         let posY = 50;
+        //separacion de circulos desde el centro
         let separacionCirculos = 75;
         let radio = 30;
         let color = "gray";
         let ancho = 7;
         let alto = 6;
+        //se genera la matriz de espacios vacios del tablero
         for (let x = 0; x < alto; x++) {
             posY += separacionCirculos;
             posX = 250;
             for (let y = 0; y < ancho; y++) {
+                //se genera un nuevo circulo trayendo la clase creada
                 let coordenada = new Circulo(posX, posY, radio, color, ctx);
+                //se agrega las coordenas a las posiciones de los cirulos
                 let coord = [coordenada.getPosY(), coordenada.getPosX(), false];
                 //posiciones.push(coordenada.getPosY(),coordenada.getPosX(),false);
                 posiciones.push(coord);
                 //posiciones.push("Y: "+coordenada.getY(), "X: " + coordenada.getX());
+                //se dibujan las coordenadas
                 coordenada.draw();
                 posX += separacionCirculos;
             }
         } 
+
         if (ejecutarUnaVez === true) {
             posicionesI = posiciones.reverse();
         }ejecutarUnaVez=null;
@@ -92,16 +93,20 @@ document.addEventListener('DOMContentLoaded', () => {
         let radio = 30;
         let color = 'red';
         let cantidadFichas = 10;
+        //se generan las fichas de forma random
         for (let i = 0; i < cantidadFichas; i++) {
             let posX = Math.floor(Math.random() * (150 - 40 + 1) + 40); //(Math.random() * (canvasWidth - radio * 2) + radio)/5;
             let posY = Math.random() * (canvasHeight - radio * 2) + radio;
+            //si i es menor que la mitad cantidad de fichas 
             if (i >= cantidadFichas/2) {
                 color = 'yellow';
                 posX = Math.floor(Math.random() * (900 - 780 + 1) + 780); //Math.random() * (canvasWidth - radio * 2) + radio;
                 posY = Math.random() * (canvasHeight - radio *2) + radio;
             }
+            //se pushean las fichas dentro del arreglo
             fichaArray.push(new Circulo(posX, posY, radio, color, ctx));
         }
+        //se dibujan las fichas en el tablero
         for (let y = 0; y < fichaArray.length; y++) {
             fichaArray[y].draw();
         }
@@ -109,6 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     agregarFicha();*/
 
+    //agregarFicha();
+    //
     function fichaClickeada(x,y){
         for (let i = 0; i < fichaArray.length; i++) {
             let ficha = fichaArray[i];
@@ -117,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-
+    //identifica cuando el mouse esta por ensima de la ficah
     function onMouseDown(e){
         mouseDown = true;
         let fichaClick = fichaClickeada(e.layerX, e.layerY);
@@ -129,6 +136,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function onMouseUp(e){
         mouseDown = false;
         if (e.layerX > 215 && e.layerX < 285 && fichaClickeadaActual != null) {
+
+
+        //  71 - 75 - 65 - 75 - 85 - 65
+        //  75 - 65 - 75 - 85 - 65 - 100
+        //Matriz que delimita las posiciones de los circulos en el tablero
+        if (e.layerX > 215 && e.layerX < 285) {
             let posicionValida = posVacia(6);
             if (posicionValida) {
                 fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
