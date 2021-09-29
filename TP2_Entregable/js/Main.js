@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let canvas = document.querySelector('#canvas');
-    let canvasWidth = window.innerWidth-30;
-    let canvasHeight = window.innerHeight-30;
+    let canvasWidth = window.innerWidth - 30;
+    let canvasHeight = window.innerHeight - 30;
     canvas.height = canvasHeight;
     canvas.width = canvasWidth;
     let ctx = canvas.getContext('2d');
@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let fichaArray = [];
     let posiciones = [];
     let mouseDown = false;
-    let posicionFicha =[];
+    let posicionFicha = [];
     let posicionesI = [];
     let ejecutarUnaVez = true;
 
     /* dibuja tablero */
-    function dibujarTablero(){
+    function dibujarTablero() {
         let posX = 250;
         let posY = 50;
         //separacion de circulos desde el centro
@@ -39,21 +39,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 coordenada.draw();
                 posX += separacionCirculos;
             }
-        } 
+        }
 
         if (ejecutarUnaVez === true) {
             posicionesI = posiciones.reverse();
-        }ejecutarUnaVez=null;
-        
+        } ejecutarUnaVez = null;
+
         console.log(posiciones);
     }
     dibujarTablero();
 
-    function agregarFichaImg(){
+    function agregarFichaImg() {
         let img1 = new Image();
         let img2 = new Image();
-        img1.addEventListener('load', function() {
-            img2.addEventListener('load', function() {
+        img1.addEventListener('load', function () {
+            img2.addEventListener('load', function () {git 
                 let posXimg = 0;
                 let posYimg = 0;
                 let radio = 30;
@@ -64,17 +64,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     let posY = Math.random() * (canvasHeight - radio * 2) + radio;
                     posXimg = posX - 50;
                     posYimg = posY - 50;
-                    if (i >= cantidadFichas/2) {
+                    if (i >= cantidadFichas / 2) {
                         color = 'yellow';
                         posX = Math.floor(Math.random() * (900 - 780 + 1) + 780);
-                        posY = Math.random() * (canvasHeight - radio *2) + radio;
+                        posY = Math.random() * (canvasHeight - radio * 2) + radio;
                         posXimg = posX - 50;
                         posYimg = posY - 50;
                         fichaArray.push(new Circulo(posX, posY, radio, color, ctx));
                         fichaArray[i].drawCircleForImg();
                         ctx.drawImage(img1, 260, 150, 80, 80, posXimg, posYimg, 80, 80);
                         ctx.restore();
-                    }else{
+                    } else {
                         fichaArray.push(new Circulo(posX, posY, radio, color, ctx));
                         fichaArray[i].drawCircleForImg();
                         ctx.drawImage(img2, 260, 150, 80, 80, posXimg, posYimg, 80, 80);
@@ -116,16 +116,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //agregarFicha();
     //
-    function fichaClickeada(x,y){
+    function fichaClickeada(x, y) {
         for (let i = 0; i < fichaArray.length; i++) {
             let ficha = fichaArray[i];
-            if (ficha.mouseEnCirculo(x,y)) {
+            if (ficha.mouseEnCirculo(x, y)) {
                 return ficha;
             }
         }
     }
     //identifica cuando el mouse esta por ensima de la ficah
-    function onMouseDown(e){
+    function onMouseDown(e) {
         mouseDown = true;
         let fichaClick = fichaClickeada(e.layerX, e.layerY);
         if (fichaClick != null) {
@@ -133,97 +133,98 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function onMouseUp(e){
+    function onMouseUp(e) {
         mouseDown = false;
         if (e.layerX > 215 && e.layerX < 285 && fichaClickeadaActual != null) {
 
 
-        //  71 - 75 - 65 - 75 - 85 - 65
-        //  75 - 65 - 75 - 85 - 65 - 100
-        //Matriz que delimita las posiciones de los circulos en el tablero
-        if (e.layerX > 215 && e.layerX < 285) {
-            let posicionValida = posVacia(6);
-            if (posicionValida) {
-                fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
-                dibujar();
+            //  71 - 75 - 65 - 75 - 85 - 65
+            //  75 - 65 - 75 - 85 - 65 - 100
+            //Matriz que delimita las posiciones de los circulos en el tablero
+            if (e.layerX > 215 && e.layerX < 285) {
+                let posicionValida = posVacia(6);
+                if (posicionValida) {
+                    fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
+                    dibujar();
+                }
+                fichaClickeadaActual = null;
+            } else if (e.layerX > 286 && e.layerX < 360 && fichaClickeadaActual != null) {
+                let posicionValida = posVacia(5);
+                if (posicionValida) {
+                    fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
+                    dibujar();
+                }
+                fichaClickeadaActual = null;
+            } else if (e.layerX > 361 && e.layerX < 425 && fichaClickeadaActual != null) {
+                let posicionValida = posVacia(4);
+                if (posicionValida) {
+                    fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
+                    dibujar();
+                }
+                fichaClickeadaActual = null;
+            } else if (e.layerX > 426 && e.layerX < 500 && fichaClickeadaActual != null) {
+                let posicionValida = posVacia(3);
+                if (posicionValida) {
+                    fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
+                    dibujar();
+                }
+                fichaClickeadaActual = null;
+            } else if (e.layerX > 501 && e.layerX < 585 && fichaClickeadaActual != null) {
+                let posicionValida = posVacia(2);
+                if (posicionValida) {
+                    fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
+                    dibujar();
+                }
+                fichaClickeadaActual = null;
+            } else if (e.layerX > 586 && e.layerX < 650 && fichaClickeadaActual != null) {
+                let posicionValida = posVacia(1);
+                if (posicionValida) {
+                    fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
+                    dibujar();
+                }
+                fichaClickeadaActual = null;
+            } else if (e.layerX > 651 && e.layerX < 750 && fichaClickeadaActual != null) {
+                let posicionValida = posVacia(0);
+                if (posicionValida) {
+                    fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
+                    dibujar();
+                }
+                fichaClickeadaActual = null;
             }
-            fichaClickeadaActual = null;
-        }else if(e.layerX > 286 && e.layerX < 360 && fichaClickeadaActual != null){
-            let posicionValida = posVacia(5);
-            if (posicionValida) {
-                fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
-                dibujar();
-            }
-            fichaClickeadaActual = null;
-        }else if(e.layerX > 361 && e.layerX < 425 && fichaClickeadaActual != null){
-            let posicionValida = posVacia(4);
-            if (posicionValida) {
-                fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
-                dibujar();
-            }
-            fichaClickeadaActual = null;
-        }else if(e.layerX > 426 && e.layerX < 500 && fichaClickeadaActual != null){
-            let posicionValida = posVacia(3);
-            if (posicionValida) {
-                fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
-                dibujar();
-            }
-            fichaClickeadaActual = null;
-        }else if(e.layerX > 501 && e.layerX < 585 && fichaClickeadaActual != null){
-            let posicionValida = posVacia(2);
-            if (posicionValida) {
-                fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
-                dibujar();
-            }
-            fichaClickeadaActual = null;
-        }else if(e.layerX > 586 && e.layerX < 650 && fichaClickeadaActual != null){
-            let posicionValida = posVacia(1);
-            if (posicionValida) {
-                fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
-                dibujar();
-            }
-            fichaClickeadaActual = null;
-        }else if(e.layerX > 651 && e.layerX < 750 && fichaClickeadaActual != null){
-            let posicionValida = posVacia(0);
-            if (posicionValida) {
-                fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
-                dibujar();
-            }
-            fichaClickeadaActual = null;
         }
     }
 
     //250   //325   //400   //475   //550   //625   //700
 
-    function posVacia(x){
-        
+    function posVacia(x) {
+
         //console.log(posicionesI);
-        for (let i = x; i < posicionesI.length; i+=7) {
-           // console.log(posicionesI);
-           // console.log(posicionesI[i]);
+        for (let i = x; i < posicionesI.length; i += 7) {
+            // console.log(posicionesI);
+            // console.log(posicionesI[i]);
             console.log(posicionesI[i][2]);
             if (posicionesI[i][2] === false) {
                 posicionesI[i][2] = true;
                 console.log(posicionesI[i][2]);
-              //  console.log(posiciones);
+                //  console.log(posiciones);
                 posicionFicha = posicionesI[i];
-             //   console.log(posicionFicha);
+                //   console.log(posicionFicha);
                 return true;
             }
         }
-       // console.log(posiciones);
-       // console.log(posiciones[0]);
+        // console.log(posiciones);
+        // console.log(posiciones[0]);
     }
 
-    function onMouseMove(e){
-        if (mouseDown  && fichaClickeadaActual != null) {
+    function onMouseMove(e) {
+        if (mouseDown && fichaClickeadaActual != null) {
             fichaClickeadaActual.setPosition(e.layerX, e.layerY);
             dibujar();
             console.log(fichaArray);
         }
     }
 
-    function dibujar(){
+    function dibujar() {
         limpiarCanvas();
         dibujarTablero();
         for (let i = 0; i < fichaArray.length; i++) {
@@ -231,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function limpiarCanvas(){
+    function limpiarCanvas() {
         ctx.fillStyle = "blue";
         ctx.fillRect(0, 0, canvasWidth, canvasHeight);
         posiciones = [];
@@ -242,5 +243,5 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.addEventListener('mousemove', onMouseMove, false);
 
 
-  
+
 });
