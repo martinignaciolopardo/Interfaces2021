@@ -12,6 +12,15 @@ class Circulo extends Figura{
         this.ctx.closePath();
     }
 
+    drawCircleForImg(){
+        super.draw();
+        this.ctx.save();
+        this.ctx.beginPath();
+        this.ctx.arc(this.posX, this.posY, this.radio, 0, Math.PI * 2);
+        this.ctx.closePath();
+        this.ctx.clip();
+    }
+
     getRadio(){
         return this.radio;
     }
