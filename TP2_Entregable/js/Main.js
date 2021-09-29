@@ -48,34 +48,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     dibujarTablero();
 
-    function fichaImg(){
-       /*
-        prueba clip con rectangulo
-        ctx.save();      
-        ctx.beginPath();
-        ctx.rect(250,250,50,50);
-        ctx.clip();
-        ctx.fillRect(10,10,500,500);
-        ctx.restore();*/
-
-        let img = new Image();
-        img.addEventListener('load', function() {
-            ctx.save();
-            ctx.beginPath();
-            //ctx.arc(canvasWidth/2, canvasHeight/2, 30, 0, Math.PI * 2, true);
-            ctx.arc(250, 500, 30, 0, Math.PI * 2, true);
-            ctx.closePath();
-            ctx.clip();
-            ctx.fillRect(0,0,800, 800);
-           // ctx.drawImage(img, 260, 150, 50, 50, canvasWidth/2-30, canvasHeight/2-30, 80, 80);
-            ctx.drawImage(img, 260, 150, 80, 80, 200, 450, 80, 80);
-            ctx.restore();
+    function agregarFichaImg(){
+        let img1 = new Image();
+        let img2 = new Image();
+        img1.addEventListener('load', function() {
+            img2.addEventListener('load', function() {
+                let posXimg = 0;
+                let posYimg = 0;
+                let radio = 30;
+                let color = 'red';
+                let cantidadFichas = 10;
+                for (let i = 0; i < cantidadFichas; i++) {
+                    let posX = Math.floor(Math.random() * (150 - 40 + 1) + 40);
+                    let posY = Math.random() * (canvasHeight - radio * 2) + radio;
+                    posXimg = posX - 50;
+                    posYimg = posY - 50;
+                    if (i >= cantidadFichas/2) {
+                        color = 'yellow';
+                        posX = Math.floor(Math.random() * (900 - 780 + 1) + 780);
+                        posY = Math.random() * (canvasHeight - radio *2) + radio;
+                        posXimg = posX - 50;
+                        posYimg = posY - 50;
+                        fichaArray.push(new Circulo(posX, posY, radio, color, ctx));
+                        fichaArray[i].drawCircleForImg();
+                        ctx.drawImage(img1, 260, 150, 80, 80, posXimg, posYimg, 80, 80);
+                        ctx.restore();
+                    }else{
+                        fichaArray.push(new Circulo(posX, posY, radio, color, ctx));
+                        fichaArray[i].drawCircleForImg();
+                        ctx.drawImage(img2, 260, 150, 80, 80, posXimg, posYimg, 80, 80);
+                        ctx.restore();
+                    }
+                }
+            }, true);
+            img2.src = 'images/roja.jpg';
         }, true);
-        img.src = 'images/roja.jpg';
+        img1.src = 'images/amarilla.jpg';
     }
-    fichaImg();
+    agregarFichaImg();
 
-    function agregarFicha(){
+    /*function agregarFicha(){
         
         let radio = 30;
         let color = 'red';
@@ -95,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         console.log(fichaArray);
     }
-    //agregarFicha();
+    agregarFicha();*/
 
     function fichaClickeada(x,y){
         for (let i = 0; i < fichaArray.length; i++) {
@@ -116,48 +128,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function onMouseUp(e){
         mouseDown = false;
-        if (e.layerX > 215 && e.layerX < 285) {
+        if (e.layerX > 215 && e.layerX < 285 && fichaClickeadaActual != null) {
             let posicionValida = posVacia(6);
             if (posicionValida) {
                 fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
                 dibujar();
             }
-        }else if(e.layerX > 286 && e.layerX < 360){
+            fichaClickeadaActual = null;
+        }else if(e.layerX > 286 && e.layerX < 360 && fichaClickeadaActual != null){
             let posicionValida = posVacia(5);
             if (posicionValida) {
                 fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
                 dibujar();
             }
-        }else if(e.layerX > 361 && e.layerX < 425){
+            fichaClickeadaActual = null;
+        }else if(e.layerX > 361 && e.layerX < 425 && fichaClickeadaActual != null){
             let posicionValida = posVacia(4);
             if (posicionValida) {
                 fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
                 dibujar();
             }
-        }else if(e.layerX > 426 && e.layerX < 500){
+            fichaClickeadaActual = null;
+        }else if(e.layerX > 426 && e.layerX < 500 && fichaClickeadaActual != null){
             let posicionValida = posVacia(3);
             if (posicionValida) {
                 fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
                 dibujar();
             }
-        }else if(e.layerX > 501 && e.layerX < 585){
+            fichaClickeadaActual = null;
+        }else if(e.layerX > 501 && e.layerX < 585 && fichaClickeadaActual != null){
             let posicionValida = posVacia(2);
             if (posicionValida) {
                 fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
                 dibujar();
             }
-        }else if(e.layerX > 586 && e.layerX < 650){
+            fichaClickeadaActual = null;
+        }else if(e.layerX > 586 && e.layerX < 650 && fichaClickeadaActual != null){
             let posicionValida = posVacia(1);
             if (posicionValida) {
                 fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
                 dibujar();
             }
-        }else if(e.layerX > 651 && e.layerX < 750){
+            fichaClickeadaActual = null;
+        }else if(e.layerX > 651 && e.layerX < 750 && fichaClickeadaActual != null){
             let posicionValida = posVacia(0);
             if (posicionValida) {
                 fichaClickeadaActual.setPosition(posicionFicha[1], posicionFicha[0]);
                 dibujar();
             }
+            fichaClickeadaActual = null;
         }
     }
 
