@@ -18,7 +18,7 @@ class fichaImagen{
         this.ctx.fillStyle = this.color;
         this.ctx.fill();
         this.ctx.stroke();
-        this.ctx.drawImage(image, this.x-this.radio, this.y-this.radio, this.tamanio, this.tamanio);
+        this.ctx.drawImage(this.image, this.x-this.radio, this.y-this.radio, this.tamanio, this.tamanio);
     }
 
     mouseEnCirculo(x, y){
