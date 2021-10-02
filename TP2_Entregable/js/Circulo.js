@@ -1,7 +1,9 @@
 class Circulo extends Figura{
-    constructor(posX, posY, radio, fill, ctx){
+    constructor(posX, posY, radio, fill, ctx, posFinX, posFinY){
         super(posX, posY, fill, ctx);
         this.radio = radio;
+        this.posFinX = posFinX;
+        this.posFinY = posFinY;
     }
 
     draw(){
@@ -29,6 +31,22 @@ class Circulo extends Figura{
         let _x = this.posX -x;
         let _y = this.posY -y;
         return Math.sqrt(_x * _x + _y * _y) < this.radio;
+    }
+
+    getFinX(){
+        return this.posFinX
+    }
+
+    getIniX(){
+        return this.posX;
+    }
+
+    getFinY(){
+        return this.posFinY;
+    }
+
+    getIniY(){
+        return this.posY;
     }
 
 }
