@@ -6,45 +6,42 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.width = canvasWidth;
     let ctx = canvas.getContext('2d');
     let fichaArray = [];
-    let posiciones = [];
     let fichaClick;
     let radio = 30;
     let tamanio = radio*2;
     let mouseDown = false;
     let posicionFicha = [];
     let posicionesI = [];
-    let ejecutarUnaVez = true;
 
     /* dibuja tablero */
+
     function dibujarTablero() {
-        let posX = 0;
-        let posY = 50;
+        let posX;
+        let posY = 100;
         //separacion de circulos desde el centro
-        let separacionCirculos = 75;
+        let separacionCirculos = radio*2; // 60
         let color = "gray";
-        let ancho = 7;
-        let alto = 6;
-        //se genera la matriz de espacios vacios del tablero
+        let ancho = 4;
+        let alto = 4;
+        let columna = 1;
+        let posiciones = [];
         for (let x = 0; x < alto; x++) {
+            let fila = 1;
             posY += separacionCirculos;
-            posX = canvasWidth*23/100;
-            for (let y = 0; y < ancho; y++) {
-                //se genera un nuevo circulo trayendo la clase creada
-                let coordenada = new Circulo(posX, posY, radio, color, ctx);
-                //se agrega las coordenas a las posiciones de los cirulos
-                let coord = [coordenada.getPosY(), coordenada.getPosX(), false];
-                //posiciones.push(coordenada.getPosY(),coordenada.getPosX(),false);
-                posiciones.push(coord);
-                //posiciones.push("Y: "+coordenada.getY(), "X: " + coordenada.getX());
-                //se dibujan las coordenadas
+            posX = 200;
+            for (let y = 0; y<ancho; y++) {
+                let coordenada = new Circulo(posX, posY, radio, color, ctx, posX+radio, posY+radio);
+                posiciones.push(coordenada);
                 coordenada.draw();
                 posX += separacionCirculos;
+                console.log("x: "+posX);
+                console.log("y: "+posY);
+                console.log(posX+radio);
+                console.log(posY+radio);
+                fila++;
             }
-        }
-        if (ejecutarUnaVez === true) {
-            posicionesI = posiciones.reverse();
-        } ejecutarUnaVez = null;
-        //console.log(posiciones);
+            columna++;
+        }console.log(posiciones);
     }
     dibujarTablero();
 
@@ -90,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function agregarFicha(x, y, imagen, jugador, radio, color){
         let ficha = new fichaImagen(x, y, imagen, tamanio, ctx, radio, color, jugador);
         fichaArray.push(ficha);
-        console.log(fichaArray);
+       // console.log(fichaArray);
     }
     
     function dibujarFicha(){
