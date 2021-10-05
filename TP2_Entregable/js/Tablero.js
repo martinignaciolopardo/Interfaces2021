@@ -12,8 +12,8 @@ class Tablero{
     }
 
     crearTablero(){
-        //let posiciones = [];
         let fila = 1;
+        let ocupada = false;
         const xFija = this.posX;
         for (let x = 0; x < this.alto; x++) {
             let columna = 1;
@@ -29,9 +29,11 @@ class Tablero{
                 }if (columna === 4) {
                     this.color = 'purple';
                 }
-                let coordenada = new Circulo(this.posX, this.posY, columna, fila, this.radio, this.color, this.ctx, this.posX+this.radio, this.posX-this.radio, this.posY+this.radio, this.posY-this.radio);
+                let coordenada = new Circulo(this.posX, this.posY, columna, fila, this.radio, 
+                                            this.color, this.ctx, this.posX+this.radio, 
+                                            this.posX-this.radio, this.posY+this.radio, 
+                                            this.posY-this.radio, ocupada);
                 this.posiciones.push(coordenada);
-                //coordenada.draw();
                 this.posX += this.separacionCirculos;
                 columna++;
             }
@@ -57,18 +59,17 @@ class Tablero{
         } 
     }
     
+    //devuelve en que columna se solto la ficha
     queColumna(x,y){
         if (this.dentroDelArea(x)) {
             let encontro = false;
-            let colum = 0;
-            
+            let colum = 1;
             while (encontro === false && colum <= this.ancho) {
-                let inicioColumna = this.posiciones[colum].getIniX();
-                
+                let inicioColumna = this.posiciones[colum-1].getIniX();
                 if (x >= inicioColumna && x <= (inicioColumna+this.separacionCirculos)) {
-                    
-                    if (y + (this.separacionCirculos/3) > this.posiciones[colum].getIniY()) {
+                    if (y + (this.separacionCirculos/3) > this.posiciones[colum-1].getIniY()) {
                         console.log("por favor, inserte la ficha por encima del tablero");
+                        return;
                     }
                     encontro = true;
                 }
@@ -81,6 +82,31 @@ class Tablero{
         }else{
             return null;
         }
-        
+    }
+
+    //devuelve las posiciones de la columna
+    recorroColumna(col){
+        let posicionesCol = [];
+        for (let i = 0; i < this.posiciones.length; i++) {
+            if (this.posiciones[i].getColumna() == col) {
+                posicionesCol.push(this.posiciones[i]);
+                //columnaLibre(this.posiciones[i]);
+                console.log(posicionesCol);
+            }
+            
+        }return posicionesCol;
+    }
+
+    //obtiene la columna donde debe insertarse la ficha
+    columnaLibre(colum){
+        let i = this.alto - 1;
+        console.log(colum[i].getOcupada());
+        while (i >= 0) {
+            if (colum[i].getOcupada() === false) {
+                colum[i].setOcupada(true);
+                return colum[i];
+            } 
+            i--;
+        }
     }
 }
