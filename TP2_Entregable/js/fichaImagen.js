@@ -46,9 +46,4 @@ class fichaImagen{
             y: this.getY()
         };
     }
-
-    getPlayer(){
-        return this.jugador;
-    }
-
 }
