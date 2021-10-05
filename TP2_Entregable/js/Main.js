@@ -5,23 +5,21 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.height = canvasHeight;
     canvas.width = canvasWidth;
     let ctx = canvas.getContext('2d');
+    fichaClickeadaActual = null;
     let fichaArray = [];
     let fichaClick;
     let radio = 30;
     let tamanio = radio*2;
     let mouseDown = false;
-    let posicionFicha = [];
-    let posiciones = [];
     let separacionCirculos = radio*2; // 60
     let color = "gray";
     let ancho = 4;
     let alto = 4;
-    let posX = (canvasWidth/2) - ((ancho*separacionCirculos)/2);
+    let posX = (canvasWidth/2) - ((ancho*separacionCirculos)/2.5);
     let posY = (canvasHeight/2) - ((alto*separacionCirculos)/2);
     let tablero = new Tablero(alto, ancho, ctx, color, posX, posY, radio, separacionCirculos);
     tablero.crearTablero();
     tablero.dibujar();
-    //tablero.dentroDelArea(149);
     
     imagen = new Image();
     imagen.src="images/ficha.png";
@@ -69,13 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function agregarFicha(x, y, imagen, jugador, radio, color){
         let ficha = new fichaImagen(x, y, imagen, tamanio, ctx, radio, color, jugador);
         fichaArray.push(ficha);
-        //console.log(fichaArray);
     }
     
     function dibujarFicha(){
         for(let i = 0; i < fichaArray.length; i++){
             fichaArray[i].draw();
-        }
+        }// console.log(fichaArray);
     }
 
     function fichaClickeada(x, y) {
@@ -90,6 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function onMouseDown(e) {
         mouseDown = true;
+        if(fichaClickeadaActual != null){
+            fichaClickeadaActual = null;
+        }
         fichaClick = fichaClickeada(e.layerX, e.layerY);
         if (fichaClick != null) {
             fichaClickeadaActual = fichaClick;
@@ -100,18 +100,27 @@ document.addEventListener('DOMContentLoaded', () => {
         mouseDown = false;
         let x = e.layerX;
         let y = e.layerY
-        if (fichaClick != null) {
-            fichaClick.getX();
-            tablero.dentroDelArea(x);
-            tablero.queColumna(x,y);
+        if (fichaClickeadaActual != null) {
+            if (tablero.dentroDelArea(x)) {
+                let columna = tablero.queColumna(x,y);
+                let posColu = tablero.recorroColumna(columna);
+                let posicionLibre = tablero.columnaLibre(posColu);
+                console.log(posicionLibre);
+                let nuevaPosX = posicionLibre.getX();
+                let nuevaPosY = posicionLibre.getY();
+                console.log(posicionLibre.getX());
+                console.log(posicionLibre.getY());
+                fichaClickeadaActual.setPosition(nuevaPosX,nuevaPosY);
+                dibujar();
+            }
         }
     }
 
     function onMouseMove(e) {
         if (mouseDown && fichaClickeadaActual != null) {
             fichaClickeadaActual.setPosition(e.layerX, e.layerY);
-            dibujar();
             tablero.dibujar();
+            dibujar();
         }
     }
 
@@ -127,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
         posiciones = [];
         tablero.dibujar();
+        dibujarFicha();
     }
 
     canvas.addEventListener('mousedown', onMouseDown, false);
