@@ -91,7 +91,7 @@ class Tablero{
             if (this.posiciones[i].getColumna() == col) {
                 posicionesCol.push(this.posiciones[i]);
                 //columnaLibre(this.posiciones[i]);
-                console.log(posicionesCol);
+                //console.log(posicionesCol);
             }
             
         }return posicionesCol;
@@ -100,7 +100,7 @@ class Tablero{
     //obtiene la columna donde debe insertarse la ficha
     columnaLibre(colum){
         let i = this.alto - 1;
-        console.log(colum[i].getOcupada());
+        //console.log(colum[i].getOcupada());
         while (i >= 0) {
             if (colum[i].getOcupada() === false) {
                 colum[i].setOcupada(true);
@@ -109,4 +109,11 @@ class Tablero{
             i--;
         }
     }
+
+    resetearPosiciones(){
+        for (let i = 0; i < this.posiciones.length; i++) {
+            this.posiciones[i].setOcupada(false);
+        }
+    }
+
 }
