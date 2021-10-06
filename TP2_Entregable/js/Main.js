@@ -105,10 +105,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (fichaClick != null) {
                 fichaClickeadaActual = fichaClick;
             }
-            
+            inputTurno.style.backgroundColor = "black";
         }
         else{
             console.log("ES TURNO DEL JUGADOR "+turno+" !!!");
+            inputTurno.style.backgroundColor = "red";
         }
         
     }
