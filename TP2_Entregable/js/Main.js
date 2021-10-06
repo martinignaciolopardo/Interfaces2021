@@ -23,9 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
     inputTurno.value = "Turno del jugador: "+turno;
     let btnReset= document.querySelector("#reset");
     btnReset.addEventListener("click", resetearJuego);
-    let tiempo = 50;
+    let tiempo = 4;
     let parar=false;
     let reloj = document.getElementById('segundos');
+    reloj.innerHTML = 'COMIENZA EL JUGADOR'+ turno + '(ROJO)';
     
 
     tablero.crearTablero();
@@ -184,9 +185,13 @@ document.addEventListener('DOMContentLoaded', () => {
             fichaArray[i].draw();
         }
         turno = 1;
-        reloj.innerHTML = 'SE TERMINO EL TIEMPO';
+        reloj.innerHTML = 'COMIENZA EL JUGADOR 1 (ROJO)';
+        if (tiempo<1) {
+            reloj.innerHTML = 'SE TERMINO EL TIEMPO';
+        }
+        
         inputTurno.value = "Turno del jugador: "+turno;
-        tiempo = 50;
+        tiempo = 4;
         parar=false;
         clearTimeout(timeOut);
     }
