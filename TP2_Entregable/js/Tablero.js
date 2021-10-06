@@ -20,7 +20,7 @@ class Tablero{
             this.posY += this.separacionCirculos;
             this.posX = xFija;
             for (let y = 0; y < this.ancho; y++) {
-                if (columna === 1) {
+               /* if (columna === 1) {
                     this.color = 'red';
                 }if (columna === 2) {
                     this.color = 'green';
@@ -28,7 +28,7 @@ class Tablero{
                     this.color = 'cyan';
                 }if (columna === 4) {
                     this.color = 'purple';
-                }
+                }*/
                 let coordenada = new Circulo(this.posX, this.posY, columna, fila, this.radio, 
                                             this.color, this.ctx, this.posX+this.radio, 
                                             this.posX-this.radio, this.posY+this.radio, 
@@ -47,10 +47,12 @@ class Tablero{
         }
     }
 
-    dentroDelArea(x) {
+    dentroDelArea(x, y) {
         let inicio = this.posiciones[0].getIniX();
         let fin = this.posiciones[this.posiciones.length-1].getFinX();
-        if (x >= inicio && x <= fin) {
+        let yMax = this.posiciones[0].getIniY()-20;
+        console.log(yMax);
+        if (x >= inicio && x <= fin && y <= yMax) {
             //console.log("dentro");
             return true;
         }else{
@@ -61,7 +63,7 @@ class Tablero{
     
     //devuelve en que columna se solto la ficha
     queColumna(x,y){
-        if (this.dentroDelArea(x)) {
+        if (this.dentroDelArea(x,y)) {
             let encontro = false;
             let colum = 1;
             while (encontro === false && colum <= this.ancho) {
