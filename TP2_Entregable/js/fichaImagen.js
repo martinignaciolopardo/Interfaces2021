@@ -1,6 +1,6 @@
 class fichaImagen{
 
-    constructor(x, y, image, tamanio, ctx, radio, color, jugador){
+    constructor(x, y, image, tamanio, ctx, radio, color, jugador, xIni, yIni){
         this.x = x;
         this.y = y;
         this.image = image;
@@ -9,6 +9,8 @@ class fichaImagen{
         this.radio = radio;
         this.color = color;
         this.jugador = jugador;
+        this.xIni = xIni;
+        this.yIni = yIni;
     }
 
     draw(){
@@ -25,6 +27,22 @@ class fichaImagen{
         let _x = this.x - x;
         let _y = this.y - y;
         return Math.sqrt(_x*_x+_y*_y)<this.radio;
+    }
+
+    getJugador(){
+        return this.jugador;
+    }
+
+    getIniX(){
+        return this.xIni;
+    }
+
+    getIniY(){
+        return this.yIni;
+    }
+
+    getColor(){
+        return this.color;
     }
 
     getX(){
