@@ -169,8 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
             fichaArray[i].draw();
         }
         turno = 1;
-        
-        
+        inputTurno.value = "Turno del jugador: "+turno;
     }
 
     canvas.addEventListener('mousedown', onMouseDown, false);
