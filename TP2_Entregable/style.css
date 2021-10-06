@@ -6,3 +6,35 @@ canvas{
 body{
     margin: 0px;
 }
+
+#turno{
+    text-align: center;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    background: black;
+	border: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+	width: 25%;
+	padding: 5px;
+	font-size: 15px;
+}
+
+.topSection{
+    display: flex;
+}
+
+#reset{
+    margin-right: 10px;
+    background-color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+#reset:hover{
+    background-color: #332f2c;
+}
