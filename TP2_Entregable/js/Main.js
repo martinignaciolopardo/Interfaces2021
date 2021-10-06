@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             inputTurno.style.backgroundColor = "black";
         }
-        else{
+        else if (fichaClick != null){
             console.log("ES TURNO DEL JUGADOR "+turno+" !!!");
             inputTurno.style.backgroundColor = "red";
         }
