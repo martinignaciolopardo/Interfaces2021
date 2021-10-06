@@ -1,12 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     let canvas = document.querySelector('#canvas');
-    let canvasWidth = window.innerWidth - 30;
+    let canvasWidth = window.innerWidth - 35;
     let canvasHeight = window.innerHeight - 30;
     canvas.height = canvasHeight;
     canvas.width = canvasWidth;
     let ctx = canvas.getContext('2d');
-    fichaClickeadaActual = null;
-    let fichaArray = [];
     let fichaClick;
     let radio = 30;
     let tamanio = radio*2;
@@ -15,9 +13,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let color = "gray";
     let ancho = 4;
     let alto = 4;
+    let fichaArray = [];
     let posX = (canvasWidth/2) - ((ancho*separacionCirculos)/2.5);
     let posY = (canvasHeight/2) - ((alto*separacionCirculos)/2);
     let tablero = new Tablero(alto, ancho, ctx, color, posX, posY, radio, separacionCirculos);
+    let turno = 1;
+    fichaClickeadaActual = null;
+    let inputTurno = document.querySelector("#turno");
+    inputTurno.value = "Turno del jugador: "+turno;
+    let btnReset= document.querySelector("#reset");
+    btnReset.addEventListener("click", resetearJuego);
+
     tablero.crearTablero();
     tablero.dibujar();
     
@@ -49,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 t=false;
             }
             agregarFicha(x, y, imagen, jugador, radio, color);
-            dibujarFicha();
+            dibujar();
             y += tamanio;
             cantidadFichas--;
             //2 columnas de fichas
@@ -65,23 +71,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function agregarFicha(x, y, imagen, jugador, radio, color){
-        let ficha = new fichaImagen(x, y, imagen, tamanio, ctx, radio, color, jugador);
+        let xIni = x;
+        let yIni = y
+        let ficha = new fichaImagen(x, y, imagen, tamanio, ctx, radio, color, jugador, xIni, yIni);
         fichaArray.push(ficha);
-    }
-    
-    function dibujarFicha(){
-        for(let i = 0; i < fichaArray.length; i++){
-            fichaArray[i].draw();
-        }// console.log(fichaArray);
     }
 
     function fichaClickeada(x, y) {
         for (let i = 0; i < fichaArray.length; i++) {
             let ficha = fichaArray[i];
             if (ficha.mouseEnCirculo(x, y)) {
-                console.log(ficha);
+                //console.log(ficha);
                 return ficha;
             }
+        }
+    }
+
+    function cambiarJugador(turno){
+        if (turno == 1) {
+            return 2;
+        }else{
+            return 1;
         }
     }
 
@@ -91,9 +101,16 @@ document.addEventListener('DOMContentLoaded', () => {
             fichaClickeadaActual = null;
         }
         fichaClick = fichaClickeada(e.layerX, e.layerY);
-        if (fichaClick != null) {
-            fichaClickeadaActual = fichaClick;
+        if (fichaClick != null && fichaClick.getJugador() == turno) {
+            if (fichaClick != null) {
+                fichaClickeadaActual = fichaClick;
+            }
+            
         }
+        else{
+            console.log("ES TURNO DEL JUGADOR "+turno+" !!!");
+        }
+        
     }
 
     function onMouseUp(e) {
@@ -108,9 +125,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log(posicionLibre);
                 let nuevaPosX = posicionLibre.getX();
                 let nuevaPosY = posicionLibre.getY();
-                console.log(posicionLibre.getX());
-                console.log(posicionLibre.getY());
+                //console.log(posicionLibre.getX());
+                //console.log(posicionLibre.getY());
                 fichaClickeadaActual.setPosition(nuevaPosX,nuevaPosY);
+                turno = cambiarJugador(turno);
+                inputTurno.value = "Turno del jugador: "+turno;
                 dibujar();
             }
         }
@@ -126,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function dibujar() {
         limpiarCanvas();
+        tablero.dibujar();
         for (let i = 0; i < fichaArray.length; i++) {
             fichaArray[i].draw();
         }
@@ -134,9 +154,23 @@ document.addEventListener('DOMContentLoaded', () => {
     function limpiarCanvas() {
         ctx.fillStyle = "blue";
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-        posiciones = [];
+        /*tablero.dibujar();
+        dibujarFicha();*/
+    }
+
+    function resetearJuego(){
+        limpiarCanvas();
+        tablero.resetearPosiciones();
         tablero.dibujar();
-        dibujarFicha();
+        for (let i = 0; i < fichaArray.length; i++) {
+            let x = fichaArray[i].getIniX();
+            let y = fichaArray[i].getIniY();
+            fichaArray[i].setPosition(x, y);
+            fichaArray[i].draw();
+        }
+        turno = 1;
+        
+        
     }
 
     canvas.addEventListener('mousedown', onMouseDown, false);
