@@ -1,5 +1,5 @@
 class Circulo extends Figura{
-    constructor(posX, posY, columna, fila, radio, fill, ctx, posFinX, posIniX, posFinY, posIniY, ocupada){
+    constructor(posX, posY, columna, fila, radio, fill, ctx, posFinX, posIniX, posFinY, posIniY, ocupada, jugador){
         super(posX, posY, fill, ctx);
         this.radio = radio;
         this.posFinX = posFinX;
@@ -9,6 +9,7 @@ class Circulo extends Figura{
         this.posIniX = posIniX;
         this.posIniY = posIniY;
         this.ocupada = ocupada;
+        this.jugador = jugador;
     }
 
     draw(){
@@ -36,6 +37,14 @@ class Circulo extends Figura{
         let _x = this.posX -x;
         let _y = this.posY -y;
         return Math.sqrt(_x * _x + _y * _y) < this.radio;
+    }
+
+    setJugador(jugador){
+        this.jugador = jugador;
+    }
+
+    getJugador(){
+        return this.jugador;
     }
 
     getColumna(){
