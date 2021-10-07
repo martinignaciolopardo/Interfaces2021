@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let separacionCirculos = radio*2; // 60
     let color = "gray";
     let ancho = 6;
-    let alto = 7;
+    let alto = 6;
     let fichaArray = [];
     let posX = (canvasWidth/2) - ((ancho*separacionCirculos)/2.5);
     let posY = (canvasHeight/2) - ((alto*separacionCirculos)/2);
@@ -23,8 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
     inputTurno.value = "Turno del jugador: "+turno;
     let btnReset= document.querySelector("#reset");
     btnReset.addEventListener("click", resetearJuego);
-    let tiempo = 4;
+    let tiempo = 100;
     let parar=false;
+    let ganador = false;
     let reloj = document.getElementById('segundos');
     reloj.innerHTML = 'COMIENZA EL JUGADOR'+ turno + '(ROJO)';
     
@@ -125,30 +126,44 @@ document.addEventListener('DOMContentLoaded', () => {
         let y = e.layerY
         if (fichaClickeadaActual != null) {
             if (tablero.dentroDelArea(x,y)) {
+                let jugador = fichaClickeadaActual.getJugador();
                 let columna = tablero.queColumna(x,y);
                 let posColu = tablero.recorroColumna(columna);
-                let posicionLibre = tablero.columnaLibre(posColu);
-                //console.log(posicionLibre);
-                let nuevaPosX = posicionLibre.getX();
-                let nuevaPosY = posicionLibre.getY();
-                //console.log(posicionLibre.getX());
-                //console.log(posicionLibre.getY());
-                fichaClickeadaActual.setPosition(nuevaPosX,nuevaPosY);
-                if (parar==false) {
-                    actualizarReloj();
-                    parar=true;
-                }
-                turno = cambiarJugador(turno);
-                inputTurno.value = "Turno del jugador: "+turno;
-                dibujar();
+               /* if (posColu === false) {
+                    volverPosicionFicha();
+                }  
+                else{*/
+                    let posicionLibre = tablero.columnaLibre(posColu, jugador);
+                    //console.log(posicionLibre);
+                    let nuevaPosX = posicionLibre.getX();
+                    let nuevaPosY = posicionLibre.getY();
+                    //console.log(posicionLibre.getX());
+                    //console.log(posicionLibre.getY());
+                    fichaClickeadaActual.setPosition(nuevaPosX,nuevaPosY);
+                    ganador = tablero.hayGanador();
+                    if (ganador == true) {
+                        alert('gano el jugador'+jugador);
+                    }
+                    if (parar==false) {
+                        actualizarReloj();
+                        parar=true;
+                    }
+                    turno = cambiarJugador(turno);
+                    inputTurno.value = "Turno del jugador: "+turno;
+                    dibujar();
+                //}
             }
             else{
-                let x = fichaClickeadaActual.getIniX();
-                let y = fichaClickeadaActual.getIniY();
-                fichaClickeadaActual.setPosition(x, y);
-                fichaClickeadaActual.draw();
+                volverPosicionFicha();
             }
         }
+    }
+
+    function volverPosicionFicha(){
+        let x = fichaClickeadaActual.getIniX();
+        let y = fichaClickeadaActual.getIniY();
+        fichaClickeadaActual.setPosition(x, y);
+        dibujar();
     }
 
     function onMouseMove(e) {
@@ -191,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         inputTurno.value = "Turno del jugador: "+turno;
-        tiempo = 4;
+        tiempo = 100;
         parar=false;
         clearTimeout(timeOut);
     }
