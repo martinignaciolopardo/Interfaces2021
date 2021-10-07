@@ -15,34 +15,45 @@
 </head>
 
 <body>
-    <div class="contenedor-nav">
-        <header class="header">
-            <figure>
-                <img src="./images/Logo4L.png" alt="">
-            </figure>
+    <header class="header">
+        <div class="contenedor-nav">
+     
+                <img src="./images/LogoPNG.png" alt="">
+        
             <nav class="navegador">
                 <div class="btn-group" role="group">
-                    <a class="navbar-brand draw-border" href="Home">Inicio</a>
-                    <a class="navbar-brand draw-border" href="AcercaDelJuego">Acerca del 4 en Linea</a>
-                    <a class="navbar-brand draw-border" href="Reglas">Reglas</a>
-                    <a class="navbar-brand draw-border" href="Jugar">Jugar</a>
-                    <a class="navbar-brand draw-border" href="Contactos">Contactos</a>
+                    <a class="navbar-brand draw-border" href="#home">Inicio</a>
+                    <a class="navbar-brand draw-border" href="#configuracion">Configuración</a>
+                    <a class="navbar-brand draw-border" href="#jugar">Jugar</a>
+                    <a class="navbar-brand draw-border" href="#acercaDelJuego" id="acercaDelJuego">Acerca del 4 en Linea</a>
+                    <a class="navbar-brand draw-border" href="#contactos">Contactos</a>
                 </div>
             </nav>
-        </header>
-    </div>
+        </div>
+    </header>
     <main>
-        <div class="topSection">
+        <section class="configuracion">
 
-        </div>
-        <div id="segundos">
+        </section>
+        <section class="jugar">
+            <div class="topSection">
+                
+            </div>
+            <div id="segundos">
+    
+            </div>
+            <input type="text" id="turno">
+            <button id="reset">Reset</button>
+            </div>
+                <canvas id="canvas">
+            </canvas>
 
-        </div>
-        <input type="text" id="turno">
-        <button id="reset">Reset</button>
-        </div>
-            <canvas id="canvas">
-        </canvas>
+        </section>
+        <section class="contactos">
+
+
+        </section>
+
 
     </main>
     <footer>
