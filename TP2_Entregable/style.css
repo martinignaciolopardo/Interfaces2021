@@ -1,5 +1,6 @@
 body {
   margin: 0px;
+ 
 }
 
 canvas {
@@ -20,13 +21,13 @@ canvas {
   align-items: center;
 }
 .contenedor-nav img {
-  width: 5%;
-  padding: 0 2em;
+  width: 8%;
+  padding: 0 2rem;
 }
 .navegador {
   display: flex;
   justify-content: flex-end;
-  padding: 1em;
+  padding: 1rem;
   list-style: none;
   margin: 0;
   color: "white";
@@ -49,18 +50,16 @@ canvas {
   border: none;
   cursor: pointer;
   line-height: 1.5;
-  font: 700 1.2rem "Roboto Slab", sans-serif;
+  font: 600 0.9rem "Roboto Slab", sans-serif;
   letter-spacing: 0.05rem;
   padding-bottom: 1px;
   box-shadow: none;
   -webkit-transition: color 0.25s 0.0833333333s;
   transition: color 0.25s 0.0833333333s;
   position: relative;
-  padding: 1em 1em;
+  padding: 1em 0.5em;
 }
-.btn:focus {
-  outline: 2px dotted #55d7dc;
-}
+
 .draw-border::before,
 .draw-border::after {
   border: 0 solid transparent;
@@ -102,14 +101,22 @@ canvas {
   transition-delay: 0s, 0.25s, 0s;
 }
 
-.sectionFooter {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #3d3d3d;
-  padding: 0.1em;
-  color: #00ffff;
-  text-align: center;
+
+/******************** MAIN ***********************/
+
+
+.contenedorPrincipal{
+  padding-top: 5rem;
+}
+.home{
+  background-color: aqua;
+  height: 600px;
+}
+.configuracion{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 3rem;
 }
 
 #turno {
@@ -144,3 +151,14 @@ div {
   margin: 0px;
   padding: 0px;
 }
+/******************** FOOTER ***********************/
+
+.sectionFooter {
+    bottom: 0;
+    background-color: #000;
+    padding: 2rem;
+    color: #fff;
+    text-align: center;
+    font-size: 0.7rem;
+}
+

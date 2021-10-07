@@ -32,29 +32,64 @@
         </div>
     </header>
     <main>
-        <section class="configuracion">
+        <div class="contenedorPrincipal">
+            <section class="home">
+                <img src="images/" alt="">
+            </section>
+            <section class="configuracion">
+                <h2>Configuración del tablero</h2>
+                <div class="tipoTablero">
+                    <h4>Indica el tipo de tablero:</h4>
+                    <ul>
+                        <li>4 en Linea</li>
+                        <li>5 en Linea</li>
+                        <li>6 en linea</li>
+                        <li>7 en Linea</li>
+                    </ul>
+                </div>
+                <div class="controlFicha">
 
-        </section>
-        <section class="jugar">
-            <div class="topSection">
-                
-            </div>
-            <div id="segundos">
-    
-            </div>
-            <input type="text" id="turno">
-            <button id="reset">Reset</button>
-            </div>
+                    <div class="pickUser">
+                        <h3>PLease Select Player</h3>
+                        <label>Jugador1</label>
+                        <img src="./images/user.png" alt="jugador1">
+                        <label>Jugador2</label>
+                        <img src="./images/user.png" alt="jugador2">      
+                    </div>
+                    
+                    <div class="nombreJugador" hidden>
+                        <label> Nombre Jugador 1:</label>
+                        <input type="text" id="jugador1"> 
+                        <label> Nombre Jugador 2:</label>       
+                        <input type="text" id="jugador2">
+                    </div>
+                    <div class="colorFicha">
+                        <label> Color de Ficha:</label>
+                        <input type="color" name="colors" id="inputColors">
+                        <select name="cambiar el color" id="selectColor">
+                        </select>
+                    </div>
+                </div>
+            </section>
+            <section class="jugar">
+                    <div class="topSection">
+                        
+                    </div>
+                    <div id="segundos">
+                        
+                    </div>
+                    <input type="text" id="turno">
+                    <button id="reset">Reset</button>
+               
                 <canvas id="canvas">
-            </canvas>
-
-        </section>
-        <section class="contactos">
-
-
-        </section>
-
-
+                </canvas>
+                
+            </section>
+            <section class="contactos">
+                
+                
+            </section>
+        </div>
     </main>
     <footer>
         <section class="sectionFooter">
