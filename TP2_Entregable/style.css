@@ -106,7 +106,17 @@ canvas {
 
 
 .contenedorPrincipal{
-  padding-top: 10rem;
+  padding-top: 5rem;
+}
+.home{
+  background-color: aqua;
+  height: 600px;
+}
+.configuracion{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 3rem;
 }
 
 #turno {
