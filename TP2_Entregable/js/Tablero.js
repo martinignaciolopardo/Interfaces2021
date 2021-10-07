@@ -183,7 +183,6 @@ class Tablero{
         
     }
   
-    //FALTA CONTROLAR EXTREMOS ------------------------------
     checkHorizontal(){
         let fila = 1;
         let contador = 1;
@@ -193,17 +192,19 @@ class Tablero{
                 let ocupadaI = this.posiciones[i].getOcupada();
                 let jugadorI = this.posiciones[i].getJugador();
                 let jugadorIsiguiente= this.posiciones[i+1].getJugador();
-                let ocupadaIsiguiente= this.posiciones[i+1].getFila();
+                let ocupadaIsiguiente= this.posiciones[i+1].getOcupada();
                 if (filaI == fila) {
                     if (ocupadaI == true){
-                        if (jugadorI == jugadorIsiguiente && ocupadaIsiguiente == fila) {
+                        if (jugadorI == jugadorIsiguiente &&  ocupadaI == ocupadaIsiguiente) {
                             contador++;
                             console.log(contador);
                             if (contador == 4) {
                                 return true;
                             }
                         }    
-                            
+                        else{
+                            contador = 1;
+                        }   
                     }
                 }
             }
