@@ -14,6 +14,7 @@ class Tablero{
     crearTablero(){
         let fila = 1;
         let ocupada = false;
+        let jugador = -1;
         const xFija = this.posX;
         for (let x = 0; x < this.alto; x++) {
             let columna = 1;
@@ -32,7 +33,7 @@ class Tablero{
                 let coordenada = new Circulo(this.posX, this.posY, columna, fila, this.radio, 
                                             this.color, this.ctx, this.posX+this.radio, 
                                             this.posX-this.radio, this.posY+this.radio, 
-                                            this.posY-this.radio, ocupada);
+                                            this.posY-this.radio, ocupada, jugador);
                 this.posiciones.push(coordenada);
                 this.posX += this.separacionCirculos;
                 columna++;
@@ -51,7 +52,7 @@ class Tablero{
         let inicio = this.posiciones[0].getIniX();
         let fin = this.posiciones[this.posiciones.length-1].getFinX();
         let yMax = this.posiciones[0].getIniY()-20;
-        console.log(yMax);
+        //console.log(yMax);
         if (x >= inicio && x <= fin && y <= yMax) {
             //console.log("dentro");
             return true;
@@ -79,10 +80,27 @@ class Tablero{
                     colum++;
                 }
             }
-            console.log(colum);
-            return colum;
-        }else{
+            return colum; 
+
+        }else {
             return null;
+        }
+    }
+    //226.5
+    //286.5
+    estaEnPrimerFila(x,y){
+        if (this.dentroDelArea(x,y)) {
+            let encontro = false;
+            let fila = 1;
+            if (y >= inicioFila && y <= (inicioFila+this.separacionCirculos)) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            return false;
         }
     }
 
@@ -99,13 +117,14 @@ class Tablero{
         }return posicionesCol;
     }
 
-    //obtiene la columna donde debe insertarse la ficha
-    columnaLibre(colum){
+    //obtiene la columna donde debe insertarse la ficha, setea la posicion en ocupada y el jugador que metio la ficha.
+    columnaLibre(colum, jugador){
         let i = this.alto - 1;
         //console.log(colum[i].getOcupada());
         while (i >= 0) {
             if (colum[i].getOcupada() === false) {
                 colum[i].setOcupada(true);
+                colum[i].setJugador(jugador);
                 return colum[i];
             } 
             i--;
@@ -118,4 +137,86 @@ class Tablero{
         }
     }
 
+    hayGanador(){
+        if (this.checkVertical() == true) {
+            return true;
+        } if (this.checkHorizontal() == true) {
+            return true;
+        }else if (this.checkDiagonalD() == true) {
+            return true;
+        }else if (this.checkDiagonalI() == true) {
+            return true;
+        }
+        return false;
+    }
+
+    checkVertical(){
+        let columna = 1;
+        let contador = 1;
+        let ultimaPosColumna = this.posiciones.length - 1 - (this.ancho - 1);
+        while (columna != this.ancho+1) {
+            for (let i = 0; i < ultimaPosColumna; i++) {
+                let siguienteFichaColumna = i+this.ancho;
+                let columnaI = this.posiciones[i].getColumna();
+                let ocupadaI = this.posiciones[i].getOcupada();
+                let jugadorI = this.posiciones[i].getJugador();
+                let jugadorIsiguiente = this.posiciones[siguienteFichaColumna].getJugador();
+                let ocupadaIsiguiente = this.posiciones[siguienteFichaColumna].getOcupada();
+                if (columnaI == columna) {
+                    if (ocupadaI == true) {
+                        if ((ocupadaIsiguiente == true) && (jugadorI == jugadorIsiguiente)) {
+                        contador++;
+                        console.log(contador);
+                            if (contador == 4) {
+                                return true;
+                            }
+                        }
+                    }
+                }         
+            }
+           // console.log(iterador);
+            //console.log(columna);
+            console.log(contador);
+            contador = 1;
+            columna++;
+        }
+        
+    }
+  
+    //FALTA CONTROLAR EXTREMOS ------------------------------
+    checkHorizontal(){
+        let fila = 1;
+        let contador = 1;
+        while (fila != this.alto+1) {
+            for (let i = 0; i < this.posiciones.length-2; i++) {
+                let filaI = this.posiciones[i].getFila();
+                let ocupadaI = this.posiciones[i].getOcupada();
+                let jugadorI = this.posiciones[i].getJugador();
+                let jugadorIsiguiente= this.posiciones[i+1].getJugador();
+                let ocupadaIsiguiente= this.posiciones[i+1].getFila();
+                if (filaI == fila) {
+                    if (ocupadaI == true){
+                        if (jugadorI == jugadorIsiguiente && ocupadaIsiguiente == fila) {
+                            contador++;
+                            console.log(contador);
+                            if (contador == 4) {
+                                return true;
+                            }
+                        }    
+                            
+                    }
+                }
+            }
+            contador = 1;
+            fila++;
+        }
+    }
+
+    checkDiagonalD(){
+        return false;
+    }
+
+    checkDiagonalI(){
+        return false;
+    }
 }
