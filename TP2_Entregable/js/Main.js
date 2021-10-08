@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let mouseDown = false;
     let separacionCirculos = radio*2; // 60
     let color = "gray";
-    let ancho = 6;
+    let ancho = 7;
     let alto = 6;
     let fichaArray = [];
     let posX = (canvasWidth/2) - ((ancho*separacionCirculos)/2.5);
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     inputTurno.value = "Turno del jugador: "+turno;
     let btnReset= document.querySelector("#reset");
     btnReset.addEventListener("click", resetearJuego);
-    let tiempo = 100;
+    let tiempo = 500;
     let parar=false;
     let ganador = false;
     let reloj = document.getElementById('segundos');
@@ -128,6 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 let jugador = fichaClickeadaActual.getJugador();
                 let columna = tablero.queColumna(x,y);
                 let posColu = tablero.recorroColumna(columna);
+                
+               
                /* if (posColu === false) {
                     volverPosicionFicha();
                 }  
@@ -139,10 +141,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     //console.log(posicionLibre.getX());
                     //console.log(posicionLibre.getY());
                     fichaClickeadaActual.setPosition(nuevaPosX,nuevaPosY);
+                    let fila = tablero.queFila(x,y,nuevaPosY);
                     ganador = tablero.hayGanador();
                     if (ganador == true) {
                         alert('gano el jugador'+jugador);
-                        setTimeout(resetearJuego, 2000);
+                        setTimeout(resetearJuego, 8000);
                     }
                     if (parar==false) {
                         actualizarReloj();
@@ -206,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         inputTurno.value = "Turno del jugador: "+turno;
-        tiempo = 100;
+        tiempo = 500;
         parar=false;
         clearTimeout(timeOut);
     }
