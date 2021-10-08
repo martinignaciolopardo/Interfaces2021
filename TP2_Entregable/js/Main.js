@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let ganador = false;
     let reloj = document.getElementById('segundos');
     reloj.innerHTML = 'COMIENZA EL JUGADOR'+ turno + '(ROJO)';
-    
 
     tablero.crearTablero();
     tablero.dibujar();
@@ -143,6 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ganador = tablero.hayGanador();
                     if (ganador == true) {
                         alert('gano el jugador'+jugador);
+                        setTimeout(resetearJuego, 2000);
                     }
                     if (parar==false) {
                         actualizarReloj();
