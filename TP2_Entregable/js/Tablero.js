@@ -88,19 +88,28 @@ class Tablero{
     }
     //226.5
     //286.5
-    estaEnPrimerFila(x,y){
+    queFila(x,y,yN){
         if (this.dentroDelArea(x,y)) {
             let encontro = false;
             let fila = 1;
-            if (y >= inicioFila && y <= (inicioFila+this.separacionCirculos)) {
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-        else{
-            return false;
+            let inicioFila;
+            let cadaFila = 0;
+            while (encontro === false && fila <= this.alto) {
+                if (fila == 1) {
+                    inicioFila = this.posiciones[fila].getIniY();  
+                }if (fila > 1) {
+                    cadaFila+=this.ancho;
+                    inicioFila = this.posiciones[cadaFila].getIniY();
+                }
+                if (yN >= inicioFila && yN <= (inicioFila+this.separacionCirculos)) {
+                    encontro = true;
+                }
+                else{
+                    fila++
+                }
+            }return fila;
+        }else {
+            return null;
         }
     }
 
@@ -139,12 +148,13 @@ class Tablero{
 
     hayGanador(){
         if (this.checkVertical() == true) {
+            console.log("gana por vertical");
             return true;
         } if (this.checkHorizontal() == true) {
+            console.log("gana por horizontal");
             return true;
         }else if (this.checkDiagonalD() == true) {
-            return true;
-        }else if (this.checkDiagonalI() == true) {
+            console.log("gana por diagonal");
             return true;
         }
         return false;
@@ -166,17 +176,20 @@ class Tablero{
                     if (ocupadaI == true) {
                         if ((ocupadaIsiguiente == true) && (jugadorI == jugadorIsiguiente)) {
                         contador++;
-                        console.log(contador);
+                        //console.log(contador);
                             if (contador == 4) {
                                 return true;
                             }
+                        }
+                        else{
+                            contador = 1;
                         }
                     }
                 }         
             }
            // console.log(iterador);
             //console.log(columna);
-            console.log(contador);
+            //console.log(contador);
             contador = 1;
             columna++;
         }
@@ -187,15 +200,15 @@ class Tablero{
         let fila = 1;
         let contador = 1;
         while (fila != this.alto+1) {
-            for (let i = 0; i < this.posiciones.length-2; i++) {
+            for (let i = 0; i < this.posiciones.length-1; i++) {
                 let filaI = this.posiciones[i].getFila();
                 let ocupadaI = this.posiciones[i].getOcupada();
                 let jugadorI = this.posiciones[i].getJugador();
                 let jugadorIsiguiente= this.posiciones[i+1].getJugador();
-                let ocupadaIsiguiente= this.posiciones[i+1].getOcupada();
+               // let ocupadaIsiguiente= this.posiciones[i+1].getOcupada();
                 if (filaI == fila) {
                     if (ocupadaI == true){
-                        if (jugadorI == jugadorIsiguiente &&  ocupadaI == ocupadaIsiguiente) {
+                        if (jugadorI == jugadorIsiguiente) {
                             contador++;
                             console.log(contador);
                             if (contador == 4) {
@@ -214,10 +227,26 @@ class Tablero{
     }
 
     checkDiagonalD(){
-        return false;
+        let i = 0;
+        while (i < this.posiciones.length-1) {
+            let columnaI = this.posiciones[i].getColumna();
+            let filaI = this.posiciones[i].getFila();
+            if (columnaI <= this.ancho-3 && filaI <= this.alto-3) {
+                let ocupadaI = this.posiciones[i].getOcupada();
+                if (ocupadaI == true) {
+                    let jugadorI = this.posiciones[i].getJugador();
+                    let ocupadaIsiguiente = this.posiciones[i+this.ancho+1].getOcupada();
+                    let jugadorIsiguiente = this.posiciones[i+this.ancho+1].getJugador();
+                    let jugadorIsiguiente2 = this.posiciones[i+this.ancho+this.ancho+2].getJugador();
+                    let jugadorIsiguiente3 = this.posiciones[i+this.ancho+this.ancho+this.ancho+3].getJugador();
+                    if (ocupadaIsiguiente == true && jugadorI == jugadorIsiguiente && jugadorI == jugadorIsiguiente2 && jugadorI == jugadorIsiguiente3) {
+                        return true;
+                    }
+                }
+            }
+            i++;
+        }
+
     }
 
-    checkDiagonalI(){
-        return false;
-    }
 }
