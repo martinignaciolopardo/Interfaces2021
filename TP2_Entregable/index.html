@@ -22,11 +22,11 @@
 
             <nav class="navegador">
                 <div class="btn-group" role="group">
-                    <a class="navbar-brand draw-border" href="#home">Inicio</a>
-                    <a class="navbar-brand draw-border" href="#configuracion">Configuración</a>
-                    <a class="navbar-brand draw-border" href="#jugar">Jugar</a>
-                    <a class="navbar-brand draw-border" href="#acercaDelJuego" id="acercaDelJuego">Acerca del 4 en
-                        Linea</a>
+                    <a class="navbar-brand draw-border" href="#home-js">Inicio</a>
+                    <a class="navbar-brand draw-border" href="#configuracion-js">Configuración</a>
+                    <a class="navbar-brand draw-border" href="#jugar-js">Jugar</a>
+                    <!-- <a class="navbar-brand draw-border" href="#acercaDelJuego" id="acercaDelJuego">Acerca del 4 en
+                        Linea</a> -->
                     <a class="navbar-brand draw-border" href="#contactos">Contactos</a>
                 </div>
             </nav>
@@ -34,13 +34,13 @@
     </header>
     <main>
         <div class="contenedorPrincipal">
-            <section class="home">
+            <section class="home" id="home-js">
                  <img src="images/fondoInicio.jpg" alt="">
             </section>
-            <section class="configuracion">
-                <h2>Configuración del tablero</h2>
+            <section class="configuracion" id="configuracion-js">
+                <h2 class="titulo-configuracion">Configuración del tablero</h2>
                 <div class="tipoTablero">
-                    <h4>Indica el tipo de tablero:</h4>
+                    <h3>Elige el tamaño del tablero:</h3>
                     <ul>
                         <li>4 en Linea</li>
                         <li>5 en Linea</li>
@@ -50,19 +50,23 @@
                 </div>
                 <div class="controlFicha">
 
+                    <h3>Selecciona un Jugador:</h3>
                     <div class="pickUser">
-                        <h3>PLease Select Player</h3>
-                        <label>Jugador1</label>
-                        <img src="./images/user.png" alt="jugador1">
-                        <label>Jugador2</label>
-                        <img src="./images/user.png" alt="jugador2">
+                        <div class="jugador1">
+                            <label>Jugador1</label>
+                            <img id="btn-abrir-popup1" src="./images/user.png" alt="jugador1">
+                        </div>
+                        <div class="jugador2">
+                            <label>Jugador2</label>
+                            <img id="btn-abrir-popup2" src="./images/user.png" alt="jugador2">
+                        </div>
                     </div>
 
 
                     <div class="overlay">
                         <div class="popup">
-                            <p id="titulo-jugador"></p>
                             <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup">X</a>
+                            <h1 id="titulo-jugador"></h1>
                             <form action="">
                                 <div class="contenedor-inputs">
                                 <input type="text" id="nombre-jugadores" placeholder="Nick">
@@ -75,7 +79,7 @@
                     </div>
                 </div>
             </section>
-            <section class="jugar">
+            <section class="jugar" id="jugar-js">
                 <div class="topSection">
 
                 </div>
@@ -89,7 +93,7 @@
                 </canvas>
 
             </section>
-            <section class="contactos">
+            <section class="contactos" id="contactos-js">
 
 
             </section>
