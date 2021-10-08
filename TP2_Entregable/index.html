@@ -17,56 +17,83 @@
 <body>
     <header class="header">
         <div class="contenedor-nav">
-     
-                <img src="./images/LogoPNG.png" alt="">
-        
+
+            <img src="./images/LogoPNG.png" alt="">
+
             <nav class="navegador">
                 <div class="btn-group" role="group">
                     <a class="navbar-brand draw-border" href="#home">Inicio</a>
                     <a class="navbar-brand draw-border" href="#configuracion">Configuración</a>
                     <a class="navbar-brand draw-border" href="#jugar">Jugar</a>
-                    <a class="navbar-brand draw-border" href="#acercaDelJuego" id="acercaDelJuego">Acerca del 4 en Linea</a>
+                    <a class="navbar-brand draw-border" href="#acercaDelJuego" id="acercaDelJuego">Acerca del 4 en
+                        Linea</a>
                     <a class="navbar-brand draw-border" href="#contactos">Contactos</a>
                 </div>
             </nav>
         </div>
     </header>
     <main>
-        <section class="configuracion">
-            <div class="controlFicha">
-                <div class="nombreJugador">
-                    <label> Nombre Jugador 1:</label>
-                    <input type="text" id="jugador1"> 
-                    <label> Nombre Jugador 2:</label>       
-                    <input type="text" id="jugador2">
+        <div class="contenedorPrincipal">
+            <section class="home">
+                 <img src="images/fondoInicio.jpg" alt="">
+            </section>
+            <section class="configuracion">
+                <h2>Configuración del tablero</h2>
+                <div class="tipoTablero">
+                    <h4>Indica el tipo de tablero:</h4>
+                    <ul>
+                        <li>4 en Linea</li>
+                        <li>5 en Linea</li>
+                        <li>6 en linea</li>
+                        <li>7 en Linea</li>
+                    </ul>
                 </div>
-                <div class="colorFicha">
-                    <label> Color de Ficha:</label>
-                        <input type="color" name="colors" id="inputColors">
-                        <select name="cambiar el color" id="selectColor">
-                    </select>
+                <div class="controlFicha">
+
+                    <div class="pickUser">
+                        <h3>PLease Select Player</h3>
+                        <label>Jugador1</label>
+                        <img src="./images/user.png" alt="jugador1">
+                        <label>Jugador2</label>
+                        <img src="./images/user.png" alt="jugador2">
+                    </div>
+
+
+                    <div class="overlay">
+                        <div class="popup">
+                            <p id="titulo-jugador"></p>
+                            <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup">X</a>
+                            <form action="">
+                                <div class="contenedor-inputs">
+                                <input type="text" id="nombre-jugadores" placeholder="Nick">
+                                    <label> Color de Ficha:</label>
+                                    <input type="color" name="colores" id="inputColores">
+                                </div>
+                                <input type="submit" class="btn-submit" value="Aceptar">
+                            </form>
+                        </div>
+                    </div>
                 </div>
-        </section>
-        <section class="jugar">
-            <div class="topSection">
-                
-            </div>
-            <div id="segundos">
-    
-            </div>
-            <input type="text" id="turno">
-            <button id="reset">Reset</button>
-            </div>
+            </section>
+            <section class="jugar">
+                <div class="topSection">
+
+                </div>
+                <div id="segundos">
+
+                </div>
+                <input type="text" id="turno">
+                <button id="reset">Reset</button>
+
                 <canvas id="canvas">
-            </canvas>
+                </canvas>
 
-        </section>
-        <section class="contactos">
-
-
-        </section>
+            </section>
+            <section class="contactos">
 
 
+            </section>
+        </div>
     </main>
     <footer>
         <section class="sectionFooter">
