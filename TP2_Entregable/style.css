@@ -1,6 +1,5 @@
 body {
   margin: 0px;
- 
 }
 
 canvas {
@@ -21,7 +20,7 @@ canvas {
   align-items: center;
 }
 .contenedor-nav img {
-  width: 8%;
+  width: 5%;
   padding: 0 2rem;
 }
 .navegador {
@@ -101,27 +100,37 @@ canvas {
   transition-delay: 0s, 0.25s, 0s;
 }
 
-
 /******************** MAIN ***********************/
-
 
 /* .contenedorPrincipal{
   padding-top: 12rem;
 } */
-.contenedorPrincipal .home img{
+.contenedorPrincipal .home img {
   width: 100%;
   height: auto;
   max-width: 100%;
 }
 
-.configuracion{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin: 3rem;
+.configuracion {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 80px 160px;
 }
-.configuracion h2{
-  font-size:4rem;
+.titulo-configuracion {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  text-align: center;
+  text-shadow: 1px 1px grey;
+  font-size: 2rem;
+}
+.configuracion div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.configuracion .tipoTablero h3{
+  margin: 0;
 }
 
 #turno {
@@ -157,86 +166,94 @@ div {
   padding: 0px;
 }
 /******************** popUp ***********************/
-.pickUser img{
-  cursor: pointer;
+.pickUser{
+  flex-direction: row !important;
 }
-.overlay{
-  background-color: rgba(0,0,0,.8);
+.pickUser img {
+  cursor: pointer;
+  width: 42%;
+}
+.overlay {
+  background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   visibility: hidden;
 }
-.popup{
-  background-color:#fff;
-  box-shadow: 0px 0px 5px 0px rgba(0,0,0,.5);
+.popup {
+  background-color: #fff;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
   padding: 2rem;
   text-align: center;
   width: 20%;
-  transition: .3s ease all;
-	transform: scale(0.7);
-	opacity: 0;
+  transition: 0.3s ease all;
+  transform: scale(0.7);
 }
-.popup .btn-cerrar-popup{
-  font-size: 17px;
+.popup .btn-cerrar-popup {
+  font-size: 20px;
   text-decoration: none;
   line-height: 14px;
-  display: block;
-  text-align:end;
+  display: flex;
+  justify-content: end;
+  text-align: end;
   color: rgb(85, 85, 85);
 }
-.popup .btn-cerrar-popup:hover{
-color: #000;
+.popup .btn-cerrar-popup:hover {
+  color: #000;
 }
-#tituloJugador{
+#tituloJugador {
   font-size: 36px;
   font-weight: 300;
   margin-bottom: 1rem;
-  opacity: 0;
 }
-.popup form .contenedor-inputs {
+/* .popup form .contenedor-inputs {
 	opacity: 0;
-}
+} */
 .popup form .contenedor-inputs input {
-	width: 100%;
-	margin-bottom: 20px;
-	height: 52px;
-	font-size: 18px;
-	line-height: 52px;
-	text-align: center;
-	border: 1px solid #BBBBBB;
+  width: 100%;
+  margin-bottom: 20px;
+  height: 52px;
+  font-size: 18px;
+  line-height: 52px;
+  text-align: center;
+  border: 1px solid #bbbbbb;
+  transition: 0.3s ease all;
+  transform: scale(0.7);
 }
 
 .popup form .btn-submit {
-	padding: 0 20px;
-	height: 40px;
-	line-height: 40px;
-	border: none;
-	color: #fff;
-	background: #5E7DE3;
-	border-radius: 3px;
-	font-size: 16px;
-	cursor: pointer;
-	transition: .3s ease all;
+  padding: 0 20px;
+  height: 40px;
+  line-height: 40px;
+  border: none;
+  color: #fff;
+  background: #5e7de3;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease all;
 }
 
 .popup form .btn-submit:hover {
-	background: rgba(94,125,227, .9);
+  background: rgba(94, 125, 227, 0.9);
+}
+.overlay.active {
+  visibility: visible;
 }
 /******************** FOOTER ***********************/
 
 .sectionFooter {
-    bottom: 0;
-    background-color: #000;
-    padding: 2rem;
-    color: #fff;
-    text-align: center;
-    font-size: 0.7rem;
+  bottom: 0;
+  background-color: #000;
+  padding: 2rem;
+  color: #fff;
+  text-align: center;
+  font-size: 0.7rem;
 }
 
 /******************** responsive ***********************/
