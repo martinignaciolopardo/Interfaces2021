@@ -12,7 +12,7 @@ canvas {
 
 .header {
   background-color: #000;
-  position: fixed;
+  /* position: fixed; */
   width: 100%;
 }
 .contenedor-nav {
@@ -50,14 +50,14 @@ canvas {
   border: none;
   cursor: pointer;
   line-height: 1.5;
-  font: 600 1.2rem "Roboto Slab", sans-serif;
+  font: 700 1rem "Roboto Slab", sans-serif;
   letter-spacing: 0.05rem;
   padding-bottom: 1px;
   box-shadow: none;
   -webkit-transition: color 0.25s 0.0833333333s;
   transition: color 0.25s 0.0833333333s;
   position: relative;
-  padding: 1em 0.5em;
+  padding: 1em 0.7rem;
 }
 
 .draw-border::before,
@@ -105,17 +105,15 @@ canvas {
 /******************** MAIN ***********************/
 
 
-.contenedorPrincipal{
-  padding-top: 5rem;
+/* .contenedorPrincipal{
+  padding-top: 12rem;
+} */
+.contenedorPrincipal .home img{
+  width: 100%;
+  height: auto;
+  max-width: 100%;
 }
-.home{
-  background-color: #000;
-  background:url("images/fondoInicio.jpg");
-  background-position:center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 600px;
-}
+
 .configuracion{
   display: flex;
   align-items: center;
@@ -230,20 +228,6 @@ color: #000;
 .popup form .btn-submit:hover {
 	background: rgba(94,125,227, .9);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /******************** FOOTER ***********************/
 
 .sectionFooter {
@@ -255,3 +239,10 @@ color: #000;
     font-size: 0.7rem;
 }
 
+/******************** responsive ***********************/
+
+/* @media only screen and (max-width: 1560px){
+  .contenedorPrincipal{
+    padding-top: 7rem;
+  }
+} */
