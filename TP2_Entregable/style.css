@@ -123,14 +123,15 @@ canvas {
   text-shadow: 1px 1px grey;
   font-size: 2rem;
 }
-.configuracion .tipoTablero,.configuracion .controlFicha {
+.configuracion .tipoTablero,
+.configuracion .controlFicha {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
-.configuracion .tipoTablero h3{
+.configuracion .tipoTablero h3 {
   margin: 0;
 }
 
@@ -167,7 +168,7 @@ div {
   padding: 0px;
 }
 /******************** popUp ***********************/
-.pickUser{
+.pickUser {
   flex-direction: row !important;
 }
 .pickUser img {
@@ -197,15 +198,17 @@ div {
   display: grid;
   border-radius: 12px;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 10% 10% 40% ;
-  grid-template-areas: "cerrar cerrar"
-                       "titulo titulo"
-                      "Jugadores Jugadores";
+  grid-template-rows: 10% 10% 40%;
+  grid-template-areas:
+    "cerrar cerrar"
+    "titulo titulo"
+    "Jugadores Jugadores";
+  opacity: 0;
 }
 
-.contenedor-inputs{
+.contenedor-inputs {
   grid-area: jugadores;
-  display:flex;
+  display: flex;
   padding-top: 3rem;
 }
 
@@ -257,10 +260,23 @@ div {
 }
 
 .popup form .btn-submit:hover {
-  background: rgba(94, 125, 227, 0.9);
+  background: rgba(9, 40, 141, 0.9);
 }
 .overlay.active {
   visibility: visible;
+}
+.popup.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.popup.active .contenedor-inputs {
+  animation: entradaInputs 1s linear 0.1s forwards;
+}
+
+@keyframes entradaInputs {
+	from { opacity: 0; }
+	to { opacity: 1; }
 }
 /******************** FOOTER ***********************/
 

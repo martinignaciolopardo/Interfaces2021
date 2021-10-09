@@ -24,13 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let jugador1 = document.querySelector('#nombre-jugador1');
     let jugador2 = document.querySelector('#nombre-jugador2');
     let jugadores = [];
+    let turno = jugadores[0];
     let inputTurno = document.querySelector("#turno");
     let tiempo = 500;
     let parar = false;
     let ganador = false;
     let timeOut;
     let reloj = document.getElementById('segundos');
-  
+
 
 
     tablero.crearTablero();
@@ -96,12 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        jugadores.push(jugador1.value,jugador2.value);
-        inputTurno.value = "Turno del jugador: " + jugadores[0];
-    });
-
     function cambiarJugador(turno) {
         if (turno == jugadores[0]) {
             return jugadores[1];
@@ -128,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
     }
-    let turno = jugadores[0];
+
     reloj.innerHTML = 'COMIENZA EL JUGADOR ' + turno + ' (ROJO)';
     console.log(turno);
     function onMouseUp(e) {
@@ -262,7 +257,15 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         overlay.classList.remove('active');
         popup.classList.remove('active');
+        jugadores.slice(0,2);
+    });
 
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        //let formData = new FormData(form);
+        let newJugadores = jugadores.push(jugador1.value, jugador2.value);
+        inputTurno.value = "Turno del jugador: " + jugadores[0];
+        return newJugadores;
     });
 
 });
