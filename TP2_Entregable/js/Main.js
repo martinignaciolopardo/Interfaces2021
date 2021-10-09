@@ -20,11 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fichaClickeadaActual = null;
     let btnReset = document.querySelector("#reset");
     btnReset.addEventListener("click", resetearJuego);
-    let form = document.querySelector('#form');
-    let jugador1 = document.querySelector('#nombre-jugador1');
-    let jugador2 = document.querySelector('#nombre-jugador2');
-    let jugadores = [];
-    let turno = jugadores[0];
+    let turno = 1;
     let inputTurno = document.querySelector("#turno");
     let tiempo = 500;
     let parar = false;
@@ -98,10 +94,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function cambiarJugador(turno) {
-        if (turno == jugadores[0]) {
-            return jugadores[1];
+        if (turno == 1) {
+            return 2;
         } else {
-            return jugadores[0];
+            return 1;
         }
     }
 
@@ -209,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
             fichaArray[i].setPosition(x, y);
             fichaArray[i].draw();
         }
-        turno = jugadores[0];
+        turno = 1   ;
         reloj.innerHTML = 'COMIENZA EL JUGADOR 1 (ROJO)';
         if (tiempo < 1) {
             reloj.innerHTML = 'SE TERMINO EL TIEMPO';
@@ -260,15 +256,34 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         overlay.classList.remove('active');
         popup.classList.remove('active');
-        jugadores.slice(0,2);
     });
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        //let formData = new FormData(form);
-        let newJugadores = jugadores.push(jugador1.value, jugador2.value);
-        inputTurno.value = "Turno del jugador: " + jugadores[0];
-        return newJugadores;
-    });
+    function capturar(){
+        function Persona(nombre, color){
+            this.nombre = nombre;
+            this.color = color;
+        }
+        let jugador1 = document.querySelector('#nombre-jugador1').value;
+        let jugador2 = document.querySelector('#nombre-jugador2');
+        let colorJ1 = document.querySelector('#inputColores1').value;
+        let colorJ2 = document.querySelector('#inputColores2').value;
+
+        let nuevoSujeto = new Persona(jugador1, colorJ1);
+        let nuevoSujeto2 = new Persona(jugador2, colorJ2);
+        agregarJugador(nuevoSujeto);
+    }
+    let jugadores = [];
+    
+    function agregarJugador(nuevoSujeto,nuevoSujeto2){
+        Jugadores.push(nuevoSujeto,nuevoSujeto2);
+    }
+
+    // form.addEventListener('submit', (e) => {
+    //     e.preventDefault();
+    //     //let formData = new FormData(form);
+    //     let newJugadores = jugadores.push(jugador1.value, jugador2.value);
+    //     inputTurno.value = "Turno del jugador: " + jugadores[0];
+    //     return newJugadores;
+    // });
 
 });

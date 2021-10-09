@@ -67,15 +67,15 @@
                                     <div class="jugador1" id="jugador1-js">
                                         <input type="text" id="nombre-jugador1" placeholder="Jugador 1" required>
                                         <label> Color de Ficha:</label>
-                                        <input type="color" name="colores" id="inputColores">
+                                        <input type="color" name="colores" id="inputColores1">
                                     </div>
                                     <div class="jugador2" id="jugador2-js">
                                         <input type="text" id="nombre-jugador2" placeholder="Jugador 2" required>
                                         <label> Color de Ficha:</label>
-                                        <input type="color" name="colores" id="inputColores">
+                                        <input type="color" name="colores" id="inputColores2">
                                     </div>
                                 </div>
-                                <input type="submit" class="btn-submit" value="Aceptar">
+                                <button type="reset" class="btn-submit" onclick="capturar();">Aceptar</button>
                             </form>
                         </div>
                     </div>
@@ -93,10 +93,8 @@
                 </div>
                 <input type="text" id="turno">
                 <button id="reset">Reset</button>
-
                 <canvas id="canvas">
                 </canvas>
-
             </section>
             <section class="contactos" id="contactos-js">
 
