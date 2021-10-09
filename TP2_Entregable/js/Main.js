@@ -231,6 +231,9 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.addEventListener('mousedown', onMouseDown, false);
     canvas.addEventListener('mouseup', onMouseUp, false);
     canvas.addEventListener('mousemove', onMouseMove, false);
+    canvas.addEventListener('touchstart', onMouseDown, false);
+    canvas.addEventListener('touchend', onMouseUp, false);
+    canvas.addEventListener('touchmove', onMouseMove, false);
 
 
 
