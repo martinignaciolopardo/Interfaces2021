@@ -38,16 +38,8 @@
                  <img src="images/fondoInicio.jpg" alt="">
             </section>
             <section class="configuracion" id="configuracion-js">
-                <h2 class="titulo-configuracion">Configuración del tablero</h2>
-                <div class="tipoTablero">
-                    <h3>Elige el tamaño del tablero:</h3>
-                    <ul>
-                        <li>4 en Linea</li>
-                        <li>5 en Linea</li>
-                        <li>6 en linea</li>
-                        <li>7 en Linea</li>
-                    </ul>
-                </div>
+                <h2 class="titulo-configuracion">Configuración del juego</h2>
+               
                 <div class="controlFicha">
 
                     <h3>Jugadores:</h3>
@@ -56,8 +48,6 @@
                             <img id="btn-abrir-popup1" src="./images/user.png" alt="jugador1">
                         </div>
                     </div>
-
-
                     <div class="overlay">
                         <div class="popup">
                             <h1 id="titulo-jugador"></h1>
@@ -67,21 +57,27 @@
                                     <div class="jugador1" id="jugador1-js">
                                         <input type="text" id="nombre-jugador1" placeholder="Jugador 1" required>
                                         <label> Color de Ficha:</label>
-                                        <input type="color" name="colores" id="inputColores1">
+                                        <input type="color" name="colores" id="inputColores1" required><br />
+                                        <p>Tamaño del tablero:</p>
+                                        <input type="radio" name="tamanio" value="6" id="tablero1">
+                                        <label for="tablero1">6 x 7</label>
+                                        <input type="radio" name="tamanio" value="7" id="tablero2">
+                                        <label for="tablero2">7 x 8</label>
+                                        <input type="radio" name="tamanio" value="8" id="tablero3">
+                                        <label for="tablero3"> 8 x 9</label>
                                     </div>
                                     <div class="jugador2" id="jugador2-js">
                                         <input type="text" id="nombre-jugador2" placeholder="Jugador 2" required>
                                         <label> Color de Ficha:</label>
-                                        <input type="color" name="colores" id="inputColores2">
+                                        <input type="color" name="colores" id="inputColores2" required>
                                     </div>
                                 </div>
-                                <button type="reset" class="btn-submit" onclick="capturar();">Aceptar</button>
+                                <button class="btn-submit" id="submit">Aceptar</button>
                             </form>
                         </div>
                     </div>
                 </div>
                 <div class="colorTablero">
-
                 </div>
             </section>
             <section class="jugar" id="jugar-js">
@@ -91,6 +87,7 @@
                 <div id="segundos">
 
                 </div>
+                <div><button id="jugar">Jugar</button></div>
                 <input type="text" id="turno">
                 <button id="reset">Reset</button>
                 <canvas id="canvas">
