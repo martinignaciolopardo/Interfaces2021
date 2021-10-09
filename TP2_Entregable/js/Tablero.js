@@ -126,8 +126,8 @@ class Tablero{
         }return posicionesCol;
     }
 
-    //obtiene la columna donde debe insertarse la ficha, setea la posicion en ocupada y el jugador que metio la ficha.
     columnaLibre(colum, jugador){
+        //console.log(colum);
         let i = this.alto - 1;
         //console.log(colum[i].getOcupada());
         while (i >= 0) {
@@ -135,8 +135,20 @@ class Tablero{
                 colum[i].setOcupada(true);
                 colum[i].setJugador(jugador);
                 return colum[i];
-            } 
+            }
             i--;
+        }
+    }
+
+    setDesocupada(){
+        for (let i = 0; i < this.posiciones.length-1; i++) {
+           this.posiciones[i].setOcupada(false);
+        }
+    }
+
+    columnaLlena(columna){
+        if (this.posiciones[columna-1].getOcupada() == true) {
+            return true;
         }
     }
 
@@ -154,7 +166,10 @@ class Tablero{
             console.log("gana por horizontal");
             return true;
         }else if (this.checkDiagonalD() == true) {
-            console.log("gana por diagonal");
+            console.log("gana por diagonal DERECHA");
+            return true;
+        }else if (this.checkDiagonalI() == true) {
+            console.log("gana por diagonal IZQUIERDA");
             return true;
         }
         return false;
@@ -205,7 +220,6 @@ class Tablero{
                 let ocupadaI = this.posiciones[i].getOcupada();
                 let jugadorI = this.posiciones[i].getJugador();
                 let jugadorIsiguiente= this.posiciones[i+1].getJugador();
-               // let ocupadaIsiguiente= this.posiciones[i+1].getOcupada();
                 if (filaI == fila) {
                     if (ocupadaI == true){
                         if (jugadorI == jugadorIsiguiente) {
@@ -239,6 +253,29 @@ class Tablero{
                     let jugadorIsiguiente = this.posiciones[i+this.ancho+1].getJugador();
                     let jugadorIsiguiente2 = this.posiciones[i+this.ancho+this.ancho+2].getJugador();
                     let jugadorIsiguiente3 = this.posiciones[i+this.ancho+this.ancho+this.ancho+3].getJugador();
+                    if (ocupadaIsiguiente == true && jugadorI == jugadorIsiguiente && jugadorI == jugadorIsiguiente2 && jugadorI == jugadorIsiguiente3) {
+                        return true;
+                    }
+                }
+            }
+            i++;
+        }
+
+    }
+
+    checkDiagonalI(){
+        let i = 0;
+        while (i < this.posiciones.length-1) {
+            let columnaI = this.posiciones[i].getColumna();
+            let filaI = this.posiciones[i].getFila();
+            if (columnaI > 3 && filaI <= this.alto-3) {
+                let ocupadaI = this.posiciones[i].getOcupada();
+                if (ocupadaI == true) {
+                    let jugadorI = this.posiciones[i].getJugador();
+                    let ocupadaIsiguiente = this.posiciones[i+this.ancho-1].getOcupada();
+                    let jugadorIsiguiente = this.posiciones[i+this.ancho-1].getJugador();
+                    let jugadorIsiguiente2 = this.posiciones[i+this.ancho+this.ancho-2].getJugador();
+                    let jugadorIsiguiente3 = this.posiciones[i+this.ancho+this.ancho+this.ancho-3].getJugador();
                     if (ocupadaIsiguiente == true && jugadorI == jugadorIsiguiente && jugadorI == jugadorIsiguiente2 && jugadorI == jugadorIsiguiente3) {
                         return true;
                     }
