@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let jugador1;  
     let jugador2;
     let tablero;
+    let dibujado = false;
 
     const element = document.querySelector('#form');
     element.addEventListener('submit', event => {
@@ -178,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 else{
                 let posicionLibre = tablero.columnaLibre(posColu, jugador);
                 
-                console.log(posicionLibre);
+                //console.log(posicionLibre);
                 let nuevaPosX = posicionLibre.getX();
                 let nuevaPosY = posicionLibre.getY();
                 //console.log(posicionLibre.getX());
@@ -209,8 +210,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector("#jugar").addEventListener("click", jugar);
 
     function jugar(){
-        tablero.crearTablero();
-        tablero.dibujar();
+        if (dibujado==false) {
+            tablero.crearTablero();
+            tablero.dibujar();
+        }
+        dibujado = true;
     }
 
     function volverPosicionFicha() {
@@ -253,8 +257,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function resetearJuego() {
         limpiarCanvas();
         tablero.resetearPosiciones();
-        tablero.dibujar();
         tablero.setDesocupada();
+        tablero.dibujar();
         for (let i = 0; i < fichaArray.length; i++) {
             let x = fichaArray[i].getIniX();
             let y = fichaArray[i].getIniY();
