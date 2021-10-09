@@ -143,6 +143,7 @@ class Tablero{
     setDesocupada(){
         for (let i = 0; i < this.posiciones.length-1; i++) {
            this.posiciones[i].setOcupada(false);
+           console.log(this.posiciones[i].getOcupada());
         }
     }
 
@@ -213,7 +214,7 @@ class Tablero{
   
     checkHorizontal(){
         let fila = 1;
-        let contador = 1;
+        let contador = 0;
         while (fila != this.alto+1) {
             for (let i = 0; i < this.posiciones.length-1; i++) {
                 let filaI = this.posiciones[i].getFila();
@@ -224,8 +225,9 @@ class Tablero{
                     if (ocupadaI == true){
                         if (jugadorI == jugadorIsiguiente) {
                             contador++;
-                            console.log(contador);
+                            //console.log(contador);
                             if (contador == 4) {
+                                contador=0;
                                 return true;
                             }
                         }    
