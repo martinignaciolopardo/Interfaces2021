@@ -69,8 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
         limpiarCanvas();
         let cantidadFichas = 50;
         // maximo 40 fichas
-        if (cantidadFichas > 40) {
-            cantidadFichas = 40;
+        if (cantidadFichas > 44) {
+            cantidadFichas = 44;
         }
         let jugador = 1;
         let y = 50;
