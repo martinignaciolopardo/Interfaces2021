@@ -50,33 +50,38 @@
                 </div>
                 <div class="controlFicha">
 
-                    <h3>Selecciona un Jugador:</h3>
+                    <h3>Jugadores:</h3>
                     <div class="pickUser">
-                        <div class="jugador1">
-                            <label>Jugador1</label>
+                        <div class="Jugadores">
                             <img id="btn-abrir-popup1" src="./images/user.png" alt="jugador1">
-                        </div>
-                        <div class="jugador2">
-                            <label>Jugador2</label>
-                            <img id="btn-abrir-popup2" src="./images/user.png" alt="jugador2">
                         </div>
                     </div>
 
 
                     <div class="overlay">
                         <div class="popup">
-                            <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup">X</a>
                             <h1 id="titulo-jugador"></h1>
+                            <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup">X</a>
                             <form action="">
                                 <div class="contenedor-inputs">
-                                <input type="text" id="nombre-jugadores" placeholder="Nick">
-                                    <label> Color de Ficha:</label>
-                                    <input type="color" name="colores" id="inputColores">
+                                    <div class="jugador1" id="jugador1-js">
+                                        <input type="text" id="nombre-jugadores" placeholder="Jugador 1">
+                                        <label> Color de Ficha:</label>
+                                        <input type="color" name="colores" id="inputColores">
+                                    </div>
+                                    <div class="jugador2" id="jugador2-js">
+                                        <input type="text" id="nombre-jugadores" placeholder="Jugador 2">
+                                        <label> Color de Ficha:</label>
+                                        <input type="color" name="colores" id="inputColores">
+                                    </div>
                                 </div>
                                 <input type="submit" class="btn-submit" value="Aceptar">
                             </form>
                         </div>
                     </div>
+                </div>
+                <div class="colorTablero">
+
                 </div>
             </section>
             <section class="jugar" id="jugar-js">

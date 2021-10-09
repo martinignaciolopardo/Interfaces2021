@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let tiempo = 500;
     let parar=false;
     let ganador = false;
+    let timeOut;
     let reloj = document.getElementById('segundos');
     reloj.innerHTML = 'COMIENZA EL JUGADOR' + turno + '(ROJO)';
 
@@ -236,24 +237,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* MOSTRAR POPUP*/
-    let btnAbrirPopupJugador1 = document.querySelector('#btn-abrir-popup1'),
-        btnAbrirPopupJugador2 = document.querySelector('#btn-abrir-popup2'),
+    let btnAbrirPopupJugadores = document.querySelector('#btn-abrir-popup1'),
         overlay = document.querySelector('.overlay'),
         popup = document.querySelector('.popup'),
         btnCerrarPopup = document.querySelector('#btn-cerrar-popup');
 
-    btnAbrirPopupJugador1.addEventListener('click', function () {
+    btnAbrirPopupJugadores.addEventListener('click', function () {
         let h1 = document.querySelector('#titulo-jugador');
-        h1.innerHTML = 'Jugador 1';
+        h1.innerHTML = 'Configuración de Jugadores';
         overlay.classList.add('active');
         popup.classList.add('active');
-    });
-
-    btnAbrirPopupJugador2.addEventListener('click', function () {
-        overlay.classList.add('active');
-        popup.classList.add('active');
-        let h1 = document.querySelector('#titulo-jugador');
-        h1.innerHTML = 'Jugador 2';
     });
 
     btnCerrarPopup.addEventListener('click', function (e) {
