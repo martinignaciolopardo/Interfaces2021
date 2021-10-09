@@ -1,6 +1,6 @@
 class fichaImagen{
 
-    constructor(x, y, image, tamanio, ctx, radio, color, jugador, xIni, yIni){
+    constructor(x, y, image, tamanio, ctx, radio, color, jugador, xIni, yIni, posicionada){
         this.x = x;
         this.y = y;
         this.image = image;
@@ -11,6 +11,7 @@ class fichaImagen{
         this.jugador = jugador;
         this.xIni = xIni;
         this.yIni = yIni;
+        this.posicionada = posicionada;
     }
 
     draw(){
@@ -63,5 +64,13 @@ class fichaImagen{
             x: this.getX(),
             y: this.getY()
         };
+    }
+
+    getPosicionada(){
+        return this.posicionada;
+    }
+
+    setPosicionada(posicionada){
+        this.posicionada = posicionada;
     }
 }
