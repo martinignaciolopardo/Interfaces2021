@@ -17,18 +17,20 @@ document.addEventListener('DOMContentLoaded', () => {
     let posX = (canvasWidth / 2) - ((ancho * separacionCirculos) / 2.5);
     let posY = (canvasHeight / 2) - ((alto * separacionCirculos) / 2);
     let tablero = new Tablero(alto, ancho, ctx, color, posX, posY, radio, separacionCirculos);
-    let turno = 1;
     fichaClickeadaActual = null;
-    let inputTurno = document.querySelector("#turno");
-    inputTurno.value = "Turno del jugador: " + turno;
     let btnReset = document.querySelector("#reset");
     btnReset.addEventListener("click", resetearJuego);
+    let form = document.querySelector('#form');
+    let jugador1 = document.querySelector('#nombre-jugador1');
+    let jugador2 = document.querySelector('#nombre-jugador2');
+    let jugadores = [];
+    let inputTurno = document.querySelector("#turno");
     let tiempo = 500;
-    let parar=false;
+    let parar = false;
     let ganador = false;
     let timeOut;
     let reloj = document.getElementById('segundos');
-    reloj.innerHTML = 'COMIENZA EL JUGADOR' + turno + '(ROJO)';
+  
 
 
     tablero.crearTablero();
@@ -94,11 +96,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        jugadores.push(jugador1.value,jugador2.value);
+        inputTurno.value = "Turno del jugador: " + jugadores[0];
+    });
+
     function cambiarJugador(turno) {
-        if (turno == 1) {
-            return 2;
+        if (turno == jugadores[0]) {
+            return jugadores[1];
         } else {
-            return 1;
+            return jugadores[0];
         }
     }
 
@@ -120,7 +128,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
     }
-
+    let turno = jugadores[0];
+    reloj.innerHTML = 'COMIENZA EL JUGADOR ' + turno + ' (ROJO)';
+    console.log(turno);
     function onMouseUp(e) {
         mouseDown = false;
         let x = e.layerX;
@@ -130,32 +140,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 let jugador = fichaClickeadaActual.getJugador();
                 let columna = tablero.queColumna(x, y);
                 let posColu = tablero.recorroColumna(columna);
-                
-               
-               /* if (posColu === false) {
-                    volverPosicionFicha();
-                }  
-                else{*/
-                    let posicionLibre = tablero.columnaLibre(posColu, jugador);
-                    //console.log(posicionLibre);
-                    let nuevaPosX = posicionLibre.getX();
-                    let nuevaPosY = posicionLibre.getY();
-                    //console.log(posicionLibre.getX());
-                    //console.log(posicionLibre.getY());
-                    fichaClickeadaActual.setPosition(nuevaPosX,nuevaPosY);
-                    let fila = tablero.queFila(x,y,nuevaPosY);
-                    ganador = tablero.hayGanador();
-                    if (ganador == true) {
-                        alert('gano el jugador'+jugador);
-                        setTimeout(resetearJuego, 8000);
-                    }
-                    if (parar==false) {
-                        actualizarReloj();
-                        parar=true;
-                    }
-                    turno = cambiarJugador(turno);
-                    inputTurno.value = "Turno del jugador: "+turno;
-                    dibujar();
+
+
+                /* if (posColu === false) {
+                     volverPosicionFicha();
+                 }  
+                 else{*/
+                let posicionLibre = tablero.columnaLibre(posColu, jugador);
+                //console.log(posicionLibre);
+                let nuevaPosX = posicionLibre.getX();
+                let nuevaPosY = posicionLibre.getY();
+                //console.log(posicionLibre.getX());
+                //console.log(posicionLibre.getY());
+                fichaClickeadaActual.setPosition(nuevaPosX, nuevaPosY);
+                let fila = tablero.queFila(x, y, nuevaPosY);
+                ganador = tablero.hayGanador();
+                if (ganador == true) {
+                    alert('gano el jugador' + jugador);
+                    setTimeout(resetearJuego, 8000);
+                }
+                if (parar == false) {
+                    actualizarReloj();
+                    parar = true;
+                }
+                turno = cambiarJugador(turno);
+                inputTurno.value = "Turno del jugador: " + turno;
+                dibujar();
                 //}
             }
             else {
@@ -204,15 +214,15 @@ document.addEventListener('DOMContentLoaded', () => {
             fichaArray[i].setPosition(x, y);
             fichaArray[i].draw();
         }
-        turno = 1;
+        turno = jugadores[0];
         reloj.innerHTML = 'COMIENZA EL JUGADOR 1 (ROJO)';
         if (tiempo < 1) {
             reloj.innerHTML = 'SE TERMINO EL TIEMPO';
         }
-        
-        inputTurno.value = "Turno del jugador: "+turno;
+
+        inputTurno.value = "Turno del jugador: " + turno;
         tiempo = 500;
-        parar=false;
+        parar = false;
         clearTimeout(timeOut);
     }
 
@@ -234,9 +244,8 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.addEventListener('mousemove', onMouseMove, false);
 
 
-
-
     /* MOSTRAR POPUP*/
+
     let btnAbrirPopupJugadores = document.querySelector('#btn-abrir-popup1'),
         overlay = document.querySelector('.overlay'),
         popup = document.querySelector('.popup'),
@@ -255,4 +264,5 @@ document.addEventListener('DOMContentLoaded', () => {
         popup.classList.remove('active');
 
     });
+
 });
