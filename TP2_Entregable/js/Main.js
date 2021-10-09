@@ -6,17 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.width = canvasWidth;
     let ctx = canvas.getContext('2d');
     let fichaClick;
-    let radio = 30;
+    let radio = 25;
     let tamanio = radio * 2;
     let mouseDown = false;
     let separacionCirculos = radio * 2; // 60
     let color = "gray";
+    //tamaño por defectp
     let ancho = 7;
     let alto = 6;
     let fichaArray = [];
-    let posX = (canvasWidth / 2) - ((ancho * separacionCirculos) / 2.5);
-    let posY = (canvasHeight / 2) - ((alto * separacionCirculos) / 2);
-    let tablero = new Tablero(alto, ancho, ctx, color, posX, posY, radio, separacionCirculos);
+    //let posX = (canvasWidth / 2) - ((ancho * separacionCirculos) / 2.5);
+    //let posY = (canvasHeight / 2) - ((alto * separacionCirculos) / 2);
+    
     fichaClickeadaActual = null;
     let btnReset = document.querySelector("#reset");
     btnReset.addEventListener("click", resetearJuego);
@@ -27,16 +28,45 @@ document.addEventListener('DOMContentLoaded', () => {
     let ganador = false;
     let timeOut;
     let reloj = document.getElementById('segundos');
+    let jugador1;  
+    let jugador2;
+    let tablero;
 
-
-
-    tablero.crearTablero();
-    tablero.dibujar();
+    const element = document.querySelector('#form');
+    element.addEventListener('submit', event => {
+    event.preventDefault();
+    console.log('Form submission cancelled.');
+    });
 
     imagen = new Image();
     imagen.src = "images/ficha.png";
 
-    imagen.onload = function () {
+    document.querySelector("#submit").addEventListener("click", function () {
+        jugador1 = document.querySelector('#nombre-jugador1').value;
+        jugador2 = document.querySelector('#nombre-jugador2').value;
+        let colorJ1 = document.querySelector('#inputColores1').value;
+        let tablero6x7 = document.querySelector("#tablero1");
+        let tablero7x8 = document.querySelector("#tablero2");
+        let tablero8x9 = document.querySelector("#tablero3");
+        if (tablero6x7.checked) {
+            ancho = 7;
+            alto = 6;
+        }if (tablero7x8.checked) {
+            ancho = 8;
+            alto = 7;
+        }if(tablero8x9.checked){
+            ancho = 9;
+            alto = 8;
+        }
+        let posX = (canvasWidth / 2) - ((ancho * separacionCirculos) / 2.5);
+        let posY = (canvasHeight / 2) - ((alto * separacionCirculos) / 2);
+        tablero = new Tablero(alto, ancho, ctx, color, posX, posY, radio, separacionCirculos);
+        //tablero.crearTablero();
+        //tablero.dibujar();
+        reloj.innerHTML = 'Comienza: '+ jugador1;
+        overlay.classList.remove('active');
+        popup.classList.remove('active');
+        limpiarCanvas();
         let cantidadFichas = 50;
         // maximo 40 fichas
         if (cantidadFichas > 40) {
@@ -45,23 +75,26 @@ document.addEventListener('DOMContentLoaded', () => {
         let jugador = 1;
         let y = 50;
         let x = tamanio;
-        let colorJ1 = 'red';
+        //let colorJ1 = 'red';
         const contador = cantidadFichas;
         agregarFichaJ(x, y, imagen, tamanio, cantidadFichas, radio, colorJ1, jugador, contador);
-    }
+    });
+
+    
 
     function agregarFichaJ(x, y, imagen, tamanio, cantidadFichas, radio, color, jugador, contador) {
         let t = true;
+        let colorJ2 = document.querySelector('#inputColores2').value;
         while (cantidadFichas > 0) {
             if (cantidadFichas <= contador / 2 & t == true) {
                 y = 50;
                 jugador = 2;
                 x = canvasWidth - tamanio;
-                color = 'yellow';
+                color = colorJ2;
                 t = false;
             }
             agregarFicha(x, y, imagen, jugador, radio, color);
-            dibujar();
+            dibujarFichas();
             y += tamanio;
             cantidadFichas--;
             //2 columnas de fichas
@@ -79,7 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function agregarFicha(x, y, imagen, jugador, radio, color) {
         let xIni = x;
         let yIni = y
-        let ficha = new fichaImagen(x, y, imagen, tamanio, ctx, radio, color, jugador, xIni, yIni);
+        let posicionada = false;
+        let ficha = new fichaImagen(x, y, imagen, tamanio, ctx, radio, color, jugador, xIni, yIni, posicionada);
         fichaArray.push(ficha);
     }
 
@@ -107,20 +141,26 @@ document.addEventListener('DOMContentLoaded', () => {
             fichaClickeadaActual = null;
         }
         fichaClick = fichaClickeada(e.layerX, e.layerY);
-        if (fichaClick != null && fichaClick.getJugador() == turno) {
-            if (fichaClick != null) {
-                fichaClickeadaActual = fichaClick;
+        //una vez que esta en el tablero, no puede moverse.
+        if (fichaClick != null && fichaClick.getPosicionada() == false) {
+            if (fichaClick != null && fichaClick.getJugador() == turno) {
+                if (fichaClick != null) {
+                    fichaClickeadaActual = fichaClick;
+                }
+                inputTurno.style.backgroundColor = "black";
             }
-            inputTurno.style.backgroundColor = "black";
+            else if (fichaClick != null) {
+                console.log("ES TURNO DEL JUGADOR " + turno + " !!!");
+                inputTurno.style.backgroundColor = "red";
+            }
         }
-        else if (fichaClick != null) {
-            console.log("ES TURNO DEL JUGADOR " + turno + " !!!");
-            inputTurno.style.backgroundColor = "red";
+        else{
+            console.log("esta ficha no puede moverse, ya ha sido jugada");
         }
-
     }
 
-    reloj.innerHTML = 'COMIENZA EL JUGADOR ' + turno + ' (ROJO)';
+    reloj.innerHTML = 'Eliga un color de ficha y establezca un nombre de jugador';
+    
     console.log(turno);
     function onMouseUp(e) {
         mouseDown = false;
@@ -131,24 +171,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 let jugador = fichaClickeadaActual.getJugador();
                 let columna = tablero.queColumna(x, y);
                 let posColu = tablero.recorroColumna(columna);
-
-
-                /* if (posColu === false) {
-                     volverPosicionFicha();
-                 }  
-                 else{*/
+                let columnaLlena = tablero.columnaLlena(columna);
+                if (columnaLlena) {
+                    volverPosicionFicha();
+                }  
+                else{
                 let posicionLibre = tablero.columnaLibre(posColu, jugador);
-                //console.log(posicionLibre);
+                
+                console.log(posicionLibre);
                 let nuevaPosX = posicionLibre.getX();
                 let nuevaPosY = posicionLibre.getY();
                 //console.log(posicionLibre.getX());
                 //console.log(posicionLibre.getY());
                 fichaClickeadaActual.setPosition(nuevaPosX, nuevaPosY);
+                fichaClickeadaActual.setPosicionada(true);
                 let fila = tablero.queFila(x, y, nuevaPosY);
                 ganador = tablero.hayGanador();
                 if (ganador == true) {
                     alert('gano el jugador' + jugador);
-                    setTimeout(resetearJuego, 8000);
+                    //setTimeout(resetearJuego, 8000);
                 }
                 if (parar == false) {
                     actualizarReloj();
@@ -157,12 +198,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 turno = cambiarJugador(turno);
                 inputTurno.value = "Turno del jugador: " + turno;
                 dibujar();
-                //}
+                }
             }
             else {
                 volverPosicionFicha();
             }
         }
+    }
+
+    document.querySelector("#jugar").addEventListener("click", jugar);
+
+    function jugar(){
+        tablero.crearTablero();
+        tablero.dibujar();
     }
 
     function volverPosicionFicha() {
@@ -188,6 +236,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function dibujarFichas(){
+        limpiarCanvas();
+        for (let i = 0; i < fichaArray.length; i++) {
+            fichaArray[i].draw();
+        }
+    }
+
     function limpiarCanvas() {
         ctx.fillStyle = "blue";
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -199,14 +254,16 @@ document.addEventListener('DOMContentLoaded', () => {
         limpiarCanvas();
         tablero.resetearPosiciones();
         tablero.dibujar();
+        tablero.setDesocupada();
         for (let i = 0; i < fichaArray.length; i++) {
             let x = fichaArray[i].getIniX();
             let y = fichaArray[i].getIniY();
             fichaArray[i].setPosition(x, y);
+            fichaArray[i].setPosicionada(false);
             fichaArray[i].draw();
         }
         turno = 1   ;
-        reloj.innerHTML = 'COMIENZA EL JUGADOR 1 (ROJO)';
+        reloj.innerHTML = 'COMIENZA EL JUGADOR 1';
         if (tiempo < 1) {
             reloj.innerHTML = 'SE TERMINO EL TIEMPO';
         }
@@ -216,9 +273,6 @@ document.addEventListener('DOMContentLoaded', () => {
         parar = false;
         clearTimeout(timeOut);
     }
-
-    //t = setTimeout(timedCount, 1000);
-
 
     function actualizarReloj() {
         document.getElementById('segundos').innerHTML = tiempo + " segundos";
@@ -233,10 +287,6 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.addEventListener('mousedown', onMouseDown, false);
     canvas.addEventListener('mouseup', onMouseUp, false);
     canvas.addEventListener('mousemove', onMouseMove, false);
-    canvas.addEventListener('touchstart', onMouseDown, false);
-    canvas.addEventListener('touchend', onMouseUp, false);
-    canvas.addEventListener('touchmove', onMouseMove, false);
-
 
     /* MOSTRAR POPUP*/
 
@@ -258,7 +308,9 @@ document.addEventListener('DOMContentLoaded', () => {
         popup.classList.remove('active');
     });
 
-    function capturar(){
+    
+
+    /*function capturar(){
         function Persona(nombre, color){
             this.nombre = nombre;
             this.color = color;
@@ -276,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function agregarJugador(nuevoSujeto,nuevoSujeto2){
         Jugadores.push(nuevoSujeto,nuevoSujeto2);
-    }
+    }*/
 
     // form.addEventListener('submit', (e) => {
     //     e.preventDefault();
