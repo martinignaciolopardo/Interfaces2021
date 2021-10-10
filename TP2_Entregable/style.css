@@ -288,6 +288,10 @@ div {
 .popup.active .contenedor-inputs {
   animation: entradaInputs 1s linear 0.1s forwards;
 }
+.imgStart{
+  width: 10%;
+ padding-left: 8rem;
+}
 
 @keyframes entradaInputs {
 	from { opacity: 0; }
