@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <header class="header">
+    <header class="header" id="header">
         <div class="contenedor-nav">
 
             <img src="./images/LogoPNG.png" alt="">
@@ -30,7 +30,7 @@
         </div>
     </header>
     <main>
-        <div class="contenedorPrincipal">
+        <div class="contenedorPrincipal" id="cuerpo">
             <section class="home" id="home-js">
                  <img src="images/fondoInicio.jpg" alt="">
             </section>
@@ -85,26 +85,24 @@
                 <div class="topSection">
 
                 </div>
-                <div id="segundos">
-
-                </div>
+                
                 <div><img class="imgStart" src="./images/start.png" id="jugar"></div>
                 <input type="text" id="turno">
                     <div id="divGanador">
                     </div>
-                <div>
-                    <div><button id="reset">Reset</button></div>
-                </div>
-                    <canvas id="canvas">
-                    </canvas>
                 
-            
-            </section>
-            <section class="contactos" id="contactos-js">
-
-
+                    
             </section>
         </div>
+        <div>
+            <div><button id="reset">Reset</button></div>
+        </div>
+        <div id="segundos">
+
+        </div>
+        <div><button id="restaurar">Configuracion del juego</button></div>
+        <canvas id="canvas">
+                    </canvas>
     </main>
     <footer>
         <section class="sectionFooter">

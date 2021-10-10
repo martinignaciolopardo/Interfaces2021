@@ -60,6 +60,10 @@ canvas {
   padding: 1em 0.7rem;
 }
 
+.ocultar{
+  display: none;
+}
+
 #divGanador{
   background-color: aqua;
   display: flex;

@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    let header = document.querySelector("#header");
+    let cuerpo = document.querySelector("#cuerpo");
     let canvas = document.querySelector('#canvas');
     let canvasWidth = window.innerWidth - 35;
     let canvasHeight = window.innerHeight - 30;
@@ -11,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let mouseDown = false;
     let separacionCirculos = radio * 2; // 60
     let color = "gray";
-    //tamaño por defectp
+    //tamaño por defecto
     let ancho = 7;
     let alto = 6;
     let fichaArray = [];
@@ -163,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    reloj.innerHTML = 'Elija un color de ficha y establezca un nombre de jugador';
+    //reloj.innerHTML = 'Elija un color de ficha y establezca un nombre de jugador';
     
     console.log(turno);
     function onMouseUp(e) {
@@ -193,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ganador = tablero.hayGanador();
                 if (ganador == true) {
                     //alert('gano el jugador' + jugador);
-                    divGanador.innerHTML = 'gano el jugador' + jugador;
+                    divGanador.innerHTML = 'Ganó el jugador' + jugador;
                     //setTimeout(resetearJuego, 8000);
                 }
                 if (parar == false) {
@@ -212,8 +214,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.querySelector("#jugar").addEventListener("click", jugar);
+    let btnRestaurar = document.querySelector("#restaurar");
+    btnRestaurar.addEventListener("click", restaurar);
+    btnRestaurar.classList.add('ocultar');
+
+    function restaurar(){
+        
+        header.classList.remove('ocultar');
+        cuerpo.classList.remove('ocultar');
+    }
 
     function jugar(){
+        btnRestaurar.classList.remove('ocultar');
+        header.classList.add('ocultar');
+        cuerpo.classList.add('ocultar');
         if (dibujado==false) {
             tablero.crearTablero();
             tablero.dibujar();
@@ -272,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
             fichaArray[i].draw();
         }
         turno = 1   ;
-        reloj.innerHTML = 'COMIENZA EL JUGADOR 1';
+        reloj.innerHTML = 'Comienza: ' + jugador1;
         if (tiempo < 1) {
             reloj.innerHTML = 'SE TERMINO EL TIEMPO';
         }
