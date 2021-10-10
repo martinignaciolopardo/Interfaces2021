@@ -60,6 +60,14 @@ canvas {
   padding: 1em 0.7rem;
 }
 
+#divGanador{
+  background-color: aqua;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 30%;
+}
+
 .draw-border::before,
 .draw-border::after {
   border: 0 solid transparent;

@@ -17,13 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let fichaArray = [];
     //let posX = (canvasWidth / 2) - ((ancho * separacionCirculos) / 2.5);
     //let posY = (canvasHeight / 2) - ((alto * separacionCirculos) / 2);
+    let divGanador = document.querySelector("#divGanador");
     
     fichaClickeadaActual = null;
     let btnReset = document.querySelector("#reset");
     btnReset.addEventListener("click", resetearJuego);
     let turno = 1;
     let inputTurno = document.querySelector("#turno");
-    let tiempo = 500;
+    inputTurno.value = "Turno del jugador: " + turno;
+    let tiempo = 100;
     let parar = false;
     let ganador = false;
     let timeOut;
@@ -32,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let jugador2;
     let tablero;
     let dibujado = false;
+    
 
     const element = document.querySelector('#form');
     element.addEventListener('submit', event => {
@@ -189,7 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 let fila = tablero.queFila(x, y, nuevaPosY);
                 ganador = tablero.hayGanador();
                 if (ganador == true) {
-                    alert('gano el jugador' + jugador);
+                    //alert('gano el jugador' + jugador);
+                    divGanador.innerHTML = 'gano el jugador' + jugador;
                     //setTimeout(resetearJuego, 8000);
                 }
                 if (parar == false) {
@@ -256,6 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function resetearJuego() {
         limpiarCanvas();
+        divGanador.innerHTML = '';
         tablero.resetearPosiciones();
         tablero.resetearJugadores();
         tablero.dibujar();
@@ -273,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         inputTurno.value = "Turno del jugador: " + turno;
-        tiempo = 500;
+        tiempo = 100;
         parar = false;
         clearTimeout(timeOut);
     }
