@@ -65,7 +65,7 @@ canvas {
 }
 
 #divGanador{
-  background-color: aqua;
+  background-color: red;
   display: flex;
   justify-content: center;
   flex-direction: row;

@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (ganador == true) {
                     //alert('gano el jugador' + jugador);
                     divGanador.innerHTML = 'Ganó el jugador' + jugador;
-                    //setTimeout(resetearJuego, 8000);
+                    setTimeout(resetearJuego, 2000);
                 }
                 if (parar == false) {
                     actualizarReloj();
@@ -268,8 +268,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function limpiarCanvas() {
         ctx.fillStyle = "blue";
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-        /*tablero.dibujar();
-        dibujarFicha();*/
     }
 
     function resetearJuego() {
