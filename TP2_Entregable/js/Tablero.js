@@ -140,10 +140,9 @@ class Tablero{
         }
     }
 
-    setDesocupada(){
+    resetearJugadores(){
         for (let i = 0; i < this.posiciones.length-1; i++) {
-           this.posiciones[i].setOcupada(false);
-           console.log(this.posiciones[i].getOcupada());
+           this.posiciones[i].setJugador(-1);
         }
     }
 
@@ -214,30 +213,33 @@ class Tablero{
   
     checkHorizontal(){
         let fila = 1;
-        let contador = 0;
+       // let contador = 0;
         while (fila != this.alto+1) {
-            for (let i = 0; i < this.posiciones.length-1; i++) {
+            for (let i = 0; i < this.posiciones.length-3; i++) {
                 let filaI = this.posiciones[i].getFila();
                 let ocupadaI = this.posiciones[i].getOcupada();
                 let jugadorI = this.posiciones[i].getJugador();
                 let jugadorIsiguiente= this.posiciones[i+1].getJugador();
+                let jugadorIsiguiente2= this.posiciones[i+2].getJugador();
+                let jugadorIsiguiente3= this.posiciones[i+3].getJugador();
                 if (filaI == fila) {
                     if (ocupadaI == true){
-                        if (jugadorI == jugadorIsiguiente) {
-                            contador++;
+                        if (jugadorI == jugadorIsiguiente && jugadorIsiguiente2 == jugadorI && jugadorI == jugadorIsiguiente3) {
+                            //contador++;
                             //console.log(contador);
-                            if (contador == 4) {
-                                contador=0;
+                            //if (contador == 3) {
+                                //console.log[this.posiciones];
+                                //contador=0;
                                 return true;
-                            }
+                           // }
                         }    
-                        else{
-                            contador = 1;
-                        }   
+                       //else{
+                        //    contador = 0;
+                        //}   
                     }
                 }
             }
-            contador = 1;
+            //contador = 1;
             fila++;
         }
     }

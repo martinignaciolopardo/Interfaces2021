@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function resetearJuego() {
         limpiarCanvas();
         tablero.resetearPosiciones();
-        tablero.setDesocupada();
+        tablero.resetearJugadores();
         tablero.dibujar();
         for (let i = 0; i < fichaArray.length; i++) {
             let x = fichaArray[i].getIniX();
