@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    reloj.innerHTML = 'Eliga un color de ficha y establezca un nombre de jugador';
+    reloj.innerHTML = 'Elija un color de ficha y establezca un nombre de jugador';
     
     console.log(turno);
     function onMouseUp(e) {

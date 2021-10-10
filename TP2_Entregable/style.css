@@ -114,15 +114,16 @@ canvas {
 
 .configuracion {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 80px 160px;
+  grid-template-columns: 1fr ;
+  grid-template-rows: 50px 180px;
+
 }
 .titulo-configuracion {
   grid-column-start: 1;
   grid-column-end: 3;
   text-align: center;
   text-shadow: 1px 1px grey;
-  font-size: 2rem;
+
 }
 .configuracion .tipoTablero,
 .configuracion .controlFicha {
@@ -172,7 +173,7 @@ div {
 }
 .pickUser img {
   cursor: pointer;
-  width: 42%;
+  width: 15%;
 }
 .overlay {
   background-color: rgba(0, 0, 0, 0.8);
@@ -191,20 +192,27 @@ div {
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
   padding: 2rem;
   text-align: center;
-  width: 450px;
+  width: 480px;
   transition: 0.3s ease all;
   transform: scale(0.7);
   display: grid;
   border-radius: 12px;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 10% 10% 40%;
+  grid-template-rows: 10% 10% 40% 30%;
   grid-template-areas:
     "cerrar cerrar"
     "titulo titulo"
-    "Jugadores Jugadores";
+    "Jugadores Jugadores"
+    "tablero tablero";
   opacity: 0;
 }
-
+.elegir-tablero{
+  grid-area:tablero;
+  padding-bottom: 2rem;
+}
+.elegir-tablero label{
+  padding-right: 1rem;
+}
 .contenedor-inputs {
   grid-area: jugadores;
   display: flex;
