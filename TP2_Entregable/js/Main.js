@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //let posX = (canvasWidth / 2) - ((ancho * separacionCirculos) / 2.5);
     //let posY = (canvasHeight / 2) - ((alto * separacionCirculos) / 2);
     let divGanador = document.querySelector("#divGanador");
-    
+    let colores = document.querySelector("#colores");
     fichaClickeadaActual = null;
     let btnReset = document.querySelector("#reset");
     btnReset.addEventListener("click", resetearJuego);
@@ -48,11 +48,17 @@ document.addEventListener('DOMContentLoaded', () => {
     imagen.src = "images/ficha.png";
 
     document.querySelector("#submit").addEventListener("click", function () {
+        let colorJ2 = document.querySelector('#inputColores2').value;
+        let colorJ1 = document.querySelector('#inputColores1').value;
+        if (colorJ2 == colorJ1) {
+            colores.innerHTML = '¡ los colores deben ser distintos !';
+            return;
+        }
         limpiarCanvas();
         fichaArray=[];
         jugador1 = document.querySelector('#nombre-jugador1').value;
         jugador2 = document.querySelector('#nombre-jugador2').value;
-        let colorJ1 = document.querySelector('#inputColores1').value;
+        
         let tablero6x7 = document.querySelector("#tablero1");
         let tablero7x8 = document.querySelector("#tablero2");
         let tablero8x9 = document.querySelector("#tablero3");
