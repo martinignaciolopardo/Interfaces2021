@@ -172,6 +172,9 @@ canvas {
   background-color: #332f2c;
 }
 
+#btn-cerrar-popup{
+  display: none;
+}
 
 #reset {
   margin-right: 10px;
