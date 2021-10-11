@@ -224,9 +224,8 @@ div {
   display: grid;
   border-radius: 12px;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 10% 10% 40% 30%;
+  grid-template-rows: 10% 40% 30%;
   grid-template-areas:
-    "cerrar cerrar"
     "titulo titulo"
     "Jugadores Jugadores"
     "tablero tablero";
