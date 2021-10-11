@@ -316,9 +316,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function mouseLeave(){
+        if (fichaClickeadaActual != null) {
+           volverPosicionFicha(); 
+           mouseDown = false;
+        }
+    }
+
     canvas.addEventListener('mousedown', onMouseDown, false);
     canvas.addEventListener('mouseup', onMouseUp, false);
     canvas.addEventListener('mousemove', onMouseMove, false);
+    canvas.onmouseout = mouseLeave;
+    
 
     /* MOSTRAR POPUP*/
 
