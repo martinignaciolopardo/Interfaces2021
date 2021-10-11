@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function mouseLeave(){
-        if (fichaClickeadaActual != null) {
+        if (fichaClickeadaActual != null && mouseDown == true) {
            volverPosicionFicha(); 
            mouseDown = false;
         }
