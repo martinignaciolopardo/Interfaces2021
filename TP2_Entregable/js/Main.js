@@ -221,7 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function restaurar(){
         limpiarCanvas();
-        btnJugar.classList.remove('ocultar');
         header.classList.remove('ocultar');
         cuerpo.classList.remove('ocultar');
     }
@@ -232,11 +231,8 @@ document.addEventListener('DOMContentLoaded', () => {
              btnRestaurar.classList.remove('ocultar');
             header.classList.add('ocultar');
             cuerpo.classList.add('ocultar');
-            //if (dibujado==false) {
-                tablero.crearTablero();
-                tablero.dibujar();
-            //}
-            //dibujado = true;
+            tablero.crearTablero();
+            tablero.dibujar();
         }
         else{
             reloj.innerHTML = '¡ CONFIGURE COLOR Y NOMBRE !'
@@ -330,6 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btnCerrarPopup = document.querySelector('#btn-cerrar-popup');
 
     btnAbrirPopupJugadores.addEventListener('click', function () {
+        btnJugar.classList.remove('ocultar');
         let h1 = document.querySelector('#titulo-jugador');
         h1.innerHTML = 'Configuración de Jugadores';
         overlay.classList.add('active');
