@@ -225,14 +225,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function jugar(){
-        btnRestaurar.classList.remove('ocultar');
-        header.classList.add('ocultar');
-        cuerpo.classList.add('ocultar');
-        if (dibujado==false) {
-            tablero.crearTablero();
-            tablero.dibujar();
+        if (tablero!=null) {
+             btnRestaurar.classList.remove('ocultar');
+            header.classList.add('ocultar');
+            cuerpo.classList.add('ocultar');
+            if (dibujado==false) {
+                tablero.crearTablero();
+                tablero.dibujar();
+            }
+            dibujado = true;
         }
-        dibujado = true;
+        else{
+            reloj.innerHTML = '¡ CONFIGURE COLOR Y NOMBRE !'
+        }
+       
     }
 
     function volverPosicionFicha() {

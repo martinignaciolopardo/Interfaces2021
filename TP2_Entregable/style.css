@@ -162,6 +162,17 @@ canvas {
   font-size: 15px;
 }
 
+#restaurar{
+  border-radius: 4px;
+  text-transform: uppercase;
+  background-color: transparent;
+  font-size: 18px;
+}
+#restaurar:hover{
+  background-color: #332f2c;
+}
+
+
 #reset {
   margin-right: 10px;
   background-color: black;
