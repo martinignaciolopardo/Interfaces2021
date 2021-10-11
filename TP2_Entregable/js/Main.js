@@ -48,6 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
     imagen.src = "images/ficha.png";
 
     document.querySelector("#submit").addEventListener("click", function () {
+        limpiarCanvas();
+        fichaArray=[];
         jugador1 = document.querySelector('#nombre-jugador1').value;
         jugador2 = document.querySelector('#nombre-jugador2').value;
         let colorJ1 = document.querySelector('#inputColores1').value;
@@ -67,12 +69,10 @@ document.addEventListener('DOMContentLoaded', () => {
         let posX = (canvasWidth / 2) - ((ancho * separacionCirculos) / 2.5);
         let posY = (canvasHeight / 2) - ((alto * separacionCirculos) / 2);
         tablero = new Tablero(alto, ancho, ctx, color, posX, posY, radio, separacionCirculos);
-        //tablero.crearTablero();
-        //tablero.dibujar();
         reloj.innerHTML = 'Comienza: '+ jugador1;
         overlay.classList.remove('active');
         popup.classList.remove('active');
-        limpiarCanvas();
+        
         let cantidadFichas = 50;
         // maximo 40 fichas
         if (cantidadFichas > 44) {
@@ -213,27 +213,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    document.querySelector("#jugar").addEventListener("click", jugar);
+    let btnJugar = document.querySelector("#jugar");
+    btnJugar.addEventListener("click", jugar);
     let btnRestaurar = document.querySelector("#restaurar");
     btnRestaurar.addEventListener("click", restaurar);
     btnRestaurar.classList.add('ocultar');
 
     function restaurar(){
-        
+        btnJugar.classList.remove('ocultar');
         header.classList.remove('ocultar');
         cuerpo.classList.remove('ocultar');
     }
 
     function jugar(){
+        btnJugar.classList.add('ocultar');
         if (tablero!=null) {
              btnRestaurar.classList.remove('ocultar');
             header.classList.add('ocultar');
             cuerpo.classList.add('ocultar');
-            if (dibujado==false) {
+            //if (dibujado==false) {
                 tablero.crearTablero();
                 tablero.dibujar();
-            }
-            dibujado = true;
+            //}
+            //dibujado = true;
         }
         else{
             reloj.innerHTML = '¡ CONFIGURE COLOR Y NOMBRE !'
