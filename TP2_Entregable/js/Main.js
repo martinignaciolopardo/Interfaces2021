@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let posX = (canvasWidth / 2) - ((ancho * separacionCirculos) / 2.5);
         let posY = (canvasHeight / 2) - ((alto * separacionCirculos) / 2);
         tablero = new Tablero(alto, ancho, ctx, color, posX, posY, radio, separacionCirculos);
-        reloj.innerHTML = 'Comienza: '+ jugador1;
+        reloj.innerHTML = 'Comienza jugador 1 '+ jugador1;
         overlay.classList.remove('active');
         popup.classList.remove('active');
         
@@ -289,11 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
             fichaArray[i].draw();
         }
         turno = 1   ;
-        reloj.innerHTML = 'Comienza jugador 1';
-        if (jugador1 != null) {
-            reloj.innerHTML = 'Comienza: ' + jugador1;
-        }
-        
+        reloj.innerHTML = 'Comienza jugador 1 '+ jugador1;
         if (tiempo < 1) {
             reloj.innerHTML = 'SE TERMINO EL TIEMPO';
         }
