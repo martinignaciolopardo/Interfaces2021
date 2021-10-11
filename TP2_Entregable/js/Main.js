@@ -81,8 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         let cantidadFichas = 50;
         // maximo 40 fichas
-        if (cantidadFichas > 44) {
-            cantidadFichas = 44;
+        if (cantidadFichas > 48) {
+            cantidadFichas = 48;
         }
         let jugador = 1;
         let y = 50;
@@ -110,11 +110,11 @@ document.addEventListener('DOMContentLoaded', () => {
             y += tamanio;
             cantidadFichas--;
             //2 columnas de fichas
-            if (y > 590 & jugador == 2) {
+            if (y > 620 & jugador == 2) {
                 y = 50;
                 x = canvasWidth - (tamanio * 2);
             }
-            if (y > 590 & jugador == 1) {
+            if (y > 620 & jugador == 1) {
                 y = 50;
                 x = tamanio * 2;
             }
@@ -170,8 +170,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("esta ficha no puede moverse, ya ha sido jugada");
         }
     }
-
-    //reloj.innerHTML = 'Elija un color de ficha y establezca un nombre de jugador';
     
     console.log(turno);
     function onMouseUp(e) {
@@ -349,35 +347,4 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.classList.remove('active');
         popup.classList.remove('active');
     });
-
-    
-
-    /*function capturar(){
-        function Persona(nombre, color){
-            this.nombre = nombre;
-            this.color = color;
-        }
-        let jugador1 = document.querySelector('#nombre-jugador1').value;
-        let jugador2 = document.querySelector('#nombre-jugador2');
-        let colorJ1 = document.querySelector('#inputColores1').value;
-        let colorJ2 = document.querySelector('#inputColores2').value;
-
-        let nuevoSujeto = new Persona(jugador1, colorJ1);
-        let nuevoSujeto2 = new Persona(jugador2, colorJ2);
-        agregarJugador(nuevoSujeto);
-    }
-    let jugadores = [];
-    
-    function agregarJugador(nuevoSujeto,nuevoSujeto2){
-        Jugadores.push(nuevoSujeto,nuevoSujeto2);
-    }*/
-
-    // form.addEventListener('submit', (e) => {
-    //     e.preventDefault();
-    //     //let formData = new FormData(form);
-    //     let newJugadores = jugadores.push(jugador1.value, jugador2.value);
-    //     inputTurno.value = "Turno del jugador: " + jugadores[0];
-    //     return newJugadores;
-    // });
-
 });
