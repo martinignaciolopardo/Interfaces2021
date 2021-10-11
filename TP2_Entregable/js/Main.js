@@ -220,6 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnRestaurar.classList.add('ocultar');
 
     function restaurar(){
+        limpiarCanvas();
         btnJugar.classList.remove('ocultar');
         header.classList.remove('ocultar');
         cuerpo.classList.remove('ocultar');
@@ -292,7 +293,11 @@ document.addEventListener('DOMContentLoaded', () => {
             fichaArray[i].draw();
         }
         turno = 1   ;
-        reloj.innerHTML = 'Comienza: ' + jugador1;
+        reloj.innerHTML = 'Comienza jugador 1';
+        if (jugador1 != null) {
+            reloj.innerHTML = 'Comienza: ' + jugador1;
+        }
+        
         if (tiempo < 1) {
             reloj.innerHTML = 'SE TERMINO EL TIEMPO';
         }
