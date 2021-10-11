@@ -176,6 +176,12 @@ canvas {
   display: none;
 }
 
+#colores{
+  background-color: #000;
+  color: red;
+  padding: 3px;
+}
+
 #reset {
   margin-right: 10px;
   background-color: black;

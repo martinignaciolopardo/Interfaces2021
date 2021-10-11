@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let colorJ2 = document.querySelector('#inputColores2').value;
         let colorJ1 = document.querySelector('#inputColores1').value;
         if (colorJ2 == colorJ1) {
-            colores.innerHTML = '¡ los colores deben ser distintos !';
+            colores.innerHTML = 'Los colores deben ser distintos!';
             return;
         }
         limpiarCanvas();
