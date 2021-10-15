@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded',() => {
     let ctx =  canvas.getContext('2d');
     let width = canvas.width;
     let height = canvas.height;
+    let img = new Image();
+
     function setBackground(){
         ctx.save();
         ctx.fillStyle = "#00aaaf95";
@@ -13,5 +15,8 @@ document.addEventListener('DOMContentLoaded',() => {
         ctx.restore();
     }
     setBackground();
-
+    img.onload = function(){
+        ctx.drawImage(img,100,350,170,100);
+    }
+    img.src = "images/caracol.png"
 });

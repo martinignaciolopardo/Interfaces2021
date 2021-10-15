@@ -42,7 +42,9 @@ main {
   background-color: aqua;
   padding: 2em;
 }
-
+.imgPersonaje{
+    width: 50%;
+}
 /******************** FOOTER ***********************/
 
 .sectionFooter {
