@@ -1,0 +1,15 @@
+*{
+    margin:0;
+    padding:0;
+}
+.contenedor-principal{
+    width: 100%;
+}
+header{
+    background-color: rgb(56, 59, 57);
+    color: white;
+}
+.contenedor-nav{
+    display: flex;
+
+}
