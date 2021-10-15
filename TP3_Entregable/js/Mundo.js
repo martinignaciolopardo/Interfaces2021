@@ -5,4 +5,8 @@ class Mundo {
         this.ctx = ctx;
         this.color = color;
     }
+
+getalto(){
+    
+}
 }

@@ -1,52 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="js/Main.js"></script>
     <script src="js/Mundo.js"></script>
     <script src="js/Personaje.js"></script>
     <script src="js/Obstaculo.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <title>TP3</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="contenedor-principal">
-        <header>
-            <div class="contenedor-imagen">
-                <img src="RunWachin.png" alt="CorreWachin">
+      <header>
+        <div class="contenedor-imagen">
+          <img src="RunWachin.png" alt="CorreWachin" />
+        </div>
+        <nav class="navegador">
+          <div class="btn-group" role="group">
+            <a class="navbar-brand draw-border" href="#info-js">Info</a>
+            <a class="navbar-brand draw-border" href="#configuracion-js"
+              >Configuración</a
+            >
+            <a class="navbar-brand draw-border" href="#volver-js">Volver</a>
+          </div>
+        </nav>
+      </header>
+      <main>
+          <div class="portadaJuego">
+              <img src="" alt="" srcset="" />
+          </div>
+          <div class="cuerpoJuego">
+              <canvas width="700" height="500" id="canvas"> </canvas>
+              <div class="AcercaDelJuego">
+                  <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
+                      pariatur vero porro exercitationem mollitia repudiandae iure
+                      nesciunt! Accusamus sed labore eaque sunt id expedita sint. Quos
+                      quam quaerat sapiente eveniet!
+                    </p>
+                </div>
             </div>
-            <nav class="navegador">
-                    <div class="btn-group" role="group">
-                        <a class="navbar-brand draw-border" href="#info-js">Info</a>
-                        <a class="navbar-brand draw-border" href="#configuracion-js">Configuración</a>
-                        <a class="navbar-brand draw-border" href="#volver-js">Volver</a>
-                    </div>
-            </nav>
-           
-        </header>
-        <main>
-            <div class="portadaInicio">
-                <section class="sectionInicio">
-                    <img src="" alt="" srcset="">
-                    <button class="btn-inicioJuego">Start</button>
-                </section>
-            </div>
-            <div class="mundoCanvas">
-                <canvas id="canvas">
-                    
-                </canvas>
-            </div>
-            <section class="AcercaDelJuego">
-
-            </section>
         </main>
-        <footer>
-            <section class="sectionFooter">
-                <h2> Developed by Ernesto Quintana & Martin Ignacio Lopardo</h2>
-            </section>
-        </footer>
+      <footer>
+        <section class="sectionFooter">
+          <h2>Developed by Ernesto Quintana & Martin Ignacio Lopardo</h2>
+        </section>
+      </footer>
     </div>
-</body>
+  </body>
 </html>
