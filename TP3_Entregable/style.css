@@ -39,8 +39,16 @@ main {
   align-items: center;
 }
 .AcercaDelJuego {
-  background-color: aqua;
+  background-color: rgb(235, 240, 240);
+  box-shadow: 1px 1px 5px black;
   padding: 2em;
+  margin-right: 1em;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.AcercaDelJuego img{
+  width: 5%;
 }
 .imgPersonaje{
     width: 50%;
