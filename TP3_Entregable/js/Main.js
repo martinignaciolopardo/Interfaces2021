@@ -1,21 +1,27 @@
 document.addEventListener('DOMContentLoaded',() => {
     let divPersonaje = document.querySelector("#personaje");
     let tiempoLoop = 0;
-    let salta = false;
+    //let salta = false;
     //let gameloop = window.setInterval(accion,1000);
     caminar();
     
     function saltar(e){
-        if (e.keyCode == 38 && salta == false) {
-            salta = true;
+        if (e.keyCode == 38) {
+            //salta = true;
             divPersonaje.classList.remove("caminar");
             divPersonaje.classList.add("saltar");
-            setTimeout(caminar,1000);
+            //setTimeout(caminar,1000);
         }
     }
+
+    divPersonaje.addEventListener('animationend', () =>{
+       // salta = false;
+        divPersonaje.classList.remove("saltar");
+        divPersonaje.classList.add("caminar");
+    })
     
     function caminar(){
-        salta = false;
+        //salta = false;
         divPersonaje.classList.remove("saltar");
         divPersonaje.classList.add("caminar");
     }
@@ -35,5 +41,5 @@ document.addEventListener('DOMContentLoaded',() => {
     }
     img.src = "images/caracol.png"*/
     
-    window.addEventListener("keyup", saltar);
+    window.addEventListener("keydown", saltar);
 });
