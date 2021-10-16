@@ -3,17 +3,26 @@ html,body {
     background:black;
 }
 
+#cielo{
+    height: 254px;
+    width: 1328px;
+    background-image: url(images/cielo.png);
+    animation: animacionFondo 40s linear infinite;
+}
+
 #pasto{
-    height: 518px;
-    width: 1300px;
-    background-image: url(images/fondo.png);
+    position: relative;
+    top: 254px;
+    height: 283px;
+    width: 1328px;
+    background-image: url(images/pasto.png);
     animation: animacionFondo 10s linear infinite;
 }
 
 #personaje {
     margin: auto;  
     position: relative;
-    top: 357px;
+    top: 113px;
     right: 300px;
 }
 
@@ -58,5 +67,5 @@ html,body {
 @keyframes animacionFondo {
     0% { background-position: 0; }
     50% { background-position: -664px; }
-    100% { background-position: -1329px; }
+    100% { background-position: -1328px; }
 }
