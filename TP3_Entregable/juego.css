@@ -7,7 +7,7 @@ html,body {
     height: 518px;
     width: 1300px;
     background-image: url(images/fondo.png);
-    animation: mover 10s linear infinite;
+    animation: animacionFondo 10s linear infinite;
 }
 
 #personaje {
@@ -39,25 +39,24 @@ html,body {
 }
 
 @keyframes caminar {
-    0% { background-position:0 }
-    100% { background-position:-800px }
+    0% { background-position:0; }
+    100% { background-position:-800px; }
 }
 
 
 @keyframes saltar {
-    0% { background-position: 0; transform: translateY(-40px) }
-    50% { transform: translateY(-150px) }
-    100% { background-position: -1200px;
-        transform: translateY(0px) }
+    0% { background-position: 0; transform: translateY(-40px); }
+    50% { transform: translateY(-150px); }
+    100% { background-position: -1200px; transform: translateY(0px); }
 }
 
 @keyframes morir {
-    0% { background-position:0 }
-    100% { background-position:-1350px }
+    0% { background-position:0; }
+    100% { background-position:-1350px; }
 }
 
-@keyframes mover {
-    0%{background-position: 0;}
-    50%{background-position: -664px;}
-    100%{background-position: -1329px;}
+@keyframes animacionFondo {
+    0% { background-position: 0; }
+    50% { background-position: -664px; }
+    100% { background-position: -1329px; }
 }
