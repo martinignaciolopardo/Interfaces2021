@@ -1,0 +1,50 @@
+html,body {
+    margin:0;
+    background:black;
+}
+
+#personaje {
+    margin:auto;  
+    position:relative;
+    top:450px;
+    right: 300px;
+}
+
+.caminar{
+    width: 100px;
+    height: 100px;
+    background-image: url(images/caminar.png);
+    animation: caminar 1s steps(8) infinite;
+}
+
+.saltar{
+    width: 100px;
+    height: 140px;
+    background-image: url(images/saltar.png);
+    animation: saltar 1s steps(12);
+}
+
+.morir{
+    width: 150px;
+    height: 100px;
+    background-image: url(images/morir.png);
+    animation: morir 1s steps(9) infinite;
+}
+
+@keyframes caminar {
+    0% { background-position:0 }
+    100% { background-position:-800px }
+}
+
+
+@keyframes saltar {
+    0% { background-position: 0 }
+    50% { transform: translateY(-150px) }
+    100% { background-position: -1200px;
+        transform: translateY(0px) }
+}
+
+@keyframes morir {
+    0% { background-position:0 }
+    100% { background-position:-1350px }
+}
