@@ -1,12 +1,19 @@
 html,body {
-    margin:0;
+    margin: 0;
     background:black;
 }
 
+#pasto{
+    height: 518px;
+    width: 1300px;
+    background-image: url(images/fondo.png);
+    animation: mover 10s linear infinite;
+}
+
 #personaje {
-    margin:auto;  
-    position:relative;
-    top:450px;
+    margin: auto;  
+    position: relative;
+    top: 357px;
     right: 300px;
 }
 
@@ -28,7 +35,7 @@ html,body {
     width: 150px;
     height: 100px;
     background-image: url(images/morir.png);
-    animation: morir 1s steps(9) infinite;
+    animation: morir 1s steps(9);
 }
 
 @keyframes caminar {
@@ -38,7 +45,7 @@ html,body {
 
 
 @keyframes saltar {
-    0% { background-position: 0 }
+    0% { background-position: 0; transform: translateY(-40px) }
     50% { transform: translateY(-150px) }
     100% { background-position: -1200px;
         transform: translateY(0px) }
@@ -47,4 +54,10 @@ html,body {
 @keyframes morir {
     0% { background-position:0 }
     100% { background-position:-1350px }
+}
+
+@keyframes mover {
+    0%{background-position: 0;}
+    50%{background-position: -664px;}
+    100%{background-position: -1329px;}
 }
