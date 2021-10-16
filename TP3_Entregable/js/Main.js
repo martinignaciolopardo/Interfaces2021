@@ -1,16 +1,26 @@
 document.addEventListener('DOMContentLoaded',() => {
-
-    let canvas = document.querySelector('#canvas');
-    let ctx =  canvas.getContext('2d');
+    let divPersonaje = document.querySelector("#personaje");
     let tiempoLoop = 0;
-    let salto = true;
-    let gameloop = window.setInterval(accion,1000);
-    let width = canvas.width;
-    let height = canvas.height;
-    let img = new Image();
+    let salta = false;
+    //let gameloop = window.setInterval(accion,1000);
+    caminar();
+    
+    function saltar(e){
+        if (e.keyCode == 38 && salta == false) {
+            salta = true;
+            divPersonaje.classList.remove("caminar");
+            divPersonaje.classList.add("saltar");
+            setTimeout(caminar,1000);
+        }
+    }
+    
+    function caminar(){
+        salta = false;
+        divPersonaje.classList.remove("saltar");
+        divPersonaje.classList.add("caminar");
+    }
 
-
-    function accion(){
+    /*function accion(){
         if(tiempoLoop < 10){
             console.log('x = '+ tiempoLoop );
             tiempoLoop ++;
@@ -20,17 +30,10 @@ document.addEventListener('DOMContentLoaded',() => {
         }
     }
 
-    function setBackground(){
-        ctx.save();
-        ctx.fillStyle = "#00aaaf95";
-        ctx.fillRect(0,0,width,height);
-        ctx.strokeStyle = "black";
-        ctx.strokeRect(0,0,width,height);
-        ctx.restore();
-    }
-    setBackground();
     img.onload = function(){
         ctx.drawImage(img,100,350,170,100);
     }
-    img.src = "images/caracol.png"
+    img.src = "images/caracol.png"*/
+    
+    window.addEventListener("keyup", saltar);
 });
