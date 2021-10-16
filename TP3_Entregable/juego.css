@@ -7,6 +7,9 @@ html,body {
     height: 254px;
     width: 1328px;
     background-image: url(images/cielo.png);
+}
+
+.cielo{
     animation: animacionFondo 40s linear infinite; /* tarda 40 segundos de manera linear e infinita en hacer la animacion del fondo */
 }
 
@@ -16,6 +19,9 @@ html,body {
     height: 283px;
     width: 1328px;
     background-image: url(images/pasto.png);
+}
+
+.pasto{
     animation: animacionFondo 10s linear infinite; /* tarda 10 segundos de forma linear e infinitamente en realizar la animacion del fondo */
 }
 
@@ -25,12 +31,12 @@ html,body {
     /* se posiciona al personaje en el lugar deseado */
     top: 113px;
     right: 300px;
-}
-
-.caminar{
     width: 100px; /* ancho de cada parte individual de la tira de imagen */
     height: 100px; /* alto de cada parte individual de la tira de imagen */
     background-image: url(images/caminar.png);
+}
+
+.caminar{
     animation: caminar 1s steps(8) infinite; /* tarda 1 segundo con 8 pasos (steps) en hacer la animacion de caminar, infinitamente */
 }
 
