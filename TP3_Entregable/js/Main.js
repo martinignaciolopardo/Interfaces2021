@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded',() => {
 
     function morir(e){
         if (e.keyCode == 37) {
-            divPersonaje.classList.remove("saltar");
+            /*divPersonaje.classList.remove("saltar");*/
             divPersonaje.classList.remove("caminar");
             divPasto.classList.remove('pasto');
             divMontanias.classList.remove('montanias');
