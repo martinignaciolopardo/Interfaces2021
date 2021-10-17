@@ -60,13 +60,23 @@ document.addEventListener('DOMContentLoaded',() => {
     function morir(e){
         if (e.keyCode == 37) {
             /*divPersonaje.classList.remove("saltar");*/
+            //divPersonaje.style.animationPlayState = 'paused';
+            divPasto.style.animationPlayState = 'paused';
+            divMontanias.style.animationPlayState = 'paused';
+            divArboles.style.animationPlayState = 'paused';
+            divCielo.style.animationPlayState = 'paused';
             divPersonaje.classList.remove("caminar");
-            divPasto.classList.remove('pasto');
+           /* divPasto.classList.remove('pasto');
             divMontanias.classList.remove('montanias');
             divArboles.classList.remove('arboles');
-            divCielo.classList.remove('cielo');
+            divCielo.classList.remove('cielo');*/
             divPersonaje.classList.add("morir");
+            setInterval(pause, 990);
         }
+    }
+
+    function pause(){
+        divPersonaje.style.animationPlayState = 'paused';
     }
 
     /*function accion(){
