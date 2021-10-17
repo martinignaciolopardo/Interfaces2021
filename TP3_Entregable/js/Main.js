@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded',() => {
     let divCielo = document.querySelector("#cielo");
     let divArboles = document.querySelector("#arboles");
     let divMontanias = document.querySelector("#montanias");
+    let divGolem = document.querySelector("#golem");
+    let divStalagtita = document.querySelector("#stalagtita");
     let saltando = false;
 
     //let tiempoLoop = 0;
@@ -36,6 +38,11 @@ document.addEventListener('DOMContentLoaded',() => {
         }
        
     })
+
+    divGolem.addEventListener('animationstart', (e) =>{
+        console.log(e);
+        divGolem.classList.add('golemImg');
+    })
     
     function caminar(e){
         console.log(e);
@@ -46,6 +53,8 @@ document.addEventListener('DOMContentLoaded',() => {
             divMontanias.classList.add('montanias');
             divArboles.classList.add('arboles');
             divCielo.classList.add('cielo');
+            divStalagtita.classList.add('stalagtita');
+            divGolem.classList.add('golem');
         }
     }
 
@@ -65,8 +74,10 @@ document.addEventListener('DOMContentLoaded',() => {
             divMontanias.style.animationPlayState = 'paused';
             divArboles.style.animationPlayState = 'paused';
             divCielo.style.animationPlayState = 'paused';
+            divGolem.style.animationPlayState = 'paused';
+            divStalagtita.style.animationPlayState = 'paused';
             divPersonaje.classList.remove("caminar");
-           /* divPasto.classList.remove('pasto');
+            /* divPasto.classList.remove('pasto');
             divMontanias.classList.remove('montanias');
             divArboles.classList.remove('arboles');
             divCielo.classList.remove('cielo');*/

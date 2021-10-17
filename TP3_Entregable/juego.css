@@ -27,7 +27,7 @@ body {
 }
 
 #pasto {
-    position: relative;
+    position: absolute;
     top: 4px;
     height: 600px;
     width: 1329px;
@@ -119,6 +119,8 @@ body {
     animation: morir 1s steps(9); /* tarda 1 segundo con 9 pasos (steps) en hacer la animacion de morir */
 }
 
+/**************************** ANIMACIONES ****************************/
+
 /* recorre la tira de caminar que tiene un ancho de 800px */
 @keyframes caminar {
     0% {
@@ -164,4 +166,47 @@ body {
     100% {
         background-position: -1456px;
     }
+}
+
+@keyframes movimiento{
+    0%{
+        right: -640px;
+    }
+    100%{
+        right: 1000px;
+    }
+}
+
+/**************************** OBSTACULOS ****************************/
+
+#stalagtita{
+    margin: auto;
+    position: relative;
+    top: 359px;
+    right: -640px;
+    width: 80px;
+    height: 110px;
+    
+}
+
+.stalagtita{
+    background-image: url(images/obstaculos/stalagtita.png);
+    animation: movimiento 7s infinite;
+}
+
+#golem{
+    margin: auto;
+    position: relative;
+    top: 247px;
+    right: -640px;
+    width: 130px;
+    height: 120px;
+}
+
+.golem{
+    animation: movimiento 7s infinite 2s;
+}
+
+.golemImg{
+    background-image: url(images/obstaculos/golem.png);
 }
