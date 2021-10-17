@@ -57,6 +57,18 @@ document.addEventListener('DOMContentLoaded',() => {
         }
     }
 
+    function morir(e){
+        if (e.keyCode == 37) {
+            divPersonaje.classList.remove("saltar");
+            divPersonaje.classList.remove("caminar");
+            divPasto.classList.remove('pasto');
+            divMontanias.classList.remove('montanias');
+            divArboles.classList.remove('arboles');
+            divCielo.classList.remove('cielo');
+            divPersonaje.classList.add("morir");
+        }
+    }
+
     /*function accion(){
         if(tiempoLoop < 10){
             console.log('x = '+ tiempoLoop );
@@ -70,6 +82,7 @@ document.addEventListener('DOMContentLoaded',() => {
     window.addEventListener("keydown", caminar);
     window.addEventListener("keydown", saltar);
     window.addEventListener("keydown", agachar);
+    window.addEventListener("keydown", morir);
     
     
 });
