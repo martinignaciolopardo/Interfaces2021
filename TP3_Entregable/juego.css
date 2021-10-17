@@ -109,15 +109,13 @@ body {
 }
 
 .saltar {
-    width: 100px; /* ancho de cada parte individual de la tira de imagen */
-    height: 140px; /* alto de cada parte individual de la tira de imagen */
-    background-image: url(images/personaje/saltar.png) !important;
+    height: 140px !important; /* alto de cada parte individual de la tira de imagen */
+    background-image: url(images/personaje/saltar.png);
     animation: saltar 1s steps(12); /* tarda 1 segundo con 12 pasos (steps) en hacer la animacion de saltar */
 }
 
 .morir {
     width: 150px !important; /* ancho de cada parte individual de la tira de imagen */
-    height: 100px !important; /* alto de cada parte individual de la tira de imagen */
     background-image: url(images/personaje/morir.png) !important;
     animation: morir 1s steps(9); /* tarda 1 segundo con 9 pasos (steps) en hacer la animacion de morir */
 }
