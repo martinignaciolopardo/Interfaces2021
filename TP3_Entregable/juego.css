@@ -109,7 +109,6 @@ body {
 }
 
 .saltar {
-    height: 140px !important; /* alto de cada parte individual de la tira de imagen */
     background-image: url(images/personaje/saltar.png);
     animation: saltar 1s steps(12); /* tarda 1 segundo con 12 pasos (steps) en hacer la animacion de saltar */
 }
