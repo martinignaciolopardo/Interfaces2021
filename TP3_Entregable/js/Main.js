@@ -2,7 +2,10 @@ document.addEventListener('DOMContentLoaded',() => {
     let divPersonaje = document.querySelector("#personaje");
     let divPasto = document.querySelector("#pasto");
     let divCielo = document.querySelector("#cielo");
+    let divArboles = document.querySelector("#arboles");
+    let divMontanias = document.querySelector("#montanias");
     let saltando = false;
+
     //let tiempoLoop = 0;
     //let gameloop = window.setInterval(accion,1000);
     
@@ -40,6 +43,8 @@ document.addEventListener('DOMContentLoaded',() => {
             divPersonaje.classList.remove("saltar");
             divPersonaje.classList.add("caminar");
             divPasto.classList.add('pasto');
+            divMontanias.classList.add('montanias');
+            divArboles.classList.add('arboles');
             divCielo.classList.add('cielo');
         }
     }

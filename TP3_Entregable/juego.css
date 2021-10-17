@@ -1,80 +1,164 @@
-html,body {
-    margin: 0;
-    background:black;
+html,
+body {
+  margin: 0;
+  background: black;
 }
 
-#cielo{
-    height: 254px;
-    width: 1328px;
-    background-image: url(images/cielo.png);
+/********************* MUNDOS *********************/
+
+ #cielo {
+  height: 600px;
+  width: 1328px;
+  background-image: url(images/mundos/cielo3.png);
 }
 
-.cielo{
-    animation: animacionFondo 40s linear infinite; /* tarda 40 segundos de manera linear e infinita en hacer la animacion del fondo */
+ #pasto {
+  position: relative;
+  top: -3px;
+  height: 600px;
+  width: 1329px;
+  background-image: url(images/mundos/pasto3.png);
+} 
+
+/* #montanias {
+  position: relative;
+  top: 42px;
+  width: auto;
+  background-image: url(images/mundos/montanias.png);
 }
 
-#pasto{
-    position: relative;
-    top: 254px; /* se posiciona el div del pasto */
-    height: 283px;
-    width: 1328px;
-    background-image: url(images/pasto.png);
+#cielo2 {
+  height: 500px;
+  width: 1328px;
+  background-image: url(images/mundos/cielo2.png);
 }
 
-.pasto{
-    animation: animacionFondo 10s linear infinite; /* tarda 10 segundos de forma linear e infinitamente en realizar la animacion del fondo */
+#pasto2 {
+  position: relative;
+  top: -1px; /* se posiciona el div del pasto */
+  /* height: 1059px;
+  width: 1328px;
+  background-image: url(images/mundos/pasto2.png);
+} */ */
+/* 
+#cielo3{
+  height: 600px;
+  width: 1328px;
+  background-image: url(images/mundos/cielo3.png);
+} */
+
+/* #pasto{
+  position: relative;
+  top: -3px;
+  height: 600px;
+  width: 1329px;
+  background-image: url(images/mundos/pasto3.png);
+} */
+#arboles {
+  height: 600px;
+  width: 1329px;
+  background-image: url(images/mundos/arboles3.png);
 }
 
+#montanias {
+  position: relative;
+  top: 42px;
+  width: auto;
+  background-image: url(images/mundos/montanias3.png);
+}
+
+.pasto,
+.pasto2,
+.pasto3 {
+  animation: animacionFondo 10s linear infinite; /* tarda 10 segundos de forma linear e infinitamente en realizar la animacion del fondo */
+}
+.arboles {
+  animation: animacionFondo 20s linear infinite; /* tarda 10 segundos de forma linear e infinitamente en realizar la animacion del fondo */
+}
+.montanias,
+.montanias2,
+.montanias3 {
+  animation: animacionFondo 30s linear infinite;
+}
+.cielo,
+.cielo2,
+.cielo3 {
+  animation: animacionFondo 40s linear infinite; /* tarda 40 segundos de manera linear e infinita en hacer la animacion del fondo */
+}
+
+/********************* PERSONAJE *********************/
 #personaje {
-    margin: auto;  
-    position: relative;
-    /* se posiciona al personaje en el lugar deseado */
-    top: 113px;
-    right: 300px;
-    width: 100px; /* ancho de cada parte individual de la tira de imagen */
-    height: 100px; /* alto de cada parte individual de la tira de imagen */
-    background-image: url(images/caminar.png);
+  margin: auto;
+  position: relative;
+  /* se posiciona al personaje en el lugar deseado */
+  top: 490px;
+  right: 294px;
+  width: 100px; /* ancho de cada parte individual de la tira de imagen */
+  height: 100px; /* alto de cada parte individual de la tira de imagen */
+  background-image: url(images/personaje/caminar.png);
 }
 
-.caminar{
-    animation: caminar 1s steps(8) infinite; /* tarda 1 segundo con 8 pasos (steps) en hacer la animacion de caminar, infinitamente */
+.caminar {
+  animation: caminar 1s steps(8) infinite; /* tarda 1 segundo con 8 pasos (steps) en hacer la animacion de caminar, infinitamente */
 }
 
-.saltar{
-    width: 100px; /* ancho de cada parte individual de la tira de imagen */
-    height: 140px; /* alto de cada parte individual de la tira de imagen */
-    background-image: url(images/saltar.png);
-    animation: saltar 1s steps(12); /* tarda 1 segundo con 12 pasos (steps) en hacer la animacion de saltar */
+.saltar {
+  width: 100px; /* ancho de cada parte individual de la tira de imagen */
+  height: 140px; /* alto de cada parte individual de la tira de imagen */
+  background-image: url(images/personaje/saltar.png);
+  animation: saltar 1s steps(12); /* tarda 1 segundo con 12 pasos (steps) en hacer la animacion de saltar */
 }
 
-.morir{
-    width: 150px; /* ancho de cada parte individual de la tira de imagen */
-    height: 100px; /* alto de cada parte individual de la tira de imagen */
-    background-image: url(images/morir.png);
-    animation: morir 1s steps(9); /* tarda 1 segundo con 9 pasos (steps) en hacer la animacion de morir */
+.morir {
+  width: 150px; /* ancho de cada parte individual de la tira de imagen */
+  height: 100px; /* alto de cada parte individual de la tira de imagen */
+  background-image: url(images/personaje/morir.png);
+  animation: morir 1s steps(9); /* tarda 1 segundo con 9 pasos (steps) en hacer la animacion de morir */
 }
 
 /* recorre la tira de caminar que tiene un ancho de 800px */
 @keyframes caminar {
-    0% { background-position:0; }
-    100% { background-position:-800px; }
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: -800px;
+  }
 }
 
 @keyframes saltar {
-    0% { background-position: 0; transform: translateY(-40px); } /* la imagen de saltar es 40px mas alta, ajustamos con translateY-40 */
-    50% { transform: translateY(-150px); } /* altura maxima de salto */
-    100% { background-position: -1200px; transform: translateY(-40px); } /* recorre todo el ancho de la imagen: (1200px)  y se ajusta 40px*/
+  0% {
+    background-position: 0;
+    transform: translateY(-40px);
+  } /* la imagen de saltar es 40px mas alta, ajustamos con translateY-40 */
+  50% {
+    transform: translateY(-150px);
+  } /* altura maxima de salto */
+  100% {
+    background-position: -1200px;
+    transform: translateY(-40px);
+  } /* recorre todo el ancho de la imagen: (1200px)  y se ajusta 40px*/
 }
 
-/*recorre todo el ancho de la imagen, de 0px a 1350px */      /*  [los valores son negativos porque se corre la imagen hacia la izquierda] */
+/*recorre todo el ancho de la imagen, de 0px a 1350px */ /*  [los valores son negativos porque se corre la imagen hacia la izquierda] */
 @keyframes morir {
-    0% { background-position:0; }
-    100% { background-position:-1350px; } 
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: -1350px;
+  }
 }
 
 /*recorre todo el ancho de la imagen de fondo, de 0px a 664px (cuando va por la mitad de la animacion) y termina en 1328px */
 @keyframes animacionFondo {
-    0% { background-position: 0; }
-    50% { background-position: -664px; }
-    100% { background-position: -1328px; }
+  0% {
+    background-position: 0;
+  }
+  50% {
+    background-position: -664px;
+  }
+  100% {
+    background-position: -1328px;
+  }
 }
