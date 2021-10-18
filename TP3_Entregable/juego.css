@@ -3,6 +3,28 @@ body {
     margin: 0;
     background: black;
 }
+/**************************** INICIO *****************************/
+#inicioCartel{
+    height: 500px;
+    width: 600px;
+    position: absolute;
+    left: 330px;
+    top: -43px;
+    background-image: url(images/start/tableroInicio.png);
+}
+#areYouReady{
+    height: 600px;
+    width: 500px;
+    transform: scale(1.2);
+    transition: transform .2s;
+    background-image: url(images/start/areYouReady.png);
+}
+
+#lestGo{
+    height: 600px;
+    width: 500px;
+    background-image: url(images/start/letsGo.png);
+}
 
 /***************************** MUNDOS *****************************/
 
