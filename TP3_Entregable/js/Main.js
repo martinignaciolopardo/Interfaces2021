@@ -91,24 +91,27 @@ document.addEventListener('DOMContentLoaded', () => {
         divPersonaje.style.animationPlayState = 'paused';
     }
 
-    function accion(e) {
-            if(e.keyCode == 40){
-
+    function accion() {
+    
             if (tiempoLoop < 10) {
                 divInicioCartel.classList.add("inicioCartel");
-                divInicioCartel.classList.add("areYouReady");
-                if (tiempoLoop == 3) {
+                if (tiempoLoop == 1) {
+                    divInicioCartel.classList.add("areYouReady");
+                }
+                else if(tiempoLoop == 3){
                     divInicioCartel.classList.remove("areYouReady");
-                    divInicioCartel.classList.add("letsGo");
+                    divInicioCartel.classList.add("lestGo");
                 }
                 tiempoLoop++;
+                console.log(tiempoLoop);
+                
             }else {
                 window.clearInterval(gameloop);
                 divInicioCartel.classList.remove("inicioCartel");
-                divInicioCartel.classList.remove("letsGo")
+                divInicioCartel.classList.remove("letsGo");
                 console.log('Listo');
             }
-        }
+        
     }
 
     window.addEventListener("keydown", caminar);
