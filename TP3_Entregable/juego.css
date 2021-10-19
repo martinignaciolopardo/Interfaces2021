@@ -13,19 +13,20 @@ body {
     animation: inicioCartel 3s;
     background-image: url(images/start/tableroInicio.png);
 }
-#areYouReady{
+.areYouReady{
     height: 500px;
     transform: scale(1.1);
-    opacity: 0;
-    animation: areYouReady 3s;
+    visibility: hidden;
+    /* animation: areYouReady 3s; */
     transition: transform .1s;
     background-image: url(images/start/areYouReady.png);
 }
 
-#lestGo{
-    height: 600px;
-    width: 500px;
-    animation: letsGo 3s;
+.letsGo{
+    height: 500px;
+    opacity: 0;
+    /* animation: letsGo 6s; */
+    transition: transform .1s;
     background-image: url(images/start/letsGo.png);
 }
 
@@ -37,14 +38,7 @@ body {
         top: -43px;
     }
 }
-@keyframes areYouReady {
-    0%{
-       opacity: 0;
-    }
-    100%{
-        opacity:1;
-    }
-}
+
 /***************************** MUNDOS *****************************/
 
  #cielo {

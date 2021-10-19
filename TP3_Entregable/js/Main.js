@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let divStalagtita = document.querySelector("#stalagtita");
     let saltando = false;
 
-    let tiempoLoop = 0;
-    let gameloop = window.setInterval(accion,1000);
+    // let tiempoLoop = 0;
+    // let gameloop = window.setInterval(accion,1000);
 
     function saltar(e) {
         //si se presiona la tecla (flecha hacia arriba), se le saca la clase caminar
@@ -93,24 +93,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function accion() {
     
-            if (tiempoLoop < 10) {
-                divInicioCartel.classList.add("inicioCartel");
-                if (tiempoLoop == 1) {
-                    divInicioCartel.classList.add("areYouReady");
-                }
-                else if(tiempoLoop == 3){
-                    divInicioCartel.classList.remove("areYouReady");
-                    divInicioCartel.classList.add("lestGo");
-                }
-                tiempoLoop++;
-                console.log(tiempoLoop);
+            // if (tiempoLoop < 10) {
+            //     divInicioCartel.classList.add("inicioCartel");
+            //     if (tiempoLoop == 1) {
+            //         divInicioCartel.classList.add("areYouReady");
+            //     }
+            //     else if(tiempoLoop == 3){
+            //         divInicioCartel.classList.remove("areYouReady");
+            //         divInicioCartel.classList.add("lestGo");
+            //     }
+            //     tiempoLoop++;
+            //     console.log(tiempoLoop);
                 
-            }else {
-                window.clearInterval(gameloop);
-                divInicioCartel.classList.remove("inicioCartel");
-                divInicioCartel.classList.remove("letsGo");
-                console.log('Listo');
-            }
+            // }else {
+            //     window.clearInterval(gameloop);
+            //     divInicioCartel.classList.remove("inicioCartel");
+            //     divInicioCartel.classList.remove("letsGo");
+            //     console.log('Listo');
+            // }
         
     }
 
