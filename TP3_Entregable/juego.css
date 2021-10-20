@@ -10,6 +10,7 @@ body {
   position: absolute;
   left: 330px;
   top: -43px;
+  visibility: hidden;
   animation: inicioCartel 9s;
   background-image: url(images/start/tableroInicio.png);
 }
@@ -39,6 +40,7 @@ body {
 @keyframes inicioCartel {
   0% {
     top: -580px;
+    visibility: visible;
   }
   25% {
     top: -43px;
