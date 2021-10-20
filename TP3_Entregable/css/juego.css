@@ -12,7 +12,7 @@ body {
   top: -43px;
   visibility: hidden;
   animation: inicioCartel 9s;
-  background-image: url(images/start/tableroInicio.png);
+  background-image: url(../images/start/tableroInicio.png);
 }
 
 .divCount {
@@ -30,7 +30,7 @@ body {
   height: 500px;
   /* animation: letsGo 6s; */
   transition: transform 0.1s;
-  background-image: url(images/start/letsGo.png);
+  background-image: url(../images/start/letsGo.png);
 }
 #countdown {
   font-size: 7em;
@@ -55,7 +55,7 @@ body {
 }
 @keyframes divCount {
   0% {
-    background-image: url(images/start/areYouReady.png);
+    background-image: url(../images/start/areYouReady.png);
   }
   100% {
     background-image: none;
@@ -80,21 +80,21 @@ body {
 #cielo {
   height: 600px;
   width: 1329px;
-  background-image: url(images/mundos/cielo3.png);
+  background-image: url(../images/mundos/cielo3.png);
 }
 
 #montanias {
   position: relative;
   top: 42px;
   width: auto;
-  background-image: url(images/mundos/montanias3.png);
+  background-image: url(../images/mundos/montanias3.png);
 }
 
 #arboles {
   position: relative;
   height: 600px;
   width: 1329px;
-  background-image: url(images/mundos/arboles3.png);
+  background-image: url(../images/mundos/arboles3.png);
 }
 
 #pasto {
@@ -102,7 +102,7 @@ body {
   top: 4px;
   height: 600px;
   width: 1329px;
-  background-image: url(images/mundos/pasto3.png);
+  background-image: url(../images/mundos/pasto3.png);
 }
 
 /* #montanias {
@@ -172,7 +172,7 @@ body {
   right: 294px;
   width: 100px; /* ancho de cada parte individual de la tira de imagen */
   height: 100px; /* alto de cada parte individual de la tira de imagen */
-  background-image: url(images/personaje/caminar.png);
+  background-image: url(../images/personaje/caminar.png);
 }
 
 .caminar {
@@ -180,13 +180,13 @@ body {
 }
 
 .saltar {
-  background-image: url(images/personaje/saltar.png);
+  background-image: url(../images/personaje/saltar.png);
   animation: saltar 1s steps(12); /* tarda 1 segundo con 12 pasos (steps) en hacer la animacion de saltar */
 }
 
 .morir {
   width: 150px !important; /* ancho de cada parte individual de la tira de imagen */
-  background-image: url(images/personaje/morir.png) !important;
+  background-image: url(../images/personaje/morir.png) !important;
   animation: morir 1s steps(9); /* tarda 1 segundo con 9 pasos (steps) en hacer la animacion de morir */
 }
 
@@ -260,7 +260,7 @@ body {
 }
 
 .stalagtita {
-  background-image: url(images/obstaculos/stalagtita.png);
+  background-image: url(../images/obstaculos/stalagtita.png);
   animation: movimiento 7s infinite;
 }
 
@@ -278,5 +278,5 @@ body {
 }
 
 .golemImg {
-  background-image: url(images/obstaculos/golem.png);
+  background-image: url(../images/obstaculos/golem.png);
 }

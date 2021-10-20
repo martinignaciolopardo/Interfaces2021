@@ -8,14 +8,14 @@
     <script src="js/Mundo.js"></script>
     <script src="js/Personaje.js"></script>
     <script src="js/Obstaculo.js"></script>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>TP3</title>
   </head>
   <body>
     <div class="contenedor-principal">
-      <header>
+      <header id="header">
         <div class="contenedor-imagen">
-          <img src="RunWachin.png" alt="CorreWachin" />
+          <img src="RunWachin.png" alt="Dinorun" />
         </div>
         <nav class="navegador">
           <div class="btn-group" role="group">
@@ -27,25 +27,23 @@
           </div>
         </nav>
       </header>
-      <main>
-        <div class="portadaJuego">
-          <img src="" alt="" srcset="" />
-        </div>
+      <main id="main">
         <div class="cuerpoJuego">
           <div class="AcercaDelJuego">
-            <h2>Corre Wachin</h2>
+              <h2>Dinorun</h2>
             <p>
-              Corre wachin es un juego programado para la materia "Interfaces de
-              usuario".
+              Dinorun es un juego programado para la materia Interfaces de
+              usuario e interaccion
             </p>
             <p>
-              Con flecha arriba podes saltar:
-              <span> <img src="images/up.png" alt="up" /></span>
+              Usa <span><img src="images/up.png" alt="up" id="imgUp"/></span> para saltar
+              
             </p>
             <p>
-              Con flecha abajo podes agacharte:
-              <span> <img src="images/down.png" alt="down" /></span>
+              Usa <span><img src="images/down.png" alt="down" id="imgDown"/></span> para agacharte
+              
             </p>
+            <button onclick= "window.location.href = '/TP3_Entregable/juego.html'" id="jugar">START</button>
           </div>
         </div>
       </main>
