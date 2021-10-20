@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
             divArboles.classList.remove('arboles');
             divCielo.classList.remove('cielo');*/
             divPersonaje.classList.add("morir");
-            setInterval(pause, 990);
+            setInterval(pause, 980);
         }
     }
 
