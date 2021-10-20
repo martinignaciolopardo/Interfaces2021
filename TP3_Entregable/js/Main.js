@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let divGolem = document.querySelector("#golem");
     let divInicioCartel = document.querySelector("#inicioCartel");
     let divStalagtita = document.querySelector("#stalagtita");
+    let tiempoInicio = 6;
     let saltando = false;
 
     // let tiempoLoop = 0;
@@ -90,6 +91,28 @@ document.addEventListener('DOMContentLoaded', () => {
     function pause() {
         divPersonaje.style.animationPlayState = 'paused';
     }
+   
+
+    function contarInicio(){
+
+        if(tiempoInicio >= 4){
+                document.querySelector("#countdown").innerHTML = "";
+        }else {
+                document.querySelector("#countdown").innerHTML = tiempoInicio;
+            }
+        if(tiempoInicio == 0){
+            //agregar background
+            document.querySelector("#countdown").innerHTML = "Lets GO";
+        }else {
+            tiempoInicio -= 1;
+            
+            terminarJuego = setTimeout(contarInicio, 1000);
+        }
+
+    }
+    contarInicio();
+
+
 
     function accion() {
     

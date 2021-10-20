@@ -1,73 +1,107 @@
 html,
 body {
-    margin: 0;
-    background: black;
+  margin: 0;
+  background: black;
 }
 /**************************** INICIO *****************************/
-#inicioCartel{
-    height: 500px;
-    width: 600px;
-    position: absolute;
-    left: 330px;
-    top: -43px;
-    animation: inicioCartel 3s;
-    background-image: url(images/start/tableroInicio.png);
-}
-.areYouReady{
-    height: 500px;
-    transform: scale(1.1);
-    visibility: hidden;
-    /* animation: areYouReady 3s; */
-    transition: transform .1s;
-    background-image: url(images/start/areYouReady.png);
+#inicioCartel {
+  height: 500px;
+  width: 600px;
+  position: absolute;
+  left: 330px;
+  top: -43px;
+  animation: inicioCartel 9s;
+  background-image: url(images/start/tableroInicio.png);
 }
 
-.letsGo{
-    height: 500px;
-    opacity: 0;
-    /* animation: letsGo 6s; */
-    transition: transform .1s;
-    background-image: url(images/start/letsGo.png);
+.divCount {
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+  height: 500px;
+  padding-top: 6em;
+  transform: scale(1.2);
+  transition: transform 0.1s;
+  width: 100%;
+  height: 100%;
+  animation: divCount 7s;
+}
+.letsGo {
+  height: 500px;
+  /* animation: letsGo 6s; */
+  transition: transform 0.1s;
+  background-image: url(images/start/letsGo.png);
+}
+#countdown {
+  font-size: 7em;
+  animation: cuentaRegresiva 6s;
 }
 
 @keyframes inicioCartel {
-    from{
-        top: -580px;
-    }
-    to{
-        top: -43px;
-    }
+  0% {
+    top: -580px;
+  }
+  25% {
+    top: -43px;
+  }
+  70% {
+    top: -43px;
+  }
+  100% {
+    top: -580px;
+    visibility: hidden;
+  }
+}
+@keyframes divCount {
+  0% {
+    background-image: url(images/start/areYouReady.png);
+  }
+  100% {
+    background-image: none;
+  }
 }
 
+@keyframes cuentaRegresiva {
+  0% {
+    background-position: 0;
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    background-position: 100px;
+    transform: scale(1.3);
+  }
+}
 /***************************** MUNDOS *****************************/
 
- #cielo {
-    height: 600px;
-    width: 1329px;
-    background-image: url(images/mundos/cielo3.png);
+#cielo {
+  height: 600px;
+  width: 1329px;
+  background-image: url(images/mundos/cielo3.png);
 }
 
 #montanias {
-    position: relative;
-    top: 42px;
-    width: auto;
-    background-image: url(images/mundos/montanias3.png);
+  position: relative;
+  top: 42px;
+  width: auto;
+  background-image: url(images/mundos/montanias3.png);
 }
 
 #arboles {
-    position: relative;
-    height: 600px;
-    width: 1329px;
-    background-image: url(images/mundos/arboles3.png);
+  position: relative;
+  height: 600px;
+  width: 1329px;
+  background-image: url(images/mundos/arboles3.png);
 }
 
 #pasto {
-    position: absolute;
-    top: 4px;
-    height: 600px;
-    width: 1329px;
-    background-image: url(images/mundos/pasto3.png);
-} 
+  position: absolute;
+  top: 4px;
+  height: 600px;
+  width: 1329px;
+  background-image: url(images/mundos/pasto3.png);
+}
 
 /* #montanias {
   position: relative;
@@ -85,7 +119,7 @@ body {
 #pasto2 {
   position: relative;
   top: -1px; /* se posiciona el div del pasto */
-  /* height: 1059px;
+/* height: 1059px;
   width: 1328px;
   background-image: url(images/mundos/pasto2.png);
 } */
@@ -107,141 +141,140 @@ body {
 .pasto,
 .pasto2,
 .pasto3 {
-    animation: animacionFondo 10s linear infinite; /* tarda 10 segundos de forma linear e infinitamente en realizar la animacion del fondo */
+  animation: animacionFondo 10s linear infinite; /* tarda 10 segundos de forma linear e infinitamente en realizar la animacion del fondo */
 }
 
 .arboles {
-    animation: animacionFondo 20s linear infinite; /* tarda 10 segundos de forma linear e infinitamente en realizar la animacion del fondo */
+  animation: animacionFondo 20s linear infinite; /* tarda 10 segundos de forma linear e infinitamente en realizar la animacion del fondo */
 }
 
 .montanias,
 .montanias2,
 .montanias3 {
-    animation: animacionFondo 30s linear infinite;
+  animation: animacionFondo 30s linear infinite;
 }
 
 .cielo,
 .cielo2,
 .cielo3 {
-    animation: animacionFondo 40s linear infinite; /* tarda 40 segundos de manera linear e infinita en hacer la animacion del fondo */
+  animation: animacionFondo 40s linear infinite; /* tarda 40 segundos de manera linear e infinita en hacer la animacion del fondo */
 }
 
 /**************************** PERSONAJE ****************************/
 
 #personaje {
-    margin: auto;
-    position: relative;
-    /* se posiciona al personaje en el lugar deseado */
-    top: 468px;
-    right: 294px;
-    width: 100px; /* ancho de cada parte individual de la tira de imagen */
-    height: 100px; /* alto de cada parte individual de la tira de imagen */
-    background-image: url(images/personaje/caminar.png);
+  margin: auto;
+  position: relative;
+  /* se posiciona al personaje en el lugar deseado */
+  top: 468px;
+  right: 294px;
+  width: 100px; /* ancho de cada parte individual de la tira de imagen */
+  height: 100px; /* alto de cada parte individual de la tira de imagen */
+  background-image: url(images/personaje/caminar.png);
 }
 
 .caminar {
-    animation: caminar 1s steps(8) infinite; /* tarda 1 segundo con 8 pasos (steps) en hacer la animacion de caminar, infinitamente */
+  animation: caminar 1s steps(8) infinite; /* tarda 1 segundo con 8 pasos (steps) en hacer la animacion de caminar, infinitamente */
 }
 
 .saltar {
-    background-image: url(images/personaje/saltar.png);
-    animation: saltar 1s steps(12); /* tarda 1 segundo con 12 pasos (steps) en hacer la animacion de saltar */
+  background-image: url(images/personaje/saltar.png);
+  animation: saltar 1s steps(12); /* tarda 1 segundo con 12 pasos (steps) en hacer la animacion de saltar */
 }
 
 .morir {
-    width: 150px !important; /* ancho de cada parte individual de la tira de imagen */
-    background-image: url(images/personaje/morir.png) !important;
-    animation: morir 1s steps(9); /* tarda 1 segundo con 9 pasos (steps) en hacer la animacion de morir */
+  width: 150px !important; /* ancho de cada parte individual de la tira de imagen */
+  background-image: url(images/personaje/morir.png) !important;
+  animation: morir 1s steps(9); /* tarda 1 segundo con 9 pasos (steps) en hacer la animacion de morir */
 }
 
 /**************************** ANIMACIONES ****************************/
 
 /* recorre la tira de caminar que tiene un ancho de 800px */
 @keyframes caminar {
-    0% {
-        background-position: 0;
-    }
-    100% {
-        background-position: -800px;
-    }
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: -800px;
+  }
 }
 
 @keyframes saltar {
-    0% {
-        background-position: 0;
-        transform: translateY(-40px);
-    } /* la imagen de saltar es 40px mas alta, ajustamos con translateY-40 */
-    50% {
-        transform: translateY(-150px);
-    } /* altura maxima de salto */
-    100% {
-        background-position: -1200px;
-        transform: translateY(-40px);
-    } /* recorre todo el ancho de la imagen: (1200px)  y se ajusta 40px*/
+  0% {
+    background-position: 0;
+    transform: translateY(-40px);
+  } /* la imagen de saltar es 40px mas alta, ajustamos con translateY-40 */
+  50% {
+    transform: translateY(-150px);
+  } /* altura maxima de salto */
+  100% {
+    background-position: -1200px;
+    transform: translateY(-40px);
+  } /* recorre todo el ancho de la imagen: (1200px)  y se ajusta 40px*/
 }
 
 /*recorre todo el ancho de la imagen, de 0px a 1350px */ /*  [los valores son negativos porque se corre la imagen hacia la izquierda] */
 @keyframes morir {
-    0% {
-        background-position: 0;
-    }
-    100% {
-        background-position: -1350px;
-    }
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: -1350px;
+  }
 }
 
 /*recorre todo el ancho de la imagen de fondo, de 0px a 664px (cuando va por la mitad de la animacion) y termina en 1328px */
 @keyframes animacionFondo {
-    0% {
-        background-position: 0;
-    }
-    50% {
-        background-position: -728px;
-    }
-    100% {
-        background-position: -1456px;
-    }
+  0% {
+    background-position: 0;
+  }
+  50% {
+    background-position: -728px;
+  }
+  100% {
+    background-position: -1456px;
+  }
 }
 
-@keyframes movimiento{
-    0%{
-        right: -640px;
-    }
-    100%{
-        right: 1000px;
-    }
+@keyframes movimiento {
+  0% {
+    right: -640px;
+  }
+  100% {
+    right: 1000px;
+  }
 }
 
 /**************************** OBSTACULOS ****************************/
 
-#stalagtita{
-    margin: auto;
-    position: relative;
-    top: 359px;
-    right: -640px;
-    width: 80px;
-    height: 110px;
-    
+#stalagtita {
+  margin: auto;
+  position: relative;
+  top: 359px;
+  right: -640px;
+  width: 80px;
+  height: 110px;
 }
 
-.stalagtita{
-    background-image: url(images/obstaculos/stalagtita.png);
-    animation: movimiento 7s infinite;
+.stalagtita {
+  background-image: url(images/obstaculos/stalagtita.png);
+  animation: movimiento 7s infinite;
 }
 
-#golem{
-    margin: auto;
-    position: relative;
-    top: 247px;
-    right: -640px;
-    width: 130px;
-    height: 120px;
+#golem {
+  margin: auto;
+  position: relative;
+  top: 247px;
+  right: -640px;
+  width: 130px;
+  height: 120px;
 }
 
-.golem{
-    animation: movimiento 7s infinite 2s;
+.golem {
+  animation: movimiento 7s infinite 2s;
 }
 
-.golemImg{
-    background-image: url(images/obstaculos/golem.png);
+.golemImg {
+  background-image: url(images/obstaculos/golem.png);
 }
