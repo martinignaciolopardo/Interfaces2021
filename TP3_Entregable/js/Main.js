@@ -70,8 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function morir(e) {
         if (e.keyCode == 37) {
-            /*divPersonaje.classList.remove("saltar");*/
-            //divPersonaje.style.animationPlayState = 'paused';
             divPasto.style.animationPlayState = 'paused';
             divMontanias.style.animationPlayState = 'paused';
             divArboles.style.animationPlayState = 'paused';
@@ -79,10 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
             divGolem.style.animationPlayState = 'paused';
             divStalagtita.style.animationPlayState = 'paused';
             divPersonaje.classList.remove("caminar");
-            /* divPasto.classList.remove('pasto');
-            divMontanias.classList.remove('montanias');
-            divArboles.classList.remove('arboles');
-            divCielo.classList.remove('cielo');*/
             divPersonaje.classList.add("morir");
             setInterval(pause, 980);
         }
@@ -112,9 +106,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     contarInicio();
 
+    
+    /*
+        CUANDO EL DIV DE LOS ENEMIGOS TENGA [LEFT = 299PX] Y EL JUGADOR NO ESTE SALTANDO, MORIR.
+    */
 
+    function getPropiedadCss(id, propiedad){
+        var elem = document.getElementById(id);
+        return window.getComputedStyle(elem,null).getPropertyValue(propiedad);
+        }
 
-    function accion() {
+        let left = getPropiedadCss("golem", "left");
+        console.log(left);
+
+   // function accion() {
     
             // if (tiempoLoop < 10) {
             //     divInicioCartel.classList.add("inicioCartel");
@@ -135,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
             //     console.log('Listo');
             // }
         
-    }
+   // }
 
     window.addEventListener("keydown", caminar);
     window.addEventListener("keydown", saltar);
