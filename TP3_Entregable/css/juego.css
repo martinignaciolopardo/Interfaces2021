@@ -3,7 +3,7 @@ body {
   margin: 0;
   background: black;
 }
-/**************************** INICIO *****************************/
+/**************************************** INICIO ****************************************/
 #inicioCartel {
   height: 500px;
   width: 600px;
@@ -20,18 +20,20 @@ body {
   text-align: center;
   height: 500px;
   padding-top: 6em;
-  transform: scale(1.2);
+  transform: scale(0.8);
   transition: transform 0.1s;
   width: 100%;
   height: 100%;
-  animation: divCount 7s;
+  animation: divCount 8s;
 }
+
 .letsGo {
   height: 500px;
   /* animation: letsGo 6s; */
   transition: transform 0.1s;
   background-image: url(../images/start/letsGo.png);
 }
+
 #countdown {
   font-size: 7em;
   animation: cuentaRegresiva 6s;
@@ -75,10 +77,11 @@ body {
     transform: scale(1.3);
   }
 }
-/***************************** MUNDOS *****************************/
+/**************************************** MUNDOS ****************************************/
 
 #cielo {
-  height: 600px;
+  position: relative;
+  height: 602px;
   width: 1329px;
   background-image: url(../images/mundos/cielo3.png);
 }
@@ -98,7 +101,7 @@ body {
 }
 
 #pasto {
-  position: absolute;
+  position: relative;
   top: 4px;
   height: 600px;
   width: 1329px;
@@ -143,11 +146,11 @@ body {
 .pasto,
 .pasto2,
 .pasto3 {
-  animation: animacionFondo 10s linear infinite; /* tarda 10 segundos de forma linear e infinitamente en realizar la animacion del fondo */
+  animation: animacionFondo 10s linear infinite; /* dura 10 segundos de forma linear e infinitamente la animacion del fondo */
 }
 
 .arboles {
-  animation: animacionFondo 20s linear infinite; /* tarda 10 segundos de forma linear e infinitamente en realizar la animacion del fondo */
+  animation: animacionFondo 20s linear infinite; /* dura 10 segundos de forma linear e infinitamente la animacion del fondo */
 }
 
 .montanias,
@@ -159,38 +162,37 @@ body {
 .cielo,
 .cielo2,
 .cielo3 {
-  animation: animacionFondo 40s linear infinite; /* tarda 40 segundos de manera linear e infinita en hacer la animacion del fondo */
+  animation: animacionFondo 40s linear infinite; /* dura 40 segundos de manera linear e infinita la animacion del fondo */
 }
 
 /**************************** PERSONAJE ****************************/
 
 #personaje {
-  margin: auto;
   position: relative;
   /* se posiciona al personaje en el lugar deseado */
   top: 468px;
-  right: 294px;
+  left: 200px;
   width: 100px; /* ancho de cada parte individual de la tira de imagen */
   height: 100px; /* alto de cada parte individual de la tira de imagen */
   background-image: url(../images/personaje/caminar.png);
 }
 
 .caminar {
-  animation: caminar 1s steps(8) infinite; /* tarda 1 segundo con 8 pasos (steps) en hacer la animacion de caminar, infinitamente */
+  animation: caminar 1s steps(8) infinite; /* dura 1 segundo con 8 pasos (steps) la animacion de caminar, infinitamente */
 }
 
 .saltar {
   background-image: url(../images/personaje/saltar.png);
-  animation: saltar 1s steps(12); /* tarda 1 segundo con 12 pasos (steps) en hacer la animacion de saltar */
+  animation: saltar 1s steps(12); /* dura 1 segundo con 12 pasos (steps) la animacion de saltar */
 }
 
 .morir {
   width: 150px !important; /* ancho de cada parte individual de la tira de imagen */
   background-image: url(../images/personaje/morir.png) !important;
-  animation: morir 1s steps(9); /* tarda 1 segundo con 9 pasos (steps) en hacer la animacion de morir */
+  animation: morir 1s steps(9); /* dura 1 segundo con 9 pasos (steps) la animacion de morir */
 }
 
-/**************************** ANIMACIONES ****************************/
+/**************************************** ANIMACIONES ****************************************/
 
 /* recorre la tira de caminar que tiene un ancho de 800px */
 @keyframes caminar {
@@ -239,42 +241,40 @@ body {
   }
 }
 
-@keyframes movimiento {
+@keyframes enemigos {
   0% {
-    right: -640px;
+    left: 1329px;
   }
   100% {
-    right: 1000px;
+    left: -700px;
   }
 }
 
-/**************************** OBSTACULOS ****************************/
+/**************************************** OBSTACULOS ****************************************/
 
 #stalagtita {
-  margin: auto;
   position: relative;
   top: 359px;
-  right: -640px;
+  left: 1329px;
   width: 80px;
   height: 110px;
 }
 
 .stalagtita {
   background-image: url(../images/obstaculos/stalagtita.png);
-  animation: movimiento 7s infinite;
+  animation: enemigos 7s infinite;
 }
 
 #golem {
-  margin: auto;
   position: relative;
-  top: 247px;
-  right: -640px;
+  top: 249px;
+  left: 1329px;
   width: 130px;
-  height: 120px;
+  height: 110px;
 }
 
 .golem {
-  animation: movimiento 7s infinite 2s;
+  animation: enemigos 7s infinite 2s;
 }
 
 .golemImg {
