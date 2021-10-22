@@ -204,15 +204,15 @@ body {
 @keyframes saltar {
   0% {
     background-position: 0;
-    transform: translateY(-40px);
-  } /* la imagen de saltar es 40px mas alta, ajustamos con translateY-40 */
-  50% {
-    transform: translateY(-150px);
-  } /* altura maxima de salto */
+    top: 468px;
+  }
+  50%, 56% {
+    top: 268px; /* altura maxima de salto */
+  } 
   100% {
-    background-position: -1200px;
-    transform: translateY(-40px);
-  } /* recorre todo el ancho de la imagen: (1200px)  y se ajusta 40px*/
+    top: 468px;
+    background-position: -1200px; /* recorre todo el ancho de la imagen: (1200px)*/
+  } 
 }
 
 /*recorre todo el ancho de la imagen, de 0px a 1350px */ /*  [los valores son negativos porque se corre la imagen hacia la izquierda] */
