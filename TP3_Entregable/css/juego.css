@@ -16,10 +16,10 @@ body {
 }
 
 .divCount {
-  font-family: "Oswald", sans-serif;
+  font-family: 'Carter One', sans-serif;
   text-align: center;
   height: 500px;
-  padding-top: 6em;
+  padding-top: 5em;
   transform: scale(0.8);
   transition: transform 0.1s;
   width: 100%;
@@ -35,7 +35,7 @@ body {
 }
 
 #countdown {
-  font-size: 7em;
+  font-size: 6em;
   animation: cuentaRegresiva 6s;
 }
 
@@ -44,10 +44,7 @@ body {
     top: -580px;
     visibility: visible;
   }
-  25% {
-    top: -43px;
-  }
-  70% {
+  25%, 70% {
     top: -43px;
   }
   100% {
