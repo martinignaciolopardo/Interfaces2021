@@ -207,7 +207,7 @@ body {
     top: 468px;
   }
   50%, 56% {
-    top: 268px; /* altura maxima de salto */
+    top: 278px; /* altura maxima de salto */
   } 
   100% {
     top: 468px;
