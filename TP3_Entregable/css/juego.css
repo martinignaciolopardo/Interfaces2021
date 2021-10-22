@@ -169,7 +169,8 @@ body {
 #personaje {
   position: relative;
   /* se posiciona al personaje en el lugar deseado */
-  top: 468px;
+  transform: scale(1.7);
+  top: 434px;
   left: 200px;
   width: 100px; /* ancho de cada parte individual de la tira de imagen */
   height: 100px; /* alto de cada parte individual de la tira de imagen */
@@ -206,13 +207,13 @@ body {
 @keyframes saltar {
   0% {
     background-position: 0;
-    top: 468px;
+    top: 434px;
   }
   50%, 56% {
-    top: 278px; /* altura maxima de salto */
+    top: 280px; /* altura maxima de salto */
   } 
   100% {
-    top: 468px;
+    top: 434px;
     background-position: -1200px; /* recorre todo el ancho de la imagen: (1200px)*/
   } 
 }
