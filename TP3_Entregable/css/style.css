@@ -26,7 +26,7 @@ header {
   justify-content: space-between;
 }
 .contenedor-imagen img {
-  width: 15%;
+  width: 21%;
   position: relative;
   padding: 1em 0 0 1em;
 }
@@ -51,8 +51,6 @@ main {
 .dinoImage {
   z-index: 3;
   position: relative;
-  height: 80%;
-  padding-right: 6%;
 }
 
 .portadaJuego {
