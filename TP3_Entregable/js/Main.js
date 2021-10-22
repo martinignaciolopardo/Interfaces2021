@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function caminar(e) {
         console.log(e);
-        if (e.keyCode == 39 && saltando == false) {
+        // if (e.keyCode == 39 && saltando == false) {
             divPersonaje.classList.remove("saltar");
             divPersonaje.classList.add("caminar");
             divPasto.classList.add('pasto');
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             divCielo.classList.add('cielo');
             divStalagtita.classList.add('stalagtita');
             divGolem.classList.add('golem');
-        }
+        // }
     }
 
     function agachar(e) {
@@ -95,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(tiempoInicio == 0){
             //agregar background
             document.querySelector("#countdown").innerHTML = "Lets GO";
+            caminar();
         }else {
             tiempoInicio -= 1;
             terminarJuego = setTimeout(contarInicio, 1000);
