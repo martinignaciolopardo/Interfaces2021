@@ -1,8 +1,11 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Press Start 2P";
   margin-bottom: -13px;
+}
+
+body{
+  font-family: "Press Start 2P";
 }
 
 a:link,
@@ -100,7 +103,7 @@ main {
 #main .cuerpoJuego .AcercaDelJuego p {
   font-family: "Press Start 2P";
   font-size: 10px;
-  margin: 10px 0px 25px 0px;
+  margin: 0px 0px 25px 0px;
   color: white;
 }
 
@@ -139,7 +142,7 @@ main {
 #pj {
   position: relative;
   /* se posiciona al personaje en el lugar deseado */
-  top: 65px;
+  top: 75px;
   left: 500px;
   width: 100px; /* ancho de cada parte individual de la tira de imagen */
   height: 100px; /* alto de cada parte individual de la tira de imagen */
@@ -154,13 +157,13 @@ main {
 @keyframes saltar {
   0% {
     background-position: 0;
-    top: 60px;
+    top: 75px;
   }
   50%, 56% {
-    top: -20px; /* altura maxima de salto */
+    top: -8px; /* altura maxima de salto */
   } 
   100% {
-    top: 60px;
+    top: 75px;
     background-position: -1200px; /* recorre todo el ancho de la imagen: (1200px)*/
   } 
 }
@@ -244,7 +247,7 @@ main {
 
 svg {
     display: block;
-    font: 7em 'Montserrat';
+    font: 11em 'Montserrat';
     width: 400px;
     height: 200px;
     margin: 0 auto;
@@ -255,7 +258,7 @@ svg {
     fill: none;
     stroke: white;
     stroke-dasharray: 6% 29%;
-    stroke-width: 7px;
+    stroke-width: 5px;
     stroke-dashoffset: 0%;
     animation: stroke-offset 5.5s infinite linear;
 }
