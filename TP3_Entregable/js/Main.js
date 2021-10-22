@@ -86,9 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         divPersonaje.style.animationPlayState = 'paused';
     }
    
-
     function contarInicio(){
-
         if(tiempoInicio >= 4){
                 document.querySelector("#countdown").innerHTML = "";
         }else {
@@ -99,28 +97,26 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector("#countdown").innerHTML = "Lets GO";
         }else {
             tiempoInicio -= 1;
-            
             terminarJuego = setTimeout(contarInicio, 1000);
         }
-
     }
     contarInicio();
 
-    
-    /*
-        CUANDO EL DIV DE LOS ENEMIGOS TENGA [LEFT = 299PX] Y EL JUGADOR NO ESTE SALTANDO, MORIR.
-    */
-
     function getPropiedadCss(id, propiedad){
-        var elem = document.getElementById(id);
-        return window.getComputedStyle(elem,null).getPropertyValue(propiedad);
-        }
+        let golem = document.getElementById(id);
+        return window.getComputedStyle(golem,null).getPropertyValue(propiedad);
+    }
 
-        let left = getPropiedadCss("golem", "left");
-        console.log(left);
+    function comprobar(){
+        let leftStalagtita = getPropiedadCss("stalagtita", "left"); //obstaculo dentro de la posicion del personaje
+        let leftGolem = getPropiedadCss("golem", "left"); //obstaculo dentro de la posicion del personaje
+        let top = getPropiedadCss("personaje", "top"); //personaje con menos altura que el obstaculo
+        if (leftStalagtita < 300 && top > 358 || leftGolem < 300 && top > 358) { // si pasan ambas cosas, pierde
+            morir();
+        }
+    }
 
    // function accion() {
-    
             // if (tiempoLoop < 10) {
             //     divInicioCartel.classList.add("inicioCartel");
             //     if (tiempoLoop == 1) {
@@ -139,13 +135,11 @@ document.addEventListener('DOMContentLoaded', () => {
             //     divInicioCartel.classList.remove("letsGo");
             //     console.log('Listo');
             // }
-        
    // }
 
     window.addEventListener("keydown", caminar);
     window.addEventListener("keydown", saltar);
     window.addEventListener("keydown", agachar);
     window.addEventListener("keydown", morir);
-
 
 });
