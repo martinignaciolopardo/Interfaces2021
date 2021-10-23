@@ -107,7 +107,23 @@ document.addEventListener('DOMContentLoaded', () => {
         let golem = document.getElementById(id);
         return window.getComputedStyle(golem,null).getPropertyValue(propiedad);
     }
+    
+    function generandoNumerosRandom(min,max){
+        return Math.floor((Math.random() * (max+1 - min)) +min);
+    }
 
+    function cambiarDuracion(){
+        
+        let timeAnimation = generandoNumerosRandom(4,9);
+        let timeAnimation2 = generandoNumerosRandom(5,11);
+
+        divGolem.style.setProperty('--animation-time', timeAnimation +'s');
+        divStalagtita.style.setProperty('--animation-time', timeAnimation2 +'s');
+        console.log(timeAnimation);
+        console.log(timeAnimation2);
+
+    }
+    setInterval(cambiarDuracion, 6000);
     function comprobar(){
         let leftStalagtita = getPropiedadCss("stalagtita", "left"); //obstaculo dentro de la posicion del personaje
         let leftGolem = getPropiedadCss("golem", "left"); //obstaculo dentro de la posicion del personaje

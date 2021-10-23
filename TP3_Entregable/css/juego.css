@@ -261,7 +261,7 @@ body {
 
 .stalagtita {
   background-image: url(../images/obstaculos/stalagtita.png);
-  animation: enemigos 7s infinite;
+  animation: enemigos var(--animation-time) infinite;
 }
 
 #golem {
@@ -273,7 +273,7 @@ body {
 }
 
 .golem {
-  animation: enemigos 7s infinite 2s;
+  animation: enemigos var(--animation-time) infinite;
 }
 
 .golemImg {
