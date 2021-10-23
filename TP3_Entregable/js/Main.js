@@ -7,6 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let divGolem = document.querySelector("#golem");
     let divInicioCartel = document.querySelector("#inicioCartel");
     let divStalagtita = document.querySelector("#stalagtita");
+    let divPuntaje = document.querySelector("#puntaje");
+    let barraProgresion = document.querySelector("#barraProgresion");
+    barraProgresion.classList.add("oculto");
+    let spanProgresion = document.querySelector("#spanProgresion");
+    let contador = 0;
+    let porcentaje = 0;
+    let interval;
     let tiempoInicio = 6;
     let saltando = false;
 
@@ -47,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     function caminar(e) {
-        console.log(e);
         // if (e.keyCode == 39 && saltando == false) {
             divPersonaje.classList.remove("saltar");
             divPersonaje.classList.add("caminar");
@@ -60,26 +66,24 @@ document.addEventListener('DOMContentLoaded', () => {
         // }
     }
 
-    function agachar(e) {
-        console.log(e);
-        if (e.keyCode == 40) {
-            divPersonaje.classList.remove("caminar");
-            divPersonaje.classList.add("agachar");
-        }
-    }
+    //function agachar(e) {
+    //   console.log(e);
+    //  if (e.keyCode == 40) {
+    //        divPersonaje.classList.remove("caminar");
+    //        divPersonaje.classList.add("agachar");
+    //    }
+    // }
 
     function morir(e) {
-        if (e.keyCode == 37) {
-            divPasto.style.animationPlayState = 'paused';
-            divMontanias.style.animationPlayState = 'paused';
-            divArboles.style.animationPlayState = 'paused';
-            divCielo.style.animationPlayState = 'paused';
-            divGolem.style.animationPlayState = 'paused';
-            divStalagtita.style.animationPlayState = 'paused';
-            divPersonaje.classList.remove("caminar");
-            divPersonaje.classList.add("morir");
-            setInterval(pause, 980);
-        }
+        divPasto.style.animationPlayState = 'paused';
+        divMontanias.style.animationPlayState = 'paused';
+        divArboles.style.animationPlayState = 'paused';
+        divCielo.style.animationPlayState = 'paused';
+        divGolem.style.animationPlayState = 'paused';
+        divStalagtita.style.animationPlayState = 'paused';
+        divPersonaje.classList.remove("caminar");
+        divPersonaje.classList.add("morir");
+        setInterval(pause, 1400);
     }
 
     function pause() {
@@ -96,6 +100,16 @@ document.addEventListener('DOMContentLoaded', () => {
             //agregar background
             document.querySelector("#countdown").innerHTML = "Lets GO";
             caminar();
+            interval = setInterval(() => {
+                comprobar()
+                contador++;
+                divPuntaje.innerHTML = contador+" Km";
+                porcentaje = contador/50;
+                spanProgresion.style.setProperty('width', porcentaje+"%");
+                //aca falta agregar que cuando el porcentaje es 100, 
+                //termine el juego con un cartel HA GANADO
+            }, 40);
+            barraProgresion.classList.remove("oculto");
         }else {
             tiempoInicio -= 1;
             terminarJuego = setTimeout(contarInicio, 1000);
@@ -104,18 +118,32 @@ document.addEventListener('DOMContentLoaded', () => {
     contarInicio();
 
     function getPropiedadCss(id, propiedad){
-        let golem = document.getElementById(id);
-        return window.getComputedStyle(golem,null).getPropertyValue(propiedad);
+        let elem = document.getElementById(id);
+        return window.getComputedStyle(elem,null).getPropertyValue(propiedad);
     }
 
+    let colisionX1 = 245;
+    let colisionX2 = 150;
+    let colisionY = 358;
+
     function comprobar(){
-        let leftStalagtita = getPropiedadCss("stalagtita", "left"); //obstaculo dentro de la posicion del personaje
-        let leftGolem = getPropiedadCss("golem", "left"); //obstaculo dentro de la posicion del personaje
-        let top = getPropiedadCss("personaje", "top"); //personaje con menos altura que el obstaculo
-        if (leftStalagtita < 300 && top > 358 || leftGolem < 300 && top > 358) { // si pasan ambas cosas, pierde
+        let leftStalagtita = getPropiedadCss("stalagtita", "left"); // posision X de la stalagtita
+        let top = getPropiedadCss("personaje", "top"); //posicion Y del personaje
+        let leftGolem = getPropiedadCss("golem", "left"); //posicion X del golem
+        parseInt(top);
+        parseInt(leftStalagtita);
+        if (leftStalagtita.replace('px','') <= colisionX1 &&
+            leftStalagtita.replace('px','') >= colisionX2 && 
+            top.replace('px','') >= colisionY || 
+            leftGolem.replace('px','') <= colisionX1 && 
+            leftGolem.replace('px','') >= colisionX2 && 
+            top.replace('px','') >= colisionY)  {
             morir();
+            clearInterval(interval);
         }
     }
+
+    
 
    // function accion() {
             // if (tiempoLoop < 10) {
@@ -138,9 +166,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // }
    // }
 
-    window.addEventListener("keydown", caminar);
+    //window.addEventListener("keydown", caminar);
     window.addEventListener("keydown", saltar);
-    window.addEventListener("keydown", agachar);
-    window.addEventListener("keydown", morir);
+    //window.addEventListener("keydown", agachar);
 
 });
