@@ -128,8 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function cambiarDuracion(){
         
-        let timeAnimation = generandoNumerosRandom(4,9);
-        let timeAnimation2 = generandoNumerosRandom(5,11);
+        let timeAnimation = generandoNumerosRandom(5,15);
+        let timeAnimation2 = generandoNumerosRandom(6,15);
 
         divGolem.style.setProperty('--animation-time', timeAnimation +'s');
         divStalagtita.style.setProperty('--animation-time', timeAnimation2 +'s');

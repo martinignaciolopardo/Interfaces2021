@@ -288,19 +288,25 @@ body {
 #puntaje{
   position: relative;
   color: yellow;
-  left: 1240px;
-  top: -340px;
+  left: 60px;
+  top: -355px;
   font-family: 'Carter One';
 }
 
 /******************* BARRA PROGRESION ******************************/
+.headerProgress{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding-top: 1em;
+}
 
 .progress-bar {
   background-color: #1a1a1a;
   height: 25px;
   position: relative;
   top: -409px;
-  left: 474px;
+  left: 40px;
   padding: 5px;
   width: 350px;
   margin: 50px 0;         
