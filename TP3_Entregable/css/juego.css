@@ -283,6 +283,28 @@ body {
   background-image: url(../images/obstaculos/golem.png);
 }
 
+.divEstadisticas #puntosImagenChuleta {
+  width: 100px;
+  position: relative;
+  transition: .2s ease-in-out;
+}
+.puntosImagenChuleta{
+  animation: puntos 10s alternate infinite;
+}
+@keyframes puntos {
+  0%{
+    top: -180px;
+    left: 1218px;
+  }
+  50%{
+    top: -450px;
+  }
+  100%{
+    top: -180px;
+    left: -700px;
+  }
+
+}
 /********************** PUNTAJE *************************/
 
 #distancia{

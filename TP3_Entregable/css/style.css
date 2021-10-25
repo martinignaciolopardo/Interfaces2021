@@ -51,8 +51,8 @@ main {
 .dinoImage {
   z-index: 3;
   position: relative;
-  top: 252px;
-  width: 32%;
+  top: 70px;
+  width: 35%;
 }
 
 .portadaJuego {
@@ -66,7 +66,7 @@ main {
   display: flex;
   align-items: center;
   flex-direction: row-reverse;
-  height: 58em;
+  height: 38em;
 }
 
 .AcercaDelJuego {
@@ -74,7 +74,7 @@ main {
   /* margin-top: 45px; */
   text-align: center;
   width: 100%;
-  height: 300px;
+  height: 400px;
   position: absolute;
   z-index: 5;
   margin-bottom: 2em;
@@ -104,7 +104,7 @@ main {
 
 #main .cuerpoJuego .AcercaDelJuego p {
   font-family: "Press Start 2P";
-  font-size: 1em;
+  font-size: 0.9rem;
   margin: 0px 0px 25px 0px;
   color: white;
 }
@@ -125,10 +125,10 @@ main {
 
 #main .cuerpoJuego .AcercaDelJuego button {
   font-family: "Press Start 2P";
-  font-size: 26px;
+  font-size: 1.3rem;
   text-align: center;
   display: inline-block;
-  margin: 5px;
+  margin: 1.6rem;
   font-weight: bold;
   padding: 10px 0 10px 10px;
   background-color: lightgray;
@@ -250,7 +250,7 @@ main {
 svg {
     display: block;
     font: 14em 'Montserrat';
-    width: 500px;
+    width: 35%;
     height: 260px;
     margin: 0 auto;
     margin-top: -93px;

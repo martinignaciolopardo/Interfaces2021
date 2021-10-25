@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let divInicioCartel = document.querySelector("#inicioCartel");
     let divStalagtita = document.querySelector("#stalagtita");
     let divDistancia = document.querySelector("#distancia");
+    let divImagenChuleta = document.querySelector("#puntosImagenChuleta");
     let barraProgresion = document.querySelector("#barraProgresion");
     barraProgresion.classList.add("oculto");
     let spanProgresion = document.querySelector("#spanProgresion");
@@ -64,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             divArboles.classList.add('arboles');
             divCielo.classList.add('cielo');
             divStalagtita.classList.add('stalagtita');
+            divImagenChuleta.classList.add('puntosImagenChuleta');
             divGolem.classList.add('golem');
         // }
     }
@@ -145,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(timeAnimation2);
 
     }
-    setInterval(cambiarDuracion, 9000);
+    setInterval(cambiarDuracion, 10000);
 
     let colisionX1 = 245;
     let colisionX2 = 150;
