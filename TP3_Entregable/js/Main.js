@@ -7,10 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let divGolem = document.querySelector("#golem");
     let divInicioCartel = document.querySelector("#inicioCartel");
     let divStalagtita = document.querySelector("#stalagtita");
-    let divPuntaje = document.querySelector("#puntaje");
+    let divDistancia = document.querySelector("#distancia");
     let barraProgresion = document.querySelector("#barraProgresion");
     barraProgresion.classList.add("oculto");
     let spanProgresion = document.querySelector("#spanProgresion");
+    let divPuntaje = document.querySelector("#puntajeChuleta");
+    let puntaje = 0;
     let contador = 0;
     let porcentaje = 0;
     let interval;
@@ -103,13 +105,19 @@ document.addEventListener('DOMContentLoaded', () => {
             interval = setInterval(() => {
                 comprobar()
                 contador++;
-                divPuntaje.innerHTML = contador+" Km";
+                divDistancia.innerHTML = contador+" Km";
                 porcentaje = contador/50;
                 spanProgresion.style.setProperty('width', porcentaje+"%");
+                if(porcentaje == 100){
+                    let divFinal = document.querySelector('.divFinal');
+                    divFinal.classList.add('mostrarFinal'); 
+                }
                 //aca falta agregar que cuando el porcentaje es 100, 
                 //termine el juego con un cartel HA GANADO
             }, 40);
             barraProgresion.classList.remove("oculto");
+            divPuntaje.innerHTML =" x  " + puntaje + " puntos";
+
         }else {
             tiempoInicio -= 1;
             terminarJuego = setTimeout(contarInicio, 1000);
@@ -128,8 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function cambiarDuracion(){
         
-        let timeAnimation = generandoNumerosRandom(5,15);
-        let timeAnimation2 = generandoNumerosRandom(6,15);
+        let timeAnimation = generandoNumerosRandom(5,10);
+        let timeAnimation2 = generandoNumerosRandom(5,10);
 
         divGolem.style.setProperty('--animation-time', timeAnimation +'s');
         divStalagtita.style.setProperty('--animation-time', timeAnimation2 +'s');
@@ -137,7 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(timeAnimation2);
 
     }
-    setInterval(cambiarDuracion, 6000);
+    setInterval(cambiarDuracion, 9000);
+
     let colisionX1 = 245;
     let colisionX2 = 150;
     let colisionY = 358;

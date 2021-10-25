@@ -276,7 +276,7 @@ body {
 }
 
 .golem {
-  animation: enemigos var(--animation-time) infinite;
+  animation: enemigos var(--animation-time) infinite 2s;
 }
 
 .golemImg {
@@ -285,12 +285,33 @@ body {
 
 /********************** PUNTAJE *************************/
 
-#puntaje{
+#distancia{
   position: relative;
   color: yellow;
   left: 60px;
   top: -355px;
   font-family: 'Carter One';
+}
+
+#puntajeChuleta{
+  position: relative;
+  color: yellow;
+  left: 140px;
+  font-size: 1.5em;
+  top: -520px;
+  font-family: 'Carter One';
+}
+
+#imagenChuleta{
+  top: -455px;
+  /* background-image: url(../images/obstaculos/chuleta.png); */
+  position: relative;
+  width: 100px;
+  padding-left: 2em;
+  
+}
+.imagenChuleta{
+  background-image: url(../images/obstaculos/chuleta.png);
 }
 
 /******************* BARRA PROGRESION ******************************/
