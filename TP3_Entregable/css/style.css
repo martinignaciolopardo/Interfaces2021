@@ -103,7 +103,7 @@ main {
 }
 
 #imgDown {
-  position:relative ;
+  position: relative;
   top: -15px;
   width: 10%;
 }
@@ -127,8 +127,7 @@ main {
   font-weight: 400;
   src: url("../fonts/press-start-2p-v9-latin-regular.eot");
   src: local(""),
-    url("../fonts/press-start-2p-v9-latin-regular.eot")
-      format("embedded-opentype"),
+    url("../fonts/press-start-2p-v9-latin-regular.eot") format("embedded-opentype"),
     url("../fonts/press-start-2p-v9-latin-regular.woff2") format("woff2"),
     url("../fonts/press-start-2p-v9-latin-regular.woff") format("woff"),
     url("../fonts/press-start-2p-v9-latin-regular.ttf") format("truetype"),
@@ -153,7 +152,7 @@ main {
   cursor: pointer;
 }
 
-#pj {
+#pj{
   position: relative;
   /* se posiciona al personaje en el lugar deseado */
   top: 75px;
@@ -185,17 +184,18 @@ main {
 
   100% {
     top: 75px;
-    background-position: -1200px; /* recorre todo el ancho de la imagen: (1200px)*/
-  } 
-} 
+    background-position: -1200px;
+    /* recorre todo el ancho de la imagen: (1200px)*/
+  }
+}
+
 /*********** INFO ***********/
-.popUp-Info{
+.popUp-Info {
   background-color: #fff;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
-  padding: 2rem;
+  padding: 3rem;
   text-align: center;
-  height: 420px;
-  width: 700px;
+  line-height: 25px;
   transition: 0.3s ease all;
   transform: scale(0.7);
   display: grid;
@@ -209,44 +209,84 @@ main {
     "aceptar aceptar";
   opacity: 1;
 }
-.textoIntro{
+
+.textoIntro {
   padding: 1em;
   grid-area: texto;
-  font-size: 12px; 
+  font-size: 12px;
   font-style: oblique;
   line-height: 1.6em;
 }
-.instrucciones{
+
+.instrucciones {
   grid-area: Instrucciones;
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 300px;
+  height: 400px;
+
 }
-.textoInstrucciones{
+
+.textoInstrucciones {
   display: flex;
   padding: 1em;
   height: 100px;
   align-items: center;
+  margin: 1em;
 }
-.graficos-instrucciones{
+
+.graficos-instrucciones {
   grid-area: grafico;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-#btn-aceptar{
+
+#saltarPersonaje{
+  width:100px;
+  height: 140px;
+  animation: saltar 1s steps(12) infinite;
+}
+.caminar{
+  background-image: url(../images/personaje/caminar.png);
+  width:100px;
+  height: 100px;
+  margin-top: 2em;
+  animation: caminar 1s steps(8) infinite;
+} 
+
+@keyframes caminar {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: -800px;
+  }
+}
+#btn-aceptar {
   grid-area: aceptar;
   width: 40%;
   margin: 0 30%;
   border-radius: 5px;
   font-size: 1.5em;
 }
+
 #titulo-jugador {
   font-size: 26px;
   font-weight: 300;
-  margin-bottom: 1rem; 
+  margin-bottom: 1rem;
   grid-area: titulo;
   grid-column-start: 1;
   grid-column-end: 3;
 }
+
+#chuletaPersonaje {
+  background-image: url(../images/obstaculos/chuleta.png);
+  height: 100px;
+  width: 100px;
+  background-size: contain;
+}
+
 /******************** FOOTER ***********************/
 
 .sectionFooter {
@@ -275,18 +315,16 @@ main {
 
 .brillar-hover::before {
   content: "";
-  background: linear-gradient(
-    45deg,
-    #ff0000,
-    #ff7300,
-    #fffb00,
-    #48ff00,
-    #00ffd5,
-    #002bff,
-    #7a00ff,
-    #ff00c8,
-    #ff0000
-  );
+  background: linear-gradient(45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000);
   position: absolute;
   top: -2px;
   left: -2px;

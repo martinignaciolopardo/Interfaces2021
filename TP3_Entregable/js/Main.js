@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     barraProgresion.classList.add("oculto");
     let spanProgresion = document.querySelector("#spanProgresion");
     let divPuntaje = document.querySelector("#puntajeChuleta");
+    let informacion = document.querySelector("#info-js");
     let puntaje = 0;
     let contador = 0;
     let porcentaje = 0;
@@ -184,11 +185,11 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(interval);
         }
         //en proceso
-        if(leftChuleta.replace('px','') <= colision3 &&
-           leftChuleta.replace('px','') >= colision4 && 
-           top.replace('px', '') >= colisionY){
-               sumarPuntos();
-           }
+        // if(leftChuleta.replace('px','') <= colision3 &&
+        //    leftChuleta.replace('px','') >= colision4 && 
+        //    top.replace('px', '') >= colisionY){
+        //        sumarPuntos();
+        //    }
     }
 
     
