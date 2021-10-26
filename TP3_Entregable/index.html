@@ -43,16 +43,6 @@
             </div>
             <p>Dinorun es un juego programado para la materia</p>
             <p>Interfaces de usuario e interaccion</p>
-            <p>
-              Usa
-              <span><img src="images/up.png" alt="up" id="imgUp" /></span> para
-              saltar
-            </p>
-            <p>
-              Usa
-              <span><img src="images/down.png" alt="down" id="imgDown" /></span>
-              para agacharte
-            </p>
             <button
               class="brillar-hover"
               onclick="window.location.href = 'juego.html'"
@@ -72,6 +62,30 @@
               </h1>
             </div>
           </div>
+        </div>
+        <div class="popUp-Info">
+          <h1 id="titulo-jugador">Como jugar DinoRun</h1>
+          <p class="textoIntro">
+            DinoRun tiene como objetivo brindar al jugador momentos de
+            felicidad.
+          </p>
+          <div class="instrucciones">
+            <p class="textoInstrucciones">
+              Usá la tecla para saltar.
+            <img src="images/up.png" alt="up" id="imgUp" />
+            </p>
+            <p class="textoInstrucciones">
+              Usá la tecla para agacharte.
+            <img src="images/down.png" alt="down" id="imgDown" />
+            </p>
+            <p class="textoInstrucciones">Cada Chuleta brinda 50puntos.</p>
+          </div>
+          <div class="graficos-instrucciones">
+            <div id="saltarPersonaje"></div>
+            <div id="agacharsePersonaje"></div>
+            <div id="chuletaPersonaje"></div>
+          </div>
+          <button id="btn-aceptar">Aceptar</button>
         </div>
       </main>
       <footer>
