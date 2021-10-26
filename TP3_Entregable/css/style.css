@@ -4,7 +4,7 @@
   margin-bottom: -13px;
 }
 
-body{
+body {
   font-family: "Press Start 2P";
 }
 
@@ -14,6 +14,12 @@ a:active {
   text-decoration: none;
   color: white;
   margin-right: 20px;
+}
+
+.navbar-brand:hover {
+  font-size: 1.3rem;
+  -webkit-animation: text-shadow-pop-br 0.5s both;
+  animation: text-shadow-pop-br 0.5s both;
 }
 
 .contenedor-principal {
@@ -29,10 +35,12 @@ header {
   align-items: center;
   justify-content: space-between;
 }
+
 .contenedor-imagen img {
   width: 21%;
   position: relative;
 }
+
 .contenedor-nav {
   display: flex;
 }
@@ -146,14 +154,17 @@ main {
   /* se posiciona al personaje en el lugar deseado */
   top: 75px;
   left: 500px;
-  width: 100px; /* ancho de cada parte individual de la tira de imagen */
-  height: 100px; /* alto de cada parte individual de la tira de imagen */
+  width: 100px;
+  /* ancho de cada parte individual de la tira de imagen */
+  height: 100px;
+  /* alto de cada parte individual de la tira de imagen */
   background-image: url(../images/personaje/caminar.png);
 }
 
 .saltar {
   background-image: url(../images/personaje/saltar.png);
-  animation: saltar 1s steps(12); /* dura 1 segundo con 12 pasos (steps) la animacion de saltar */
+  animation: saltar 1s steps(12);
+  /* dura 1 segundo con 12 pasos (steps) la animacion de saltar */
 }
 
 @keyframes saltar {
@@ -161,13 +172,18 @@ main {
     background-position: 0;
     top: 75px;
   }
-  50%, 56% {
-    top: -8px; /* altura maxima de salto */
-  } 
+
+  50%,
+  56% {
+    top: -8px;
+    /* altura maxima de salto */
+  }
+
   100% {
     top: 75px;
-    background-position: -1200px; /* recorre todo el ancho de la imagen: (1200px)*/
-  } 
+    background-position: -1200px;
+    /* recorre todo el ancho de la imagen: (1200px)*/
+  }
 }
 
 /******************** FOOTER ***********************/
@@ -197,11 +213,22 @@ main {
 }
 
 .brillar-hover::before {
-  content: '';
-  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
   position: absolute;
   top: -2px;
-  left:-2px;
+  left: -2px;
   background-size: 400%;
   z-index: -1;
   filter: blur(5px);
@@ -209,12 +236,12 @@ main {
   height: calc(100% + 4px);
   animation: glowing 20s linear infinite;
   opacity: 0;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
   border-radius: 10px;
 }
 
 .brillar-hover:active {
-  color: #000
+  color: #000;
 }
 
 .brillar-hover:active:after {
@@ -227,7 +254,7 @@ main {
 
 .brillar-hover:after {
   z-index: -1;
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   height: 100%;
@@ -237,61 +264,57 @@ main {
   border-radius: 10px;
 }
 
-@keyframes glowing {
-  0% { background-position: 0 0; }
-  50% { background-position: 400% 0; }
-  100% { background-position: 0 0; }
-}
-
 /***********************************************************/
 
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 svg {
-    display: block;
-    font: 14em 'Montserrat';
-    width: 35%;
-    height: 260px;
-    margin: 0 auto;
-    margin-top: -93px;
+  display: block;
+  font: 14em "Montserrat";
+  width: 35%;
+  height: 260px;
+  margin: 0 auto;
+  margin-top: -93px;
 }
 
 .text-copy {
-    fill: none;
-    stroke: white;
-    stroke-dasharray: 6% 29%;
-    stroke-width: 5px;
-    stroke-dashoffset: 0%;
-    animation: stroke-offset 5.5s infinite linear;
+  fill: none;
+  stroke: white;
+  stroke-dasharray: 6% 29%;
+  stroke-width: 5px;
+  stroke-dashoffset: 0%;
+  animation: stroke-offset 5.5s infinite linear;
 }
 
-.text-copy:nth-child(1){
-  stroke: #4D163D;
+.text-copy:nth-child(1) {
+  stroke: #4d163d;
   animation-delay: -1;
 }
 
-.text-copy:nth-child(2){
+.text-copy:nth-child(2) {
   stroke: #840037;
   animation-delay: -2s;
 }
 
-.text-copy:nth-child(3){
-  stroke: #BD0034;
+.text-copy:nth-child(3) {
+  stroke: #bd0034;
   animation-delay: -3s;
 }
 
-.text-copy:nth-child(4){
-  stroke: #BD0034;
+.text-copy:nth-child(4) {
+  stroke: #bd0034;
   animation-delay: -4s;
 }
 
-.text-copy:nth-child(5){
-  stroke: #FDB731;
+.text-copy:nth-child(5) {
+  stroke: #fdb731;
   animation-delay: -5s;
 }
 
-@keyframes stroke-offset{
-  100% {stroke-dashoffset: -35%;}
+@keyframes stroke-offset {
+  100% {
+    stroke-dashoffset: -35%;
+  }
 }
 
 /***************************/
@@ -331,13 +354,62 @@ h1 span:nth-child(6) {
 
 /* ANIMATION */
 @keyframes bounce {
-  0%{
+  0% {
     top: 0px;
   }
+
   100% {
     top: -20px;
     text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc,
-    0 5px 0 #ccc, 0 6px 0 #ccc, 0 7px 0 #ccc, 0 8px 0 #ccc, 0 9px 0 #ccc,
-    0 50px 25px rgba(0, 0, 0, 0.2);
+      0 5px 0 #ccc, 0 6px 0 #ccc, 0 7px 0 #ccc, 0 8px 0 #ccc, 0 9px 0 #ccc,
+      0 50px 25px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@-webkit-keyframes text-shadow-pop-br {
+  0% {
+    text-shadow: 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555,
+      0 0 #555555, 0 0 #555555, 0 0 #555555;
+    -webkit-transform: translateX(0) translateY(0);
+    transform: translateX(0) translateY(0);
+  }
+
+  100% {
+    text-shadow: 1px 1px #555555, 2px 2px #555555, 3px 3px #555555,
+      4px 4px #555555, 5px 5px #555555, 6px 6px #555555, 7px 7px #555555,
+      8px 8px #555555;
+    -webkit-transform: translateX(-8px) translateY(-8px);
+    transform: translateX(-8px) translateY(-8px);
+  }
+}
+
+@keyframes text-shadow-pop-br {
+  0% {
+    text-shadow: 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555,
+      0 0 #555555, 0 0 #555555, 0 0 #555555;
+    -webkit-transform: translateX(0) translateY(0);
+    transform: translateX(0) translateY(0);
+  }
+
+  100% {
+    text-shadow: 1px 1px #555555, 2px 2px #555555, 3px 3px #555555,
+      4px 4px #555555, 5px 5px #555555, 6px 6px #555555, 7px 7px #555555,
+      8px 8px #555555;
+    -webkit-transform: translateX(-8px) translateY(-8px);
+    transform: translateX(-8px) translateY(-8px);
   }
 }

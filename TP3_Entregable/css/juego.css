@@ -16,7 +16,7 @@ body {
 }
 
 .divCount {
-  font-family: 'Carter One', sans-serif;
+  font-family: "Carter One", sans-serif;
   text-align: center;
   height: 500px;
   padding-top: 5em;
@@ -46,7 +46,8 @@ body {
     top: -580px;
     visibility: visible;
   }
-  25%, 70% {
+  25%,
+  70% {
     top: -43px;
   }
   100% {
@@ -211,11 +212,11 @@ body {
   }
   50% {
     top: 278px; /* altura maxima de salto */
-  } 
+  }
   100% {
     top: 468px;
     background-position: -1200px; /* recorre todo el ancho de la imagen: (1200px)*/
-  } 
+  }
 }
 
 /*recorre todo el ancho de la imagen, de 0px a 1350px */ /*  [los valores son negativos porque se corre la imagen hacia la izquierda] */
@@ -262,8 +263,10 @@ body {
 }
 
 .stalagtita {
-  background-image: url(../images/obstaculos/stalagtita.png);
   animation: enemigos var(--animation-time) infinite;
+}
+.stalagtitaImg{
+  background-image: url(../images/obstaculos/stalagtita.png);
 }
 
 #golem {
@@ -283,61 +286,62 @@ body {
   background-image: url(../images/obstaculos/golem.png);
 }
 
-.divEstadisticas #puntosImagenChuleta {
-  width: 100px;
-  position: relative;
-  transition: .2s ease-in-out;
-}
-.puntosImagenChuleta{
-  animation: puntos 10s alternate infinite;
-}
-@keyframes puntos {
-  0%{
-    top: -180px;
-    left: 1218px;
-  }
-  50%{
-    top: -450px;
-  }
-  100%{
-    top: -180px;
-    left: -700px;
-  }
-
-}
 /********************** PUNTAJE *************************/
 
-#distancia{
+#distancia {
   position: relative;
   color: yellow;
   left: 60px;
   top: -355px;
-  font-family: 'Carter One';
+  font-family: "Carter One";
 }
 
-#puntajeChuleta{
+#puntajeChuleta {
   position: relative;
   color: yellow;
   left: 140px;
   font-size: 1.5em;
   top: -520px;
-  font-family: 'Carter One';
+  font-family: "Carter One";
 }
 
-#imagenChuleta{
+#imagenChuleta {
   top: -455px;
   /* background-image: url(../images/obstaculos/chuleta.png); */
   position: relative;
   width: 100px;
   padding-left: 2em;
-  
 }
-.imagenChuleta{
+/* .imagenChuleta {
+  background-image: url(../images/obstaculos/chuleta.png);
+} */
+
+#puntosImagenChuleta{
+  /* border: 1px solid black;  */
+  position: relative;
+  top: -350px;
+  width: 100px;
+  height: 100px;
+}
+
+.desplazamientoChuleta {
+  animation: desplazamiento 10s linear infinite;
+}
+
+.desplazamientoChuletaImg{
   background-image: url(../images/obstaculos/chuleta.png);
 }
 
+@keyframes desplazamiento {
+  0% {
+    left: 1219px;
+  }
+  100% {
+    left: -700px;
+  }
+}
 /******************* BARRA PROGRESION ******************************/
-.headerProgress{
+.headerProgress {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -352,47 +356,59 @@ body {
   left: 40px;
   padding: 5px;
   width: 350px;
-  margin: 50px 0;         
+  margin: 50px 0;
   border-radius: 5px;
-  box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;           
+  box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
 }
 
 .progress-bar span {
   display: inline-block;
   height: 100%;
   border-radius: 3px;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
-  transition: width .4s ease-in-out; 
-  background-color: #ccc;   
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  transition: width 0.4s ease-in-out;
+  background-color: #ccc;
 }
 
 /**** GRADIENTS ****/
 .blue span {
-  background-color: #34c2e3;   
+  background-color: #34c2e3;
 }
 
 .orange span {
   background-color: #fecf23;
-  background-image: linear-gradient(top, #fecf23, #fd9215);  
-}   
+  background-image: linear-gradient(top, #fecf23, #fd9215);
+}
 
 .green span {
   background-color: #a5df41;
-  background-image: linear-gradient(top, #a5df41, #4ca916);  
+  background-image: linear-gradient(top, #a5df41, #4ca916);
 }
 
 /**** STRIPES ****/
 .stripes span {
   background-size: 30px 30px;
-  background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
-    transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
-    transparent 75%, transparent);            
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
 
-  animation: animate-stripes 3s linear infinite;             
+  animation: animate-stripes 3s linear infinite;
 }
 
 @keyframes animate-stripes {
-  0% {background-position: 0 0;} 100% {background-position: 100px 0;}
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100px 0;
+  }
 }
 
 /**** SHINE ****/
@@ -401,7 +417,7 @@ body {
 }
 
 .shine span::after {
-  content: '';
+  content: "";
   opacity: 0;
   position: absolute;
   top: 0;
@@ -410,31 +426,49 @@ body {
   left: 0;
   background: #fff;
   border-radius: 3px;
-  animation: animate-shine 2s ease-out infinite;             
+  animation: animate-shine 2s ease-out infinite;
 }
 
 @keyframes animate-shine {
-  0% {opacity: 0; width: 0;}
-  50% {opacity: .5;}
-  100% {opacity: 0; width: 95%;}
+  0% {
+    opacity: 0;
+    width: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    width: 95%;
+  }
 }
 
 /**** GLOW ****/
 .glow span {
-  box-shadow: 0 5px 5px rgba(255, 255, 255, .7) inset, 0 -5px 5px rgba(255, 255, 255, .7) inset;    
-  animation: animate-glow 1s ease-out infinite;          
+  box-shadow: 0 5px 5px rgba(255, 255, 255, 0.7) inset,
+    0 -5px 5px rgba(255, 255, 255, 0.7) inset;
+  animation: animate-glow 1s ease-out infinite;
 }
 
 @keyframes animate-glow {
-  0% { box-shadow: 0 5px 5px rgba(255, 255, 255, .7) inset, 0 -5px 5px rgba(255, 255, 255, .7) inset;} 
-  50% { box-shadow: 0 5px 5px rgba(255, 255, 255, .3) inset, 0 -5px 5px rgba(255, 255, 255, .3) inset;} 
-  100% { box-shadow: 0 5px 5px rgba(255, 255, 255, .7) inset, 0 -5px 5px rgba(255, 255, 255, .7) inset;}
+  0% {
+    box-shadow: 0 5px 5px rgba(255, 255, 255, 0.7) inset,
+      0 -5px 5px rgba(255, 255, 255, 0.7) inset;
+  }
+  50% {
+    box-shadow: 0 5px 5px rgba(255, 255, 255, 0.3) inset,
+      0 -5px 5px rgba(255, 255, 255, 0.3) inset;
+  }
+  100% {
+    box-shadow: 0 5px 5px rgba(255, 255, 255, 0.7) inset,
+      0 -5px 5px rgba(255, 255, 255, 0.7) inset;
+  }
 }
 
 /* #spanProgresion{
   width: 10% !important;
 } */
 
-.oculto{
+.oculto {
   display: none;
 }

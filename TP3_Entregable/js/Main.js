@@ -1,14 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     let divPersonaje = document.querySelector("#personaje");
+    
     let divPasto = document.querySelector("#pasto");
     let divCielo = document.querySelector("#cielo");
     let divArboles = document.querySelector("#arboles");
     let divMontanias = document.querySelector("#montanias");
+
     let divGolem = document.querySelector("#golem");
-    let divInicioCartel = document.querySelector("#inicioCartel");
     let divStalagtita = document.querySelector("#stalagtita");
-    let divDistancia = document.querySelector("#distancia");
     let divImagenChuleta = document.querySelector("#puntosImagenChuleta");
+
+    let divInicioCartel = document.querySelector("#inicioCartel");
+    let divDistancia = document.querySelector("#distancia");
     let barraProgresion = document.querySelector("#barraProgresion");
     barraProgresion.classList.add("oculto");
     let spanProgresion = document.querySelector("#spanProgresion");
@@ -55,7 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(e);
         divGolem.classList.add('golemImg');
     })
-
+    divStalagtita.addEventListener('animationstart', (e) => {
+        divStalagtita.classList.add('stalagtitaImg');
+    })
+    divImagenChuleta.addEventListener('animationstart', (e) =>{
+        divImagenChuleta.classList.add('desplazamientoChuletaImg');
+    })
     function caminar(e) {
         // if (e.keyCode == 39 && saltando == false) {
             divPersonaje.classList.remove("saltar");
@@ -65,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
             divArboles.classList.add('arboles');
             divCielo.classList.add('cielo');
             divStalagtita.classList.add('stalagtita');
-            divImagenChuleta.classList.add('puntosImagenChuleta');
+            divImagenChuleta.classList.add('desplazamientoChuleta');
             divGolem.classList.add('golem');
         // }
     }
@@ -93,6 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function pause() {
         divPersonaje.style.animationPlayState = 'paused';
     }
+    //en proceso
+    function sumarPuntos(e) {
+        puntaje += 50;
+        
+    }
    
     function contarInicio(){
         if(tiempoInicio >= 4){
@@ -110,8 +123,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 divDistancia.innerHTML = contador+" Km";
                 porcentaje = contador/50;
                 spanProgresion.style.setProperty('width', porcentaje+"%");
+                //en proceso
                 if(porcentaje == 100){
-                    let divFinal = document.querySelector('.divFinal');
+                    let divFinal = document.querySelector('#cartelFinal');
                     divFinal.classList.add('mostrarFinal'); 
                 }
                 //aca falta agregar que cuando el porcentaje es 100, 
@@ -135,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function generandoNumerosRandom(min,max){
         return Math.floor((Math.random() * (max+1 - min)) +min);
     }
-
+    //para revisar
     function cambiarDuracion(){
         
         let timeAnimation = generandoNumerosRandom(5,10);
@@ -157,6 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let leftStalagtita = getPropiedadCss("stalagtita", "left"); // posision X de la stalagtita
         let top = getPropiedadCss("personaje", "top"); //posicion Y del personaje
         let leftGolem = getPropiedadCss("golem", "left"); //posicion X del golem
+        let leftChuleta = getPropiedadCss("puntosImagenChuleta", "left");
         parseInt(top);
         parseInt(leftStalagtita);
         if (leftStalagtita.replace('px','') <= colisionX1 &&
@@ -168,6 +183,12 @@ document.addEventListener('DOMContentLoaded', () => {
             morir();
             clearInterval(interval);
         }
+        //en proceso
+        if(leftChuleta.replace('px','') <= colision3 &&
+           leftChuleta.replace('px','') >= colision4 && 
+           top.replace('px', '') >= colisionY){
+               sumarPuntos();
+           }
     }
 
     
