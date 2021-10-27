@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
     barraProgresion.classList.add("oculto");
     let spanProgresion = document.querySelector("#spanProgresion");
     let divPuntaje = document.querySelector("#puntajeChuleta");
-    let informacion = document.querySelector("#info-js");
+
+
     let puntaje = 0;
     let contador = 0;
     let porcentaje = 0;
@@ -54,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
     })
+   
 
     divGolem.addEventListener('animationstart', (e) => {
         console.log(e);
@@ -191,8 +193,8 @@ document.addEventListener('DOMContentLoaded', () => {
         //        sumarPuntos();
         //    }
     }
-
     
+
 
    // function accion() {
             // if (tiempoLoop < 10) {

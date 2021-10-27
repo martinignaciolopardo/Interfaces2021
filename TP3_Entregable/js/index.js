@@ -1,12 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     "use strict"
     let divPersonaje = document.querySelector("#pj");
+    let divPopup = document.querySelector("#info-js");
+    let divBtnPopup = document.querySelector("#btn-aceptar");
+    let overlay = document.querySelector('.overlay');
+    
     let spanB = document.querySelector("#spanB");
     let spanI = document.querySelector("#spanI");
     let spanE = document.querySelector("#spanE");
     let spanN = document.querySelector("#spanN");
     let spanS = document.querySelector("#spanS");
     let saltando = false;
+    
 
     function saltar(e) {
         if (e.keyCode == 38 && saltando == false) {
@@ -28,4 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener("keydown", saltar);
 
+    divPopup.addEventListener('click', (e) => {
+        let divPopupInfo = document.querySelector(".popUp-Info");
+        divPopupInfo.classList.add('active');
+        overlay.classList.add('active');
+        console.log('holas');
+    })
 });

@@ -56,6 +56,11 @@ main {
   flex-wrap: wrap; */
 }
 
+.btn-group {
+  display: flex;
+  padding: 0 2em;
+}
+
 .dinoImage {
   z-index: 3;
   position: relative;
@@ -152,7 +157,7 @@ main {
   cursor: pointer;
 }
 
-#pj{
+#pj {
   position: relative;
   /* se posiciona al personaje en el lugar deseado */
   top: 75px;
@@ -190,24 +195,52 @@ main {
 }
 
 /*********** INFO ***********/
+.overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  z-index: 6;
+}
+.overlay.active {
+  visibility: visible;
+}
+
 .popUp-Info {
   background-color: #fff;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
-  padding: 3rem;
+  padding: 2rem;
+  height: 45%;
+  width: 50%;
+  /* position: relative;
+  left: 300px; */
   text-align: center;
   line-height: 25px;
   transition: 0.3s ease all;
   transform: scale(0.7);
   display: grid;
   border-radius: 12px;
+  font-size: 12px;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 10% 10% 70% 10%;
+ 
   grid-template-areas:
     "titulo titulo"
     "texto texto"
     "Instrucciones grafico"
     "aceptar aceptar";
+  opacity: 0;
+}
+
+.popUp-Info.active {
   opacity: 1;
+  transform: scale(0.6);
 }
 
 .textoIntro {
@@ -242,33 +275,62 @@ main {
   align-items: center;
 }
 
-#saltarPersonaje{
-  width:100px;
+#saltarPersonaje {
+  width: 100px;
   height: 140px;
   animation: saltar 1s steps(12) infinite;
 }
-.caminar{
+
+.caminar {
   background-image: url(../images/personaje/caminar.png);
-  width:100px;
+  width: 100px;
   height: 100px;
   margin-top: 2em;
   animation: caminar 1s steps(8) infinite;
-} 
+}
+
+#info-js {
+  cursor: pointer;
+  padding: 0 1em;
+}
 
 @keyframes caminar {
   0% {
     background-position: 0;
   }
+
   100% {
     background-position: -800px;
   }
 }
+
 #btn-aceptar {
   grid-area: aceptar;
   width: 40%;
   margin: 0 30%;
   border-radius: 5px;
   font-size: 1.5em;
+  cursor: pointer;
+}
+
+#btn-aceptar:hover {
+  animation: btnAceptar 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes btnAceptar {
+  0% {
+    transform: translateZ(0);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    font-size: 1.5em;
+  }
+
+  100% {
+    transform: translateZ(50px);
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+    font-size: 1.6em;
+  }
+
+
 }
 
 #titulo-jugador {
@@ -284,6 +346,7 @@ main {
   background-image: url(../images/obstaculos/chuleta.png);
   height: 100px;
   width: 100px;
+  margin-top: 2em;
   background-size: contain;
 }
 

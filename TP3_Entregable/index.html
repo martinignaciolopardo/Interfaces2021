@@ -1,98 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="js/index.js"></script>
-    <title>TP3</title>
-  </head>
-  <body>
-    <div class="contenedor-principal">
-      <header id="header">
-        <div class="contenedor-imagen">
-          <img src="images/start/dinologo.png" alt="Dinorun" />
-        </div>
-        <nav class="navegador">
-          <div class="btn-group" role="group">
-            <a class="navbar-brand draw-border" id="#info-js">Info</a>
-            <a class="navbar-brand draw-border" id="#configuracion-js"
-              >Configuración</a
-            >
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/index.js"></script>
+  <title>TP3</title>
+</head>
+
+<body>
+  <div class="contenedor-principal">
+    <header id="header">
+      <div class="contenedor-imagen">
+        <img src="images/start/dinologo.png" alt="Dinorun" />
+      </div>
+      <nav class="navegador">
+        <div class="btn-group" role="group">
+          <div class="navbar-brand draw-border" id="info-js">Info</div>
+          <div class="navbar-brand draw-border" id="configuracion-js">
+            Configuración
           </div>
-        </nav>
-      </header>
-      <main id="main">
-        <div class="cuerpoJuego">
-          <img class="dinoImage" src="images/personaje/dino.png" alt="" />
-          <div class="AcercaDelJuego">
-            <div>
-              <svg viewBox="0 0 960 300">
-                <symbol id="s-text">
-                  <text text-anchor="middle" x="50%" y="80%">Dinorun</text>
-                </symbol>
-                <g class="g-ants">
-                  <use xlink:href="#s-text" class="text-copy"></use>
-                  <use xlink:href="#s-text" class="text-copy"></use>
-                  <use xlink:href="#s-text" class="text-copy"></use>
-                  <use xlink:href="#s-text" class="text-copy"></use>
-                  <use xlink:href="#s-text" class="text-copy"></use>
-                </g>
-              </svg>
-            </div>
-            <p>Dinorun es un juego programado para la materia</p>
-            <p>Interfaces de usuario e interaccion</p>
-            <button
-              class="brillar-hover"
-              onclick="window.location.href = 'juego.html'"
-              id="jugar"
-            >
-              START
-            </button>
-            <!-- <div id="pj">
+        </div>
+      </nav>
+    </header>
+    <main id="main">
+      <div class="cuerpoJuego">
+        <img class="dinoImage" src="images/personaje/dino.png" alt="" />
+        <div class="AcercaDelJuego">
+          <div>
+            <svg viewBox="0 0 960 300">
+              <symbol id="s-text">
+                <text text-anchor="middle" x="50%" y="80%">Dinorun</text>
+              </symbol>
+              <g class="g-ants">
+                <use xlink:href="#s-text" class="text-copy"></use>
+                <use xlink:href="#s-text" class="text-copy"></use>
+                <use xlink:href="#s-text" class="text-copy"></use>
+                <use xlink:href="#s-text" class="text-copy"></use>
+                <use xlink:href="#s-text" class="text-copy"></use>
+              </g>
+            </svg>
+          </div>
+          <p>Dinorun es un juego programado para la materia</p>
+          <p>Interfaces de usuario e interaccion</p>
+          <button class="brillar-hover" onclick="window.location.href = 'juego.html'" id="jugar">
+            START
+          </button>
+          <!-- <div id="pj">
             </div> -->
-            <div>
-              <h1>
-                <span id="spanB"></span>
-                <span id="spanI"></span>
-                <span id="spanE"></span>
-                <span id="spanN"></span>
-                <span id="spanS"></span>
-              </h1>
+          <div>
+            <h1>
+              <span id="spanB"></span>
+              <span id="spanI"></span>
+              <span id="spanE"></span>
+              <span id="spanN"></span>
+              <span id="spanS"></span>
+            </h1>
+          </div>
+        </div>
+        <div class="overlay">
+          <div class="popUp-Info">
+            <h1 id="titulo-jugador">Como jugar DinoRun</h1>
+            <p class="textoIntro">
+              DinoRun tiene como objetivo brindar al jugador momentos de
+              felicidad.
+            </p>
+            <div class="instrucciones">
+              <p class="textoInstrucciones">
+                Usá la tecla para saltar.
+                <img src="images/up.png" alt="up" id="imgUp" />
+              </p>
+              <p class="textoInstrucciones">
+                Dino camina automaticamente, no necesitas manejar eso.
+              </p>
+              <p class="textoInstrucciones">Cada Chuleta brinda 50puntos.</p>
             </div>
+            <div class="graficos-instrucciones">
+              <div id="saltarPersonaje" class="saltar"></div>
+              <div id="agacharsePersonaje" class="caminar"></div>
+              <div id="chuletaPersonaje"></div>
+            </div>
+            <button id="btn-aceptar">Aceptar</button>
           </div>
         </div>
-        <div class="popUp-Info">
-          <h1 id="titulo-jugador">Como jugar DinoRun</h1>
-          <p class="textoIntro">
-            DinoRun tiene como objetivo brindar al jugador momentos de
-            felicidad.
-          </p>
-          <div class="instrucciones">
-            <p class="textoInstrucciones">
-              Usá la tecla para saltar.
-            <img src="images/up.png" alt="up" id="imgUp" />
-            </p>
-            <p class="textoInstrucciones">
-              Usá la tecla para agacharte.
-            <img src="images/down.png" alt="down" id="imgDown" />
-            </p>
-            <p class="textoInstrucciones">Cada Chuleta brinda 50puntos.</p>
-          </div>
-          <div class="graficos-instrucciones">
-            <div id="saltarPersonaje" class="saltar"></div>
-            <div id="agacharsePersonaje" class="caminar"></div>
-            <div id="chuletaPersonaje "></div>
-          </div>
-          <button id="btn-aceptar">Aceptar</button>
-        </div>
-      </main>
-      <footer>
-        <section class="sectionFooter">
-          <h2>Developed by Ernesto Quintana & Martin Ignacio Lopardo</h2>
-        </section>
-      </footer>
-    </div>
-  </body>
+      </div>
+    </main>
+    <footer>
+      <section class="sectionFooter">
+        <h2>Developed by Ernesto Quintana & Martin Ignacio Lopardo</h2>
+      </section>
+    </footer>
+  </div>
+</body>
+
 </html>
