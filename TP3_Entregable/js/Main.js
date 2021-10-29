@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function saltar(e) {
         //si se presiona la tecla (flecha hacia arriba), se le saca la clase caminar
         //al div donde esta el personaje y se le aplica la clase saltar
-        if (e.keyCode == 38 && empezoJuego == true) {
+        if (e.keyCode == 38 && empezoJuego == true && finDelJuego == false) {
             saltando = true;
             divPersonaje.style.animationPlayState = 'running';
             divPersonaje.classList.remove("caminar");
@@ -133,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
         divImagenChuleta.style.animationPlayState = 'paused';
         divPersonaje.style.animationPlayState = 'paused';
         clearInterval(interval);
+        finDelJuego = true;
     }
 
     function morir(e) {
@@ -147,6 +148,11 @@ document.addEventListener('DOMContentLoaded', () => {
         divPersonaje.classList.add("morir");
         clearInterval(interval);
         setInterval(pause, 1400);
+        finDelJuego = true;
+        divFinal.innerHTML = 'REINTENTAR?';
+        setTimeout(() => {
+            divFinal.classList.remove('oculto');
+        }, 1600); 
     }
 
     function actualizarSpanProgresion(){
@@ -217,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sumarPuntos();
             }
             setTimeout(cambiar, 2000);
-            setTimeout(animarChuleta, 1110);
+            setTimeout(animarChuleta, 920);
         }
     }
 
