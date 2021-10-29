@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sumarPuntos();
             }
             setTimeout(cambiar, 2000);
-            setTimeout(animarChuleta, 1500);
+            setTimeout(animarChuleta, 1110);
            }
     }
 
