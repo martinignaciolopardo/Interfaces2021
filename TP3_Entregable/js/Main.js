@@ -219,7 +219,11 @@ document.addEventListener('DOMContentLoaded', () => {
            top.replace('px','') <= colisionY2 && agarrarBonus == false){
             console.log('agarro chuleta');
             agarrarBonus = true;
-            sumarPuntos();
+            if(agarrarBonus == true){
+                divImagenChuleta.classList.remove("chuletaImg");
+                divImagenChuleta.classList.add("explosionImg");
+                sumarPuntos();
+            }
             setTimeout(cambiar, 2000);
            }
     }

@@ -265,7 +265,7 @@ body {
 .stalagtita {
   animation: enemigos 8s infinite;
 }
-.stalagtitaImg{
+.stalagtitaImg {
   background-image: url(../images/obstaculos/stalagtita.png);
 }
 
@@ -316,23 +316,37 @@ body {
   background-image: url(../images/obstaculos/chuleta.png);
 } */
 
-#puntosImagenChuleta{
+#puntosImagenChuleta {
   /* border: 1px solid black;  */
   position: relative;
   top: -350px;
   width: 100px;
   height: 100px;
-  border: solid 1px black;
 }
 
 .desplazamientoChuleta {
   animation: desplazamiento 10s linear infinite;
 }
 
-.chuletaImg{
+.chuletaImg {
   background-image: url(../images/obstaculos/chuleta.png);
 }
 
+.explosionImg {
+  background-image: url(../images/obstaculos/explosion.png);
+  animation: explotar 1s steps(8);
+}
+@keyframes explotar {
+  0%{
+    width: 0;
+  }
+  50%{
+    width: 100px;
+  }
+  100% {
+    width: 0;
+  }
+}
 @keyframes desplazamiento {
   0% {
     left: 1219px;
@@ -466,7 +480,7 @@ body {
   }
 }
 
-#spanProgresion{
+#spanProgresion {
   align-content: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
@@ -479,10 +493,10 @@ body {
 
 /**************************************************/
 
-#cartelFinal{
+#cartelFinal {
   position: relative;
   top: -512px;
   left: 331px;
-  font-family: 'Carter One';
+  font-family: "Carter One";
   font-size: 58px;
 }
