@@ -202,31 +202,55 @@ document.addEventListener('DOMContentLoaded', () => {
         let top = getPropiedadCss("personaje", "top"); //posicion Y del personaje
         let leftGolem = getPropiedadCss("golem", "left"); //posicion X del golem
         let leftChuleta = getPropiedadCss("puntosImagenChuleta", "left");
-        //console.log(leftChuleta);
         parseInt(top);
         parseInt(leftStalagtita);
-        if (leftStalagtita.replace('px','') <= colisionX1 &&
-            leftStalagtita.replace('px','') >= colisionX2 && 
-            top.replace('px','') >= colisionY || 
-            leftGolem.replace('px','') <= colisionX1 && 
-            leftGolem.replace('px','') >= colisionX2 && 
-            top.replace('px','') >= colisionY)  {
+        console.log(leftChuleta);
+        if (chocaStalagtita(leftStalagtita,top) || chocaGolem(leftGolem,top))  {
             morir();
-            clearInterval(interval);
         }
-        if(leftChuleta.replace('px','') <= colisionX1 && //entre 245
-           leftChuleta.replace('px','') > colisionX2 && //y 151
-           top.replace('px','') <= colisionY2 && agarrarBonus == false){
-            console.log('agarro chuleta');
+        if(agarraChuleta(leftChuleta,top)){
             agarrarBonus = true;
             if(agarrarBonus == true){
+                divImagenChuleta.classList.remove("desplazamientoChuleta");
                 divImagenChuleta.classList.remove("chuletaImg");
                 divImagenChuleta.classList.add("explosionImg");
                 sumarPuntos();
             }
             setTimeout(cambiar, 2000);
             setTimeout(animarChuleta, 1110);
-           }
+        }
+    }
+
+    function chocaStalagtita(leftStalagtita,top){
+        if (leftStalagtita.replace('px','') <= colisionX1 &&
+            leftStalagtita.replace('px','') >= colisionX2 && 
+            top.replace('px','') >= colisionY) {
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+
+    function chocaGolem(leftGolem,top){
+        if (leftGolem.replace('px','') <= colisionX1 && 
+        leftGolem.replace('px','') >= colisionX2 && 
+        top.replace('px','') >= colisionY) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function agarraChuleta(leftChuleta,top){
+        if (leftChuleta.replace('px','') <= colisionX1 && 
+            leftChuleta.replace('px','') > colisionX2 && 
+            top.replace('px','') <= colisionY2 && agarrarBonus == false) {
+            return true;
+        }else{
+           return false; 
+        } 
+        
     }
 
     function animarChuleta(){
