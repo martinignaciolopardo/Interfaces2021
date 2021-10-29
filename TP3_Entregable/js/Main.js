@@ -10,21 +10,24 @@ document.addEventListener('DOMContentLoaded', () => {
     let divStalagtita = document.querySelector("#stalagtita");
     let divImagenChuleta = document.querySelector("#puntosImagenChuleta");
 
-    let divInicioCartel = document.querySelector("#inicioCartel");
     let divDistancia = document.querySelector("#distancia");
     let barraProgresion = document.querySelector("#barraProgresion");
     barraProgresion.classList.add("oculto");
     let spanProgresion = document.querySelector("#spanProgresion");
     let divPuntaje = document.querySelector("#puntajeChuleta");
 
+    let divFinal = document.querySelector('#cartelFinal');
+    divFinal.classList.add('oculto');
+
     const colisionX1 = 245;
     const colisionX2 = 150;
     const colisionY = 358;
+    const colisionY2 = 340;
 
+    let interval;
     let puntaje = 0;
     let contador = 0;
     let porcentaje = 0;
-    let interval;
     let tiempoInicio = 6;
     let saltando = false;
 
@@ -47,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //donde esta el personaje y se le aplica la clase caminar, para que 
     //de esta forma solo salte 1 vez y siga caminando
     divPersonaje.addEventListener('animationend', (e) => {
-        console.log(e);
+        //console.log(e);
         if (e.animationName == "saltar") {
             saltando = false;
             divPersonaje.classList.remove("saltar");
@@ -59,17 +62,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     })
    
-
     divGolem.addEventListener('animationstart', (e) => {
-        console.log(e);
         divGolem.classList.add('golemImg');
     })
+
     divStalagtita.addEventListener('animationstart', (e) => {
         divStalagtita.classList.add('stalagtitaImg');
     })
+
     divImagenChuleta.addEventListener('animationstart', (e) =>{
-        divImagenChuleta.classList.add('desplazamientoChuletaImg');
+        divImagenChuleta.classList.add('chuletaImg');
     })
+
     function caminar(e) {
         // if (e.keyCode == 39 && saltando == false) {
             divPersonaje.classList.remove("saltar");
@@ -92,17 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //    }
     // }
 
-    function morir(e) {
-        divPasto.style.animationPlayState = 'paused';
-        divMontanias.style.animationPlayState = 'paused';
-        divArboles.style.animationPlayState = 'paused';
-        divCielo.style.animationPlayState = 'paused';
-        divGolem.style.animationPlayState = 'paused';
-        divStalagtita.style.animationPlayState = 'paused';
-        divPersonaje.classList.remove("caminar");
-        divPersonaje.classList.add("morir");
-        setInterval(pause, 1400);
-    }
+   
 
     function pause() {
         divPersonaje.style.animationPlayState = 'paused';
@@ -120,22 +114,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.querySelector("#countdown").innerHTML = tiempoInicio;
             }
         if(tiempoInicio == 0){
-            //agregar background
             document.querySelector("#countdown").innerHTML = "Lets GO";
             caminar();
             interval = setInterval(() => {
                 comprobar()
-                contador++;
-                divDistancia.innerHTML = contador+" Km";
-                porcentaje = contador/50;
-                spanProgresion.style.setProperty('width', porcentaje+"%");
-                //en proceso
-                if(porcentaje == 100){
-                    let divFinal = document.querySelector('#cartelFinal');
-                    divFinal.classList.add('mostrarFinal'); 
+                actualizarSpanProgresion();
+                if(Math.trunc(porcentaje) == 100){
+                    mostrarCartelGanador();
+                    finJuego();
                 }
-                //aca falta agregar que cuando el porcentaje es 100, 
-                //termine el juego con un cartel HA GANADO
             }, 40);
             barraProgresion.classList.remove("oculto");
             divPuntaje.innerHTML =" x  " + puntaje + " puntos";
@@ -147,12 +134,62 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     contarInicio();
 
+    function finJuego(){
+        divPasto.style.animationPlayState = 'paused';
+        divMontanias.style.animationPlayState = 'paused';
+        divArboles.style.animationPlayState = 'paused';
+        divCielo.style.animationPlayState = 'paused';
+        divGolem.style.animationPlayState = 'paused';
+        divStalagtita.style.animationPlayState = 'paused';
+        divImagenChuleta.style.animationPlayState = 'paused';
+        divPersonaje.style.animationPlayState = 'paused';
+        clearInterval(interval);
+    }
+
+    function morir(e) {
+        divPasto.style.animationPlayState = 'paused';
+        divMontanias.style.animationPlayState = 'paused';
+        divArboles.style.animationPlayState = 'paused';
+        divCielo.style.animationPlayState = 'paused';
+        divGolem.style.animationPlayState = 'paused';
+        divStalagtita.style.animationPlayState = 'paused';
+        divImagenChuleta.style.animationPlayState = 'paused';
+        divPersonaje.classList.remove("caminar");
+        divPersonaje.classList.add("morir");
+        clearInterval(interval);
+        setInterval(pause, 1400);
+    }
+
+    function actualizarSpanProgresion(){
+        contador++;
+        divDistancia.innerHTML = contador+" Km";
+        porcentaje = contador/50;
+        spanProgresion.style.setProperty('width', porcentaje+"%");
+        spanProgresion.innerHTML = Math.trunc(porcentaje)+'%';
+    }
+
+    function randomColor() {
+        let letras = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letras[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    function mostrarCartelGanador(){
+        divFinal.innerHTML = 'Ha ganado!';
+        divFinal.classList.remove('oculto');
+        let colorRandom =  randomColor();
+        divFinal.style.color = colorRandom;
+    }
+
     function getPropiedadCss(id, propiedad){
         let elem = document.getElementById(id);
         return window.getComputedStyle(elem,null).getPropertyValue(propiedad);
     }
     
-    function generandoNumerosRandom(min,max){
+    /*function generandoNumerosRandom(min,max){
         let aleatorio = Math.floor((Math.random() * (max+1 - min)) +min);
         console.log(aleatorio);
         return aleatorio;
@@ -169,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //console.log(timeAnimation2);
 
     }
-    setInterval(cambiarDuracion, 10000);
+    setInterval(cambiarDuracion, 10000);*/
 
     function comprobar(){
         let leftStalagtita = getPropiedadCss("stalagtita", "left"); // posision X de la stalagtita
@@ -187,6 +224,11 @@ document.addEventListener('DOMContentLoaded', () => {
             morir();
             clearInterval(interval);
         }
+        if(leftChuleta.replace('px','') <= colisionX1 &&
+           leftChuleta.replace('px','') >= colisionX2 && 
+           top.replace('px','') <= colisionY2){
+            console.log('agarro chuleta');
+           }
         //en proceso
         // if(leftChuleta.replace('px','') <= colision3 &&
         //    leftChuleta.replace('px','') >= colision4 && 
@@ -195,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //    }
     }
 
-    /*let paused = false;
+    let paused = false;
 
     function pausar(e){
         if (e.keyCode == 32 && paused == false) {
@@ -206,6 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
             divGolem.style.animationPlayState = 'paused';
             divStalagtita.style.animationPlayState = 'paused';
             divPersonaje.style.animationPlayState = 'paused';
+            divImagenChuleta.style.animationPlayState = 'paused';
             paused = true;
         }else if (e.keyCode == 32 && paused == true) {
             divPasto.style.animationPlayState = 'running';
@@ -217,9 +260,9 @@ document.addEventListener('DOMContentLoaded', () => {
             divPersonaje.style.animationPlayState = 'running';
             paused = false;
         }
-    }*/
+    }
 
     window.addEventListener("keydown", saltar);
-    //window.addEventListener("keydown", pausar);
+    window.addEventListener("keydown", pausar);
 
 });
