@@ -499,6 +499,8 @@ body {
   left: 331px;
   font-family: "Carter One";
   font-size: 58px;
+  color: #339900;
+  cursor: pointer;
 }
 
 #cartelFinal:hover{
