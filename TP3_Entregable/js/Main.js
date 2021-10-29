@@ -74,37 +74,20 @@ document.addEventListener('DOMContentLoaded', () => {
         divImagenChuleta.classList.add('chuletaImg');
     })
 
-    function caminar(e) {
-        // if (e.keyCode == 39 && saltando == false) {
-            divPersonaje.classList.remove("saltar");
-            divPersonaje.classList.add("caminar");
-            divPasto.classList.add('pasto');
-            divMontanias.classList.add('montanias');
-            divArboles.classList.add('arboles');
-            divCielo.classList.add('cielo');
-            divStalagtita.classList.add('stalagtita');
-            divImagenChuleta.classList.add('desplazamientoChuleta');
-            divGolem.classList.add('golem');
-        // }
+    function caminar() {
+        divPersonaje.classList.remove("saltar");
+        divPersonaje.classList.add("caminar");
+        divPasto.classList.add('pasto');
+        divMontanias.classList.add('montanias');
+        divArboles.classList.add('arboles');
+        divCielo.classList.add('cielo');
+        divStalagtita.classList.add('stalagtita');
+        divImagenChuleta.classList.add('desplazamientoChuleta');
+        divGolem.classList.add('golem');
     }
-
-    //function agachar(e) {
-    //   console.log(e);
-    //  if (e.keyCode == 40) {
-    //        divPersonaje.classList.remove("caminar");
-    //        divPersonaje.classList.add("agachar");
-    //    }
-    // }
-
-   
 
     function pause() {
         divPersonaje.style.animationPlayState = 'paused';
-    }
-    //en proceso
-    function sumarPuntos(e) {
-        puntaje += 50;
-        
     }
    
     function contarInicio(){
@@ -119,13 +102,14 @@ document.addEventListener('DOMContentLoaded', () => {
             interval = setInterval(() => {
                 comprobar()
                 actualizarSpanProgresion();
+                divPuntaje.innerHTML =" x  " + puntaje + " puntos";
                 if(Math.trunc(porcentaje) == 100){
                     mostrarCartelGanador();
                     finJuego();
                 }
             }, 40);
             barraProgresion.classList.remove("oculto");
-            divPuntaje.innerHTML =" x  " + puntaje + " puntos";
+            
 
         }else {
             tiempoInicio -= 1;
@@ -213,6 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let top = getPropiedadCss("personaje", "top"); //posicion Y del personaje
         let leftGolem = getPropiedadCss("golem", "left"); //posicion X del golem
         let leftChuleta = getPropiedadCss("puntosImagenChuleta", "left");
+        //console.log(leftChuleta);
         parseInt(top);
         parseInt(leftStalagtita);
         if (leftStalagtita.replace('px','') <= colisionX1 &&
@@ -225,9 +210,11 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(interval);
         }
         if(leftChuleta.replace('px','') <= colisionX1 &&
-           leftChuleta.replace('px','') >= colisionX2 && 
+           leftChuleta.replace('px','') > colisionX2 && 
            top.replace('px','') <= colisionY2){
             console.log('agarro chuleta');
+            divImagenChuleta.style.setProperty('left', 10+"px");
+            sumarPuntos();
            }
         //en proceso
         // if(leftChuleta.replace('px','') <= colision3 &&
@@ -235,6 +222,11 @@ document.addEventListener('DOMContentLoaded', () => {
         //    top.replace('px', '') >= colisionY){
         //        sumarPuntos();
         //    }
+    }
+
+    function sumarPuntos() {
+        contador += 50;
+        puntaje++;
     }
 
     let paused = false;
