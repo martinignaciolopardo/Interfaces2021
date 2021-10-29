@@ -225,7 +225,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 sumarPuntos();
             }
             setTimeout(cambiar, 2000);
+            setTimeout(animarChuleta, 1500);
            }
+    }
+
+    function animarChuleta(){
+        divImagenChuleta.classList.remove("explosionImg");
+        divImagenChuleta.classList.add("chuletaImg");
+        divImagenChuleta.classList.add("desplazamientoChuleta");
     }
 
     function cambiar(){
