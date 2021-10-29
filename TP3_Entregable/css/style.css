@@ -15,6 +15,10 @@ a:active {
   margin-right: 20px;
 }
 
+.navegador{
+  z-index: 10;
+}
+
 .navbar-brand:hover {
   font-size: 1.3rem;
   -webkit-animation: text-shadow-pop-br 0.5s both;
