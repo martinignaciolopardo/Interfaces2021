@@ -502,5 +502,6 @@ body {
 }
 
 #cartelFinal:hover{
-  color: brown;
+  color: brown !important;
+  cursor: pointer;
 }

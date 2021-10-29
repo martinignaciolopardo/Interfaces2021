@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function mostrarCartelGanador(){
-        divFinal.innerHTML = 'Ha ganado! Puntos: ' +puntaje;
+        divFinal.innerHTML = 'Ha ganado! Puntos: ' +puntaje+'!';
         divFinal.classList.remove('oculto');
         let colorRandom;
         intervalColor = setInterval(() => {
