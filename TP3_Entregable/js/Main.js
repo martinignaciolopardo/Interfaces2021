@@ -150,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(pause, 1400);
         finDelJuego = true;
         divFinal.innerHTML = 'REINTENTAR?';
+        divFinal.style.color = 'green';
         setTimeout(() => {
             divFinal.classList.remove('oculto');
         }, 1600); 
@@ -175,8 +176,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function mostrarCartelGanador(){
         divFinal.innerHTML = 'Ha ganado! Puntos: ' +puntaje;
         divFinal.classList.remove('oculto');
-        let colorRandom =  randomColor();
-        divFinal.style.color = colorRandom;
+        let colorRandom;
+        intervalColor = setInterval(() => {
+            colorRandom =  randomColor();
+            divFinal.style.color = colorRandom;
+        }, 220)
+        setTimeout(limpiarIntervaloColor, 5000);
+    }
+
+    function limpiarIntervaloColor(){
+        clearInterval(intervalColor)
     }
 
     function getPropiedadCss(id, propiedad){
