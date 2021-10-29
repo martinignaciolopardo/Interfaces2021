@@ -263,7 +263,7 @@ body {
 }
 
 .stalagtita {
-  animation: enemigos var(--animation-time) infinite;
+  animation: enemigos 8s infinite;
 }
 .stalagtitaImg{
   background-image: url(../images/obstaculos/stalagtita.png);
@@ -279,7 +279,7 @@ body {
 }
 
 .golem {
-  animation: enemigos var(--animation-time) infinite 2s;
+  animation: enemigos 8s infinite 2s;
 }
 
 .golemImg {
@@ -322,13 +322,14 @@ body {
   top: -350px;
   width: 100px;
   height: 100px;
+  border: solid 1px black;
 }
 
 .desplazamientoChuleta {
   animation: desplazamiento 10s linear infinite;
 }
 
-.desplazamientoChuletaImg{
+.chuletaImg{
   background-image: url(../images/obstaculos/chuleta.png);
 }
 
@@ -465,10 +466,23 @@ body {
   }
 }
 
-/* #spanProgresion{
-  width: 10% !important;
-} */
+#spanProgresion{
+  align-content: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  color: rgb(202, 91, 0);
+}
 
 .oculto {
   display: none;
+}
+
+/**************************************************/
+
+#cartelFinal{
+  position: relative;
+  top: -500px;
+  left: 500px;
+  font-family: 'Carter One';
+  font-size: 58px;
 }
