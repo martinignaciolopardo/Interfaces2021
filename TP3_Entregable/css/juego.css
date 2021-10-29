@@ -335,6 +335,7 @@ body {
 .explosionImg {
   background-image: url(../images/obstaculos/explosion.png);
   animation: explotar 1s steps(8) forwards;
+  left: 194px !important;
 }
 
 @keyframes explotar {
