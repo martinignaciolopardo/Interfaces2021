@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const colisionY = 358;
     const colisionY2 = 340;
 
+    let empezoJuego = false;
+    let finDelJuego = false;
     let interval;
     let puntaje = 0;
     let contador = 0;
@@ -38,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function saltar(e) {
         //si se presiona la tecla (flecha hacia arriba), se le saca la clase caminar
         //al div donde esta el personaje y se le aplica la clase saltar
-        if (e.keyCode == 38) {
+        if (e.keyCode == 38 && empezoJuego == true) {
             saltando = true;
             divPersonaje.style.animationPlayState = 'running';
             divPersonaje.classList.remove("caminar");
@@ -101,6 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector("#countdown").innerHTML = "Lets GO";
             caminar();
             interval = setInterval(() => {
+                empezoJuego = true;
                 comprobar()
                 actualizarSpanProgresion();
                 divPuntaje.innerHTML =" x  " + puntaje + " puntos";
@@ -120,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     contarInicio();
 
     function finJuego(){
+        finDelJuego = true;
         divPasto.style.animationPlayState = 'paused';
         divMontanias.style.animationPlayState = 'paused';
         divArboles.style.animationPlayState = 'paused';
@@ -226,13 +230,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function sumarPuntos() {
         contador += 50;
+        divPuntaje.style.color = 'red';
         puntaje++;
+        setTimeout(cambiarColor, 110);
+       
+    }
+
+    function cambiarColor(){
+        divPuntaje.style.color = 'yellow'
     }
 
     let paused = false;
 
     function pausar(e){
-        if (e.keyCode == 32 && paused == false) {
+        if (e.keyCode == 32 && paused == false && finDelJuego == false) {
             divPasto.style.animationPlayState = 'paused';
             divMontanias.style.animationPlayState = 'paused';
             divArboles.style.animationPlayState = 'paused';
@@ -241,6 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
             divStalagtita.style.animationPlayState = 'paused';
             divPersonaje.style.animationPlayState = 'paused';
             divImagenChuleta.style.animationPlayState = 'paused';
+            clearInterval(interval);
             paused = true;
         }else if (e.keyCode == 32 && paused == true) {
             divPasto.style.animationPlayState = 'running';
@@ -250,7 +262,9 @@ document.addEventListener('DOMContentLoaded', () => {
             divGolem.style.animationPlayState = 'running';
             divStalagtita.style.animationPlayState = 'running';
             divPersonaje.style.animationPlayState = 'running';
+            divImagenChuleta.style.animationPlayState = 'running';
             paused = false;
+            setTimeout(contarInicio, 500);
         }
     }
 
