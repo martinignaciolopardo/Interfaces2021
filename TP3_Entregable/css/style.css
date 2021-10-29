@@ -220,7 +220,7 @@ main {
   background-color: #fff;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
   padding: 2rem;
-  height: 700px;
+  height: 750px;
   width: 1000px;
   /* position: relative;
   left: 300px; */
@@ -250,7 +250,7 @@ main {
 .textoIntro {
   padding: 0 ;
   grid-area: texto;
-  font-size: 24px;
+  font-size: 20px;
   font-style: oblique;
   line-height: 1.6em;
 }
@@ -350,7 +350,7 @@ main {
   background-image: url(../images/obstaculos/chuleta.png);
   height: 100px;
   width: 100px;
-  margin-top: 2em;
+  margin-top: 3em;
   background-size: contain;
 }
 
