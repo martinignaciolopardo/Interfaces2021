@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let porcentaje = 0;
     let tiempoInicio = 6;
     let saltando = false;
+    let agarrarBonus = false;
 
     // let tiempoLoop = 0;
     // let gameloop = window.setInterval(accion,1000);
@@ -162,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function mostrarCartelGanador(){
-        divFinal.innerHTML = 'Ha ganado!';
+        divFinal.innerHTML = 'Ha ganado! Puntos: ' +puntaje;
         divFinal.classList.remove('oculto');
         let colorRandom =  randomColor();
         divFinal.style.color = colorRandom;
@@ -209,19 +210,18 @@ document.addEventListener('DOMContentLoaded', () => {
             morir();
             clearInterval(interval);
         }
-        if(leftChuleta.replace('px','') <= colisionX1 &&
-           leftChuleta.replace('px','') > colisionX2 && 
-           top.replace('px','') <= colisionY2){
+        if(leftChuleta.replace('px','') <= colisionX1 && //entre 245
+           leftChuleta.replace('px','') > colisionX2 && //y 151
+           top.replace('px','') <= colisionY2 && agarrarBonus == false){
             console.log('agarro chuleta');
-            divImagenChuleta.style.setProperty('left', 10+"px");
+            agarrarBonus = true;
             sumarPuntos();
+            setTimeout(cambiar, 2000);
            }
-        //en proceso
-        // if(leftChuleta.replace('px','') <= colision3 &&
-        //    leftChuleta.replace('px','') >= colision4 && 
-        //    top.replace('px', '') >= colisionY){
-        //        sumarPuntos();
-        //    }
+    }
+
+    function cambiar(){
+        agarrarBonus = false;
     }
 
     function sumarPuntos() {
