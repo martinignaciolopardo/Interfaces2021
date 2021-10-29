@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let spanProgresion = document.querySelector("#spanProgresion");
     let divPuntaje = document.querySelector("#puntajeChuleta");
 
+    const colisionX1 = 245;
+    const colisionX2 = 150;
+    const colisionY = 358;
 
     let puntaje = 0;
     let contador = 0;
@@ -150,25 +153,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function generandoNumerosRandom(min,max){
-        return Math.floor((Math.random() * (max+1 - min)) +min);
+        let aleatorio = Math.floor((Math.random() * (max+1 - min)) +min);
+        console.log(aleatorio);
+        return aleatorio;
     }
     //para revisar
     function cambiarDuracion(){
-        
+
         let timeAnimation = generandoNumerosRandom(5,10);
         let timeAnimation2 = generandoNumerosRandom(5,10);
 
         divGolem.style.setProperty('--animation-time', timeAnimation +'s');
         divStalagtita.style.setProperty('--animation-time', timeAnimation2 +'s');
-        console.log(timeAnimation);
-        console.log(timeAnimation2);
+        //console.log(timeAnimation);
+        //console.log(timeAnimation2);
 
     }
     setInterval(cambiarDuracion, 10000);
-
-    let colisionX1 = 245;
-    let colisionX2 = 150;
-    let colisionY = 358;
 
     function comprobar(){
         let leftStalagtita = getPropiedadCss("stalagtita", "left"); // posision X de la stalagtita
@@ -193,32 +194,32 @@ document.addEventListener('DOMContentLoaded', () => {
         //        sumarPuntos();
         //    }
     }
-    
 
+    /*let paused = false;
 
-   // function accion() {
-            // if (tiempoLoop < 10) {
-            //     divInicioCartel.classList.add("inicioCartel");
-            //     if (tiempoLoop == 1) {
-            //         divInicioCartel.classList.add("areYouReady");
-            //     }
-            //     else if(tiempoLoop == 3){
-            //         divInicioCartel.classList.remove("areYouReady");
-            //         divInicioCartel.classList.add("lestGo");
-            //     }
-            //     tiempoLoop++;
-            //     console.log(tiempoLoop);
-                
-            // }else {
-            //     window.clearInterval(gameloop);
-            //     divInicioCartel.classList.remove("inicioCartel");
-            //     divInicioCartel.classList.remove("letsGo");
-            //     console.log('Listo');
-            // }
-   // }
+    function pausar(e){
+        if (e.keyCode == 32 && paused == false) {
+            divPasto.style.animationPlayState = 'paused';
+            divMontanias.style.animationPlayState = 'paused';
+            divArboles.style.animationPlayState = 'paused';
+            divCielo.style.animationPlayState = 'paused';
+            divGolem.style.animationPlayState = 'paused';
+            divStalagtita.style.animationPlayState = 'paused';
+            divPersonaje.style.animationPlayState = 'paused';
+            paused = true;
+        }else if (e.keyCode == 32 && paused == true) {
+            divPasto.style.animationPlayState = 'running';
+            divMontanias.style.animationPlayState = 'running';
+            divArboles.style.animationPlayState = 'running';
+            divCielo.style.animationPlayState = 'running';
+            divGolem.style.animationPlayState = 'running';
+            divStalagtita.style.animationPlayState = 'running';
+            divPersonaje.style.animationPlayState = 'running';
+            paused = false;
+        }
+    }*/
 
-    //window.addEventListener("keydown", caminar);
     window.addEventListener("keydown", saltar);
-    //window.addEventListener("keydown", agachar);
+    //window.addEventListener("keydown", pausar);
 
 });
