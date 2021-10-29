@@ -244,11 +244,11 @@ main {
 
 .popUp-Info.active {
   opacity: 1;
-  transform: scale(0.6);
+  transform: scale(0.5);
 }
 
 .textoIntro {
-  padding: 1em;
+  padding: 0 ;
   grid-area: texto;
   font-size: 24px;
   font-style: oblique;
