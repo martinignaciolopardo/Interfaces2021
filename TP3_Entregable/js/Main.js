@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     mostrarCartelGanador();
                     finJuego();
                 }
-            }, 40);
+            }, 50);
             barraProgresion.classList.remove("oculto");
             
 
@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function agarraChuleta(leftChuleta,top){
-        if (leftChuleta.replace('px','') <= colisionX1 && 
+        if (leftChuleta.replace('px','') <= (colisionX1+35) && 
             leftChuleta.replace('px','') > colisionX2 && 
             top.replace('px','') <= colisionY2 && agarrarBonus == false) {
             return true;
@@ -276,7 +276,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let paused = false;
-
     function pausar(e){
         if (e.keyCode == 32 && paused == false && finDelJuego == false) {
             divPasto.style.animationPlayState = 'paused';
@@ -289,18 +288,22 @@ document.addEventListener('DOMContentLoaded', () => {
             divImagenChuleta.style.animationPlayState = 'paused';
             clearInterval(interval);
             paused = true;
-        }else if (e.keyCode == 32 && paused == true) {
-            divPasto.style.animationPlayState = 'running';
-            divMontanias.style.animationPlayState = 'running';
-            divArboles.style.animationPlayState = 'running';
-            divCielo.style.animationPlayState = 'running';
-            divGolem.style.animationPlayState = 'running';
-            divStalagtita.style.animationPlayState = 'running';
-            divPersonaje.style.animationPlayState = 'running';
-            divImagenChuleta.style.animationPlayState = 'running';
-            paused = false;
-            setTimeout(contarInicio, 500);
+        }else if (e.keyCode == 32 && paused == true && finDelJuego == false) {
+            setTimeout(reanudar,1000); //vuelve de la pausa despues de 1 segundo
         }
+    }
+
+    function reanudar(){
+        divPasto.style.animationPlayState = 'running';
+        divMontanias.style.animationPlayState = 'running';
+        divArboles.style.animationPlayState = 'running';
+        divCielo.style.animationPlayState = 'running';
+        divGolem.style.animationPlayState = 'running';
+        divStalagtita.style.animationPlayState = 'running';
+        divPersonaje.style.animationPlayState = 'running';
+        divImagenChuleta.style.animationPlayState = 'running';
+        contarInicio();
+        paused = false;
     }
 
     window.addEventListener("keydown", saltar);
