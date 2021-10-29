@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let divPopup = document.querySelector("#info-js");
     let divBtnPopup = document.querySelector("#btn-aceptar");
     let overlay = document.querySelector('.overlay');
+    let divPopupInfo = document.querySelector(".popUp-Info");
     
     let spanB = document.querySelector("#spanB");
     let spanI = document.querySelector("#spanI");
@@ -34,9 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener("keydown", saltar);
 
     divPopup.addEventListener('click', (e) => {
-        let divPopupInfo = document.querySelector(".popUp-Info");
         divPopupInfo.classList.add('active');
         overlay.classList.add('active');
         console.log('holas');
+    })
+
+    divBtnPopup.addEventListener('click', ()=>{
+        divPopupInfo.classList.remove('active');
+        overlay.classList.remove('active');
     })
 });
