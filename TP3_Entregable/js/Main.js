@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 comprobar()
                 actualizarSpanProgresion();
                 divPuntaje.innerHTML =" x  " + puntaje + " puntos";
-                if(Math.trunc(porcentaje) == 1){
+                if(Math.trunc(porcentaje) == 100){
                     mostrarCartelGanador();
                     finJuego();
                 }
