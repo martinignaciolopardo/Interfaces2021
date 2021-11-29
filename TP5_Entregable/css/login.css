@@ -1,0 +1,139 @@
+
+/*****************    RESOLUCION MOBILE USADA: 428x926    **********************/
+
+@font-face {
+  font-family: Roboto;
+  src: url('./fonts/Roboto/Roboto-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: Rochester;
+    src: url(../assets/fonts/Rochester-Regular.ttf);
+}
+
+body{
+    font-family:Roboto Regular;
+    margin: 0;
+    padding: 0;
+}
+
+
+#input-mail, #input-password{
+    position: absolute;
+    border: 1px solid #A9A9A9;
+    box-sizing: border-box;
+    border-radius: 7px;
+    width: 324px;
+    height: 50px;
+    left: 52px;
+}
+
+#input-mail{
+    top: 211px;
+}
+
+input::placeholder {
+    padding-left: 10px; 
+  }
+
+#input-password{
+    top: 309px;
+}
+
+#label-mail, #label-password{
+    position: absolute;
+    display: inline-block;
+    width: 140px;
+    text-align: right;
+    
+}
+
+#label-mail{
+    top: 185px;
+    left: -32px;
+}
+
+#label-password{
+    top: 283px;
+    left: 2px;
+}
+
+#btn-login{
+    position: absolute;
+    width: 245px;
+    height: 50px;
+    left: 91px;
+    top: 382px;
+    background: #EEBA02;
+    border: none;
+    border-radius: 50px;
+    font-family: Roboto Medium;
+    font-size: 22px;
+}
+
+#login:hover{
+    background-color: #D0A818;
+}
+
+#btn-registrarse{
+    position: absolute;
+    width: 189px;
+    height: 50px;
+    left: 119px;
+    top: 596px;
+    background: #A9A9A9;
+    border: none;
+    border-radius: 50px;
+    font-size: 22px;
+}
+
+#btn-registrarse:hover{
+    background-color: #686868;
+}
+
+#titulo-principal{
+    position: absolute;
+    left: 205px;
+    right: 18.93%;
+    top: 1px;
+    bottom: 87.47%;
+    font-family: Rochester;
+    color: #eeba02;
+    font-size: 4em;
+}
+
+#logo{
+    position: absolute;
+    width: 100px;
+    height: 88px;
+    left: 95px;
+    top: 40px;
+}
+
+#texto-registro{
+  position: absolute;
+    width: 223px;
+    height: 20px;
+    left: 102px;
+    top: 551px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;  
+}
+
+#publicidad1{
+    position: absolute;
+    width: 50%;
+    top: 728px;
+    left: 214px;
+}
+
+#publicidad2{
+    position: absolute;
+    width: 50%;
+    top: 728px;
+}
