@@ -86,7 +86,7 @@ input::placeholder {
     background: #A9A9A9;
     border: none;
     border-radius: 50px;
-    font-size: 22px;
+    font-size: 20px;
 }
 
 #btn-registrarse:hover{
@@ -113,7 +113,7 @@ input::placeholder {
 }
 
 #texto-registro{
-  position: absolute;
+    position: absolute;
     width: 223px;
     height: 20px;
     left: 102px;
