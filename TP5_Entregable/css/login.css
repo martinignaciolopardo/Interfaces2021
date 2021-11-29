@@ -82,7 +82,7 @@ input::placeholder {
     width: 189px;
     height: 50px;
     left: 119px;
-    top: 596px;
+    top: 636px;
     background: #A9A9A9;
     border: none;
     border-radius: 50px;
@@ -117,23 +117,23 @@ input::placeholder {
     width: 223px;
     height: 20px;
     left: 102px;
-    top: 551px;
+    top: 591px;
     font-family: Roboto;
     font-style: normal;
     font-weight: 400;
     font-size: 17px;
-    line-height: 20px;  
+    line-height: 20px;
 }
 
 #publicidad1{
     position: absolute;
     width: 50%;
-    top: 728px;
+    bottom: 0px;
     left: 214px;
 }
 
 #publicidad2{
     position: absolute;
     width: 50%;
-    top: 728px;
+    bottom: 0px;
 }
