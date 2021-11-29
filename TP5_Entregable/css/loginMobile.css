@@ -1,17 +1,17 @@
-@font-face {
-  font-family: 'Roboto';
+/* @font-face {
+  font-family: Roboto;
   src: url('./fonts/Roboto/Roboto-Thin.woff') format('woff'), url('./fonts/Roboto/Roboto-Thin.ttf') format('truetype');
   font-weight: 100;
   font-style: normal;
-}
+} */
 
-/* @font-face {
-  font-family: 'Roboto';
-  src: url('./fonts/Roboto/Roboto-ThinItalic.woff') format('woff'), url('./fonts/Roboto/Roboto-ThinItalic.ttf') format('truetype');
+ @font-face {
+  font-family: Roboto;
+  src: url('../assets/fonts/Roboto/Roboto-Black.ttf');
   font-weight: 100;
   font-style: italic;
 }
-
+/*
 @font-face {
   font-family: 'Roboto';
   src: url('./fonts/Roboto/Roboto-Light.woff') format('woff'), url('./fonts/Roboto/Roboto-Light.ttf') format('truetype');
