@@ -5,14 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let divBtnPopup = document.querySelector("#btn-aceptar");
     let overlay = document.querySelector('.overlay');
     let divPopupInfo = document.querySelector(".popUp-Info");
-    
+
     let spanB = document.querySelector("#spanB");
     let spanI = document.querySelector("#spanI");
     let spanE = document.querySelector("#spanE");
     let spanN = document.querySelector("#spanN");
     let spanS = document.querySelector("#spanS");
     let saltando = false;
-    
+    // let mediaserver = require('mediaserver');
+
 
     function saltar(e) {
         if (e.keyCode == 38 && saltando == false) {
@@ -22,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function terminarSalto(){
+    function terminarSalto() {
         spanB.innerHTML = "B";
         spanI.innerHTML = "I";
         spanE.innerHTML = "E";
@@ -40,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('holas');
     })
 
-    divBtnPopup.addEventListener('click', ()=>{
+    divBtnPopup.addEventListener('click', () => {
         divPopupInfo.classList.remove('active');
         overlay.classList.remove('active');
     })

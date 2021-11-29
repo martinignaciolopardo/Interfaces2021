@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="css/style.css" />
+  <script src="/path/to/howler.js"></script>
   <script src="js/index.js"></script>
   <title>TP3</title>
 </head>
@@ -19,6 +20,9 @@
       <nav class="navegador">
         <div class="btn-group" role="group">
           <div class="navbar-brand draw-border" id="info-js">Info</div>
+          <audio autoplay="autoplay" loop="loop" muted defaultMuted preload="auto"  id="Audio">
+            <source src="./assets/intro.mp3" type="audio/mp3">
+            </audio>
           <div class="navbar-brand draw-border" id="configuracion-js" hidden>
             Configuración
           </div>
@@ -90,8 +94,10 @@
       <section class="sectionFooter">
         <h2>Developed by Ernesto Quintana & Martin Ignacio Lopardo</h2>
       </section>
+     
     </footer>
   </div>
+
 </body>
 
 </html>
