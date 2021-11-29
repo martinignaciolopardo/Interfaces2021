@@ -3,11 +3,27 @@
     src: url(../assets/fonts/Rochester-Regular.ttf);
 }
 
-.contenedorLogin {
+.contenedor {
     width: 1329px;
     height: 800px;
 
 }
+/****************** PC *********************/
+.divHomePC{
+    background-color: #B4B4B4;
+}
+.headerPC{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 10%;
+}
+.logoPC h1{
+    font-family: Rochester;
+    color: #eeba02;
+    font-size: 2em;
+}
+/****************** LOGIN *********************/
 
 #fondo {
     display: flex;
