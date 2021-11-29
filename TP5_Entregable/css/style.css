@@ -13,16 +13,68 @@
     background-color: #B4B4B4;
 }
 .headerPC{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-areas:
+      "logo . buscador . iconos";
+    background-color: #fff;
+    align-items: center;
+}
+/* .headerPC{
     display: flex;
     justify-content: space-around;
     width: 100%;
     height: 10%;
-}
+    align-items: center;
+    background-color:#fff;
+    position: fixed;
+} */
 .logoPC h1{
     font-family: Rochester;
     color: #eeba02;
     font-size: 2em;
+    grid-area: logo;
 }
+.buscador{
+    grid-area: buscador;
+}
+.navegador_Pc{
+    display: flex;
+    justify-content: end;
+    grid-area: iconos;
+}
+
+.navegador_Pc img{
+    width: 10%;
+    
+}
+
+.contenedorMain{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-areas:
+    "secciones publicaciones contactos";
+     height: 600px;
+
+}
+.divAsidePc{
+    grid-area: secciones;
+    margin: 1em;
+    background-color: #fff;
+}
+.publicaciones{
+    grid-area: publicaciones;
+    margin: 1em;
+    background-color: #fff;
+
+}
+.divAsideContactos{
+    grid-area: contactos;
+    margin: 1em;
+    background-color: #fff;
+
+}
+
 /****************** LOGIN *********************/
 
 #fondo {
