@@ -29,24 +29,42 @@
     background-color:#fff;
     position: fixed;
 } */
+.logoPC{
+    margin-left: 2em;
+    display: flex;
+    align-items: center
+}
+.logoPC img{
+    width: 110%;
+    height: fit-content;
+}
+
 .logoPC h1{
     font-family: Rochester;
     color: #eeba02;
-    font-size: 2em;
+    font-size: 2.8em;
     grid-area: logo;
 }
 .buscador{
     grid-area: buscador;
 }
+.buscador input{
+    width: 390%;
+    padding: 0.8em;
+    border-radius: 0.5em;
+}
 .navegador_Pc{
     display: flex;
     justify-content: end;
     grid-area: iconos;
+    align-items: center;
 }
-
+.button_Header{
+    margin-right: 0.7em;
+}
 .navegador_Pc img{
     width: 10%;
-    
+    padding-right: 0.7em;
 }
 
 .contenedorMain{
