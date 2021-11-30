@@ -1,0 +1,204 @@
+@font-face {
+    font-family: Roboto;
+    src: url(../assets/fonts/Roboto/Roboto-Regular.ttf);
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Rochester;
+    src: url(../assets/fonts/Rochester-Regular.ttf);
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Roboto;
+    background-color: rgb(238, 238, 238);
+    color: black;
+}
+
+a{
+    text-decoration: none;
+}
+
+/************************************************************  NAV  ************************************************************/
+
+#nav{
+    width: 428px;
+    height: 108px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 3;
+    background-color: rgb(238, 238, 238);
+}
+
+#titulo-principal, #logo, #feed, #chats, #publicar, #buscar, #imagen-footer{
+    position: absolute;
+}
+
+#logo{
+    top: 10px;
+    left: 10px;
+}
+
+#titulo-principal{
+    left: 115px;
+    top: -45px;
+    font-family: Rochester;
+    color: #eeba02;
+    font-size: 4em;
+}
+
+/************************************************************  CUERPO ************************************************************/
+
+#contenedor-publicaciones{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 1114px;
+    margin-top: 120px;
+    /* background-color: rgb(186, 186, 186); */
+}
+
+#imagen-publicacion1, #usuario-publicacion1, #fecha-publicacion1{
+    position: absolute;
+}
+
+#imagen-publicacion1{
+    left: 24px;
+    top: 0px;
+    width: 43px;
+    height: 43px;
+    border: solid 1px black;
+    border-radius: 50%;
+}
+
+#usuario-publicacion1{
+    left: 75px;
+    top: -18px;
+}
+
+#fecha-publicacion1{
+    font-family: Roboto Light;
+    left: 75px;
+    top: 5px;
+}
+
+#publicacion1{
+    width: 100%;
+    height: 299px;
+    margin-top: 50px;
+    background-color: #F4CF4B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Roboto Medium;
+}
+
+#reaccionar-publicacion1{
+    display: flex;
+    margin-left: -3px;
+}
+
+#mg{
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+#no-mg{
+    margin-left: -28px;
+    margin-top: 7px;
+}
+
+#comentar{
+    margin-left: -25px;
+    margin-top: 8px;
+}
+
+#reacciones-publicacion1{
+    width: 100%;
+    height: 80px;
+    margin-top: -35px;
+    margin-left: 20px;
+}
+
+#cantidad-mg-publicacion1{
+    font-weight: 800;
+    font-size: 14px;
+}
+
+#pie-publicacion1{
+    width: 100%;
+    margin-top: -10px;
+    margin-left: 2px;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#pie-usuario-publicacion1{
+    margin-top: -1px;
+    margin-left: -1px;
+    font-weight: 550;
+    align-items: center;
+    font-size: 14px;
+}
+
+#comentario-autor-publicacion1{
+    font-family: Roboto Thin;
+    font-size: 13px;
+    margin-top: -4px;
+    margin-left: 5px;
+}
+
+#ver-comentarios-publicacion1{
+    font-size: 12px;
+    margin-top: -5px;
+    margin-left: 2px;
+    color: #686666;
+}
+
+/************************************************************  FOOTER  ************************************************************/
+
+#imagen-footer{
+    width: 34px;
+    height: 34px;
+    border: solid 1px black;
+    border-radius: 50%;
+}
+
+#footer{
+    position: fixed;
+    width: 100%;
+    height: 67px;
+    top: 859px;
+    background-color: grey;
+}
+
+#feed{
+    left: 24px;
+    bottom: 12px;
+}
+
+#chats{
+    left: 110px;
+    bottom: 12px;
+}
+
+#publicar{
+    left: 194px;
+    bottom: 7px;
+}
+
+#buscar{
+    left: 280px;
+    bottom: 12px;
+}
+
+#imagen-footer{
+    left: 360px;
+    bottom: 13px;
+}
