@@ -1,0 +1,143 @@
+@font-face {
+    font-family: Roboto;
+    src: url(../assets/fonts/Roboto/Roboto-Regular.ttf);
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Rochester;
+    src: url(../assets/fonts/Rochester-Regular.ttf);
+}
+
+p{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: Roboto;
+    background-color: rgb(238, 238, 238);
+    color: black;
+    width: 428px;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+#contenedor-busqueda{
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#busqueda{
+    border: 1px solid #A9A9A9;
+    box-sizing: border-box;
+    border-radius: 20px;
+    width: 354px;
+    height: 45px;
+}
+
+#busqueda::placeholder{
+    padding-left: 20px;
+    font-size: 20px; 
+}
+
+#icono-lupa{
+    position: absolute;
+    left: 345px;
+    top: 37px;
+}
+
+#iconos-busqueda{
+    display: flex;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin: 10px 45px 0px 45px;
+    justify-content: space-around;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgb(209, 209, 209);
+}
+
+#resultado{
+    width: auto;
+    height: auto;
+    margin: 10px, 33px, 0px, 33px;
+}
+
+#imagen-contacto1, #imagen-contacto2, #imagen-contacto3, #imagen-contacto4{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: solid 1px black;
+}
+
+#contacto1, #contacto2, #contacto3, #contacto4{
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+figure{
+    margin: 13px 8px 0px 15px;
+}
+
+#info1, #info2, #info3, #info4{
+    margin: 12px 0 0 0;
+}
+
+/************************************************************  FOOTER  ************************************************************/
+
+#feed, #chats, #publicar, #buscar, #imagen-footer{
+    position: absolute;
+}
+
+#imagen-footer{
+    width: 34px;
+    height: 34px;
+    border: solid 1px black;
+    border-radius: 50%;
+}
+
+#footer{
+    background-color: rgb(238, 238, 238);
+    z-index: 3;
+    position: fixed;
+    width: 428px;
+    height: 67px;
+    top: 870px;
+    background-color: grey;
+}
+
+#feed{
+    left: 24px;
+    bottom: 25px;
+}
+
+#chats{
+    left: 110px;
+    bottom: 18px;
+}
+
+#publicar{
+    left: 194px;
+    bottom: 13px;
+}
+
+#buscar{
+    left: 280px;
+    bottom: 20px;
+}
+
+#imagen-footer{
+    left: 360px;
+    bottom: 24px;
+}
+
+/* OTRO */
+
+.oculto{
+    display: none;
+}
