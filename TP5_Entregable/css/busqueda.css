@@ -61,6 +61,17 @@ body{
     border-bottom: 1px solid rgb(209, 209, 209);
 }
 
+#informacion{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+#texto-info{
+    margin-right: 50px;
+}
+
 #resultado{
     width: auto;
     height: auto;
