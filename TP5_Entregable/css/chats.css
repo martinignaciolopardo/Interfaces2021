@@ -1,0 +1,174 @@
+@font-face {
+    font-family: Roboto;
+    src: url(../assets/fonts/Roboto/Roboto-Regular.ttf);
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Rochester;
+    src: url(../assets/fonts/Rochester-Regular.ttf);
+}
+
+p{
+    margin: 0 0 0 0;
+    padding: 0;
+}
+
+body{
+    font-family: Roboto;
+    background-color: rgb(238, 238, 238);
+    color: black;
+    width: 428px;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+#contenedor-principal{
+    width: 428px;
+    height: 808px;
+}
+
+#titulo{
+    position: absolute;
+    left: 171px;
+    top: 0px;
+    font-size: 32px;
+}
+
+#contenedor-busqueda{
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#busqueda{
+    border: 1px solid #A9A9A9;
+    box-sizing: border-box;
+    border-radius: 20px;
+    width: 364px;
+    height: 45px;
+}
+
+#busqueda::placeholder{
+    padding-left: 20px;
+    font-size: 20px; 
+}
+
+#icono-lupa{
+    position: absolute;
+    left: 345px;
+    top: 90px;
+}
+
+#seccion-chats{
+    width: auto;
+    height: auto;
+    margin: 10px, 33px, 0px, 33px;
+    margin-top: 15px !important;
+}
+
+#imagen-contacto1, #imagen-contacto2, #imagen-contacto3, #imagen-contacto4{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: solid 1px black;
+    margin: 10px 3px 0px 30px;
+}
+
+figure{
+    margin: 0;
+}
+
+#contacto1, #contacto2, #contacto3, #contacto4{
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+#info1, #info2, #info3, #info4{
+    margin: 18px 0 0 0;
+}
+
+.hora, .hora2{
+    font-family: Roboto Light;
+    font-size: 10px;
+    margin-bottom: -4px;
+}
+
+.hora2{
+    position: absolute;
+    top: 351px;
+}
+
+.nombre-contacto, .nombre-contacto2{
+    font-family: Roboto Medium;
+    font-size: 16px;
+    max-width: 250px;
+}
+
+.nombre-contacto2{
+    margin-top: 3px;
+}
+
+.iconos-llamada{
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85px;
+    height: 30px;
+    left: 303px;
+    margin-top: 21px;
+}
+
+/************************************************************  FOOTER  ************************************************************/
+
+#feed, #chats, #publicar, #buscar, #imagen-footer{
+    position: absolute;
+}
+
+#imagen-footer{
+    width: 34px;
+    height: 34px;
+    border: solid 1px black;
+    border-radius: 50%;
+}
+
+#footer{
+    background-color: rgb(238, 238, 238);
+    z-index: 3;
+    position: fixed;
+    width: 428px;
+    height: 67px;
+    top: 870px;
+    background-color: grey;
+}
+
+#feed{
+    left: 24px;
+    bottom: 25px;
+}
+
+#chats{
+    left: 110px;
+    bottom: 18px;
+}
+
+#publicar{
+    left: 194px;
+    bottom: 13px;
+}
+
+#buscar{
+    left: 280px;
+    bottom: 20px;
+}
+
+#imagen-footer{
+    left: 360px;
+    bottom: 24px;
+}
+
