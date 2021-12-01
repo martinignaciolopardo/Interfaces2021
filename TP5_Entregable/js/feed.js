@@ -8,6 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let galeria = ["../assets/images/publicacion4.jfif","../assets/images/publicacion3.jfif","../assets/images/publicacion6.jpg"];
     let img = document.querySelector('#imagen-publicacion2');
     let posicion = 0;
+    let msjIcon = document.querySelector("#chats");
+    let searchIcon = document.querySelector("#buscar");
+    let profileIcon = document.querySelector("#imagen-footer");
+    let popUP = document.querySelector("#popUp");
+    let btnPop = document.querySelector("#configuracion");
+    //let btnCerrarSesion = document.querySelector("#op2");
+    
+
+    popUP.classList.add("ocultar");
    
     img.src = galeria[posicion];
     iconoPrev.classList.add('ocultar');
@@ -64,7 +73,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function redirectChats(){
+        window.location.href = 'https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/chats.html'
+    }
+
+    function redirectSearch(){
+        window.location.href = 'https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/busqueda.html'
+    }
+
+    function tooglePop(){
+        popUP.classList.toggle("ocultar");
+    }
+
+    function logOut(){
+        window.location.href = 'https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/index.html'
+    }
+
     iconoNext.addEventListener('click', siguienteImagen);
     iconoPrev.addEventListener('click', imagenPrevia);
-   
+    msjIcon.addEventListener("click", redirectChats);
+    searchIcon.addEventListener("click", redirectSearch);
+    btnPop.addEventListener("click", tooglePop);
+    //btnCerrarSesion.addEventListener("click", logOut);
 });
