@@ -27,7 +27,7 @@ a{
 
 #nav{
     width: 428px;
-    height: 108px;
+    height: 95px;
     position: fixed;
     top: 0px;
     left: 0px;
@@ -40,16 +40,17 @@ a{
 }
 
 #logo{
-    top: 10px;
-    left: 10px;
+    width: 72px;
+    top: 0px;
+    left: 15px;
 }
 
 #titulo-principal{
-    left: 115px;
-    top: -45px;
+    font-size: 53px;
+    left: 90px;
+    top: -32px;
     font-family: Rochester;
     color: #eeba02;
-    font-size: 4em;
 }
 
 /************************************************************  CUERPO ************************************************************/
@@ -58,16 +59,16 @@ a{
     position: absolute;
     z-index: 2;
     width: 100%;
-    height: 1114px;
-    margin-top: 120px;
+    height: 1120px;
+    margin-top: 105px;
     /* background-color: rgb(186, 186, 186); */
 }
 
-#imagen-publicacion1, #usuario-publicacion1, #fecha-publicacion1{
+#imagen-perfil-publicacion1, #usuario-publicacion1, #fecha-publicacion1, #imagen-perfil-publicacion2, #usuario-publicacion2, #fecha-publicacion2{
     position: absolute;
 }
 
-#imagen-publicacion1{
+#imagen-perfil-publicacion1{
     left: 24px;
     top: 0px;
     width: 43px;
@@ -83,11 +84,12 @@ a{
 
 #fecha-publicacion1{
     font-family: Roboto Light;
+    font-size: 13px;
     left: 75px;
-    top: 5px;
+    top: 10px;
 }
 
-#publicacion1{
+#publicacion1, #publicacion2{
     width: 100%;
     height: 299px;
     margin-top: 50px;
@@ -147,7 +149,7 @@ a{
 }
 
 #comentario-autor-publicacion1{
-    font-family: Roboto Thin;
+    font-family: Roboto Light;
     font-size: 13px;
     margin-top: -4px;
     margin-left: 5px;
@@ -160,6 +162,54 @@ a{
     color: #686666;
 }
 
+#imagen-perfil2{
+    margin-top: 30px;
+}
+
+#imagen-perfil-publicacion2{
+    left: 24px;
+    top: 593px;
+    width: 43px;
+    height: 43px;
+    border: solid 1px black;
+    border-radius: 50%;
+}
+
+#usuario-publicacion2{
+    left: 75px;
+    top: 575px;
+}
+
+#fecha-publicacion2{
+    font-family: Roboto Light;
+    font-size: 13px;
+    left: 75px;
+    top: 604px;
+}
+
+#imagen-publicacion2{
+    width: 375px;
+    height: 250px;
+}
+
+#icono-galeria{
+    position: absolute;
+    left: 205px;
+    top: 919px;
+}
+
+#icono-next{
+    position: absolute;
+    left: 403px;
+    top: 790px;
+}
+
+#icono-prev{
+    position: absolute;
+    left: 3px;
+    top: 790px;
+}
+
 /************************************************************  FOOTER  ************************************************************/
 
 #imagen-footer{
@@ -170,10 +220,12 @@ a{
 }
 
 #footer{
+    background-color: rgb(238, 238, 238);
+    z-index: 3;
     position: fixed;
     width: 428px;
     height: 67px;
-    top: 859px;
+    top: 888px;
     background-color: grey;
 }
 
@@ -200,4 +252,15 @@ a{
 #imagen-footer{
     left: 360px;
     bottom: 13px;
+}
+
+
+/* OTRO */
+
+.ocultar{
+    display: none;
+}
+
+.mostrar{
+    display: block;
 }
