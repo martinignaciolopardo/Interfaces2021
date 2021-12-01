@@ -35,7 +35,7 @@ a{
     background-color: rgb(238, 238, 238);
 }
 
-#titulo-principal, #logo, #feed, #chats, #publicar, #buscar, #imagen-footer{
+#titulo-principal, #logo{
     position: absolute;
 }
 
@@ -51,6 +51,56 @@ a{
     top: -32px;
     font-family: Rochester;
     color: #eeba02;
+}
+
+#configuracion{
+    position: absolute;
+    left: 385px;
+    top: 20px;
+}
+
+.op1, .op2{
+    font-size: 16px;
+}
+
+.op1{
+    position: absolute;
+    left: 12px;
+    top: -8px;
+    z-index: 3;
+}
+
+.ico-op1{
+    position: absolute;
+    left: 118px;
+    top: 5px;
+    z-index: 3;
+}
+
+.op2{
+    position: absolute;
+    left: 12px;
+    top: 22px;
+    z-index: 3;
+}
+
+.ico-op2{
+    position: absolute;
+    left: 100px;
+    top: 13px;
+    z-index: 3;
+}
+
+#popUp{
+    border-radius: 5px;
+    position: absolute;
+    left: 255px;
+    top: 47px;
+    z-index: 0;
+    background-color: rgb(211, 211, 211);
+    width: 150px;
+    height: 67px;
+    border: 1px solid rgb(177, 177, 177);
 }
 
 /************************************************************  CUERPO ************************************************************/
@@ -219,28 +269,32 @@ a{
     left: 0px;
     width: 428px;
     height: 67px;
-    top: 888px;
-    background-color: grey;
+    top: 880px;
+    border-top: 1px solid rgb(21, 21, 21);
+}
+
+#feed, #chats, #publicar, #buscar, #imagen-footer{
+    position: absolute;
 }
 
 #feed{
     left: 24px;
-    bottom: 12px;
+    bottom: 21px;
 }
 
 #chats{
     left: 110px;
-    bottom: 12px;
+    bottom: 20px;
 }
 
 #publicar{
     left: 194px;
-    bottom: 7px;
+    bottom: 16px;
 }
 
 #buscar{
     left: 280px;
-    bottom: 12px;
+    bottom: 22px;
 }
 
 #imagen-footer{
@@ -249,7 +303,7 @@ a{
     border: solid 1px black;
     border-radius: 50%;
     left: 360px;
-    bottom: 13px;
+    bottom: 24px;
 }
 
 
