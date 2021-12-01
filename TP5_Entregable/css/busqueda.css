@@ -68,7 +68,12 @@ body{
     margin-top: 8px;
 }
 
+#informacion summary{
+    text-align: center;
+}
+
 #texto-info{
+    padding:0 0 2em 5em;
     margin-right: 50px;
 }
 
