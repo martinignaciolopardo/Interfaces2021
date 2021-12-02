@@ -165,6 +165,17 @@ a{
     margin-top: 7px;
 }
 
+
+#mg2{
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+#no-mg2{
+    margin-left: -28px;
+    margin-top: 7px;
+}
+
 #comentar{
     margin-left: -25px;
     margin-top: 8px;
@@ -176,6 +187,11 @@ a{
 }
 
 #cantidad-mg-publicacion1{
+    font-weight: 800;
+    font-size: 14px;
+}
+
+#cantidad-mg-publicacion2{
     font-weight: 800;
     font-size: 14px;
 }
