@@ -48,18 +48,6 @@ body{
     margin-top: 20px;
 }
 
-#audio{
-    position: absolute;
-    top: 389px;
-    left: 72px;
-    width: 193px;
-    height: 38px;
-    background: #F4CF4B;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 30px;
-}
-
 #mensaje{
     position: absolute;
     padding-left: 1.5em;
@@ -77,10 +65,10 @@ body{
     color: white;
 }
 
-#archivo, #camara,#audio2,#enviar{
+#archivo, #camara,#audio,#enviar{
     position: absolute;
     top: 877px;
-    left: 300px;
+    left: 315px;
 }
 
 #archivo{
@@ -88,16 +76,17 @@ body{
 }
 
 #camara{
-    left: 330px;
+    left: 345px;
 }
 
-#audio2, #enviar{
+#audio, #enviar{
     top: 874px;
-    left: 360px;
+    left: 375px;
 }
 
 #enviar{
     top: 877px;
+    left: 380px;
 }
 
 /* OTRO */
