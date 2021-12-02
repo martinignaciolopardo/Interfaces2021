@@ -32,7 +32,7 @@ a{
     top: 0px;
     left: 0px;
     z-index: 3;
-    background-color: rgb(238, 238, 238);
+    background-color: #fff;
 }
 
 #titulo-principal, #logo{
@@ -56,8 +56,8 @@ a{
 #configuracion{
     position: absolute;
     left: 385px;
-    top: 20px;
-}
+    top: 40px;
+}   
 
 .op1, .op2{
     font-size: 16px;
@@ -113,14 +113,16 @@ a{
     margin-top: 105px;
     /* background-color: rgb(186, 186, 186); */
 }
-
+#imagen-perfil{
+    padding: 0.2em 0;
+}
 #imagen-perfil-publicacion1, #usuario-publicacion1, #fecha-publicacion1, #imagen-perfil-publicacion2, #usuario-publicacion2, #fecha-publicacion2{
     position: absolute;
 }
 
 #imagen-perfil-publicacion1{
-    left: 24px;
-    top: 0px;
+    left: 16px;
+    top: 9px;
     width: 43px;
     height: 43px;
     border: solid 1px black;
@@ -129,14 +131,14 @@ a{
 
 #usuario-publicacion1{
     left: 75px;
-    top: -18px;
+    top: -9px;
 }
 
 #fecha-publicacion1{
     font-family: Roboto Light;
     font-size: 13px;
-    left: 75px;
-    top: 10px;
+    left: 74px;
+    top: 19px;
 }
 
 #publicacion1, #publicacion2{
@@ -233,8 +235,8 @@ a{
 }
 
 #imagen-perfil-publicacion2{
-    left: 24px;
-    top: 593px;
+    left: 18px;
+    top: 649px;
     width: 43px;
     height: 43px;
     border: solid 1px black;
@@ -243,14 +245,14 @@ a{
 
 #usuario-publicacion2{
     left: 75px;
-    top: 575px;
+    top: 631px;
 }
 
 #fecha-publicacion2{
     font-family: Roboto Light;
     font-size: 13px;
     left: 75px;
-    top: 604px;
+    top: 659px;
 }
 
 #imagen-publicacion2{

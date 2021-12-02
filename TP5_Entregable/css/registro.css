@@ -47,7 +47,9 @@ body{
     line-height: 28px;
 }
 
-input[type=text] {
+input[type=text], input[type=password] {
+    font-size: 25px;
+    padding-left: 0.5em;
     position: absolute;
     left: 51px;
     width: 325px;
