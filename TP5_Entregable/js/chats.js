@@ -3,29 +3,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector("#feed").addEventListener('click', redirectFeed);
     document.querySelector("#buscar").addEventListener('click', redirectSearch);
-    document.querySelector("#icono-lupa").addEventListener('click', buscar);
-    let inputBusqueda = document.querySelector("#busqueda");
-    let resultado = document.querySelector("#resultado");
-    let nombreContacto = document.querySelector('.nombre-contacto2');
+    let chat3 = document.querySelector("#contacto3");
+    chat3.addEventListener("click", openChat);
 
-    resultado.classList.add("oculto");
-
-    function buscar(){
-        inputBusqueda.setAttribute('placeholder', 'Buscar contacto');
-        setTimeout(mostrarResultado, 800);
-    }
-
-    function mostrarResultado(){
-        resultado.classList.remove("oculto");
+    function openChat(){
+        location.href = "https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/chat1a1.html";
     }
         
     function redirectFeed(){
-        location.href = "https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/feed.html";
+        location.href = "https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/loadingToFeed.html";
     }
 
     function redirectSearch(){
-        location.href = "https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/busqueda.html";
+        location.href = "https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/loadingToSearch.html";
     }
-
   
 });
