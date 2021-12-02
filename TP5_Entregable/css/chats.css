@@ -50,10 +50,10 @@ body{
     border-radius: 20px;
     width: 364px;
     height: 45px;
+    padding-left: 20px;
 }
 
 #busqueda::placeholder{
-    padding-left: 20px;
     font-size: 20px; 
 }
 
@@ -148,28 +148,30 @@ figure{
     background-color: grey;
 }
 
+
 #feed{
     left: 24px;
-    bottom: 25px;
+    bottom: 21px;
 }
 
 #chats{
-    left: 110px;
-    bottom: 18px;
+    left: 105px;
+    bottom: 13px;
 }
 
 #publicar{
     left: 194px;
-    bottom: 13px;
+    bottom: 8px;
 }
 
 #buscar{
     left: 280px;
-    bottom: 20px;
+    bottom: 15px;
 }
 
 #imagen-footer{
     left: 360px;
-    bottom: 24px;
+    bottom: 16px;
 }
+
 
