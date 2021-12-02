@@ -198,7 +198,15 @@ body{
     width:100%;
     height:500px;
 }
-    /****************** LOGIN *********************/
+.infoText{
+    font-family: Roboto;
+    margin: -3em 0em;
+    text-align: center;
+    /* padding: 0 0 0 19em; */
+    padding-left: 16em;
+    font-size: 1.2em;
+}
+/****************** LOGIN *********************/
 
 #fondo {
     display: flex;
@@ -214,18 +222,29 @@ body{
     width: 40%;
     height: 40%;
 } */
+#logo{
+    display: flex;
+    width: min-content;
+}
+
+#logo img{
+    padding-top: 7em;
+    height: 45%;
+    width: 100%;
+}
+
 #logo h1{
     font-family: Rochester;
     color: #eeba02;
     font-size: 10em;
-
 }
 
 #imagenGatoPerro {
     background-image: url(../assets/images/dog-cat.png);
     width: 33%;
     background-size: cover;
-    height: 36%;
+    margin: 0 0 4em 18em;
+    height: 61%;
     /* align-self: self-end;
     margin: 0 0 15% 18%; */
 }
