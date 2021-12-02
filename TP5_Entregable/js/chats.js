@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector("#feed").addEventListener('click', redirectFeed);
     document.querySelector("#buscar").addEventListener('click', redirectSearch);
-    document.querySelector("#ico-contacto").addEventListener('click', buscar);
+    document.querySelector("#icono-lupa").addEventListener('click', buscar);
     let inputBusqueda = document.querySelector("#busqueda");
     let resultado = document.querySelector("#resultado");
-    
+    let nombreContacto = document.querySelector('.nombre-contacto2');
 
     resultado.classList.add("oculto");
 
@@ -26,4 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function redirectSearch(){
         location.href = "https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/busqueda.html";
     }
+
+  
 });
