@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let posicion = 0;
     let msjIcon = document.querySelector("#chats");
     let searchIcon = document.querySelector("#buscar");
-    //let profileIcon = document.querySelector("#imagen-footer");
     let popUP = document.querySelector("#popUp");
     let btnPop = document.querySelector("#configuracion");
     let like = document.querySelector("#like");
@@ -83,11 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function redirectChats() {
-        window.location.href = 'https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/chats.html';
+        window.location.href = 'https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/loadingToChat.html';
     }
 
     function redirectSearch() {
-        window.location.href = 'https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/busqueda.html';
+        window.location.href = 'https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/loadingToSearch.html';
     }
 
     function tooglePop() {
@@ -95,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function logOut() {
-        window.location.href = 'https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/index.html';
+        window.location.href = 'https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/loadingToLogOut.html';
     }
 
     function liked() {
@@ -152,8 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         </svg>`
             cantMg.innerHTML = '10 Me gusta';
         }
-       
-        
     }
 
     function disliked() {
@@ -209,12 +206,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     16.4062C25.8301 16.5731 25.9845 16.7795 26.0902 17.0113C26.1959 17.2432 26.2504 17.4952 26.25 17.75C26.25 
                     18.3469 25.9062 18.9219 25.35 19.2625Z" fill="#EEBA02"/>`
         }
-        
     }
 
     function liked2() {
-        toggle = toggle*-1;
-        if (toggle == -1) {
+        toggle2 = toggle2*-1;
+        if (toggle2 == -1) {
             mg2.innerHTML = `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M24.1844 13.5546C24.7094 12.861 25 12.0111 25 11.1268C25 9.72383 24.2156 8.39587 22.9531
                              7.65534C22.6281 7.46472 22.2581 7.3644 21.8812 7.36475H14.3875L14.575 3.52459C14.6187 2.59658
@@ -245,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 16.4062C25.8301 16.5731 25.9845 16.7795 26.0902 17.0113C26.1959 17.2432 26.2504 17.4952 26.25 17.75C26.25 
                                 18.3469 25.9062 18.9219 25.35 19.2625Z" fill="#EEBA02"/>`
             cantMg2.innerHTML = '28 Me gusta';
-        }else if (toggle == 1){
+        }else if (toggle2 == 1){
             mg2.innerHTML = ` <svg id=""  width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M27.6844 16.6781C28.2094 15.9844 28.5 15.1344 28.5 14.25C28.5 12.8469 27.7156 11.5187 26.4531
                                 10.7781C26.1281 10.5875 25.7581 10.4871 25.3813 10.4875H17.8875L18.075 6.64687C18.1188 5.71875 17.7906
@@ -327,7 +323,6 @@ document.addEventListener('DOMContentLoaded', () => {
     msjIcon.addEventListener("click", redirectChats);
     searchIcon.addEventListener("click", redirectSearch);
     btnPop.addEventListener("click", tooglePop);
-    //like.addEventListener("click", liked);
     mg.addEventListener("click", liked)
     mg2.addEventListener("click", liked2)
     noMg.addEventListener("click", disliked)
