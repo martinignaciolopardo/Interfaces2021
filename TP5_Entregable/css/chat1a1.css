@@ -62,18 +62,19 @@ body{
 
 #mensaje{
     position: absolute;
+    padding-left: 1.5em;
     top: 870px;
     left: 20px;
     width: 380px;
     height: 38px;
     background: #606060;
+    color: #fff;
     border-radius: 30px;
     border: none;
 }
 
 #mensaje::placeholder{
     color: white;
-    padding-left: 20px;
 }
 
 #archivo, #camara,#audio2,#enviar{
