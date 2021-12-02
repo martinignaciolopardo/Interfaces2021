@@ -162,16 +162,13 @@ label {
   width: 30%;
   height: 38.3vh;
   display: grid;
-  margin-top: 167px;
-  margin-left: 290px;
+  margin-top: 172px;
+  margin-left: 270px;
 }
 
 .center-div {
-  top: 6 px;
-  left: -16 px;
   width: 1rem;
   height: 1rem;
-  padding: 1em;
   background-color: #9d77b4;
   position: relative;
   transform: rotate(45deg);

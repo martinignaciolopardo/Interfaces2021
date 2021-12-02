@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function liked() {
         toggle = toggle*-1;
         if (toggle == -1) {
-            mg.innerHTML = `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            mg.innerHTML = `<svg width="32" height="32" viewBox="0 -2 25 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M24.1844 13.5546C24.7094 12.861 25 12.0111 25 11.1268C25 9.72383 24.2156 8.39587 22.9531
                 7.65534C22.6281 7.46472 22.2581 7.3644 21.8812 7.36475H14.3875L14.575 3.52459C14.6187 2.59658
                 14.2906 1.71544 13.6531 1.04365C13.3403 0.712524 12.9628 0.449071 12.5441 0.269569C12.1254 
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 24.3594 15.5981 24.3594 14.7138C24.3531 14.3201 24.2969 13.9296 24.1844 13.5546ZM0 13.3765V24.7501C0
                 25.3032 0.446875 25.75 1 25.75H3.03125V12.3766H1C0.446875 12.3766 0 12.8235 0 13.3765Z" fill="#EEBA02"/>
                 </svg>`
-            noMg.innerHTML = `<svg  width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            noMg.innerHTML = `<svg  width="32" height="32" viewBox="0 -2 25 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M27.6844 15.3219C27.7969 14.9469 27.8531 14.5594 27.8531 14.1656C27.8531 13.2812 27.5625
                 12.4312 27.0375 11.7375C27.15 11.3625 27.2062 10.975 27.2062 10.5812C27.2062 9.69687 26.9156 8.84687
                 26.3906 8.15312C26.5031 7.77812 26.5594 7.39062 26.5594 6.99687C26.5594 5.38437 25.6 3.93125 24.1125
@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function liked2() {
         toggle2 = toggle2*-1;
         if (toggle2 == -1) {
-            mg2.innerHTML = `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            mg2.innerHTML = `<svg width="32" height="32" viewBox="0 -2 25 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M24.1844 13.5546C24.7094 12.861 25 12.0111 25 11.1268C25 9.72383 24.2156 8.39587 22.9531
                              7.65534C22.6281 7.46472 22.2581 7.3644 21.8812 7.36475H14.3875L14.575 3.52459C14.6187 2.59658
                             14.2906 1.71544 13.6531 1.04365C13.3403 0.712524 12.9628 0.449071 12.5441 0.269569C12.1254 
@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             24.3594 15.5981 24.3594 14.7138C24.3531 14.3201 24.2969 13.9296 24.1844 13.5546ZM0 13.3765V24.7501C0
                             25.3032 0.446875 25.75 1 25.75H3.03125V12.3766H1C0.446875 12.3766 0 12.8235 0 13.3765Z" fill="#EEBA02"/>
             </svg>`
-            noMg2.innerHTML = `<svg  width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            noMg2.innerHTML = `<svg  width="32" height="32" viewBox="0 -2 25 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M27.6844 15.3219C27.7969 14.9469 27.8531 14.5594 27.8531 14.1656C27.8531 13.2812 27.5625
                                 12.4312 27.0375 11.7375C27.15 11.3625 27.2062 10.975 27.2062 10.5812C27.2062 9.69687 26.9156 8.84687
                                 26.3906 8.15312C26.5031 7.77812 26.5594 7.39062 26.5594 6.99687C26.5594 5.38437 25.6 3.93125 24.1125
