@@ -56,7 +56,7 @@ a{
 #configuracion{
     position: absolute;
     left: 385px;
-    top: 40px;
+    top: 23px;
 }   
 
 .op1, .op2{
@@ -108,7 +108,7 @@ a{
 #contenedor-publicaciones{
     position: absolute;
     z-index: 2;
-    width: 100%;
+    width: 428px;
     height: 1182px;
     margin-top: 105px;
     /* background-color: rgb(186, 186, 186); */
@@ -142,7 +142,7 @@ a{
 }
 
 #publicacion1, #publicacion2{
-    width: 100%;
+    width: 428px;
     height: 299px;
     margin-top: 50px;
     background-color: #F4CF4B;
