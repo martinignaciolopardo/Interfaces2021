@@ -83,11 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function redirectChats() {
-        window.location.href = 'https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/chats.html'
+        window.location.href = 'https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/chats.html';
     }
 
     function redirectSearch() {
-        window.location.href = 'https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/busqueda.html'
+        window.location.href = 'https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/busqueda.html';
     }
 
     function tooglePop() {
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function logOut() {
-        window.location.href = 'https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/index.html'
+        window.location.href = 'https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/index.html';
     }
 
     function liked() {
