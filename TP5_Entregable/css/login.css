@@ -21,6 +21,8 @@ body{
 
 
 #input-mail, #input-password{
+    padding-left: 1.5em;
+    font-family: Roboto;
     position: absolute;
     border: 1px solid #A9A9A9;
     box-sizing: border-box;
@@ -33,10 +35,10 @@ body{
 #input-mail{
     top: 211px;
 }
-
+/* 
 input::placeholder {
     padding-left: 10px; 
-}
+} */
 
 #input-password{
     top: 309px;
