@@ -6,10 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let archivo = document.querySelector("#archivo");
     let camara = document.querySelector("#camara");
     let audio2 = document.querySelector("#audio2");
+    let backToChat = document.querySelector("#nav-back");
     enviar.classList.add("oculto");
-
-    mensaje.addEventListener('click', cambia);
-    enviar.addEventListener('click', cambia);
 
     function cambia(){
         enviar.classList.toggle("oculto");
@@ -18,4 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
         audio2.classList.toggle("oculto");
         mensaje.value = '';
     }
+
+    function back(){
+        window.location.href = 'https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/loadingToChat.html';
+    }
+
+    mensaje.addEventListener('click', cambia);
+    enviar.addEventListener('click', cambia);
+    backToChat.addEventListener('click', back);
 });
