@@ -1,0 +1,106 @@
+@font-face {
+    font-family: Roboto;
+    src: url(../assets/fonts/Roboto/Roboto-Regular.ttf);
+    font-weight: 400;
+    font-style: normal;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    width: 428px;
+    height: 926px;
+    font-family: Roboto;
+    background-color: rgb(238, 238, 238);
+    color: black;
+    border: solid 1px black;
+}
+
+#nav-bar{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+#nav-back{
+    margin-right: 30px;
+    margin-top: 16px;
+}
+
+#nav-title{
+    margin-right: 10px;
+    font-size: 23px;
+}
+
+#nav-call{
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+#nav-vid{
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+#chat{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#audio{
+    position: absolute;
+    top: 389px;
+    left: 72px;
+    width: 193px;
+    height: 38px;
+    background: #F4CF4B;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 30px;
+}
+
+#mensaje{
+    position: absolute;
+    top: 870px;
+    left: 20px;
+    width: 380px;
+    height: 38px;
+    background: #606060;
+    border-radius: 30px;
+    border: none;
+}
+
+#mensaje::placeholder{
+    color: white;
+    padding-left: 20px;
+}
+
+#archivo, #camara,#audio2,#enviar{
+    position: absolute;
+    top: 877px;
+    left: 300px;
+}
+
+#archivo{
+    top: 878px;
+}
+
+#camara{
+    left: 330px;
+}
+
+#audio2, #enviar{
+    top: 874px;
+    left: 360px;
+}
+
+#enviar{
+    top: 877px;
+}
+
+/* OTRO */
+
+.oculto{
+    display: none;
+}
