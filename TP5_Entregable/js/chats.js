@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "use strict"
 
     document.querySelector("#feed").addEventListener('click', redirectFeed);
-    document.querySelector("#chats").addEventListener('click', redirectChat);
+    document.querySelector("#buscar").addEventListener('click', redirectSearch);
     document.querySelector("#ico-contacto").addEventListener('click', buscar);
     let inputBusqueda = document.querySelector("#busqueda");
     let resultado = document.querySelector("#resultado");
@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function redirectFeed(){
         location.href = "https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/feed.html";
     }
-    function redirectChat(){
-        location.href = 'https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/loadingToChat.html';
+
+    function redirectSearch(){
+        location.href = "https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/busqueda.html";
     }
- 
 });

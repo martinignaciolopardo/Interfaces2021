@@ -8,8 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let galeria = ["../assets/images/publicacion4.jfif", "../assets/images/publicacion3.jfif", "../assets/images/publicacion6.jpg"];
     let img = document.querySelector('#imagen-publicacion2');
     let posicion = 0;
+
     let msjIcon = document.querySelector("#chats");
     let searchIcon = document.querySelector("#buscar");
+
     let popUP = document.querySelector("#popUp");
     let btnPop = document.querySelector("#configuracion");
     let like = document.querySelector("#like");
@@ -323,9 +325,9 @@ document.addEventListener('DOMContentLoaded', () => {
     msjIcon.addEventListener("click", redirectChats);
     searchIcon.addEventListener("click", redirectSearch);
     btnPop.addEventListener("click", tooglePop);
-    mg.addEventListener("click", liked)
-    mg2.addEventListener("click", liked2)
-    noMg.addEventListener("click", disliked)
-    noMg2.addEventListener("click", disliked2)
+    mg.addEventListener("click", liked);
+    mg2.addEventListener("click", liked2);
+    noMg.addEventListener("click", disliked);
+    noMg2.addEventListener("click", disliked2);
 
 });
