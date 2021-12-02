@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     "use strict"
 
-    setTimeout(5300, redirectLogin);
+    window.onload = function(){
+        setTimeout(redirectLogin, 5300);
+    }
 
     function redirectLogin(){
         window.location.href = 'https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/index.html';
