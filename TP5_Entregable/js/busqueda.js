@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
         
     function redirectFeed(){
-        location.href = "https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/feed.html";
+        location.href = "https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/loadingToFeed.html";
     }
     function redirectChat(){
         location.href = 'https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/loadingToChat.html';
