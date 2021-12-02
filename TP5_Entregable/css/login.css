@@ -35,10 +35,17 @@ body{
 #input-mail{
     top: 211px;
 }
-/* 
-input::placeholder {
-    padding-left: 10px; 
-} */
+
+#sub-titulo{
+    position: absolute;
+    top: 120px;
+    left: 85px;
+}
+
+#formulario{
+    position: absolute;
+    top: 30px;
+}
 
 #input-password{
     top: 309px;
@@ -49,7 +56,6 @@ input::placeholder {
     display: inline-block;
     width: 140px;
     text-align: right;
-    
 }
 
 #label-mail{
