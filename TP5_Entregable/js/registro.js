@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnCreateAcc.addEventListener("click", redirectFeed);
 
     function redirectFeed() {
-        window.location.href = "https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/feed.html";
+        window.location.href = "https://martinignaciolopardo.github.io/Interfaces2021/TP5_Entregable/pages/loadingToFeed.html";
     }
 
 });
