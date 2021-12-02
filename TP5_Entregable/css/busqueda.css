@@ -38,10 +38,10 @@ body{
     border-radius: 20px;
     width: 354px;
     height: 45px;
+    padding-left: 1.5em;
 }
 
 #busqueda::placeholder{
-    padding-left: 20px;
     font-size: 20px; 
 }
 
@@ -93,6 +93,8 @@ body{
 
 .label1,.label2,.label3{
     font-family: Roboto Medium;
+    color:#fff;
+    padding-bottom: 0.4em;
 }
 
 #input-ciudad,#input-pais,#input-edad{
