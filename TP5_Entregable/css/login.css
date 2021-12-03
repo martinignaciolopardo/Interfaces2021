@@ -75,9 +75,10 @@ body{
     height: 50px;
     left: 91px;
     top: 382px;
-    background: #EEBA02;
+    background: #e1b001;
     border: none;
     border-radius: 50px;
+    color: white;
     font-family: Roboto Medium;
     font-size: 22px;
 }
@@ -92,10 +93,12 @@ body{
     height: 50px;
     left: 119px;
     top: 636px;
-    background: #A9A9A9;
+    font-family: Roboto Medium;
+    color: white;
+    background: #42b72a;
     border: none;
     border-radius: 50px;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 #btn-registrarse:hover{
@@ -125,7 +128,7 @@ body{
     position: absolute;
     width: 223px;
     height: 20px;
-    left: 102px;
+    left: 143px;
     top: 591px;
     font-family: Roboto;
     font-style: normal;
@@ -135,14 +138,14 @@ body{
 }
 
 #publicidad1{
-    position: absolute;
+    position: fixed;
     width: 50%;
-    bottom: 0px;
+    top: 812px;
     left: 214px;
 }
 
 #publicidad2{
-    position: absolute;
+    position: fixed;
     width: 50%;
-    bottom: 0px;
+    top: 812px;
 }
