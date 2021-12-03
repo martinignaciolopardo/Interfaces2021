@@ -50,12 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
         inputBusqueda.setAttribute('placeholder', 'Buscar hashtag');
         filtros.classList.add("oculto");
         inputFiltros.classList.add("oculto");
+        resultado.classList.add("oculto");
     }
 
     function buscarNoticias(){
         inputBusqueda.setAttribute('placeholder', 'Buscar noticias');
         filtros.classList.add("oculto");
         inputFiltros.classList.add("oculto");
+        resultado.classList.add("oculto");
     }
 
     function mostrarInputPais(){
