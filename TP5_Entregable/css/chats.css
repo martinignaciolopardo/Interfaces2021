@@ -92,16 +92,20 @@ figure{
     margin: 18px 0 0 0;
 }
 
-.hora, .hora2{
+.hora, .hora2, .horaa2{
     font-family: Roboto Light;
     font-size: 10px;
     margin-bottom: -4px;
     color: #9b9b9b;
 }
 
-.hora2{
+.hora2, .horaa2{
     position: absolute;
-    top: 351px;
+    top: 386px;
+}
+
+.horaa2{
+    top: 652px;
 }
 
 .nombre-contacto, .nombre-contacto2{
@@ -111,7 +115,7 @@ figure{
 }
 
 .nombre-contacto2{
-    margin-top: 3px;
+    margin-top: -6px;
 }
 
 .iconos-llamada{
