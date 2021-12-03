@@ -311,7 +311,7 @@ a{
     width: 428px;
     height: 67px;
     top: 880px;
-    border-top: 1px solid rgb(21, 21, 21);
+    border-top: 1px solid #9b9b9b;
 }
 
 #feed, #chats, #publicar, #buscar, #imagen-footer{
