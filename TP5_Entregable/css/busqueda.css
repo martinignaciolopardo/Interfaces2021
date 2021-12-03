@@ -148,6 +148,7 @@ body{
     display: flex;
 }
 .contactosBusqueda{
+    margin-left: 20px;
     padding-top: 0.8em;
 }
 
