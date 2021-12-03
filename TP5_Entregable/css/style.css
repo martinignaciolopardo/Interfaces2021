@@ -201,23 +201,43 @@ body{
 #infoText{
     position: relative;
     font-family: Roboto;
+    font-weight: 600;
     left: 157px;
     bottom: 116px;
     font-size: 1.7em;
+    -webkit-animation: infoText-Animation 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: infoText-Animation 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
+
+@-webkit-keyframes infoText-Animation {
+    0% {
+      -webkit-transform: scale(0.5);
+              transform: scale(0.5);
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+  }
+  @keyframes infoText-Animation {
+    0% {
+      -webkit-transform: scale(0.5);
+              transform: scale(0.5);
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+  }
 /****************** LOGIN *********************/
 
 #fondo {
     display: flex;
     height: 100%;
     background-image: url(../assets/images/fondo.png);
+  
 }
 
-/* #imagenLogo{
-    background-image: url(../assets/images/logo.jpg);
-    width: 40%;
-    height: 40%;
-} */
 #logo{
     display: flex;
     width: min-content;
@@ -243,8 +263,79 @@ body{
     margin: 14px 0 0 17em;
     height: 60%;
     bottom: 6em;
+    cursor: pointer;
+    -webkit-animation: shake-bottom 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+	        animation: shake-bottom 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+    
 }
 
+@-webkit-keyframes shake-bottom {
+    0%,
+    100% {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+      -webkit-transform-origin: 50% 100%;
+              transform-origin: 50% 100%;
+    }
+    10% {
+      -webkit-transform: rotate(2deg);
+              transform: rotate(2deg);
+    }
+    20%,
+    40%,
+    60% {
+      -webkit-transform: rotate(-4deg);
+              transform: rotate(-4deg);
+    }
+    30%,
+    50%,
+    70% {
+      -webkit-transform: rotate(4deg);
+              transform: rotate(4deg);
+    }
+    80% {
+      -webkit-transform: rotate(-2deg);
+              transform: rotate(-2deg);
+    }
+    90% {
+      -webkit-transform: rotate(2deg);
+              transform: rotate(2deg);
+    }
+  }
+  @keyframes shake-bottom {
+    0%,
+    100% {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+      -webkit-transform-origin: 50% 100%;
+              transform-origin: 50% 100%;
+    }
+    10% {
+      -webkit-transform: rotate(2deg);
+              transform: rotate(2deg);
+    }
+    20%,
+    40%,
+    60% {
+      -webkit-transform: rotate(-4deg);
+              transform: rotate(-4deg);
+    }
+    30%,
+    50%,
+    70% {
+      -webkit-transform: rotate(4deg);
+              transform: rotate(4deg);
+    }
+    80% {
+      -webkit-transform: rotate(-2deg);
+              transform: rotate(-2deg);
+    }
+    90% {
+      -webkit-transform: rotate(2deg);
+              transform: rotate(2deg);
+    }
+  }
+  
 #patitas {
     width: 65%;
     display: flex;
@@ -264,7 +355,7 @@ body{
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 65%;
+    width: 70%;
     background-color: #fff;
     height: 42%;
     border-radius: 1em;
@@ -297,7 +388,7 @@ input[type=password] {
     width: 70%;
     padding: 0.5em;
     background-color: #F4CF4B;
-    margin: 2% 18%;
+    margin: 3% 15%;
 }
 
 .divRegistrarse button {
@@ -334,5 +425,5 @@ input[type=password] {
     }
   }
 .hojas{
-  animation: animacionHojas 10s linear infinite; /* dura 10 segundos de forma linear e infinitamente la animacion del fondo */
+  animation: animacionHojas 20s linear infinite; /* dura 10 segundos de forma linear e infinitamente la animacion del fondo */
 }
