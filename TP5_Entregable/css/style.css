@@ -268,8 +268,8 @@ p{
     height: 60%;
     bottom: 6em;
     cursor: pointer;
-    -webkit-animation: shake-bottom 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-	        animation: shake-bottom 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+    -webkit-animation: shake-bottom 5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both infinite;
+	        animation: shake-bottom 5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both infinite;
     
 }
 
@@ -294,16 +294,16 @@ p{
     30%,
     50%,
     70% {
-      -webkit-transform: rotate(4deg);
-              transform: rotate(4deg);
-    }
-    80% {
-      -webkit-transform: rotate(-2deg);
-              transform: rotate(-2deg);
-    }
-    90% {
       -webkit-transform: rotate(2deg);
               transform: rotate(2deg);
+    }
+    80% {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+    }
+    90% {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
     }
   }
   @keyframes shake-bottom {
@@ -327,16 +327,16 @@ p{
     30%,
     50%,
     70% {
-      -webkit-transform: rotate(4deg);
-              transform: rotate(4deg);
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
     }
     80% {
-      -webkit-transform: rotate(-2deg);
-              transform: rotate(-2deg);
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
     }
     90% {
-      -webkit-transform: rotate(2deg);
-              transform: rotate(2deg);
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
     }
   }
   
