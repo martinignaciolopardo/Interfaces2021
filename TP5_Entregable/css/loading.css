@@ -15,7 +15,7 @@ body{
 #linea{
     position: absolute;
     top: 215px;
-    left: 104px;
+    left: 114px;
     width: 170px;
     height: 100px;
     border-bottom: solid 1px rgb(128, 128, 128);
@@ -23,13 +23,13 @@ body{
 
 #logo{
     position: absolute;
-    left: 80px;
+    left: 90px;
     top: 203px;
 }
 
 #titulo-principal{
     position: absolute;
-    left: 190px;
+    left: 210px;
     top: 165px;
     color: #eeba02;
     font-size: 60px;
