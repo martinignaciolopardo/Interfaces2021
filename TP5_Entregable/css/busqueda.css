@@ -87,7 +87,7 @@ body{
     display: flex;
     flex-direction: column;
     width: 270px;
-    margin-left: 70px;
+    margin-left: 62px;
     margin-top: 20px;
 }
 
@@ -121,8 +121,7 @@ body{
 }
 
 #resultado{
-    width: auto;
-    height: auto;
+    margin-left: 45px;
     margin: 10px, 33px, 0px, 33px;
 }
 #resultado svg{
@@ -159,9 +158,14 @@ figure{
     margin: 12px 0 0 0;
 }
 
-.largo{
-    max-width: 190px;
+.add8{
+    position: absolute;
+    left: -30px;
 }
+
+/* .largo{
+    max-width: 190px;
+} */
 
 /************************************************************  FOOTER  ************************************************************/
 

@@ -50,12 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
         inputBusqueda.setAttribute('placeholder', 'Buscar hashtag');
         filtros.classList.add("oculto");
         inputFiltros.classList.add("oculto");
+        resultado.classList.add("oculto");
     }
 
     function buscarNoticias(){
         inputBusqueda.setAttribute('placeholder', 'Buscar noticias');
         filtros.classList.add("oculto");
         inputFiltros.classList.add("oculto");
+        resultado.classList.add("oculto");
     }
 
     function mostrarInputPais(){
@@ -89,8 +91,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function mostrarResultado(){
-        resultado.classList.remove("oculto");
-        
+        let contactoB = inputBusqueda.getAttribute('placeholder');
+        if (contactoB == 'Buscar contacto') {
+            resultado.classList.remove("oculto");
+        }
     }
         
     function redirectFeed(){
