@@ -377,28 +377,34 @@ p{
 
 .divInicioSesion label {
     font-size: 0.8em;
-    margin: 1em 0 0;
+    position: relative;
+    top: 11px;
 }
 
-.divInicioSesion input[type=text],
+.divInicioSesion input[type=email],
 input[type=password] {
     padding: 0.8em 0.5em;
+    width: 100%;
     border-radius: 8px;
-    margin: 0.7em 0;
+    margin-top: 0.8em;
+    border: 1px solid #A9A9A9;
+    box-sizing: border-box;
 }
 
-.divInicioSesion button {
+#btn-login {
     border-radius: 1em;
     width: 70%;
     padding: 0.5em;
     background-color: #F4CF4B;
-    margin: 3% 15%;
+    margin: 5% 15%;
+    border: none;
 }
 
 .divRegistrarse button {
     padding: 0.7em 2em;
     border-radius: 1em;
     background-color: #A9A9A9;
+    border: none;
 }
 
 .divInicioSesion button:hover {

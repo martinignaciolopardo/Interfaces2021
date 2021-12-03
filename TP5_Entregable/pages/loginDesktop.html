@@ -26,11 +26,15 @@
                 <div id="popUpInicio">
                     <div id="divLogin">
                         <div class="divInicioSesion">
-                            <label for="correo" hidden>Correo</label>
-                            <input type="text" name="correo" id="inputCorreo" placeholder="Correo Electronico" required>
-                            <label for="password" hidden>Constraseña</label>
-                            <input type="password" name="password" id="inputPassword" placeholder="Contraseña" required>
-                            <button type="button">Iniciar Sesión</button>
+                            <form action="login">
+                                <label id="label-mail" for="input-mail">Correo:</label>
+                                <!-- <label for="correo" hidden>Correo</label> -->
+                                <input type="email" name="correo" id="inputCorreo" placeholder="Correo Electronico" required>
+                                <label id="label-password" for="input-password">Contraseña:</label>
+                                <!-- <label for="password" hidden>Constraseña</label> -->
+                                <input type="password" name="password" id="inputPassword" placeholder="Contraseña" required>
+                                <input type="submit" id="btn-login" value="Iniciar Sesion">
+                            </form>
                         </div>
                         <div class="divRegistrarse">
                             <p>¿No tenes cuenta? <span>Registrate</span></p>
