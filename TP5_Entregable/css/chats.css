@@ -143,42 +143,41 @@ figure{
 }
 
 #footer{
+    border-top: 1px solid #9b9b9b;
     background-color: rgb(238, 238, 238);
     z-index: 3;
     position: fixed;
     width: 428px;
     height: 67px;
     top: 870px;
-    background-color: grey;
 }
 
 #feed{
     left: 24px;
-    bottom: 21px;
+    bottom: 23px;
     cursor:pointer;
 }
 
 #chats{
     left: 105px;
-    bottom: 13px;
+    bottom: 17px;
     cursor:pointer;
-
 }
 
 #publicar{
     left: 194px;
-    bottom: 8px;
+    bottom: 12px;
 }
 
 #buscar{
     left: 280px;
-    bottom: 15px;
+    bottom: 19px;
     cursor:pointer;
 }
 
 #imagen-footer{
     left: 360px;
-    bottom: 16px;
+    bottom: 20px;
 }
 
 
