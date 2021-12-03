@@ -398,13 +398,17 @@ input[type=password] {
     background-color: #F4CF4B;
     margin: 5% 15%;
     border: none;
+    color:#fff;
+    font-family: Robot Medium;
 }
 
 .divRegistrarse button {
-    padding: 0.7em 2em;
+    padding: 0.5em 2em;
     border-radius: 1em;
     background-color: #42b72a;
     border: none;
+    color:#fff;
+    font-family: Robot Medium;
 }
 
 .divInicioSesion button:hover {
