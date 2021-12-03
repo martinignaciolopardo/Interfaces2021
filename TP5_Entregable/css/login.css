@@ -40,7 +40,7 @@ body{
 #sub-titulo{
     position: absolute;
     top: 120px;
-    left: 85px;
+    left: 105px;
 }
 
 #formulario{
@@ -104,7 +104,7 @@ body{
 
 #titulo-principal{
     position: absolute;
-    left: 205px;
+    left: 207px;
     right: 18.93%;
     top: 1px;
     bottom: 87.47%;
@@ -115,7 +115,7 @@ body{
 
 #logo{
     position: absolute;
-    width: 100px;
+    width: 103px;
     height: 88px;
     left: 95px;
     top: 40px;

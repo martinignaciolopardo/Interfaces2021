@@ -376,14 +376,15 @@ body{
     margin: 1em 0 0;
 }
 
-.divInicioSesion input[type=text],
+.divInicioSesion input[type=email],
 input[type=password] {
     padding: 0.8em 0.5em;
+    width: 90%;
     border-radius: 8px;
     margin: 0.7em 0;
 }
 
-.divInicioSesion button {
+#btn-login {
     border-radius: 1em;
     width: 70%;
     padding: 0.5em;
