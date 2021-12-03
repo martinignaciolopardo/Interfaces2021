@@ -54,7 +54,7 @@ a{
     top: 0px;
     left: 0px;
     z-index: 3;
-    background-color: #fff;
+    background-color: rgb(238, 238, 238);
 }
 
 #titulo-principal, #logo{
