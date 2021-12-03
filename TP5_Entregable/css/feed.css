@@ -55,6 +55,7 @@ a{
     left: 0px;
     z-index: 3;
     background-color: rgb(238, 238, 238);
+    border-bottom: 1px solid #9b9b9b;
 }
 
 #titulo-principal, #logo{
