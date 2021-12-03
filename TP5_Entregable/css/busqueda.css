@@ -187,7 +187,7 @@ figure{
     width: 428px;
     height: 67px;
     top: 870px;
-    background-color: grey;
+    border-top: 1px solid #9b9b9b;
 }
 
 #feed{
