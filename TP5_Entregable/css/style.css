@@ -198,23 +198,19 @@ body{
     width:100%;
     height:500px;
 }
-.infoText{
+#infoText{
+    position: relative;
     font-family: Roboto;
-    margin: -3em 0em;
-    text-align: center;
-    /* padding: 0 0 0 19em; */
-    padding-left: 16em;
-    font-size: 1.2em;
+    left: 157px;
+    bottom: 116px;
+    font-size: 1.7em;
 }
 /****************** LOGIN *********************/
 
 #fondo {
     display: flex;
-    width: 100%;
     height: 100%;
-    background-image: url(../assets/images/fondo.jpg);
-    background-size: cover;
-    opacity: .6;
+    background-image: url(../assets/images/fondo.png);
 }
 
 /* #imagenLogo{
@@ -241,21 +237,20 @@ body{
 
 #imagenGatoPerro {
     background-image: url(../assets/images/dog-cat.png);
-    width: 33%;
+    width: 37%;
     background-size: cover;
-    margin: 0 0 4em 18em;
-    height: 61%;
-    /* align-self: self-end;
-    margin: 0 0 15% 18%; */
+    position: relative;
+    margin: 14px 0 0 17em;
+    height: 60%;
+    bottom: 6em;
 }
 
 #patitas {
     width: 65%;
     display: flex;
     justify-content: center;
-    /* text-align: center; */
+    padding-right: 9em;
     flex-direction: column;
-    padding-left: -8em;
     align-items: center;
 }
 
@@ -263,12 +258,10 @@ body{
     width: 35%;
     display: flex;
     align-items: center;
-    opacity: 1 !important;
 }
 
 #divLogin {
     display: flex;
-    justify-content: center;
     flex-direction: column;
     text-align: center;
     width: 65%;
@@ -321,4 +314,25 @@ input[type=password] {
 .divRegistrarse button:hover {
     background-color: #606060;
     cursor: pointer;
+}
+#hojas{
+  position: relative;
+  display: flex;
+  width: 100%;
+  background-image: url(../assets/images/hojas.png);
+}
+
+@keyframes animacionHojas {
+    0% {
+      background-position: 0;
+    }
+    50% {
+      background-position: -728px;
+    }
+    100% {
+      background-position: -1456px;
+    }
+  }
+.hojas{
+  animation: animacionHojas 10s linear infinite; /* dura 10 segundos de forma linear e infinitamente la animacion del fondo */
 }
