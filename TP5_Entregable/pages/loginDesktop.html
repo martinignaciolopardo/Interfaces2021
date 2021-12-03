@@ -27,9 +27,11 @@
                     <div id="divLogin">
                         <div class="divInicioSesion">
                             <form action="login">
-                                <label for="correo" hidden>Correo</label>
+                                <label id="label-mail" for="input-mail">Correo:</label>
+                                <!-- <label for="correo" hidden>Correo</label> -->
                                 <input type="email" name="correo" id="inputCorreo" placeholder="Correo Electronico" required>
-                                <label for="password" hidden>Constraseña</label>
+                                <label id="label-password" for="input-password">Contraseña:</label>
+                                <!-- <label for="password" hidden>Constraseña</label> -->
                                 <input type="password" name="password" id="inputPassword" placeholder="Contraseña" required>
                                 <input type="submit" id="btn-login" value="Iniciar Sesion">
                             </form>
