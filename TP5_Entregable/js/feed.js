@@ -8,10 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let galeria = ["../assets/images/publicacion4.jfif", "../assets/images/publicacion3.jfif", "../assets/images/publicacion6.jpg"];
     let img = document.querySelector('#imagen-publicacion2');
     let posicion = 0;
-
     let msjIcon = document.querySelector("#chats");
     let searchIcon = document.querySelector("#buscar");
-
+    let notificacionPop = document.querySelector(".notificaciones-pop");
+    let notificacionImg = document.querySelector("#imagen-notif");
+    let cerrarNotificaciones = document.querySelector("#cerrar-notif");
+    let opcion1 = document.querySelector(".op1");
     let popUP = document.querySelector("#popUp");
     let btnPop = document.querySelector("#configuracion");
     let like = document.querySelector("#like");
@@ -27,7 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let toggleDislike2 = 1;
 
     popUP.classList.add("ocultar");
-
+    notificacionPop.classList.add("ocultar");
+    notificacionImg.classList.add("ocultar");
+    cerrarNotificaciones.classList.add("ocultar");
     img.src = galeria[posicion];
     iconoPrev.classList.add('ocultar');
 
@@ -320,6 +324,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function showNotifications(){
+        notificacionPop.classList.remove("ocultar");
+        notificacionImg.classList.remove("ocultar");
+        cerrarNotificaciones.classList.remove("ocultar");
+    }
+
+    function closeNotifications(){
+        notificacionPop.classList.add("ocultar");
+        notificacionImg.classList.add("ocultar");
+        cerrarNotificaciones.classList.add("ocultar");
+    }
+
     iconoNext.addEventListener('click', siguienteImagen);
     iconoPrev.addEventListener('click', imagenPrevia);
     msjIcon.addEventListener("click", redirectChats);
@@ -329,5 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mg2.addEventListener("click", liked2);
     noMg.addEventListener("click", disliked);
     noMg2.addEventListener("click", disliked2);
+    opcion1.addEventListener("click", showNotifications);
+    cerrarNotificaciones.addEventListener("click", closeNotifications);
 
 });

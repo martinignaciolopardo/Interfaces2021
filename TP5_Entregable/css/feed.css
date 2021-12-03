@@ -23,6 +23,28 @@ a{
     text-decoration: none;
 }
 
+.notificaciones-pop{
+    background-color: white;
+    position: absolute;
+    left: 206px;
+    top: 45px;
+}
+
+#cerrar-notif{
+    position: absolute;
+    left: 395px;
+    top: 53px;
+}
+
+#imagen-notificacion{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border-radius: 50%;
+    left: 215px;
+    top: 81px;
+}
+
 /************************************************************  NAV  ************************************************************/
 
 #nav{
@@ -92,12 +114,13 @@ a{
 }
 
 #popUp{
+    font-size: 16px;
     border-radius: 5px;
     position: absolute;
     left: 255px;
     top: 47px;
     z-index: 0;
-    background-color: rgb(211, 211, 211);
+    background-color: white;
     width: 150px;
     height: 67px;
     border: 1px solid rgb(177, 177, 177);
