@@ -303,6 +303,8 @@ a{
 #chats{
     left: 110px;
     bottom: 20px;
+    cursor:pointer;
+
 }
 
 #publicar{
@@ -313,6 +315,7 @@ a{
 #buscar{
     left: 280px;
     bottom: 22px;
+    cursor:pointer;
 }
 
 #imagen-footer{

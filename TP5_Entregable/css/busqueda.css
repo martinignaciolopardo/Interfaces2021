@@ -125,7 +125,16 @@ body{
     height: auto;
     margin: 10px, 33px, 0px, 33px;
 }
+#resultado svg{
+    display: flex;
+    width: 33%;
+    padding: 1.5em 0 0 1.5em;
+    position: relative;
 
+}
+.addEspecial{
+    right: 8px;
+}
 #imagen-contacto1, #imagen-contacto2, #imagen-contacto3, #imagen-contacto4{
     width: 48px;
     height: 48px;
@@ -137,6 +146,9 @@ body{
     width: 100%;
     height: auto;
     display: flex;
+}
+.contactosBusqueda{
+    padding-top: 0.8em;
 }
 
 figure{
@@ -173,11 +185,15 @@ figure{
 #feed{
     left: 24px;
     bottom: 21px;
+    cursor:pointer;
+
 }
 
 #chats{
     left: 105px;
     bottom: 13px;
+    cursor:pointer;
+
 }
 
 #publicar{
@@ -188,6 +204,7 @@ figure{
 #buscar{
     left: 280px;
     bottom: 15px;
+    cursor:pointer;
 }
 
 #imagen-footer{

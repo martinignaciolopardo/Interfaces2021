@@ -148,15 +148,17 @@ figure{
     background-color: grey;
 }
 
-
 #feed{
     left: 24px;
     bottom: 21px;
+    cursor:pointer;
 }
 
 #chats{
     left: 105px;
     bottom: 13px;
+    cursor:pointer;
+
 }
 
 #publicar{
@@ -167,6 +169,7 @@ figure{
 #buscar{
     left: 280px;
     bottom: 15px;
+    cursor:pointer;
 }
 
 #imagen-footer{
