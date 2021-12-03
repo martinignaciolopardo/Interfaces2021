@@ -91,8 +91,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function mostrarResultado(){
-        resultado.classList.remove("oculto");
-        
+        let contactoB = inputBusqueda.getAttribute('placeholder');
+        if (contactoB == 'Buscar contacto') {
+            resultado.classList.remove("oculto");
+        }
     }
         
     function redirectFeed(){
